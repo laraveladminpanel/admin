@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager\FormFields;
 
+use Illuminate\Http\Request;
+
 interface HandlerInterface
 {
     public function handle($row, $dataType, $dataTypeContent);
@@ -13,4 +15,6 @@ interface HandlerInterface
     public function getCodename();
 
     public function getName();
+
+    public function getContentBasedOnType(Request $request, $slug, $row);
 }

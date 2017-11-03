@@ -3,6 +3,7 @@
 namespace TCG\Voyager\FormFields;
 
 use TCG\Voyager\Traits\Renderable;
+use Illuminate\Http\Request;
 
 abstract class AbstractHandler implements HandlerInterface
 {
@@ -11,6 +12,14 @@ abstract class AbstractHandler implements HandlerInterface
     protected $name;
     protected $codename;
     protected $supports = [];
+
+    abstract public function getContentBasedOnType(Request $request, $slug, $row);
+
+    public static function initial($content)
+    {
+        $handler = __NAMESPACE__ . '\\' . studly_case($content) . "Handler";
+        return new $handler();
+    }
 
     public function handle($row, $dataType, $dataTypeContent)
     {

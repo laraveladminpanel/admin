@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager\FormFields;
 
+use Illuminate\Http\Request;
+
 class SelectDropdownHandler extends AbstractHandler
 {
     protected $codename = 'select_dropdown';
@@ -14,5 +16,16 @@ class SelectDropdownHandler extends AbstractHandler
             'dataType'        => $dataType,
             'dataTypeContent' => $dataTypeContent,
         ]);
+    }
+
+    public function getContentBasedOnType(Request $request, $slug, $row)
+    {
+        $content = $request->input($row->field);
+        $options = json_decode($row->details);
+        if (isset($options->null)) {
+            return $content == $options->null ? null : $content;
+        }
+
+        return $content;
     }
 }
