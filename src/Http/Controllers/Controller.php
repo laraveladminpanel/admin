@@ -46,7 +46,7 @@ abstract class Controller extends BaseController
             $options = json_decode($row->details);
 
             if ($row->type == 'relationship' && $options->type != 'belongsToMany') {
-                $row->field = @$options->column;
+                continue;
             }
 
             // if the field for this row is absent from the request, continue
