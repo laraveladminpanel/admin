@@ -39,8 +39,8 @@ abstract class Controller extends BaseController
          * Prepare Translations and Transform data
          */
         $translations = is_bread_translatable($data)
-                        ? $data->prepareTranslations($request)
-                        : [];
+            ? $data->prepareTranslations($request)
+            : [];
 
         foreach ($rows as $row) {
             $options = json_decode($row->details);
@@ -58,6 +58,11 @@ abstract class Controller extends BaseController
             $handler = AbstractHandler::initial($row->type);
             $content = $handler->getContentBasedOnType($request, $slug, $row);
 
+            // If the content is null then keep the current
+            if (is_null($content) && in_array($row->type, ['image', 'multiple_images', 'file', 'password'])) {
+                continue;
+            }
+
             /*
              * merge ex_images and upload images
              */
@@ -67,28 +72,6 @@ abstract class Controller extends BaseController
                     if (!is_null($ex_files)) {
                         $content = json_encode(array_merge($ex_files, json_decode($content)));
                     }
-                }
-            }
-
-            if (is_null($content)) {
-
-                // If the image upload is null and it has a current image keep the current image
-                if ($row->type == 'image' && is_null($request->input($row->field)) && isset($data->{$row->field})) {
-                    $content = $data->{$row->field};
-                }
-
-                // If the multiple_images upload is null and it has a current image keep the current image
-                if ($row->type == 'multiple_images' && is_null($request->input($row->field)) && isset($data->{$row->field})) {
-                    $content = $data->{$row->field};
-                }
-
-                // If the file upload is null and it has a current file keep the current file
-                if ($row->type == 'file') {
-                    $content = $data->{$row->field};
-                }
-
-                if ($row->type == 'password') {
-                    $content = $data->{$row->field};
                 }
             }
 
