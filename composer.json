@@ -24,15 +24,14 @@
         "larapack/voyager-hooks": "~1.0.2"
     },
     "require-dev": {
-        "phpunit/phpcov": "~3.0|dev-master",
-        "phpunit/phpunit": "~5.7.14|~6.1",
-        "laravel/framework": "~5.4.36|~5.5.0",
-        "orchestra/testbench": "~3.4.0|~3.5.0",
-        "orchestra/database": "~3.4.0|~3.5.0",
-        "orchestra/testbench-core": "~3.4.0|~3.5.0",
-        "laravel/browser-kit-testing": "~1.0.0|~2.0.0",
-        "orchestra/testbench-browser-kit": "~3.4.0|~3.5.0",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "phpunit/phpunit": "^6.4",
+        "orchestra/testbench": "~3.5",
+        "orchestra/testbench-browser-kit": "~3.5",
+        "orchestra/database": "~3.5",
+        "phpunit/phpcov": "^4.0",
+        "laravel/browser-kit-testing": "^2.0",
+        "laravel/laravel": "^5.5"
     },
     "autoload": {
         "psr-4": {
