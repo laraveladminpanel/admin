@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager\FormFields;
 
+use Illuminate\Http\Request;
+
 class CheckboxHandler extends AbstractHandler
 {
     protected $codename = 'checkbox';
@@ -14,5 +16,16 @@ class CheckboxHandler extends AbstractHandler
             'dataType'        => $dataType,
             'dataTypeContent' => $dataTypeContent,
         ]);
+    }
+
+    public function getContentBasedOnType(Request $request, $slug, $row)
+    {
+        $checkBoxRow = $request->input($row->field);
+
+        if (isset($checkBoxRow)) {
+            return 1;
+        }
+
+        return 0;
     }
 }

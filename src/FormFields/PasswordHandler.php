@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager\FormFields;
 
+use Illuminate\Http\Request;
+
 class PasswordHandler extends AbstractHandler
 {
     protected $codename = 'password';
@@ -14,5 +16,16 @@ class PasswordHandler extends AbstractHandler
             'dataType'        => $dataType,
             'dataTypeContent' => $dataTypeContent,
         ]);
+    }
+
+    public function getContentBasedOnType(Request $request, $slug, $row)
+    {
+        $pass_field = $request->input($row->field);
+
+        if (isset($pass_field) && !empty($pass_field)) {
+            return bcrypt($request->input($row->field));
+        }
+
+        return null;
     }
 }

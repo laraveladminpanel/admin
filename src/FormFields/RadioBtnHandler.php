@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager\FormFields;
 
+use Illuminate\Http\Request;
+
 class RadioBtnHandler extends AbstractHandler
 {
     protected $name = 'Radio Button';
@@ -15,5 +17,16 @@ class RadioBtnHandler extends AbstractHandler
             'dataType'        => $dataType,
             'dataTypeContent' => $dataTypeContent,
         ]);
+    }
+
+    public function getContentBasedOnType(Request $request, $slug, $row)
+    {
+        $content = $request->input($row->field);
+        $options = json_decode($row->details);
+        if (isset($options->null)) {
+            return $content == $options->null ? null : $content;
+        }
+
+        return $content;
     }
 }
