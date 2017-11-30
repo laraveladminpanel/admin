@@ -5,6 +5,7 @@ namespace TCG\Voyager\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\FormFields\AbstractHandler;
 
 class VoyagerSettingsController extends Controller
 {
@@ -82,12 +83,15 @@ class VoyagerSettingsController extends Controller
         $settings = Voyager::model('Setting')->all();
 
         foreach ($settings as $setting) {
-            $content = $this->getContentBasedOnType($request, 'settings', (object) [
+            $row = (object) [
                 'type'    => $setting->type,
                 'field'   => str_replace('.', '_', $setting->key),
                 'details' => $setting->details,
                 'group'   => $setting->group,
-            ]);
+            ];
+
+            $handler = AbstractHandler::initial($row->type);
+            $content = $handler->getContentBasedOnType($request, 'settings', $row);
 
             if ($content === null && isset($setting->value)) {
                 $content = $setting->value;

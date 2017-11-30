@@ -26,9 +26,8 @@
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
         "phpunit/phpunit": "^6.4",
-        "orchestra/testbench": "~3.5",
-        "orchestra/testbench-browser-kit": "~3.5",
-        "orchestra/database": "~3.5",
+        "orchestra/database": "^3.5",
+        "orchestra/testbench-browser-kit": "^3.5",
         "phpunit/phpcov": "^4.0",
         "laravel/browser-kit-testing": "^2.0",
         "laravel/laravel": "^5.5"
