@@ -29,7 +29,7 @@ class User extends Authenticatable implements UserContract
 
     public function save(array $options = [])
     {
-        if ((int) $this->id === auth()->user()->id) {
+        if (auth()->user() && (int) $this->id === auth()->user()->id) {
             $this->role_id = auth()->user()->role_id;
         }
 
