@@ -26,4 +26,13 @@ class User extends Authenticatable implements UserContract
     {
         $this->attributes['created_at'] = Carbon::parse($value)->format('Y-m-d H:i:s');
     }
+
+    public function save(array $options = [])
+    {
+        if ((int) $this->id === auth()->user()->id) {
+            $this->role_id = auth()->user()->role_id;
+        }
+
+        parent::save();
+    }
 }
