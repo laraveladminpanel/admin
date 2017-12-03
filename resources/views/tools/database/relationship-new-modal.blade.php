@@ -1,5 +1,5 @@
 <!-- !!! Add form action below -->
-<form role="form" action="{{ route('voyager.database.bread.relationship') }}" method="POST">
+<form role="form" action="{{ route('voyager.database.crud.relationship') }}" method="POST">
 	<div class="modal fade modal-danger modal-relationships" id="new_relationship_modal">
 		<div class="modal-dialog relationship-panel">
 		    <div class="model-content">

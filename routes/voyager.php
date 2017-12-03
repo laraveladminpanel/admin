@@ -34,11 +34,11 @@ Route::group(['as' => 'voyager.'], function () {
 
         try {
             foreach (DataType::all() as $dataType) {
-                $breadController = $dataType->controller
+                $crudController = $dataType->controller
                                  ? $dataType->controller
-                                 : $namespacePrefix.'BreadController';
+                                 : $namespacePrefix.'CrudController';
 
-                Route::resource($dataType->slug, $breadController);
+                Route::resource($dataType->slug, $crudController);
             }
         } catch (\InvalidArgumentException $e) {
             throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);
@@ -100,16 +100,16 @@ Route::group(['as' => 'voyager.'], function () {
 
         // Database Routes
         Route::group([
-            'as'     => 'database.bread.',
+            'as'     => 'database.crud.',
             'prefix' => 'database',
         ], function () use ($namespacePrefix) {
-            Route::get('{table}/bread/create', ['uses' => $namespacePrefix.'DatabaseController@addBread',     'as' => 'create']);
-            Route::post('bread', ['uses' => $namespacePrefix.'DatabaseController@storeBread',   'as' => 'store']);
-            Route::get('{table}/bread/edit', ['uses' => $namespacePrefix.'DatabaseController@addEditBread', 'as' => 'edit']);
-            Route::put('bread/{id}', ['uses' => $namespacePrefix.'DatabaseController@updateBread',  'as' => 'update']);
-            Route::delete('bread/{id}', ['uses' => $namespacePrefix.'DatabaseController@deleteBread',  'as' => 'delete']);
-            Route::post('bread/relationship', ['uses' => $namespacePrefix.'DatabaseController@addRelationship',  'as' => 'relationship']);
-            Route::get('bread/delete_relationship/{id}', ['uses' => $namespacePrefix.'DatabaseController@deleteRelationship',  'as' => 'delete_relationship']);
+            Route::get('{table}/crud/create', ['uses' => $namespacePrefix.'DatabaseController@addCrud',     'as' => 'create']);
+            Route::post('crud', ['uses' => $namespacePrefix.'DatabaseController@storeCrud',   'as' => 'store']);
+            Route::get('{table}/crud/edit', ['uses' => $namespacePrefix.'DatabaseController@addEditCrud', 'as' => 'edit']);
+            Route::put('crud/{id}', ['uses' => $namespacePrefix.'DatabaseController@updateCrud',  'as' => 'update']);
+            Route::delete('crud/{id}', ['uses' => $namespacePrefix.'DatabaseController@deleteCrud',  'as' => 'delete']);
+            Route::post('crud/relationship', ['uses' => $namespacePrefix.'DatabaseController@addRelationship',  'as' => 'relationship']);
+            Route::get('crud/delete_relationship/{id}', ['uses' => $namespacePrefix.'DatabaseController@deleteRelationship',  'as' => 'delete_relationship']);
         });
 
         // Compass Routes

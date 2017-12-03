@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('isBreadSlugAutoGenerator')) {
+if (!function_exists('isCrudSlugAutoGenerator')) {
     /**
      * Check if a field slug can be auto generated.
      *
@@ -8,7 +8,7 @@ if (!function_exists('isBreadSlugAutoGenerator')) {
      *
      * @return string HTML output.
      */
-    function isBreadSlugAutoGenerator($options)
+    function isCrudSlugAutoGenerator($options)
     {
         if (isset($options->slugify)) {
             return ' data-slug-origin='.$options->slugify->origin
@@ -41,6 +41,6 @@ if (!function_exists('isFieldSlugAutoGenerator')) {
             return;
         }
 
-        return isBreadSlugAutoGenerator(json_decode($_row->details));
+        return isCrudSlugAutoGenerator(json_decode($_row->details));
     }
 }

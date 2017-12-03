@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('voyager.database.table_name') }}</th>
-                            <th>{{ __('voyager.database.bread_crud_actions') }}</th>
+                            <th>{{ __('voyager.database.crud_crud_actions') }}</th>
                             <th style="text-align:right">{{ __('voyager.database.table_actions') }}</th>
                         </tr>
                     </thead>
@@ -47,20 +47,20 @@
                             @if($table->dataTypeId)
                                 <a href="{{ route('voyager.' . $table->slug . '.index') }}"
                                    class="btn-sm btn-warning browse_bread">
-                                    <i class="voyager-plus"></i> {{ __('voyager.database.browse_bread') }}
+                                    <i class="voyager-plus"></i> {{ __('voyager.database.browse_crud') }}
                                 </a>
-                                <a href="{{ route('voyager.database.bread.edit', $table->name) }}"
+                                <a href="{{ route('voyager.database.crud.edit', $table->name) }}"
                                    class="btn-sm btn-default edit">
-                                   {{ __('voyager.database.edit_bread') }}
+                                   {{ __('voyager.database.edit_crud') }}
                                 </a>
                                 <div data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
                                      class="btn-sm btn-danger delete" style="display:inline">
-                                     {{ __('voyager.database.delete_bread') }}
+                                     {{ __('voyager.database.delete_crud') }}
                                 </div>
                             @else
-                                <a href="{{ route('voyager.database.bread.create', ['name' => $table->name]) }}"
+                                <a href="{{ route('voyager.database.crud.create', ['name' => $table->name]) }}"
                                    class="btn-sm btn-default">
-                                    <i class="voyager-plus"></i> {{ __('voyager.database.add_bread') }}
+                                    <i class="voyager-plus"></i> {{ __('voyager.database.add_crud') }}
                                 </a>
                             @endif
                             </div>
@@ -94,13 +94,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i>  {!! __('voyager.database.delete_table_bread_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i>  {!! __('voyager.database.delete_table_crud_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.database.bread.delete', ['id' => null]) }}" id="delete_builder_form" method="POST">
+                    <form action="{{ route('voyager.database.crud.delete', ['id' => null]) }}" id="delete_builder_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="{{ __('voyager.database.delete_table_bread_conf') }}">
+                        <input type="submit" class="btn btn-danger" value="{{ __('voyager.database.delete_table_crud_conf') }}">
                     </form>
                     <button type="button" class="btn btn-outline pull-right" data-dismiss="modal">{{ __('voyager.generic.cancel') }}</button>
                 </div>
@@ -114,7 +114,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {!! __('voyager.database.delete_table_bread_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> {!! __('voyager.database.delete_table_crud_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.database.destroy', ['database' => '__database']) }}" id="delete_table_form" method="POST">
@@ -222,7 +222,7 @@
             $('td.actions').on('click', '.delete_table', function (e) {
                 table = $(this).data('table');
                 if ($(this).hasClass('remove-bread-warning')) {
-                    toastr.warning('{{ __('voyager.database.delete_bread_before_table') }}');
+                    toastr.warning('{{ __('voyager.database.delete_crud_before_table') }}');
                 } else {
                     $('#delete_table_name').text(table);
                     $('#delete_table_form')[0].action = $('#delete_table_form')[0].action.replace('__database', table);

@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Database\Schema\SchemaManager;
-use TCG\Voyager\Events\BreadDataAdded;
-use TCG\Voyager\Events\BreadDataDeleted;
-use TCG\Voyager\Events\BreadDataUpdated;
-use TCG\Voyager\Events\BreadImagesDeleted;
+use TCG\Voyager\Events\CrudDataAdded;
+use TCG\Voyager\Events\CrudDataDeleted;
+use TCG\Voyager\Events\CrudDataUpdated;
+use TCG\Voyager\Events\CrudImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
+use TCG\Voyager\Http\Controllers\Traits\CrudRelationshipParser;
 
-class BreadController extends BaseController
+class CrudController extends BaseController
 {
-    use BreadRelationshipParser;
+    use CrudRelationshipParser;
     //***************************************
     //               ____
     //              |  _ \
@@ -83,14 +83,14 @@ class BreadController extends BaseController
         }
 
         // Check if BREAD is Translatable
-        if (($isModelTranslatable = is_bread_translatable($model))) {
+        if (($isModelTranslatable = is_crud_translatable($model))) {
             $dataTypeContent->load('translations');
         }
 
         // Check if server side pagination is enabled
         $isServerSide = isset($dataType->server_side) && $dataType->server_side;
 
-        $view = 'voyager::bread.browse';
+        $view = 'voyager::crud.browse';
 
         if (view()->exists("voyager::$slug.browse")) {
             $view = "voyager::$slug.browse";
@@ -148,9 +148,9 @@ class BreadController extends BaseController
         $this->authorize('read', $dataTypeContent);
 
         // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
+        $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.read';
+        $view = 'voyager::crud.read';
 
         if (view()->exists("voyager::$slug.read")) {
             $view = "voyager::$slug.read";
@@ -198,9 +198,9 @@ class BreadController extends BaseController
         $this->authorize('edit', $dataTypeContent);
 
         // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
+        $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'voyager::crud.edit-add';
 
         if (view()->exists("voyager::$slug.edit-add")) {
             $view = "voyager::$slug.edit-add";
@@ -225,7 +225,7 @@ class BreadController extends BaseController
         $this->authorize('edit', $data);
 
         // Validate fields with ajax
-        $val = $this->validateBread($request->all(), $dataType->editRows);
+        $val = $this->validateCrud($request->all(), $dataType->editRows);
 
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);
@@ -234,7 +234,7 @@ class BreadController extends BaseController
         if (!$request->ajax()) {
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
-            event(new BreadDataUpdated($dataType, $data));
+            event(new CrudDataUpdated($dataType, $data));
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
@@ -280,9 +280,9 @@ class BreadController extends BaseController
         $this->removeRelationshipField($dataType, 'add');
 
         // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
+        $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::bread.edit-add';
+        $view = 'voyager::crud.edit-add';
 
         if (view()->exists("voyager::$slug.edit-add")) {
             $view = "voyager::$slug.edit-add";
@@ -308,7 +308,7 @@ class BreadController extends BaseController
         $this->authorize('edit', app($dataType->model_name));
 
         // Validate fields with ajax
-        $val = $this->validateBread($request->all(), $dataType->addRows);
+        $val = $this->validateCrud($request->all(), $dataType->addRows);
 
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);
@@ -317,7 +317,7 @@ class BreadController extends BaseController
         if (!$request->ajax()) {
             $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
 
-            event(new BreadDataAdded($dataType, $data));
+            event(new CrudDataAdded($dataType, $data));
 
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
@@ -377,7 +377,7 @@ class BreadController extends BaseController
             ];
 
         if ($res) {
-            event(new BreadDataDeleted($dataType, $data));
+            event(new CrudDataDeleted($dataType, $data));
         }
 
         return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
@@ -394,12 +394,12 @@ class BreadController extends BaseController
     protected function cleanup($dataType, $data)
     {
         // Delete Translations, if present
-        if (is_bread_translatable($data)) {
+        if (is_crud_translatable($data)) {
             $data->deleteAttributeTranslations($data->getTranslatableAttributes());
         }
 
         // Delete Images
-        $this->deleteBreadImages($data, $dataType->deleteRows->where('type', 'image'));
+        $this->deleteCrudImages($data, $dataType->deleteRows->where('type', 'image'));
 
         // Delete Files
         foreach ($dataType->deleteRows->where('type', 'file') as $row) {
@@ -420,7 +420,7 @@ class BreadController extends BaseController
      *
      * @return void
      */
-    public function deleteBreadImages($data, $rows)
+    public function deleteCrudImages($data, $rows)
     {
         foreach ($rows as $row) {
             $this->deleteFileIfExists($data->{$row->field});
@@ -442,7 +442,7 @@ class BreadController extends BaseController
         }
 
         if ($rows->count() > 0) {
-            event(new BreadImagesDeleted($data, $rows));
+            event(new CrudImagesDeleted($data, $rows));
         }
     }
 }

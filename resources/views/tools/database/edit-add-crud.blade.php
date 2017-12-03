@@ -1,11 +1,11 @@
 @extends('voyager::master')
 
-@section('page_title', __('voyager.database.edit_bread_for_table', ['table' => (isset($dataType->id) ? @$dataType->name : $table)]))
+@section('page_title', __('voyager.database.edit_crud_for_table', ['table' => (isset($dataType->id) ? @$dataType->name : $table)]))
 
 @section('page_header')
     <div class="page-title">
         <i class="voyager-data"></i>
-        {{ __('voyager.database.edit_bread_for_table', ['table' => (isset($dataType->id) ? @$dataType->name : $table)]) }}
+        {{ __('voyager.database.edit_crud_for_table', ['table' => (isset($dataType->id) ? @$dataType->name : $table)]) }}
     </div>
     @php
         $isModelTranslatable = (!isset($isModelTranslatable) || !isset($dataType)) ? false : $isModelTranslatable;
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if(isset($dataType->id)){{ route('voyager.database.bread.update', $dataType->id) }}@else{{ route('voyager.database.bread.store') }}@endif"
+                <form action="@if(isset($dataType->id)){{ route('voyager.database.crud.update', $dataType->id) }}@else{{ route('voyager.database.crud.store') }}@endif"
                       method="POST" role="form">
                 @if(isset($dataType->id))
                     <input type="hidden" value="{{ $dataType->id }}" name="id">
@@ -34,7 +34,7 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title panel-icon"><i class="voyager-bread"></i> {{ ucfirst($table) }} {{ __('voyager.database.bread_info') }}</h3>
+                            <h3 class="panel-title panel-icon"><i class="voyager-bread"></i> {{ ucfirst($table) }} {{ __('voyager.database.crud_info') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>

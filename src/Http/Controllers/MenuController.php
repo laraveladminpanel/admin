@@ -13,7 +13,7 @@ class MenuController extends BaseController
 
         $this->authorize('edit', $menu);
 
-        $isModelTranslatable = is_bread_translatable(Voyager::model('MenuItem'));
+        $isModelTranslatable = is_crud_translatable(Voyager::model('MenuItem'));
 
         return Voyager::view('voyager::menus.builder', compact('menu', 'isModelTranslatable'));
     }
@@ -50,7 +50,7 @@ class MenuController extends BaseController
         $data['order'] = Voyager::model('MenuItem')->highestOrderMenuItem();
 
         // Check if is translatable
-        $_isTranslatable = is_bread_translatable(Voyager::model('MenuItem'));
+        $_isTranslatable = is_crud_translatable(Voyager::model('MenuItem'));
         if ($_isTranslatable) {
             // Prepare data before saving the menu
             $trans = $this->prepareMenuTranslations($data);
@@ -82,7 +82,7 @@ class MenuController extends BaseController
 
         $this->authorize('edit', $menuItem->menu);
 
-        if (is_bread_translatable($menuItem)) {
+        if (is_crud_translatable($menuItem)) {
             $trans = $this->prepareMenuTranslations($data);
 
             // Save menu translations

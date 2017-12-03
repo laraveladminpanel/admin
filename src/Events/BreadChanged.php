@@ -5,7 +5,7 @@ namespace TCG\Voyager\Events;
 use Illuminate\Queue\SerializesModels;
 use TCG\Voyager\Models\DataType;
 
-class BreadChanged
+class CrudChanged
 {
     use SerializesModels;
 

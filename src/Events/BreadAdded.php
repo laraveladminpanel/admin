@@ -5,7 +5,7 @@ namespace TCG\Voyager\Events;
 use Illuminate\Queue\SerializesModels;
 use TCG\Voyager\Models\DataType;
 
-class BreadAdded
+class CrudAdded
 {
     use SerializesModels;
 
@@ -19,6 +19,6 @@ class BreadAdded
 
         $this->data = $data;
 
-        event(new BreadChanged($dataType, $data, 'Added'));
+        event(new CrudChanged($dataType, $data, 'Added'));
     }
 }

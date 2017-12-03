@@ -9,7 +9,7 @@ if (!function_exists('is_field_translatable')) {
      */
     function is_field_translatable($model, $row)
     {
-        if (!is_bread_translatable($model)) {
+        if (!is_crud_translatable($model)) {
             return;
         }
 
@@ -42,13 +42,13 @@ if (!function_exists('get_field_translations')) {
     }
 }
 
-if (!function_exists('is_bread_translatable')) {
+if (!function_exists('is_crud_translatable')) {
     /**
      * Check if BREAD is translatable.
      *
      * @param Illuminate\Database\Eloquent\Model $model
      */
-    function is_bread_translatable($model)
+    function is_crud_translatable($model)
     {
         return config('voyager.multilingual.enabled')
             && isset($model)

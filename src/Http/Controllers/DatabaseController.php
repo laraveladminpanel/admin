@@ -13,9 +13,9 @@ use TCG\Voyager\Database\Schema\Identifier;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Database\Schema\Table;
 use TCG\Voyager\Database\Types\Type;
-use TCG\Voyager\Events\BreadAdded;
-use TCG\Voyager\Events\BreadDeleted;
-use TCG\Voyager\Events\BreadUpdated;
+use TCG\Voyager\Events\CrudAdded;
+use TCG\Voyager\Events\CrudDeleted;
+use TCG\Voyager\Events\CrudUpdated;
 use TCG\Voyager\Events\TableAdded;
 use TCG\Voyager\Events\TableDeleted;
 use TCG\Voyager\Events\TableUpdated;
@@ -258,17 +258,17 @@ class DatabaseController extends BaseController
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function addBread(Request $request, $table)
+    public function addCrud(Request $request, $table)
     {
         Voyager::canOrFail('browse_database');
 
-        $data = $this->prepopulateBreadInfo($table);
+        $data = $this->prepopulateCrudInfo($table);
         $data['fieldOptions'] = SchemaManager::describeTable($table);
 
-        return Voyager::view('voyager::tools.database.edit-add-bread', $data);
+        return Voyager::view('voyager::tools.database.edit-add-crud', $data);
     }
 
-    private function prepopulateBreadInfo($table)
+    private function prepopulateCrudInfo($table)
     {
         $displayName = Str::singular(implode(' ', explode('_', Str::title($table))));
         $modelNamespace = config('voyager.models.namespace', app()->getNamespace());
@@ -288,7 +288,7 @@ class DatabaseController extends BaseController
         ];
     }
 
-    public function storeBread(Request $request)
+    public function storeCrud(Request $request)
     {
         Voyager::canOrFail('browse_database');
 
@@ -296,10 +296,10 @@ class DatabaseController extends BaseController
             $dataType = Voyager::model('DataType');
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('voyager.database.success_created_bread'))
-                : $this->alertError(__('voyager.database.error_creating_bread'));
+                ? $this->alertSuccess(__('voyager.database.success_created_crud'))
+                : $this->alertError(__('voyager.database.error_creating_crud'));
             if ($res) {
-                event(new BreadAdded($dataType, $data));
+                event(new CrudAdded($dataType, $data));
             }
 
             return redirect()->route('voyager.database.index')->with($data);
@@ -308,7 +308,7 @@ class DatabaseController extends BaseController
         }
     }
 
-    public function addEditBread($table)
+    public function addEditCrud($table)
     {
         Voyager::canOrFail('browse_database');
 
@@ -316,14 +316,14 @@ class DatabaseController extends BaseController
 
         $fieldOptions = SchemaManager::describeTable($dataType->name);
 
-        $isModelTranslatable = is_bread_translatable($dataType);
+        $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
         $dataTypeRelationships = Voyager::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
 
-        return Voyager::view('voyager::tools.database.edit-add-bread', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships'));
+        return Voyager::view('voyager::tools.database.edit-add-crud', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships'));
     }
 
-    public function updateBread(Request $request, $id)
+    public function updateCrud(Request $request, $id)
     {
         Voyager::canOrFail('browse_database');
 
@@ -332,16 +332,16 @@ class DatabaseController extends BaseController
             $dataType = Voyager::model('DataType')->find($id);
 
             // Prepare Translations and Transform data
-            $translations = is_bread_translatable($dataType)
+            $translations = is_crud_translatable($dataType)
                 ? $dataType->prepareTranslations($request)
                 : [];
 
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('voyager.database.success_update_bread', ['datatype' => $dataType->name]))
-                : $this->alertError(__('voyager.database.error_updating_bread'));
+                ? $this->alertSuccess(__('voyager.database.success_update_crud', ['datatype' => $dataType->name]))
+                : $this->alertError(__('voyager.database.error_updating_crud'));
             if ($res) {
-                event(new BreadUpdated($dataType, $data));
+                event(new CrudUpdated($dataType, $data));
             }
 
             // Save translations if applied
@@ -353,7 +353,7 @@ class DatabaseController extends BaseController
         }
     }
 
-    public function deleteBread($id)
+    public function deleteCrud($id)
     {
         Voyager::canOrFail('browse_database');
 
@@ -361,16 +361,16 @@ class DatabaseController extends BaseController
         $dataType = Voyager::model('DataType')->find($id);
 
         // Delete Translations, if present
-        if (is_bread_translatable($dataType)) {
+        if (is_crud_translatable($dataType)) {
             $dataType->deleteAttributeTranslations($dataType->getTranslatableAttributes());
         }
 
         $res = Voyager::model('DataType')->destroy($id);
         $data = $res
-            ? $this->alertSuccess(__('voyager.database.success_remove_bread', ['datatype' => $dataType->name]))
-            : $this->alertError(__('voyager.database.error_updating_bread'));
+            ? $this->alertSuccess(__('voyager.database.success_remove_crud', ['datatype' => $dataType->name]))
+            : $this->alertError(__('voyager.database.error_updating_crud'));
         if ($res) {
-            event(new BreadDeleted($dataType, $data));
+            event(new CrudDeleted($dataType, $data));
         }
 
         if (!is_null($dataType)) {

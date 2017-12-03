@@ -2,12 +2,12 @@
 
 namespace TCG\Voyager\Listeners;
 
-use TCG\Voyager\Events\BreadAdded;
+use TCG\Voyager\Events\CrudAdded;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\MenuItem;
 
-class AddBreadMenuItem
+class AddCrudMenuItem
 {
     /**
      * Create the event listener.
@@ -22,21 +22,21 @@ class AddBreadMenuItem
     /**
      * Create a MenuItem for a given BREAD.
      *
-     * @param BreadAdded $event
+     * @param CrudAdded $event
      *
      * @return void
      */
-    public function handle(BreadAdded $bread)
+    public function handle(CrudAdded $crud)
     {
-        if (config('voyager.add_bread_menu_item') && file_exists(base_path('routes/web.php'))) {
+        if (config('voyager.add_crud_menu_item') && file_exists(base_path('routes/web.php'))) {
             require base_path('routes/web.php');
 
             $menu = Menu::where('name', 'admin')->firstOrFail();
 
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
-                'title'   => $bread->dataType->display_name_plural,
-                'url'     => '/'.config('voyager.prefix', 'admin').'/'.$bread->dataType->slug,
+                'title'   => $crud->dataType->display_name_plural,
+                'url'     => '/'.config('voyager.prefix', 'admin').'/'.$crud->dataType->slug,
             ]);
 
             $order = Voyager::model('MenuItem')->highestOrderMenuItem();
@@ -44,7 +44,7 @@ class AddBreadMenuItem
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => $bread->dataType->icon,
+                    'icon_class' => $crud->dataType->icon,
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => $order,

@@ -38,7 +38,7 @@ abstract class BaseController extends Controller
         /*
          * Prepare Translations and Transform data
          */
-        $translations = is_bread_translatable($data)
+        $translations = is_crud_translatable($data)
             ? $data->prepareTranslations($request)
             : [];
 
@@ -97,7 +97,7 @@ abstract class BaseController extends Controller
         return $data;
     }
 
-    public function validateBread($request, $data)
+    public function validateCrud($request, $data)
     {
         $rules = [];
         $messages = [];

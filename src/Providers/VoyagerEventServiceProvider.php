@@ -13,9 +13,9 @@ class VoyagerEventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'TCG\Voyager\Events\BreadAdded' => [
-            'TCG\Voyager\Listeners\AddBreadMenuItem',
-            'TCG\Voyager\Listeners\AddBreadPermission',
+        'TCG\Voyager\Events\CrudAdded' => [
+            'TCG\Voyager\Listeners\AddCrudMenuItem',
+            'TCG\Voyager\Listeners\AddCrudPermission',
         ],
     ];
 

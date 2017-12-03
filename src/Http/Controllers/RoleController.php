@@ -5,7 +5,7 @@ namespace TCG\Voyager\Http\Controllers;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 
-class RoleController extends BreadController
+class RoleController extends CrudController
 {
     // POST BR(E)AD
     public function update(Request $request, $id)
@@ -18,7 +18,7 @@ class RoleController extends BreadController
         $this->authorize('edit', app($dataType->model_name));
 
         //Validate fields with ajax
-        $val = $this->validateBread($request->all(), $dataType->editRows);
+        $val = $this->validateCrud($request->all(), $dataType->editRows);
 
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);
@@ -50,7 +50,7 @@ class RoleController extends BreadController
         $this->authorize('add', app($dataType->model_name));
 
         //Validate fields with ajax
-        $val = $this->validateBread($request->all(), $dataType->addRows);
+        $val = $this->validateCrud($request->all(), $dataType->addRows);
 
         if ($val->fails()) {
             return response()->json(['errors' => $val->messages()]);

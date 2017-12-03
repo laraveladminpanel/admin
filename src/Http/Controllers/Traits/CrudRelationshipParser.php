@@ -6,24 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use TCG\Voyager\Models\DataType;
 
-trait BreadRelationshipParser
+trait CrudRelationshipParser
 {
     protected $relation_field = [];
 
-    protected function removeRelationshipField(DataType $dataType, $bread_type = 'browse')
+    protected function removeRelationshipField(DataType $dataType, $crud_type = 'browse')
     {
         $forget_keys = [];
-        foreach ($dataType->{$bread_type.'Rows'} as $key => $row) {
+        foreach ($dataType->{$crud_type.'Rows'} as $key => $row) {
             if ($row->type == 'relationship') {
                 $options = json_decode($row->details);
                 $relationshipField = @$options->column;
-                $keyInCollection = key($dataType->{$bread_type.'Rows'}->where('field', '=', $relationshipField)->toArray());
+                $keyInCollection = key($dataType->{$crud_type.'Rows'}->where('field', '=', $relationshipField)->toArray());
                 array_push($forget_keys, $keyInCollection);
             }
         }
 
         foreach ($forget_keys as $forget_key) {
-            $dataType->{$bread_type.'Rows'}->forget($forget_key);
+            $dataType->{$crud_type.'Rows'}->forget($forget_key);
         }
     }
 
@@ -113,10 +113,10 @@ trait BreadRelationshipParser
                     $field = snake_case($field);
                 }
 
-                $bread_data = $dataType->browseRows->where('field', $field)->first();
-                $relationData = json_decode($bread_data->details)->relationship;
+                $crud_data = $dataType->browseRows->where('field', $field)->first();
+                $relationData = json_decode($crud_data->details)->relationship;
 
-                if ($bread_data->type == 'select_multiple') {
+                if ($crud_data->type == 'select_multiple') {
                     $relationItems = [];
                     foreach ($relation as $model) {
                         $relationItem = new \stdClass();
