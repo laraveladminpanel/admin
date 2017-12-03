@@ -5,7 +5,7 @@ namespace TCG\Voyager\Http\Controllers;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 
-class VoyagerMenuController extends Controller
+class MenuController extends BaseController
 {
     public function builder($id)
     {

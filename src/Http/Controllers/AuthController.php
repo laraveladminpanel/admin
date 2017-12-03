@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 
-class VoyagerAuthController extends Controller
+class AuthController extends BaseController
 {
     use AuthenticatesUsers;
 

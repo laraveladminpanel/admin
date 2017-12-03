@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\FormFields\AbstractHandler;
 
-class VoyagerSettingsController extends Controller
+class SettingsController extends BaseController
 {
     public function index()
     {

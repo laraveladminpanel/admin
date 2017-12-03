@@ -9,7 +9,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use TCG\Voyager\Facades\Voyager;
 
-class VoyagerCompassController extends Controller
+class CompassController extends BaseController
 {
     protected $request;
 

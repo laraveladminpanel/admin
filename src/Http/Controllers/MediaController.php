@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 use TCG\Voyager\Facades\Voyager;
 
-class VoyagerMediaController extends Controller
+class MediaController extends BaseController
 {
     /** @var string */
     private $filesystem;

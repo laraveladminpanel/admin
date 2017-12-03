@@ -2,134 +2,74 @@
 
 namespace TCG\Voyager\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use TCG\Voyager\Events\FileDeleted;
-use TCG\Voyager\FormFields\AbstractHandler;
-use TCG\Voyager\Traits\AlertsMessages;
-use Validator;
+use Intervention\Image\Constraint;
+use Intervention\Image\Facades\Image;
+use TCG\Voyager\Facades\Voyager;
 
-abstract class Controller extends BaseController
+class Controller extends BaseController
 {
-    use DispatchesJobs,
-        ValidatesRequests,
-        AuthorizesRequests,
-        AlertsMessages;
-
-    public function getSlug(Request $request)
+    public function index()
     {
-        if (isset($this->slug)) {
-            $slug = $this->slug;
-        } else {
-            $slug = explode('.', $request->route()->getName())[1];
-        }
-
-        return $slug;
+        return Voyager::view('voyager::index');
     }
 
-    public function insertUpdateData($request, $slug, $rows, $data)
+    public function logout()
     {
-        $multi_select = [];
+        Auth::logout();
 
-        /*
-         * Prepare Translations and Transform data
-         */
-        $translations = is_bread_translatable($data)
-            ? $data->prepareTranslations($request)
-            : [];
+        return redirect()->route('voyager.login');
+    }
 
-        foreach ($rows as $row) {
-            $options = json_decode($row->details);
+    public function upload(Request $request)
+    {
+        $fullFilename = null;
+        $resizeWidth = 1800;
+        $resizeHeight = null;
+        $slug = $request->input('type_slug');
+        $file = $request->file('image');
 
-            if ($row->type == 'relationship' && $options->type != 'belongsToMany') {
-                continue;
-            }
+        $path = $slug.'/'.date('F').date('Y').'/';
 
-            // if the field for this row is absent from the request, continue
-            // checkboxes will be absent when unchecked, thus they are the exception
-            if (!$request->has($row->field) && $row->type !== 'checkbox') {
-                continue;
-            }
+        $filename = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension());
+        $filename_counter = 1;
 
-            $handler = AbstractHandler::initial($row->type);
-            $content = $handler->getContentBasedOnType($request, $slug, $row);
+        // Make sure the filename does not exist, if it does make sure to add a number to the end 1, 2, 3, etc...
+        while (Storage::disk(config('voyager.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
+            $filename = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension()).(string) ($filename_counter++);
+        }
 
-            // If the content is null then keep the current
-            if (is_null($content) && in_array($row->type, ['image', 'multiple_images', 'file', 'password'])) {
-                continue;
-            }
+        $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
 
-            /*
-             * merge ex_images and upload images
-             */
-            if ($row->type == 'multiple_images' && !is_null($content)) {
-                if (isset($data->{$row->field})) {
-                    $ex_files = json_decode($data->{$row->field}, true);
-                    if (!is_null($ex_files)) {
-                        $content = json_encode(array_merge($ex_files, json_decode($content)));
-                    }
-                }
-            }
+        $ext = $file->guessClientExtension();
 
-            if ($row->type == 'relationship' && $options->type == 'belongsToMany') {
-                // Only if select_multiple is working with a relationship
-                $multi_select[] = ['model' => $options->model, 'content' => $content, 'table' => $options->pivot_table];
+        if (in_array($ext, ['jpeg', 'jpg', 'png', 'gif'])) {
+            $image = Image::make($file)
+                ->resize($resizeWidth, $resizeHeight, function (Constraint $constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->encode($file->getClientOriginalExtension(), 75);
+
+            // move uploaded file from temp to uploads directory
+            if (Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public')) {
+                $status = __('voyager.media.success_uploading');
+                $fullFilename = $fullPath;
             } else {
-                $data->{$row->field} = $content;
+                $status = __('voyager.media.error_uploading');
             }
+        } else {
+            $status = __('voyager.media.uploading_wrong_type');
         }
 
-        $data->save();
-
-        // Save translations
-        if (count($translations) > 0) {
-            $data->saveTranslations($translations);
-        }
-
-        foreach ($multi_select as $sync_data) {
-            $data->belongsToMany($sync_data['model'], $sync_data['table'])->sync($sync_data['content']);
-        }
-
-        return $data;
+        // echo out script that TinyMCE can handle and update the image in the editor
+        return "<script> parent.helpers.setImageValue('".Voyager::image($fullFilename)."'); </script>";
     }
 
-    public function validateBread($request, $data)
+    public function profile()
     {
-        $rules = [];
-        $messages = [];
-
-        foreach ($data as $row) {
-            $options = json_decode($row->details);
-
-            if (isset($options->validation)) {
-                if (isset($options->validation->rule)) {
-                    if (!is_array($options->validation->rule)) {
-                        $rules[$row->field] = explode('|', $options->validation->rule);
-                    } else {
-                        $rules[$row->field] = $options->validation->rule;
-                    }
-                }
-
-                if (isset($options->validation->messages)) {
-                    foreach ($options->validation->messages as $key => $msg) {
-                        $messages[$row->field.'.'.$key] = $msg;
-                    }
-                }
-            }
-        }
-
-        return Validator::make($request, $rules, $messages);
-    }
-
-    public function deleteFileIfExists($path)
-    {
-        if (Storage::disk(config('voyager.storage.disk'))->exists($path)) {
-            Storage::disk(config('voyager.storage.disk'))->delete($path);
-            event(new FileDeleted($path));
-        }
+        return Voyager::view('voyager::profile');
     }
 }

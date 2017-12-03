@@ -24,7 +24,7 @@ use TCG\Voyager\Models\DataRow;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Permission;
 
-class VoyagerDatabaseController extends Controller
+class DatabaseController extends BaseController
 {
     public function index()
     {

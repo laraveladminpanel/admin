@@ -13,7 +13,7 @@ use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 
-class VoyagerBreadController extends Controller
+class BreadController extends BaseController
 {
     use BreadRelationshipParser;
     //***************************************

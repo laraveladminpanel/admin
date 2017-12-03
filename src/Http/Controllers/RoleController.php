@@ -5,7 +5,7 @@ namespace TCG\Voyager\Http\Controllers;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 
-class VoyagerRoleController extends VoyagerBreadController
+class RoleController extends BreadController
 {
     // POST BR(E)AD
     public function update(Request $request, $id)
