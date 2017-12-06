@@ -3,7 +3,7 @@
 namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class RoleController extends CrudController
 {
@@ -12,7 +12,7 @@ class RoleController extends CrudController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -31,9 +31,9 @@ class RoleController extends CrudController
             $data->permissions()->sync($request->input('permissions', []));
 
             return redirect()
-            ->route("voyager.{$dataType->slug}.index")
+            ->route("admin.{$dataType->slug}.index")
             ->with([
-                'message'    => __('voyager.generic.successfully_updated')." {$dataType->display_name_singular}",
+                'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
                 'alert-type' => 'success',
                 ]);
         }
@@ -44,7 +44,7 @@ class RoleController extends CrudController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -63,9 +63,9 @@ class RoleController extends CrudController
             $data->permissions()->sync($request->input('permissions', []));
 
             return redirect()
-            ->route("voyager.{$dataType->slug}.index")
+            ->route("admin.{$dataType->slug}.index")
             ->with([
-                'message'    => __('voyager.generic.successfully_added_new')." {$dataType->display_name_singular}",
+                'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
                 'alert-type' => 'success',
                 ]);
         }

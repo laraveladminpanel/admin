@@ -4,7 +4,7 @@ namespace LaravelAdminPanel\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class PageDimmer extends AbstractWidget
 {
@@ -21,18 +21,18 @@ class PageDimmer extends AbstractWidget
      */
     public function run()
     {
-        $count = Voyager::model('Page')->count();
-        $string = trans_choice('voyager.dimmer.page', $count);
+        $count = Admin::model('Page')->count();
+        $string = trans_choice('admin.dimmer.page', $count);
 
-        return view('voyager::dimmer', array_merge($this->config, [
-            'icon'   => 'voyager-file-text',
+        return view('admin::dimmer', array_merge($this->config, [
+            'icon'   => 'admin-file-text',
             'title'  => "{$count} {$string}",
-            'text'   => __('voyager.dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'text'   => __('admin.dimmer.page_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => __('voyager.dimmer.page_link_text'),
-                'link' => route('voyager.pages.index'),
+                'text' => __('admin.dimmer.page_link_text'),
+                'link' => route('admin.pages.index'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
+            'image' => admin_asset('images/widget-backgrounds/03.jpg'),
         ]));
     }
 }

@@ -21,22 +21,22 @@
     <!-- Few Dynamic Styles -->
     <style type="text/css">
         .voyager .side-menu .navbar-header {
-            background:{{ config('voyager.primary_color','#22A7F0') }};
-            border-color:{{ config('voyager.primary_color','#22A7F0') }};
+            background:{{ config('admin.primary_color','#22A7F0') }};
+            border-color:{{ config('admin.primary_color','#22A7F0') }};
         }
         .widget .btn-primary{
-            border-color:{{ config('voyager.primary_color','#22A7F0') }};
+            border-color:{{ config('admin.primary_color','#22A7F0') }};
         }
         .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
-            background:{{ config('voyager.primary_color','#22A7F0') }};
+            background:{{ config('admin.primary_color','#22A7F0') }};
         }
         .voyager .breadcrumb a{
-            color:{{ config('voyager.primary_color','#22A7F0') }};
+            color:{{ config('admin.primary_color','#22A7F0') }};
         }
     </style>
 
-    @if(!empty(config('voyager.additional_css')))<!-- Additional CSS -->
-        @foreach(config('voyager.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
+    @if(!empty(config('admin.additional_css')))<!-- Additional CSS -->
+        @foreach(config('admin.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
     @endif
 
     @yield('head')
@@ -80,7 +80,7 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
                     appContainer.style.WebkitTransition = appContainer.style.MozTransition = appContainer.style.transition =
                     navbar.style.WebkitTransition = navbar.style.MozTransition = navbar.style.transition = 'none';
 
-                    if (window.localStorage && window.localStorage['voyager.stickySidebar'] == 'true') {
+                    if (window.localStorage && window.localStorage['admin.stickySidebar'] == 'true') {
                         appContainer.className += ' expanded no-animation';
                         loader.style.left = (sidebar.clientWidth/2)+'px';
                         hamburgerMenu.className += ' is-active no-animation';
@@ -132,8 +132,8 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
 </script>
 @yield('javascript')
 
-@if(!empty(config('voyager.additional_js')))<!-- Additional Javascript -->
-    @foreach(config('voyager.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
+@if(!empty(config('admin.additional_js')))<!-- Additional Javascript -->
+    @foreach(config('admin.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
 
 </body>

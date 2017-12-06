@@ -48,9 +48,9 @@ $(document).ready(function(){
       appContainer.toggleClass("expanded");
       $(this).toggleClass('is-active');
       if ($(this).hasClass('is-active')) {
-        window.localStorage.setItem('voyager.stickySidebar', true);
+        window.localStorage.setItem('admin.stickySidebar', true);
       } else {
-        window.localStorage.setItem('voyager.stickySidebar', false);
+        window.localStorage.setItem('admin.stickySidebar', false);
       }
   });
 

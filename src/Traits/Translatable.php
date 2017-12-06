@@ -32,7 +32,7 @@ trait Translatable
     {
         return $this->hasMany(Translation::class, 'foreign_key', $this->getKeyName())
             ->where('table_name', $this->getTable())
-            ->whereIn('locale', config('voyager.multilingual.locales', []));
+            ->whereIn('locale', config('admin.multilingual.locales', []));
     }
 
     /**
@@ -133,7 +133,7 @@ trait Translatable
     public function getTranslationsOf($attribute, array $languages = null, $fallback = true)
     {
         if (is_null($languages)) {
-            $languages = config('voyager.multilingual.locales', [config('voyager.multilingual.default')]);
+            $languages = config('admin.multilingual.locales', [config('admin.multilingual.default')]);
         }
 
         $response = [];
@@ -149,7 +149,7 @@ trait Translatable
         // Attribute is translatable
         //
         if (!in_array($attribute, $this->getTranslatableAttributes())) {
-            return [$this->getAttribute($attribute), config('voyager.multilingual.default'), false];
+            return [$this->getAttribute($attribute), config('admin.multilingual.default'), false];
         }
 
         if (!$this->relationLoaded('translations')) {
@@ -164,7 +164,7 @@ trait Translatable
             $fallback = config('app.fallback_locale', 'en');
         }
 
-        $default = config('voyager.multilingual.default');
+        $default = config('admin.multilingual.default');
 
         $translations = $this->getRelation('translations')
             ->where('column_name', $attribute);
@@ -214,8 +214,8 @@ trait Translatable
             $this->load('translations');
         }
 
-        $default = config('voyager.multilingual.default', 'en');
-        $locales = config('voyager.multilingual.locales', [$default]);
+        $default = config('admin.multilingual.default', 'en');
+        $locales = config('admin.multilingual.locales', [$default]);
 
         foreach ($locales as $locale) {
             if (!isset($translations[$locale])) {
@@ -300,7 +300,7 @@ trait Translatable
             $trans = json_decode($request->input($field.'_i18n'), true);
 
             // Set the default local value
-            $request->merge([$field => $trans[config('voyager.multilingual.default', 'en')]]);
+            $request->merge([$field => $trans[config('admin.multilingual.default', 'en')]]);
 
             $translations[$field] = $this->setAttributeTranslations(
                 $field,

@@ -24,7 +24,7 @@ use LaravelAdminPanel\Models\Setting;
 use LaravelAdminPanel\Models\User;
 use LaravelAdminPanel\Traits\Translatable;
 
-class Voyager
+class Admin
 {
     protected $version;
     protected $filesystem;
@@ -179,7 +179,7 @@ class Voyager
     public function image($file, $default = '')
     {
         if (!empty($file)) {
-            return Storage::disk(config('voyager.storage.disk'))->url($file);
+            return Storage::disk(config('admin.storage.disk'))->url($file);
         }
 
         return $default;
@@ -187,7 +187,7 @@ class Voyager
 
     public function routes()
     {
-        require __DIR__.'/../routes/voyager.php';
+        require __DIR__.'/../routes/admin.php';
     }
 
     public function can($permission)
@@ -261,9 +261,9 @@ class Voyager
                 $this->filesystem->get(base_path('composer.lock'))
             );
 
-            // Loop through all the packages and get the version of voyager
+            // Loop through all the packages and get the version of admin
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/voyager') {
+                if ($package->name == 'tcg/admin') {
                     $this->version = $package->version;
                     break;
                 }
@@ -278,7 +278,7 @@ class Voyager
      */
     public function translatable($model)
     {
-        if (!config('voyager.multilingual.enabled')) {
+        if (!config('admin.multilingual.enabled')) {
             return false;
         }
 

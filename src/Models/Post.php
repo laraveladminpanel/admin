@@ -5,7 +5,7 @@ namespace LaravelAdminPanel\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Traits\Translatable;
 
 class Post extends Model
@@ -30,7 +30,7 @@ class Post extends Model
 
     public function authorId()
     {
-        return $this->belongsTo(Voyager::modelClass('User'), 'author_id', 'id');
+        return $this->belongsTo(Admin::modelClass('User'), 'author_id', 'id');
     }
 
     /**
@@ -50,7 +50,7 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->hasOne(Voyager::modelClass('Category'), 'id', 'category_id');
+        return $this->hasOne(Admin::modelClass('Category'), 'id', 'category_id');
     }
 
     /**

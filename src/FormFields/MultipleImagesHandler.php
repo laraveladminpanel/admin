@@ -14,7 +14,7 @@ class MultipleImagesHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.multiple_images', [
+        return view('admin::formfields.multiple_images', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,
@@ -55,7 +55,7 @@ class MultipleImagesHandler extends AbstractHandler
                     $constraint->upsize();
                 })->encode($file->getClientOriginalExtension(), 75);
 
-            Storage::disk(config('voyager.storage.disk'))->put($filePath, (string) $image, 'public');
+            Storage::disk(config('admin.storage.disk'))->put($filePath, (string) $image, 'public');
 
             if (isset($options->thumbnails)) {
                 foreach ($options->thumbnails as $thumbnails) {
@@ -85,7 +85,7 @@ class MultipleImagesHandler extends AbstractHandler
                             ->encode($file->getClientOriginalExtension(), 75);
                     }
 
-                    Storage::disk(config('voyager.storage.disk'))->put($path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
+                    Storage::disk(config('admin.storage.disk'))->put($path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
                         (string) $image, 'public'
                     );
                 }

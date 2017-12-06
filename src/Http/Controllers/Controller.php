@@ -7,20 +7,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class Controller extends BaseController
 {
     public function index()
     {
-        return Voyager::view('voyager::index');
+        return Admin::view('admin::index');
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect()->route('voyager.login');
+        return redirect()->route('admin.login');
     }
 
     public function upload(Request $request)
@@ -37,7 +37,7 @@ class Controller extends BaseController
         $filename_counter = 1;
 
         // Make sure the filename does not exist, if it does make sure to add a number to the end 1, 2, 3, etc...
-        while (Storage::disk(config('voyager.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
+        while (Storage::disk(config('admin.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
             $filename = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension()).(string) ($filename_counter++);
         }
 
@@ -54,22 +54,22 @@ class Controller extends BaseController
                 ->encode($file->getClientOriginalExtension(), 75);
 
             // move uploaded file from temp to uploads directory
-            if (Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public')) {
-                $status = __('voyager.media.success_uploading');
+            if (Storage::disk(config('admin.storage.disk'))->put($fullPath, (string) $image, 'public')) {
+                $status = __('admin.media.success_uploading');
                 $fullFilename = $fullPath;
             } else {
-                $status = __('voyager.media.error_uploading');
+                $status = __('admin.media.error_uploading');
             }
         } else {
-            $status = __('voyager.media.uploading_wrong_type');
+            $status = __('admin.media.uploading_wrong_type');
         }
 
         // echo out script that TinyMCE can handle and update the image in the editor
-        return "<script> parent.helpers.setImageValue('".Voyager::image($fullFilename)."'); </script>";
+        return "<script> parent.helpers.setImageValue('".Admin::image($fullFilename)."'); </script>";
     }
 
     public function profile()
     {
-        return Voyager::view('voyager::profile');
+        return Admin::view('admin::profile');
     }
 }

@@ -4,7 +4,7 @@ namespace LaravelAdminPanel\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use LaravelAdminPanel\Contracts\User;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class BasePolicy
 {
@@ -43,7 +43,7 @@ class BasePolicy
      */
     protected function checkPermission(User $user, $model, $action)
     {
-        $dataType = Voyager::model('DataType');
+        $dataType = Admin::model('DataType');
         $dataType = $dataType->where('model_name', get_class($model))->first();
 
         return $user->hasPermission($action.'_'.$dataType->name);

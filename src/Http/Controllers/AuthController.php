@@ -5,7 +5,7 @@ namespace LaravelAdminPanel\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class AuthController extends BaseController
 {
@@ -14,10 +14,10 @@ class AuthController extends BaseController
     public function login()
     {
         if (Auth::user()) {
-            return redirect()->route('voyager.dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
-        return Voyager::view('voyager::login');
+        return Admin::view('admin::login');
     }
 
     public function postLogin(Request $request)
@@ -52,6 +52,6 @@ class AuthController extends BaseController
      */
     public function redirectTo()
     {
-        return route('voyager.dashboard');
+        return route('admin.dashboard');
     }
 }

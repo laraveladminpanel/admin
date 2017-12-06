@@ -7,16 +7,16 @@
 
             <ol class="breadcrumb hidden-xs">
                 @if(count(Request::segments()) == 1)
-                    <li class="active"><i class="voyager-boat"></i> {{ __('voyager.generic.dashboard') }}</li>
+                    <li class="active"><i class="voyager-boat"></i> {{ __('admin.generic.dashboard') }}</li>
                 @else
                     <li class="active">
-                        <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> {{ __('voyager.generic.dashboard') }}</a>
+                        <a href="{{ route('admin.dashboard')}}"><i class="voyager-boat"></i> {{ __('admin.generic.dashboard') }}</a>
                     </li>
                 @endif
                 <?php $breadcrumb_url = url(''); ?>
                 @for($i = 1; $i <= count(Request::segments()); $i++)
                     <?php $breadcrumb_url .= '/' . Request::segment($i); ?>
-                    @if(Request::segment($i) != ltrim(route('voyager.dashboard', [], false), '/') && !is_numeric(Request::segment($i)))
+                    @if(Request::segment($i) != ltrim(route('admin.dashboard', [], false), '/') && !is_numeric(Request::segment($i)))
 
                         @if($i < count(Request::segments()) & $i > 0 && array_search('database',Request::segments())===false)
                             <li class="active"><a
@@ -44,12 +44,12 @@
                         </div>
                     </li>
                     <li class="divider"></li>
-                    <?php $nav_items = config('voyager.dashboard.navbar_items'); ?>
+                    <?php $nav_items = config('admin.dashboard.navbar_items'); ?>
                     @if(is_array($nav_items) && !empty($nav_items))
                     @foreach($nav_items as $name => $item)
                     <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>
-                        @if(isset($item['route']) && $item['route'] == 'voyager.logout')
-                        <form action="{{ route('voyager.logout') }}" method="POST">
+                        @if(isset($item['route']) && $item['route'] == 'admin.logout')
+                        <form action="{{ route('admin.logout') }}" method="POST">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-block">
                                 @if(isset($item['icon_class']) && !empty($item['icon_class']))

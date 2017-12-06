@@ -10,7 +10,7 @@ class DateHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.date', [
+        return view('admin::formfields.date', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,

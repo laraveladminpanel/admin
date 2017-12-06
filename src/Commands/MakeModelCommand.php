@@ -12,14 +12,14 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @var string
      */
-    protected $name = 'voyager:make:model';
+    protected $name = 'admin:make:model';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Voyager model class';
+    protected $description = 'Create a new Admin model class';
 
     /**
      * Get the stub file for the generator.

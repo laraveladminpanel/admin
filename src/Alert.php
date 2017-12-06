@@ -31,7 +31,7 @@ class Alert
 
     public function __call($name, $arguments)
     {
-        $component = app('voyager.alert.components.'.$name, ['alert' => $this])
+        $component = app('admin.alert.components.'.$name, ['alert' => $this])
             ->setAlert($this);
 
         call_user_func_array([$component, 'create'], $arguments);

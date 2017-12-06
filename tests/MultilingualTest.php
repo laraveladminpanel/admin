@@ -4,7 +4,7 @@ namespace LaravelAdminPanel\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin as admin;
 use LaravelAdminPanel\Traits\Translatable;
 use LaravelAdminPanel\Translator;
 use LaravelAdminPanel\Translator\Collection;
@@ -20,22 +20,22 @@ class MultilingualTest extends TestCase
         $this->install();
 
         // Add another language
-        config()->set('voyager.multilingual.locales', ['en', 'da']);
+        config()->set('admin.multilingual.locales', ['en', 'da']);
 
         // Turn on multilingual
-        config()->set('voyager.multilingual.enabled', true);
+        config()->set('admin.multilingual.enabled', true);
     }
 
     public function testCheckingModelIsTranslatable()
     {
-        $this->assertTrue(Voyager::translatable(TranslatableModel::class));
-        $this->assertTrue(Voyager::translatable(ActuallyTranslatableModel::class));
+        $this->assertTrue(admin::translatable(TranslatableModel::class));
+        $this->assertTrue(admin::translatable(ActuallyTranslatableModel::class));
     }
 
     public function testCheckingModelIsNotTranslatable()
     {
-        $this->assertFalse(Voyager::translatable(NotTranslatableModel::class));
-        $this->assertFalse(Voyager::translatable(StillNotTranslatableModel::class));
+        $this->assertFalse(admin::translatable(NotTranslatableModel::class));
+        $this->assertFalse(admin::translatable(StillNotTranslatableModel::class));
     }
 
     public function testGettingModelTranslatableAttributes()

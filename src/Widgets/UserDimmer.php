@@ -4,7 +4,7 @@ namespace LaravelAdminPanel\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class UserDimmer extends AbstractWidget
 {
@@ -21,18 +21,18 @@ class UserDimmer extends AbstractWidget
      */
     public function run()
     {
-        $count = Voyager::model('User')->count();
-        $string = trans_choice('voyager.dimmer.user', $count);
+        $count = Admin::model('User')->count();
+        $string = trans_choice('admin.dimmer.user', $count);
 
-        return view('voyager::dimmer', array_merge($this->config, [
-            'icon'   => 'voyager-group',
+        return view('admin::dimmer', array_merge($this->config, [
+            'icon'   => 'admin-group',
             'title'  => "{$count} {$string}",
-            'text'   => __('voyager.dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'text'   => __('admin.dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => __('voyager.dimmer.user_link_text'),
-                'link' => route('voyager.users.index'),
+                'text' => __('admin.dimmer.user_link_text'),
+                'link' => route('admin.users.index'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => admin_asset('images/widget-backgrounds/01.jpg'),
         ]));
     }
 }

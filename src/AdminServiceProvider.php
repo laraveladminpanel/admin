@@ -16,18 +16,18 @@ use Intervention\Image\ImageServiceProvider;
 use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
 use Larapack\VoyagerHooks\VoyagerHooksServiceProvider;
 use LaravelAdminPanel\Events\FormFieldsRegistered;
-use LaravelAdminPanel\Facades\Voyager as VoyagerFacade;
+use LaravelAdminPanel\Facades\Admin as AdminFacade;
 use LaravelAdminPanel\FormFields\After\DescriptionHandler;
-use LaravelAdminPanel\Http\Middleware\VoyagerAdminMiddleware;
+use LaravelAdminPanel\Http\Middleware\AdminAdminMiddleware;
 use LaravelAdminPanel\Models\MenuItem;
 use LaravelAdminPanel\Models\Setting;
 use LaravelAdminPanel\Policies\BasePolicy;
 use LaravelAdminPanel\Policies\MenuItemPolicy;
 use LaravelAdminPanel\Policies\SettingPolicy;
-use LaravelAdminPanel\Providers\VoyagerEventServiceProvider;
+use LaravelAdminPanel\Providers\AdminEventServiceProvider;
 use LaravelAdminPanel\Translator\Collection as TranslatorCollection;
 
-class VoyagerServiceProvider extends ServiceProvider
+class AdminServiceProvider extends ServiceProvider
 {
     /**
      * The policy mappings for the application.
@@ -44,17 +44,17 @@ class VoyagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(VoyagerEventServiceProvider::class);
+        $this->app->register(AdminEventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
         $this->app->register(WidgetServiceProvider::class);
         $this->app->register(VoyagerHooksServiceProvider::class);
         $this->app->register(DoctrineSupportServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('Voyager', VoyagerFacade::class);
+        $loader->alias('Admin', AdminFacade::class);
 
-        $this->app->singleton('voyager', function () {
-            return new Voyager();
+        $this->app->singleton('admin', function () {
+            return new Admin();
         });
 
         $this->loadHelpers();
@@ -82,34 +82,34 @@ class VoyagerServiceProvider extends ServiceProvider
      */
     public function boot(Router $router, Dispatcher $event)
     {
-        if (config('voyager.user.add_default_role_on_register')) {
-            $app_user = config('voyager.user.namespace');
+        if (config('admin.user.add_default_role_on_register')) {
+            $app_user = config('admin.user.namespace');
             $app_user::created(function ($user) {
                 if (is_null($user->role_id)) {
-                    VoyagerFacade::model('User')->findOrFail($user->id)
-                        ->setRole(config('voyager.user.default_role'))
+                    AdminFacade::model('User')->findOrFail($user->id)
+                        ->setRole(config('admin.user.default_role'))
                         ->save();
                 }
             });
         }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
 
         if (app()->version() >= 5.4) {
-            $router->aliasMiddleware('admin.user', VoyagerAdminMiddleware::class);
+            $router->aliasMiddleware('admin.user', AdminAdminMiddleware::class);
 
             if (config('app.env') == 'testing') {
                 $this->loadMigrationsFrom(realpath(__DIR__.'/migrations'));
             }
         } else {
-            $router->middleware('admin.user', VoyagerAdminMiddleware::class);
+            $router->middleware('admin.user', AdminAdminMiddleware::class);
         }
 
         $this->registerGates();
 
         $this->registerViewComposers();
 
-        $event->listen('voyager.alerts.collecting', function () {
+        $event->listen('admin.alerts.collecting', function () {
             $this->addStorageSymlinkAlert();
         });
 
@@ -132,8 +132,8 @@ class VoyagerServiceProvider extends ServiceProvider
     protected function registerViewComposers()
     {
         // Register alerts
-        View::composer('voyager::*', function ($view) {
-            $view->with('alerts', VoyagerFacade::alerts());
+        View::composer('admin::*', function ($view) {
+            $view->with('alerts', AdminFacade::alerts());
         });
     }
 
@@ -149,21 +149,21 @@ class VoyagerServiceProvider extends ServiceProvider
         }
         $routeName = is_array($currentRouteAction) ? array_get($currentRouteAction, 'as') : null;
 
-        if ($routeName != 'voyager.dashboard') {
+        if ($routeName != 'admin.dashboard') {
             return;
         }
 
-        $storage_disk = (!empty(config('voyager.storage.disk'))) ? config('voyager.storage.disk') : 'public';
+        $storage_disk = (!empty(config('admin.storage.disk'))) ? config('admin.storage.disk') : 'public';
 
         if (request()->has('fix-missing-storage-symlink') && !file_exists(public_path('storage'))) {
             $this->fixMissingStorageSymlink();
         } elseif (!file_exists(public_path('storage')) && $storage_disk == 'public') {
             $alert = (new Alert('missing-storage-symlink', 'warning'))
-                ->title(__('voyager.error.symlink_missing_title'))
-                ->text(__('voyager.error.symlink_missing_text'))
-                ->button(__('voyager.error.symlink_missing_button'), '?fix-missing-storage-symlink=1');
+                ->title(__('admin.error.symlink_missing_title'))
+                ->text(__('admin.error.symlink_missing_text'))
+                ->button(__('admin.error.symlink_missing_button'), '?fix-missing-storage-symlink=1');
 
-            VoyagerFacade::addAlert($alert);
+            AdminFacade::addAlert($alert);
         }
     }
 
@@ -173,15 +173,15 @@ class VoyagerServiceProvider extends ServiceProvider
 
         if (file_exists(public_path('storage'))) {
             $alert = (new Alert('fixed-missing-storage-symlink', 'success'))
-                ->title(__('voyager.error.symlink_created_title'))
-                ->text(__('voyager.error.symlink_created_text'));
+                ->title(__('admin.error.symlink_created_title'))
+                ->text(__('admin.error.symlink_created_text'));
         } else {
             $alert = (new Alert('failed-fixing-missing-storage-symlink', 'danger'))
-                ->title(__('voyager.error.symlink_failed_title'))
-                ->text(__('voyager.error.symlink_failed_text'));
+                ->title(__('admin.error.symlink_failed_title'))
+                ->text(__('admin.error.symlink_failed_text'));
         }
 
-        VoyagerFacade::addAlert($alert);
+        AdminFacade::addAlert($alert);
     }
 
     /**
@@ -194,7 +194,7 @@ class VoyagerServiceProvider extends ServiceProvider
         foreach ($components as $component) {
             $class = 'LaravelAdminPanel\\Alert\\Components\\'.ucfirst(camel_case($component)).'Component';
 
-            $this->app->bind("voyager.alert.components.{$component}", $class);
+            $this->app->bind("admin.alert.components.{$component}", $class);
         }
     }
 
@@ -217,10 +217,10 @@ class VoyagerServiceProvider extends ServiceProvider
     protected function registerWidgets()
     {
         $default_widgets = ['LaravelAdminPanel\\Widgets\\UserDimmer', 'LaravelAdminPanel\\Widgets\\PostDimmer', 'LaravelAdminPanel\\Widgets\\PageDimmer'];
-        $widgets = config('voyager.dashboard.widgets', $default_widgets);
+        $widgets = config('admin.dashboard.widgets', $default_widgets);
 
         foreach ($widgets as $widget) {
-            Widget::group('voyager::dimmers')->addWidget($widget);
+            Widget::group('admin::dimmers')->addWidget($widget);
         }
     }
 
@@ -232,8 +232,8 @@ class VoyagerServiceProvider extends ServiceProvider
         $publishablePath = dirname(__DIR__).'/publishable';
 
         $publishable = [
-            'voyager_assets' => [
-                "{$publishablePath}/assets/" => public_path(config('voyager.assets_path')),
+            'admin_assets' => [
+                "{$publishablePath}/assets/" => public_path(config('admin.assets_path')),
             ],
             'migrations' => [
                 "{$publishablePath}/database/migrations/" => database_path('migrations'),
@@ -245,7 +245,7 @@ class VoyagerServiceProvider extends ServiceProvider
                 "{$publishablePath}/demo_content/" => storage_path('app/public'),
             ],
             'config' => [
-                "{$publishablePath}/config/voyager.php" => config_path('voyager.php'),
+                "{$publishablePath}/config/admin.php" => config_path('admin.php'),
             ],
             'lang' => [
                 "{$publishablePath}/lang/" => base_path('resources/lang/'),
@@ -260,7 +260,7 @@ class VoyagerServiceProvider extends ServiceProvider
     public function registerConfigs()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__).'/publishable/config/voyager.php', 'voyager'
+            dirname(__DIR__).'/publishable/config/admin.php', 'admin'
         );
     }
 
@@ -271,7 +271,7 @@ class VoyagerServiceProvider extends ServiceProvider
         // connection has been made yet.
         try {
             if (Schema::hasTable('data_types')) {
-                $dataType = VoyagerFacade::model('DataType');
+                $dataType = AdminFacade::model('DataType');
                 $dataTypes = $dataType->get();
 
                 foreach ($dataTypes as $dataType) {
@@ -287,7 +287,7 @@ class VoyagerServiceProvider extends ServiceProvider
                 $this->registerPolicies();
             }
         } catch (\PDOException $e) {
-            Log::error('No Database connection yet in VoyagerServiceProvider registerGates()');
+            Log::error('No Database connection yet in AdminServiceProvider registerGates()');
         }
     }
 
@@ -318,10 +318,10 @@ class VoyagerServiceProvider extends ServiceProvider
         foreach ($formFields as $formField) {
             $class = studly_case("{$formField}_handler");
 
-            VoyagerFacade::addFormField("LaravelAdminPanel\\FormFields\\{$class}");
+            AdminFacade::addFormField("LaravelAdminPanel\\FormFields\\{$class}");
         }
 
-        VoyagerFacade::addAfterFormField(DescriptionHandler::class);
+        AdminFacade::addAfterFormField(DescriptionHandler::class);
 
         event(new FormFieldsRegistered($formFields));
     }

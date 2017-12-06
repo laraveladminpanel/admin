@@ -19,7 +19,7 @@ class Translator implements ArrayAccess
         }
 
         $this->model = $model;
-        $this->locale = config('voyager.multilingual.default', 'en');
+        $this->locale = config('admin.multilingual.default', 'en');
         $attributes = [];
 
         foreach ($this->model->getAttributes() as $attribute => $value) {
@@ -139,7 +139,7 @@ class Translator implements ArrayAccess
     {
         $this->attributes[$attribute] = [
             'value'    => $this->model->attributes[$attribute],
-            'locale'   => config('voyager.multilingual.default', 'en'),
+            'locale'   => config('admin.multilingual.default', 'en'),
             'exists'   => true,
             'modified' => false,
         ];

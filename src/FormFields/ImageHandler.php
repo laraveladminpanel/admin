@@ -13,7 +13,7 @@ class ImageHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.image', [
+        return view('admin::formfields.image', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,
@@ -36,7 +36,7 @@ class ImageHandler extends AbstractHandler
         $path = $slug.'/'.date('FY').'/';
 
         // Make sure the filename does not exist, if it does make sure to add a number to the end 1, 2, 3, etc...
-        while (Storage::disk(config('voyager.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
+        while (Storage::disk(config('admin.storage.disk'))->exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
             $filename = basename($file->getClientOriginalName(), '.'.$file->getClientOriginalExtension()).(string) ($filename_counter++);
         }
 
@@ -57,11 +57,11 @@ class ImageHandler extends AbstractHandler
             })->encode($file->getClientOriginalExtension(), 75);
 
         if ($this->is_animated_gif($file)) {
-            Storage::disk(config('voyager.storage.disk'))->put($fullPath, file_get_contents($file), 'public');
+            Storage::disk(config('admin.storage.disk'))->put($fullPath, file_get_contents($file), 'public');
             $fullPathStatic = $path.$filename.'-static.'.$file->getClientOriginalExtension();
-            Storage::disk(config('voyager.storage.disk'))->put($fullPathStatic, (string) $image, 'public');
+            Storage::disk(config('admin.storage.disk'))->put($fullPathStatic, (string) $image, 'public');
         } else {
-            Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
+            Storage::disk(config('admin.storage.disk'))->put($fullPath, (string) $image, 'public');
         }
 
         if (isset($options->thumbnails)) {
@@ -92,7 +92,7 @@ class ImageHandler extends AbstractHandler
                         ->encode($file->getClientOriginalExtension(), 75);
                 }
 
-                Storage::disk(config('voyager.storage.disk'))->put($path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
+                Storage::disk(config('admin.storage.disk'))->put($path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
                     (string) $image, 'public'
                 );
             }

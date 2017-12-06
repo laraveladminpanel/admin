@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class CompassController extends BaseController
 {
@@ -21,7 +21,7 @@ class CompassController extends BaseController
     public function index(Request $request)
     {
         // Check permission
-        Voyager::canOrFail('browse_compass');
+        Admin::canOrFail('browse_compass');
 
         $message = '';
         $active_tab = '';
@@ -92,7 +92,7 @@ class CompassController extends BaseController
         // get the full list of artisan commands and store the output
         $commands = $this->getArtisanCommands();
 
-        return view('voyager::compass.index', compact('logs', 'files', 'current_file', 'active_tab', 'commands', 'artisan_output'))->with($message);
+        return view('admin::compass.index', compact('logs', 'files', 'current_file', 'active_tab', 'commands', 'artisan_output'))->with($message);
     }
 
     private function getArtisanCommands()

@@ -3,24 +3,24 @@
 namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class MenuController extends BaseController
 {
     public function builder($id)
     {
-        $menu = Voyager::model('Menu')->findOrFail($id);
+        $menu = Admin::model('Menu')->findOrFail($id);
 
         $this->authorize('edit', $menu);
 
-        $isModelTranslatable = is_crud_translatable(Voyager::model('MenuItem'));
+        $isModelTranslatable = is_crud_translatable(Admin::model('MenuItem'));
 
-        return Voyager::view('voyager::menus.builder', compact('menu', 'isModelTranslatable'));
+        return Admin::view('admin::menus.builder', compact('menu', 'isModelTranslatable'));
     }
 
     public function delete_menu($menu, $id)
     {
-        $item = Voyager::model('MenuItem')->findOrFail($id);
+        $item = Admin::model('MenuItem')->findOrFail($id);
 
         $this->authorize('delete', $item->menu);
 
@@ -29,16 +29,16 @@ class MenuController extends BaseController
         $item->destroy($id);
 
         return redirect()
-            ->route('voyager.menus.builder', [$menu])
+            ->route('admin.menus.builder', [$menu])
             ->with([
-                'message'    => __('voyager.menu_builder.successfully_deleted'),
+                'message'    => __('admin.menu_builder.successfully_deleted'),
                 'alert-type' => 'success',
             ]);
     }
 
     public function add_item(Request $request)
     {
-        $menu = Voyager::model('Menu');
+        $menu = Admin::model('Menu');
 
         $this->authorize('add', $menu);
 
@@ -47,16 +47,16 @@ class MenuController extends BaseController
         );
 
         unset($data['id']);
-        $data['order'] = Voyager::model('MenuItem')->highestOrderMenuItem();
+        $data['order'] = Admin::model('MenuItem')->highestOrderMenuItem();
 
         // Check if is translatable
-        $_isTranslatable = is_crud_translatable(Voyager::model('MenuItem'));
+        $_isTranslatable = is_crud_translatable(Admin::model('MenuItem'));
         if ($_isTranslatable) {
             // Prepare data before saving the menu
             $trans = $this->prepareMenuTranslations($data);
         }
 
-        $menuItem = Voyager::model('MenuItem')->create($data);
+        $menuItem = Admin::model('MenuItem')->create($data);
 
         // Save menu translations
         if ($_isTranslatable) {
@@ -64,9 +64,9 @@ class MenuController extends BaseController
         }
 
         return redirect()
-            ->route('voyager.menus.builder', [$data['menu_id']])
+            ->route('admin.menus.builder', [$data['menu_id']])
             ->with([
-                'message'    => __('voyager.menu_builder.successfully_created'),
+                'message'    => __('admin.menu_builder.successfully_created'),
                 'alert-type' => 'success',
             ]);
     }
@@ -78,7 +78,7 @@ class MenuController extends BaseController
             $request->except(['id'])
         );
 
-        $menuItem = Voyager::model('MenuItem')->findOrFail($id);
+        $menuItem = Admin::model('MenuItem')->findOrFail($id);
 
         $this->authorize('edit', $menuItem->menu);
 
@@ -92,9 +92,9 @@ class MenuController extends BaseController
         $menuItem->update($data);
 
         return redirect()
-            ->route('voyager.menus.builder', [$menuItem->menu_id])
+            ->route('admin.menus.builder', [$menuItem->menu_id])
             ->with([
-                'message'    => __('voyager.menu_builder.successfully_updated'),
+                'message'    => __('admin.menu_builder.successfully_updated'),
                 'alert-type' => 'success',
             ]);
     }
@@ -109,7 +109,7 @@ class MenuController extends BaseController
     private function orderMenu(array $menuItems, $parentId)
     {
         foreach ($menuItems as $index => $menuItem) {
-            $item = Voyager::model('MenuItem')->findOrFail($menuItem->id);
+            $item = Admin::model('MenuItem')->findOrFail($menuItem->id);
             $item->order = $index + 1;
             $item->parent_id = $parentId;
             $item->save();
@@ -151,7 +151,7 @@ class MenuController extends BaseController
         $trans = json_decode($data['title_i18n'], true);
 
         // Set field value with the default locale
-        $data['title'] = $trans[config('voyager.multilingual.default', 'en')];
+        $data['title'] = $trans[config('admin.multilingual.default', 'en')];
 
         unset($data['title_i18n']);     // Remove hidden input holding translations
         unset($data['i18n_selector']);  // Remove language selector input radio
