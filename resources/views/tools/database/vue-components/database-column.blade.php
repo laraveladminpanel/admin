@@ -52,8 +52,8 @@
 
 @endsection
 
-@include('voyager::tools.database.vue-components.database-types')
-@include('voyager::tools.database.vue-components.database-column-default')
+@include('admin::tools.database.vue-components.database-types')
+@include('admin::tools.database.vue-components.database-column-default')
 
 <script>
     Vue.component('database-column', {

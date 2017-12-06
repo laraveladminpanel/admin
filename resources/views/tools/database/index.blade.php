@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.viewing').' '.__('admin.generic.database'))
 
@@ -13,7 +13,7 @@
 @section('content')
 
     <div class="page-content container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         <div class="row">
             <div class="col-md-12">
 

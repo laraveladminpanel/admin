@@ -1,4 +1,4 @@
-<h2>Voyager Fonts Class Mapping</h2>
+<h2>Admin Fonts Class Mapping</h2>
     <ul class="glyphs css-mapping">
       <li>
         <div class="icon voyager-bread"></div>
@@ -825,7 +825,7 @@
         <input type="text" readonly="readonly" value="voyager-github-icon">
       </li>
     </ul>
-    <h2>Voyager Fonts Character Mapping</h2>
+    <h2>Admin Fonts Character Mapping</h2>
     <ul class="glyphs character-mapping">
       <li>
         <div data-icon="a" class="icon"></div>

@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
@@ -15,7 +15,7 @@
 
 @section('content')
     <div class="page-content container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         <div class="row">
             <div class="col-md-12">
 
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="name">{{ $row->display_name }}</label>
 
-                                    {!! Voyager::formField($row, $dataType, $dataTypeContent) !!}
+                                    {!! Admin::formField($row, $dataType, $dataTypeContent) !!}
 
                                 </div>
                             @endforeach

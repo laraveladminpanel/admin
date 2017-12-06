@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
@@ -55,7 +55,7 @@
         <i class="{{ $dataType->icon }}"></i>
         {{ __('admin.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
     </h1>
-    @include('voyager::multilingual.language-selector')
+    @include('admin::multilingual.language-selector')
 @stop
 
 @section('content')
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            @include('voyager::multilingual.input-hidden', [
+                            @include('admin::multilingual.input-hidden', [
                                 '_field_name'  => 'title',
                                 '_field_trans' => get_field_translations($dataTypeContent, 'title')
                             ])
@@ -107,7 +107,7 @@
                                 <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                             </div>
                         </div>
-                        @include('voyager::multilingual.input-hidden', [
+                        @include('admin::multilingual.input-hidden', [
                             '_field_name'  => 'body',
                             '_field_trans' => get_field_translations($dataTypeContent, 'body', 'rich_text_box', true)
                         ])
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            @include('voyager::multilingual.input-hidden', [
+                            @include('admin::multilingual.input-hidden', [
                                 '_field_name'  => 'excerpt',
                                 '_field_trans' => get_field_translations($dataTypeContent, 'excerpt')
                             ])
@@ -151,14 +151,14 @@
                                         $display_options = isset($options->display) ? $options->display : NULL;
                                     @endphp
                                     @if ($options && isset($options->formfields_custom))
-                                        @include('voyager::formfields.custom.' . $options->formfields_custom)
+                                        @include('admin::formfields.custom.' . $options->formfields_custom)
                                     @else
                                         <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@else{{ '' }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                             {{ $row->slugify }}
                                             <label for="name">{{ $row->display_name }}</label>
-                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @include('admin::multilingual.input-hidden-bread-edit-add')
                                             @if($row->type == 'relationship')
-                                                @include('voyager::formfields.relationship')
+                                                @include('admin::formfields.relationship')
                                             @else
                                                 {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                             @endif
@@ -186,7 +186,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="name">{{ __('admin.post.slug') }}</label>
-                                @include('voyager::multilingual.input-hidden', [
+                                @include('admin::multilingual.input-hidden', [
                                     '_field_name'  => 'slug',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'slug')
                                 ])
@@ -228,7 +228,7 @@
                         </div>
                         <div class="panel-body">
                             @if(isset($dataTypeContent->image))
-                                <img src="{{ filter_var($dataTypeContent->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : Voyager::image( $dataTypeContent->image ) }}" style="width:100%" />
+                                <img src="{{ filter_var($dataTypeContent->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : Admin::image( $dataTypeContent->image ) }}" style="width:100%" />
                             @endif
                             <input type="file" name="image">
                         </div>
@@ -245,7 +245,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="name">{{ __('admin.post.meta_description') }}</label>
-                                @include('voyager::multilingual.input-hidden', [
+                                @include('admin::multilingual.input-hidden', [
                                     '_field_name'  => 'meta_description',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'meta_description')
                                 ])
@@ -253,7 +253,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{ __('admin.post.meta_keywords') }}</label>
-                                @include('voyager::multilingual.input-hidden', [
+                                @include('admin::multilingual.input-hidden', [
                                     '_field_name'  => 'meta_keywords',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'meta_keywords')
                                 ])
@@ -261,7 +261,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{ __('admin.post.seo_title') }}</label>
-                                @include('voyager::multilingual.input-hidden', [
+                                @include('admin::multilingual.input-hidden', [
                                     '_field_name'  => 'seo_title',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'seo_title')
                                 ])

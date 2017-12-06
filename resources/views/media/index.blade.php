@@ -1,10 +1,10 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.media'))
 
 @section('content')
     <div class="page-content container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         <div class="row">
             <div class="col-md-12">
 
@@ -113,11 +113,11 @@
                                 </ul>
 
                                 <div id="file_loader">
-                                    <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+                                    <?php $admin_loader_img = Admin::setting('admin.loader', ''); ?>
                                     @if($admin_loader_img == '')
-                                        <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="Voyager Loader">
+                                        <img src="{{ admin_asset('images/logo-icon.png') }}" alt="Admin Loader">
                                     @else
-                                        <img src="{{ Voyager::image($admin_loader_img) }}" alt="Voyager Loader">
+                                        <img src="{{ Admin::image($admin_loader_img) }}" alt="Admin Loader">
                                     @endif
                                     <p>{{ __('admin.media.loading') }}</p>
                                 </div>

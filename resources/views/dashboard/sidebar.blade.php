@@ -4,19 +4,19 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     <div class="logo-icon-container">
-                        <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
+                        <?php $admin_logo_img = Admin::setting('admin.icon_image', ''); ?>
                         @if($admin_logo_img == '')
-                            <img src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
+                            <img src="{{ admin_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
                         @else
-                            <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
+                            <img src="{{ Admin::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                     </div>
-                    <div class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div>
+                    <div class="title">{{Admin::setting('admin.title', 'VOYAGER')}}</div>
                 </a>
             </div><!-- .navbar-header -->
 
             <div class="panel widget center bgimage"
-                 style="background-image:url({{ Voyager::image( Voyager::setting('admin.bg_image'), config('admin.assets_path') . '/images/bg.jpg' ) }}); background-size: cover; background-position: 0px;">
+                 style="background-image:url({{ Admin::image( Admin::setting('admin.bg_image'), config('admin.assets_path') . '/images/bg.jpg' ) }}); background-size: cover; background-position: 0px;">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">

@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.viewing').' '.$dataType->display_name_plural)
 
@@ -13,15 +13,15 @@
             </a>
         @endcan
         @can('delete',app($dataType->model_name))
-            @include('voyager::partials.bulk-delete')
+            @include('admin::partials.bulk-delete')
         @endcan
-        @include('voyager::multilingual.language-selector')
+        @include('admin::multilingual.language-selector')
     </div>
 @stop
 
 @section('content')
     <div class="page-content browse container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bordered">
@@ -85,9 +85,9 @@
                                             <td>
                                                 <?php $options = json_decode($row->details); ?>
                                                 @if($row->type == 'image')
-                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
+                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Admin::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
                                                 @elseif($row->type == 'relationship')
-                                                    @include('voyager::formfields.relationship', ['view' => 'browse'])
+                                                    @include('admin::formfields.relationship', ['view' => 'browse'])
                                                 @elseif($row->type == 'select_multiple')
                                                     @if(property_exists($options, 'relationship'))
 
@@ -132,13 +132,13 @@
                                                 @elseif($row->type == 'color')
                                                     <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                                                 @elseif($row->type == 'text')
-                                                    @include('voyager::multilingual.input-hidden-bread-browse')
+                                                    @include('admin::multilingual.input-hidden-bread-browse')
                                                     <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                                 @elseif($row->type == 'text_area')
-                                                    @include('voyager::multilingual.input-hidden-bread-browse')
+                                                    @include('admin::multilingual.input-hidden-bread-browse')
                                                     <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                                 @elseif($row->type == 'file' && !empty($data->{$row->field}) )
-                                                    @include('voyager::multilingual.input-hidden-bread-browse')
+                                                    @include('admin::multilingual.input-hidden-bread-browse')
                                                     @if(json_decode($data->{$row->field}))
                                                         @foreach(json_decode($data->{$row->field}) as $file)
                                                             <a href="{{ Storage::disk(config('admin.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
@@ -152,12 +152,12 @@
                                                         </a>
                                                     @endif
                                                 @elseif($row->type == 'rich_text_box')
-                                                    @include('voyager::multilingual.input-hidden-bread-browse')
+                                                    @include('admin::multilingual.input-hidden-bread-browse')
                                                     <div class="readmore">{{ strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                                                 @elseif($row->type == 'coordinates')
-                                                    @include('voyager::partials.coordinates-static-image')
+                                                    @include('admin::partials.coordinates-static-image')
                                                 @else
-                                                    @include('voyager::multilingual.input-hidden-bread-browse')
+                                                    @include('admin::multilingual.input-hidden-bread-browse')
                                                     <span>{{ $data->{$row->field} }}</span>
                                                 @endif
                                             </td>
@@ -232,14 +232,14 @@
 
 @section('css')
 @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-<link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
 @endif
 @stop
 
 @section('javascript')
     <!-- DataTables -->
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-        <script src="{{ voyager_asset('lib/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
     @endif
     <script>
         $(document).ready(function () {

@@ -6,7 +6,7 @@
 
 @php
 
-    if (Voyager::translatable($items)) {
+    if (Admin::translatable($items)) {
         $items = $items->load('translations');
     }
 
@@ -17,7 +17,7 @@
     @php
     
         $originalItem = $item;
-        if (Voyager::translatable($item)) {
+        if (Admin::translatable($item)) {
             $item = $item->translate($options->locale);
         }
 
@@ -61,7 +61,7 @@
             {!! $caret !!}
         </a>
         @if(!$originalItem->children->isEmpty())
-        @include('voyager::menu.bootstrap', ['items' => $originalItem->children, 'options' => $options, 'innerLoop' => true])
+        @include('admin::menu.bootstrap', ['items' => $originalItem->children, 'options' => $options, 'innerLoop' => true])
         @endif
     </li>
 @endforeach

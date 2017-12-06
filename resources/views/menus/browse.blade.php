@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.viewing').' '.$dataType->display_name_plural)
 
@@ -14,10 +14,10 @@
 @stop
 
 @section('content')
-    @include('voyager::menus.partial.notice')
+    @include('admin::menus.partial.notice')
 
     <div class="page-content container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bordered">
@@ -37,7 +37,7 @@
                                     @foreach($dataType->browseRows as $row)
                                     <td>
                                         @if($row->type == 'image')
-                                            <img src="@if( strpos($data->{$row->field}, 'http://') === false && strpos($data->{$row->field}, 'https://') === false){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
+                                            <img src="@if( strpos($data->{$row->field}, 'http://') === false && strpos($data->{$row->field}, 'https://') === false){{ Admin::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
                                         @else
                                             {{ $data->{$row->field} }}
                                         @endif

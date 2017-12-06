@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_header')
     <h1 class="page-title">
@@ -32,7 +32,7 @@
 @stop
 
 @section('javascript')
-    @include('voyager::tools.database.vue-components.database-table-editor')
+    @include('admin::tools.database.vue-components.database-table-editor')
 
     <script>
         new Vue({

@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ voyager_asset('images/logo-icon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ admin_asset('images/logo-icon.png') }}" type="image/x-icon">
 
 
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ admin_asset('css/app.css') }}">
 
     @yield('css')
 
@@ -45,16 +45,16 @@
 <body class="voyager @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
 
 <div id="voyager-loader">
-    <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+    <?php $admin_loader_img = Admin::setting('admin.loader', ''); ?>
     @if($admin_loader_img == '')
-        <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="Voyager Loader">
+        <img src="{{ admin_asset('images/logo-icon.png') }}" alt="Admin Loader">
     @else
-        <img src="{{ Voyager::image($admin_loader_img) }}" alt="Voyager Loader">
+        <img src="{{ Admin::image($admin_loader_img) }}" alt="Admin Loader">
     @endif
 </div>
 
 <?php
-$user_avatar = Voyager::image(Auth::user()->avatar);
+$user_avatar = Admin::image(Auth::user()->avatar);
 if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->avatar, 0, 8) == 'https://')) {
     $user_avatar = Auth::user()->avatar;
 }
@@ -63,8 +63,8 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
 <div class="app-container">
     <div class="fadetoblack visible-xs"></div>
     <div class="row content-container">
-        @include('voyager::dashboard.navbar')
-        @include('voyager::dashboard.sidebar')
+        @include('admin::dashboard.navbar')
+        @include('admin::dashboard.sidebar')
         <script>
             (function(){
                     var appContainer = document.querySelector('.app-container'),
@@ -101,12 +101,12 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
         </div>
     </div>
 </div>
-@include('voyager::partials.app-footer')
+@include('admin::partials.app-footer')
 
 <!-- Javascript Libs -->
 
 
-<script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ admin_asset('js/app.js') }}"></script>
 
 
 <script>

@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.database.edit_crud_for_table', ['table' => (isset($dataType->id) ? @$dataType->name : $table)]))
 
@@ -13,7 +13,7 @@
             $table = $dataType->name;
         }
     @endphp
-    @include('voyager::multilingual.language-selector')
+    @include('admin::multilingual.language-selector')
 @stop
 
 
@@ -52,7 +52,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.display_name_singular') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('voyager::multilingual.input-hidden', [
+                                        @include('admin::multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_singular',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_singular')
@@ -67,7 +67,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.display_name_plural') }}</label>
                                     @if($isModelTranslatable)
-                                        @include('voyager::multilingual.input-hidden', [
+                                        @include('admin::multilingual.input-hidden', [
                                             'isModelTranslatable' => true,
                                             '_field_name'         => 'display_name_plural',
                                             '_field_trans' => get_field_translations($dataType, 'display_name_plural')
@@ -236,7 +236,7 @@
                                                    name="field_input_type_{{ $data['field'] }}">
                                         @else
                                             <select name="field_input_type_{{ $data['field'] }}">
-                                                @foreach (Voyager::formFields() as $formField)
+                                                @foreach (Admin::formFields() as $formField)
                                                     <option value="{{ $formField->getCodename() }}" @if(isset($dataRow->type) && $dataRow->type == $formField->getCodename()){{ 'selected' }}@endif>
                                                         {{ $formField->getName() }}
                                                     </option>
@@ -263,7 +263,7 @@
                             
                             @if(isset($dataTypeRelationships))
                                 @foreach($dataTypeRelationships as $relationship)
-                                    @include('voyager::tools.database.relationship-partial', $relationship)
+                                    @include('admin::tools.database.relationship-partial', $relationship)
                                 @endforeach
                             @endif
                             
@@ -283,7 +283,7 @@
         </div><!-- .row -->
     </div><!-- .page-content -->
 
-@include('voyager::tools.database.relationship-new-modal')
+@include('admin::tools.database.relationship-new-modal')
 
 @stop
 

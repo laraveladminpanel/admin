@@ -1,7 +1,7 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ voyager_asset('css/ga-embed.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ admin_asset('css/ga-embed.css') }}">
     <style>
         .user-email {
             font-size: .85rem;
@@ -11,10 +11,10 @@
 @stop
 
 @section('content')
-    <div style="background-size:cover; background-image: url({{ Voyager::image( Voyager::setting('admin.bg_image'), config('admin.assets_path') . '/images/bg.jpg') }}); background-position: center center;position:absolute; top:0; left:0; width:100%; height:300px;"></div>
+    <div style="background-size:cover; background-image: url({{ Admin::image( Admin::setting('admin.bg_image'), config('admin.assets_path') . '/images/bg.jpg') }}); background-position: center center;position:absolute; top:0; left:0; width:100%; height:300px;"></div>
     <div style="height:160px; display:block; width:100%"></div>
     <div style="position:relative; z-index:9; text-align:center;">
-        <img src="@if( !filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)){{ Voyager::image( Auth::user()->avatar ) }}@else{{ Auth::user()->avatar }}@endif"
+        <img src="@if( !filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)){{ Admin::image( Auth::user()->avatar ) }}@else{{ Auth::user()->avatar }}@endif"
              class="avatar"
              style="border-radius:50%; width:150px; height:150px; border:5px solid #fff;"
              alt="{{ Auth::user()->name }} avatar">

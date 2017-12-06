@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.view').' '.$dataType->display_name_singular)
 
@@ -17,7 +17,7 @@
             {{ __('admin.generic.return_to_list') }}
         </a>
     </h1>
-    @include('voyager::multilingual.language-selector')
+    @include('admin::multilingual.language-selector')
 @stop
 
 @section('content')
@@ -42,19 +42,19 @@
                         <div class="panel-body" style="padding-top:0;">
                             @if($row->type == "image")
                                 <img class="img-responsive"
-                                     src="{{ filter_var($dataTypeContent->{$row->field}, FILTER_VALIDATE_URL) ? $dataTypeContent->{$row->field} : Voyager::image($dataTypeContent->{$row->field}) }}">
+                                     src="{{ filter_var($dataTypeContent->{$row->field}, FILTER_VALIDATE_URL) ? $dataTypeContent->{$row->field} : Admin::image($dataTypeContent->{$row->field}) }}">
                             @elseif($row->type == 'multiple_images')
                                 @if(json_decode($dataTypeContent->{$row->field}))
                                     @foreach(json_decode($dataTypeContent->{$row->field}) as $file)
                                         <img class="img-responsive"
-                                             src="{{ filter_var($file, FILTER_VALIDATE_URL) ? $file : Voyager::image($file) }}">
+                                             src="{{ filter_var($file, FILTER_VALIDATE_URL) ? $file : Admin::image($file) }}">
                                     @endforeach
                                 @else
                                     <img class="img-responsive"
-                                         src="{{ filter_var($dataTypeContent->{$row->field}, FILTER_VALIDATE_URL) ? $dataTypeContent->{$row->field} : Voyager::image($dataTypeContent->{$row->field}) }}">
+                                         src="{{ filter_var($dataTypeContent->{$row->field}, FILTER_VALIDATE_URL) ? $dataTypeContent->{$row->field} : Admin::image($dataTypeContent->{$row->field}) }}">
                                 @endif
                             @elseif($row->type == 'relationship')
-                                 @include('voyager::formfields.relationship', ['view' => 'read', 'options' => $rowDetails])
+                                 @include('admin::formfields.relationship', ['view' => 'read', 'options' => $rowDetails])
                             @elseif($row->type == 'select_dropdown' && property_exists($rowDetails, 'options') &&
                                     !empty($rowDetails->options->{$dataTypeContent->{$row->field}})
                             )
@@ -93,9 +93,9 @@
                             @elseif($row->type == 'color')
                                 <span class="badge badge-lg" style="background-color: {{ $dataTypeContent->{$row->field} }}">{{ $dataTypeContent->{$row->field} }}</span>
                             @elseif($row->type == 'coordinates')
-                                @include('voyager::partials.coordinates')
+                                @include('admin::partials.coordinates')
                             @elseif($row->type == 'rich_text_box')
-                                @include('voyager::multilingual.input-hidden-bread-read')
+                                @include('admin::multilingual.input-hidden-bread-read')
                                 <p>{!! $dataTypeContent->{$row->field} !!}</p>
                             @elseif($row->type == 'file')
                                 @if(json_decode($dataTypeContent->{$row->field}))
@@ -111,7 +111,7 @@
                                     </a>
                                 @endif
                             @else
-                                @include('voyager::multilingual.input-hidden-bread-read')
+                                @include('admin::multilingual.input-hidden-bread-read')
                                 <p>{{ $dataTypeContent->{$row->field} }}</p>
                             @endif
                         </div><!-- panel-body -->
@@ -133,6 +133,6 @@
             $('.side-body').multilingual();
         });
     </script>
-    <script src="{{ voyager_asset('js/multilingual.js') }}"></script>
+    <script src="{{ admin_asset('js/multilingual.js') }}"></script>
     @endif
 @stop

@@ -1,11 +1,11 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('content')
     <div class="page-content">
-        @include('voyager::alerts')
-        @include('voyager::dimmers')
+        @include('admin::alerts')
+        @include('admin::dimmers')
         <div class="analytics-container">
-            <?php $google_analytics_client_id = Voyager::setting("admin.google_analytics_client_id"); ?>
+            <?php $google_analytics_client_id = Admin::setting("admin.google_analytics_client_id"); ?>
             @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))
                 {{-- Google Analytics Embed --}}
                 <div id="embed-api-auth-container"></div>
@@ -170,7 +170,7 @@
                  */
                 var viewSelector = new gapi.analytics.ext.ViewSelector2({
                     container: 'view-selector-container',
-                    propertyId: '{{ Voyager::setting("site.google_analytics_tracking_id")  }}'
+                    propertyId: '{{ Admin::setting("site.google_analytics_tracking_id")  }}'
                 })
                         .execute();
 

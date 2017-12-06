@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.menu_builder'))
 
@@ -7,11 +7,11 @@
         <i class="voyager-list"></i>{{ __('admin.generic.menu_builder') }} ({{ $menu->name }})
         <div class="btn btn-success add_item"><i class="voyager-plus"></i> {{ __('admin.menu_builder.new_menu_item') }}</div>
     </h1>
-    @include('voyager::multilingual.language-selector')
+    @include('admin::multilingual.language-selector')
 @stop
 
 @section('content')
-    @include('voyager::menus.partial.notice')
+    @include('admin::menus.partial.notice')
 
     <div class="page-content container-fluid">
         <div class="row">
@@ -72,9 +72,9 @@
                     <input id="m_form_method" type="hidden" name="_method" value="POST">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                        @include('voyager::multilingual.language-selector')
+                        @include('admin::multilingual.language-selector')
                         <label for="name">{{ __('admin.menu_builder.item_title') }}</label>
-                        @include('voyager::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
+                        @include('admin::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
                         <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('admin.generic.title') }}"><br>
                         <label for="type">{{ __('admin.menu_builder.link_type') }}</label>
                         <select id="m_link_type" class="form-control" name="type">

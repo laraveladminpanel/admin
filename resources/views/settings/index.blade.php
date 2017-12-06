@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('page_title', __('admin.generic.viewing').' '.__('admin.generic.settings'))
 
@@ -216,7 +216,7 @@
 
 @section('content')
     <div class="container-fluid">
-        @include('voyager::alerts')
+        @include('admin::alerts')
         @if(config('admin.show_dev_tips'))
         <div class="alert alert-info">
             <strong>{{ __('admin.generic.how_to_use') }}:</strong>

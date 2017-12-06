@@ -2,7 +2,7 @@
 
 @php
 
-    if (Voyager::translatable($items)) {
+    if (Admin::translatable($items)) {
         $items = $items->load('translations');
     }
 
@@ -13,7 +13,7 @@
     @php
     
         $originalItem = $item;
-        if (Voyager::translatable($item)) {
+        if (Admin::translatable($item)) {
             $item = $item->translate($options->locale);
         }
 
@@ -47,7 +47,7 @@
             <span>{{ $item->title }}</span>
         </a>
         @if(!$originalItem->children->isEmpty())
-            @include('voyager::menu.default', ['items' => $originalItem->children, 'options' => $options])
+            @include('admin::menu.default', ['items' => $originalItem->children, 'options' => $options])
         @endif
     </li>
 @endforeach

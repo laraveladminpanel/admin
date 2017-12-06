@@ -4,7 +4,7 @@
     @if($images != null)
         @foreach($images as $image)
             <div class="img_settings_container" data-field-name="{{ $row->field }}">
-                <img src="{{ Voyager::image( $image ) }}" data-image="{{ $image }}" data-id="{{ $dataTypeContent->id }}">
+                <img src="{{ Admin::image( $image ) }}" data-image="{{ $image }}" data-id="{{ $dataTypeContent->id }}">
                 <a href="#" class="voyager-x remove-multi-image"></a>
             </div>
         @endforeach
