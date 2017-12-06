@@ -1,13 +1,13 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
 use Doctrine\DBAL\Schema\SchemaException;
 use Illuminate\Support\Facades\Auth;
-use TCG\Voyager\Database\Schema\SchemaManager;
-use TCG\Voyager\Database\Schema\Table;
-use TCG\Voyager\Database\Types\Type;
-use TCG\Voyager\Traits\AlertsMessages;
+use LaravelAdminPanel\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Database\Schema\Table;
+use LaravelAdminPanel\Database\Types\Type;
+use LaravelAdminPanel\Traits\AlertsMessages;
 
 class DatabaseTest extends TestCase
 {

@@ -1,28 +1,28 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use TCG\Voyager\Database\DatabaseUpdater;
-use TCG\Voyager\Database\Schema\Column;
-use TCG\Voyager\Database\Schema\Identifier;
-use TCG\Voyager\Database\Schema\SchemaManager;
-use TCG\Voyager\Database\Schema\Table;
-use TCG\Voyager\Database\Types\Type;
-use TCG\Voyager\Events\CrudAdded;
-use TCG\Voyager\Events\CrudDeleted;
-use TCG\Voyager\Events\CrudUpdated;
-use TCG\Voyager\Events\TableAdded;
-use TCG\Voyager\Events\TableDeleted;
-use TCG\Voyager\Events\TableUpdated;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
-use TCG\Voyager\Models\Permission;
+use LaravelAdminPanel\Database\DatabaseUpdater;
+use LaravelAdminPanel\Database\Schema\Column;
+use LaravelAdminPanel\Database\Schema\Identifier;
+use LaravelAdminPanel\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Database\Schema\Table;
+use LaravelAdminPanel\Database\Types\Type;
+use LaravelAdminPanel\Events\CrudAdded;
+use LaravelAdminPanel\Events\CrudDeleted;
+use LaravelAdminPanel\Events\CrudUpdated;
+use LaravelAdminPanel\Events\TableAdded;
+use LaravelAdminPanel\Events\TableDeleted;
+use LaravelAdminPanel\Events\TableUpdated;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Models\DataRow;
+use LaravelAdminPanel\Models\DataType;
+use LaravelAdminPanel\Models\Permission;
 
 class DatabaseController extends BaseController
 {
@@ -327,7 +327,7 @@ class DatabaseController extends BaseController
     {
         Voyager::canOrFail('browse_database');
 
-        /* @var \TCG\Voyager\Models\DataType $dataType */
+        /* @var \LaravelAdminPanel\Models\DataType $dataType */
         try {
             $dataType = Voyager::model('DataType')->find($id);
 
@@ -357,7 +357,7 @@ class DatabaseController extends BaseController
     {
         Voyager::canOrFail('browse_database');
 
-        /* @var \TCG\Voyager\Models\DataType $dataType */
+        /* @var \LaravelAdminPanel\Models\DataType $dataType */
         $dataType = Voyager::model('DataType')->find($id);
 
         // Delete Translations, if present

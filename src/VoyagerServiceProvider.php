@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager;
+namespace LaravelAdminPanel;
 
 use Arrilot\Widgets\Facade as Widget;
 use Arrilot\Widgets\ServiceProvider as WidgetServiceProvider;
@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\View;
 use Intervention\Image\ImageServiceProvider;
 use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
 use Larapack\VoyagerHooks\VoyagerHooksServiceProvider;
-use TCG\Voyager\Events\FormFieldsRegistered;
-use TCG\Voyager\Facades\Voyager as VoyagerFacade;
-use TCG\Voyager\FormFields\After\DescriptionHandler;
-use TCG\Voyager\Http\Middleware\VoyagerAdminMiddleware;
-use TCG\Voyager\Models\MenuItem;
-use TCG\Voyager\Models\Setting;
-use TCG\Voyager\Policies\BasePolicy;
-use TCG\Voyager\Policies\MenuItemPolicy;
-use TCG\Voyager\Policies\SettingPolicy;
-use TCG\Voyager\Providers\VoyagerEventServiceProvider;
-use TCG\Voyager\Translator\Collection as TranslatorCollection;
+use LaravelAdminPanel\Events\FormFieldsRegistered;
+use LaravelAdminPanel\Facades\Voyager as VoyagerFacade;
+use LaravelAdminPanel\FormFields\After\DescriptionHandler;
+use LaravelAdminPanel\Http\Middleware\VoyagerAdminMiddleware;
+use LaravelAdminPanel\Models\MenuItem;
+use LaravelAdminPanel\Models\Setting;
+use LaravelAdminPanel\Policies\BasePolicy;
+use LaravelAdminPanel\Policies\MenuItemPolicy;
+use LaravelAdminPanel\Policies\SettingPolicy;
+use LaravelAdminPanel\Providers\VoyagerEventServiceProvider;
+use LaravelAdminPanel\Translator\Collection as TranslatorCollection;
 
 class VoyagerServiceProvider extends ServiceProvider
 {
@@ -192,7 +192,7 @@ class VoyagerServiceProvider extends ServiceProvider
         $components = ['title', 'text', 'button'];
 
         foreach ($components as $component) {
-            $class = 'TCG\\Voyager\\Alert\\Components\\'.ucfirst(camel_case($component)).'Component';
+            $class = 'LaravelAdminPanel\\Alert\\Components\\'.ucfirst(camel_case($component)).'Component';
 
             $this->app->bind("voyager.alert.components.{$component}", $class);
         }
@@ -216,7 +216,7 @@ class VoyagerServiceProvider extends ServiceProvider
      */
     protected function registerWidgets()
     {
-        $default_widgets = ['TCG\\Voyager\\Widgets\\UserDimmer', 'TCG\\Voyager\\Widgets\\PostDimmer', 'TCG\\Voyager\\Widgets\\PageDimmer'];
+        $default_widgets = ['LaravelAdminPanel\\Widgets\\UserDimmer', 'LaravelAdminPanel\\Widgets\\PostDimmer', 'LaravelAdminPanel\\Widgets\\PageDimmer'];
         $widgets = config('voyager.dashboard.widgets', $default_widgets);
 
         foreach ($widgets as $widget) {
@@ -318,7 +318,7 @@ class VoyagerServiceProvider extends ServiceProvider
         foreach ($formFields as $formField) {
             $class = studly_case("{$formField}_handler");
 
-            VoyagerFacade::addFormField("TCG\\Voyager\\FormFields\\{$class}");
+            VoyagerFacade::addFormField("LaravelAdminPanel\\FormFields\\{$class}");
         }
 
         VoyagerFacade::addAfterFormField(DescriptionHandler::class);

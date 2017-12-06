@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Database\Types\Sqlite;
+namespace LaravelAdminPanel\Database\Types\Sqlite;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use TCG\Voyager\Database\Types\Type;
+use LaravelAdminPanel\Database\Types\Type;
 
 class RealType extends Type
 {

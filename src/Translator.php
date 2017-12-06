@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager;
+namespace LaravelAdminPanel;
 
 use ArrayAccess;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Models\Translation;
+use LaravelAdminPanel\Models\Translation;
 
 class Translator implements ArrayAccess
 {
@@ -302,7 +302,7 @@ class Translator implements ArrayAccess
     public function __call($method, array $arguments)
     {
         if (!$this->model->hasTranslatorMethod($method)) {
-            throw new \Exception('Call to undefined method TCG\Voyager\Translator::'.$method.'()');
+            throw new \Exception('Call to undefined method LaravelAdminPanel\Translator::'.$method.'()');
         }
 
         return call_user_func_array([$this, 'runTranslatorMethod'], [$method, $arguments]);

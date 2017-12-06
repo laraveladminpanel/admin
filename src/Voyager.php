@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager;
+namespace LaravelAdminPanel;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -8,21 +8,21 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-use TCG\Voyager\Events\AlertsCollection;
-use TCG\Voyager\FormFields\After\HandlerInterface as AfterHandlerInterface;
-use TCG\Voyager\FormFields\HandlerInterface;
-use TCG\Voyager\Models\Category;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
-use TCG\Voyager\Models\Menu;
-use TCG\Voyager\Models\MenuItem;
-use TCG\Voyager\Models\Page;
-use TCG\Voyager\Models\Permission;
-use TCG\Voyager\Models\Post;
-use TCG\Voyager\Models\Role;
-use TCG\Voyager\Models\Setting;
-use TCG\Voyager\Models\User;
-use TCG\Voyager\Traits\Translatable;
+use LaravelAdminPanel\Events\AlertsCollection;
+use LaravelAdminPanel\FormFields\After\HandlerInterface as AfterHandlerInterface;
+use LaravelAdminPanel\FormFields\HandlerInterface;
+use LaravelAdminPanel\Models\Category;
+use LaravelAdminPanel\Models\DataRow;
+use LaravelAdminPanel\Models\DataType;
+use LaravelAdminPanel\Models\Menu;
+use LaravelAdminPanel\Models\MenuItem;
+use LaravelAdminPanel\Models\Page;
+use LaravelAdminPanel\Models\Permission;
+use LaravelAdminPanel\Models\Post;
+use LaravelAdminPanel\Models\Role;
+use LaravelAdminPanel\Models\Setting;
+use LaravelAdminPanel\Models\User;
+use LaravelAdminPanel\Traits\Translatable;
 
 class Voyager
 {

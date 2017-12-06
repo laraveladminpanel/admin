@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Permission;
+use LaravelAdminPanel\Models\Permission;
 
 class PermissionsTableSeeder extends Seeder
 {

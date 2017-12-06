@@ -1,6 +1,6 @@
 <?php
 
-$factory->define(\TCG\Voyager\Models\Role::class, function (Faker\Generator $faker) {
+$factory->define(\LaravelAdminPanel\Models\Role::class, function (Faker\Generator $faker) {
     $role = $faker->word;
 
     return [

@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Facades;
+namespace LaravelAdminPanel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

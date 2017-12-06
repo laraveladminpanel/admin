@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Facades\Voyager;
 
 class ViewEventTest extends TestCase
 {

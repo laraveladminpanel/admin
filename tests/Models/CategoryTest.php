@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
 use Illuminate\Support\Facades\Auth;
-use TCG\Voyager\Models\Category;
+use LaravelAdminPanel\Models\Category;
 
 class CategoryTest extends TestCase
 {

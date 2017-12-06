@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager\Database\Types\Mysql;
+namespace LaravelAdminPanel\Database\Types\Mysql;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Illuminate\Support\Facades\DB;
-use TCG\Voyager\Database\Types\Type;
+use LaravelAdminPanel\Database\Types\Type;
 
 class SetType extends Type
 {

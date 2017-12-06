@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Listeners;
+namespace LaravelAdminPanel\Listeners;
 
-use TCG\Voyager\Events\CrudAdded;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Models\Permission;
-use TCG\Voyager\Models\Role;
+use LaravelAdminPanel\Events\CrudAdded;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Models\Permission;
+use LaravelAdminPanel\Models\Role;
 
 class AddCrudPermission
 {

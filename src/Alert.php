@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager;
+namespace LaravelAdminPanel;
 
-use TCG\Voyager\Alert\Components\ComponentInterface;
+use LaravelAdminPanel\Alert\Components\ComponentInterface;
 
 class Alert
 {

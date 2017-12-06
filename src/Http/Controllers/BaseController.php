@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -8,9 +8,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
-use TCG\Voyager\Events\FileDeleted;
-use TCG\Voyager\FormFields\AbstractHandler;
-use TCG\Voyager\Traits\AlertsMessages;
+use LaravelAdminPanel\Events\FileDeleted;
+use LaravelAdminPanel\FormFields\AbstractHandler;
+use LaravelAdminPanel\Traits\AlertsMessages;
 use Validator;
 
 abstract class BaseController extends Controller

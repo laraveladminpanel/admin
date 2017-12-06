@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Events;
+namespace LaravelAdminPanel\Events;
 
 use Illuminate\Queue\SerializesModels;
-use TCG\Voyager\Models\DataType;
+use LaravelAdminPanel\Models\DataType;
 
 class CrudDeleted
 {

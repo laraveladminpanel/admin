@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager\Database\Types\Postgresql;
+namespace LaravelAdminPanel\Database\Types\Postgresql;
 
-use TCG\Voyager\Database\Types\Common\CharType;
+use LaravelAdminPanel\Database\Types\Common\CharType;
 
 class CharacterType extends CharType
 {

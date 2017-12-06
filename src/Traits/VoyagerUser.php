@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager\Traits;
+namespace LaravelAdminPanel\Traits;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Models\Role;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Models\Role;
 
 /**
  * @property  \Illuminate\Database\Eloquent\Collection  roles

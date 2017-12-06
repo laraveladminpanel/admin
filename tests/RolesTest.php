@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use TCG\Voyager\Models\Role;
+use LaravelAdminPanel\Models\Role;
 
 class RolesTest extends TestCase
 {

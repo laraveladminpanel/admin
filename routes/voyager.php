@@ -1,8 +1,8 @@
 <?php
 
-use TCG\Voyager\Events\Routing;
-use TCG\Voyager\Events\RoutingAdmin;
-use TCG\Voyager\Models\DataType;
+use LaravelAdminPanel\Events\Routing;
+use LaravelAdminPanel\Events\RoutingAdmin;
+use LaravelAdminPanel\Models\DataType;
 
 /*
 |--------------------------------------------------------------------------

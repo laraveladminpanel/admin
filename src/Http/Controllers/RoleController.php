@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Facades\Voyager;
 
 class RoleController extends CrudController
 {

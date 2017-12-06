@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Page;
+use LaravelAdminPanel\Models\Page;
 
 class PagesTableSeeder extends Seeder
 {

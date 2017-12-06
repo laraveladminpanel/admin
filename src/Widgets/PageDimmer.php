@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager\Widgets;
+namespace LaravelAdminPanel\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Facades\Voyager;
 
 class PageDimmer extends AbstractWidget
 {

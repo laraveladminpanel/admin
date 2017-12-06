@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\FormFields\AbstractHandler;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\FormFields\AbstractHandler;
 
 class SettingsController extends BaseController
 {

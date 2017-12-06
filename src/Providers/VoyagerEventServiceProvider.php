@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Providers;
+namespace LaravelAdminPanel\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -13,9 +13,9 @@ class VoyagerEventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'TCG\Voyager\Events\CrudAdded' => [
-            'TCG\Voyager\Listeners\AddCrudMenuItem',
-            'TCG\Voyager\Listeners\AddCrudPermission',
+        'LaravelAdminPanel\Events\CrudAdded' => [
+            'LaravelAdminPanel\Listeners\AddCrudMenuItem',
+            'LaravelAdminPanel\Listeners\AddCrudPermission',
         ],
     ];
 

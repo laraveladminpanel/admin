@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Database\Types;
+namespace LaravelAdminPanel\Database\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform as DoctrineAbstractPlatform;
 use Doctrine\DBAL\Types\Type as DoctrineType;
-use TCG\Voyager\Database\Platforms\Platform;
-use TCG\Voyager\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Database\Platforms\Platform;
+use LaravelAdminPanel\Database\Schema\SchemaManager;
 
 abstract class Type extends DoctrineType
 {

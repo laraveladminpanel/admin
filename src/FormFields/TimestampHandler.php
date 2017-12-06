@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\FormFields;
+namespace LaravelAdminPanel\FormFields;
 
 use Illuminate\Http\Request;
 

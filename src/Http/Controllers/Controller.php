@@ -1,13 +1,13 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Facades\Voyager;
 
 class Controller extends BaseController
 {

@@ -27,7 +27,7 @@ return [
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        'namespace' => 'LaravelAdminPanel\\Http\\Controllers',
     ],
 
     /*
@@ -166,9 +166,9 @@ return [
         ],
 
         'widgets' => [
-            'TCG\\Voyager\\Widgets\\UserDimmer',
-            'TCG\\Voyager\\Widgets\\PostDimmer',
-            'TCG\\Voyager\\Widgets\\PageDimmer',
+            'LaravelAdminPanel\\Widgets\\UserDimmer',
+            'LaravelAdminPanel\\Widgets\\PostDimmer',
+            'LaravelAdminPanel\\Widgets\\PageDimmer',
         ],
 
     ],

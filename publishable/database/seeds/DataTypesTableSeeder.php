@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\DataType;
+use LaravelAdminPanel\Models\DataType;
 
 class DataTypesTableSeeder extends Seeder
 {
@@ -17,8 +17,8 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Post',
                 'display_name_plural'   => 'Posts',
                 'icon'                  => 'voyager-news',
-                'model_name'            => 'TCG\\Voyager\\Models\\Post',
-                'policy_name'           => 'TCG\\Voyager\\Policies\\PostPolicy',
+                'model_name'            => 'LaravelAdminPanel\\Models\\Post',
+                'policy_name'           => 'LaravelAdminPanel\\Policies\\PostPolicy',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -32,7 +32,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Page',
                 'display_name_plural'   => 'Pages',
                 'icon'                  => 'voyager-file-text',
-                'model_name'            => 'TCG\\Voyager\\Models\\Page',
+                'model_name'            => 'LaravelAdminPanel\\Models\\Page',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -46,8 +46,8 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'User',
                 'display_name_plural'   => 'Users',
                 'icon'                  => 'voyager-person',
-                'model_name'            => 'TCG\\Voyager\\Models\\User',
-                'policy_name'           => 'TCG\\Voyager\\Policies\\UserPolicy',
+                'model_name'            => 'LaravelAdminPanel\\Models\\User',
+                'policy_name'           => 'LaravelAdminPanel\\Policies\\UserPolicy',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -61,7 +61,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Category',
                 'display_name_plural'   => 'Categories',
                 'icon'                  => 'voyager-categories',
-                'model_name'            => 'TCG\\Voyager\\Models\\Category',
+                'model_name'            => 'LaravelAdminPanel\\Models\\Category',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -75,7 +75,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Menu',
                 'display_name_plural'   => 'Menus',
                 'icon'                  => 'voyager-list',
-                'model_name'            => 'TCG\\Voyager\\Models\\Menu',
+                'model_name'            => 'LaravelAdminPanel\\Models\\Menu',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
@@ -89,7 +89,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Role',
                 'display_name_plural'   => 'Roles',
                 'icon'                  => 'voyager-lock',
-                'model_name'            => 'TCG\\Voyager\\Models\\Role',
+                'model_name'            => 'LaravelAdminPanel\\Models\\Role',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',

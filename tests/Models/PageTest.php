@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
 use Illuminate\Support\Facades\Auth;
-use TCG\Voyager\Models\Page;
+use LaravelAdminPanel\Models\Page;
 
 class PageTest extends TestCase
 {

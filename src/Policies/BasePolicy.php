@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager\Policies;
+namespace LaravelAdminPanel\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use TCG\Voyager\Contracts\User;
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Contracts\User;
+use LaravelAdminPanel\Facades\Voyager;
 
 class BasePolicy
 {
@@ -23,7 +23,7 @@ class BasePolicy
         if (count($arguments) < 2) {
             throw new \InvalidArgumentException('not enough arguments');
         }
-        /** @var \TCG\Voyager\Contracts\User $user */
+        /** @var \LaravelAdminPanel\Contracts\User $user */
         $user = $arguments[0];
 
         /** @var $model */
@@ -35,7 +35,7 @@ class BasePolicy
     /**
      * Check if user has an associated permission.
      *
-     * @param \TCG\Voyager\Contracts\User $user
+     * @param \LaravelAdminPanel\Contracts\User $user
      * @param object                      $model
      * @param string                      $action
      *

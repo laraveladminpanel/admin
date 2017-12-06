@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Policies;
+namespace LaravelAdminPanel\Policies;
 
-use TCG\Voyager\Contracts\User;
-use TCG\Voyager\Models\DataType;
+use LaravelAdminPanel\Contracts\User;
+use LaravelAdminPanel\Models\DataType;
 
 class MenuItemPolicy extends BasePolicy
 {

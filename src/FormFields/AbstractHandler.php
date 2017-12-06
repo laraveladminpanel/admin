@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager\FormFields;
+namespace LaravelAdminPanel\FormFields;
 
-use TCG\Voyager\Traits\Renderable;
+use LaravelAdminPanel\Traits\Renderable;
 use Illuminate\Http\Request;
 
 abstract class AbstractHandler implements HandlerInterface

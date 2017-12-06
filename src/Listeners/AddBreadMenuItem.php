@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Listeners;
+namespace LaravelAdminPanel\Listeners;
 
-use TCG\Voyager\Events\CrudAdded;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Models\Menu;
-use TCG\Voyager\Models\MenuItem;
+use LaravelAdminPanel\Events\CrudAdded;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Models\Menu;
+use LaravelAdminPanel\Models\MenuItem;
 
 class AddCrudMenuItem
 {

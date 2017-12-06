@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
+use LaravelAdminPanel\Models\DataRow;
+use LaravelAdminPanel\Models\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {

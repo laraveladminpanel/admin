@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Tests\Models;
+namespace LaravelAdminPanel\Tests\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

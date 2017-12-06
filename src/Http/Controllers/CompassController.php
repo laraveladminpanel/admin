@@ -1,13 +1,13 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Artisan;
 use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use TCG\Voyager\Facades\Voyager;
+use LaravelAdminPanel\Facades\Voyager;
 
 class CompassController extends BaseController
 {

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Traits\Seedable;
+use LaravelAdminPanel\Traits\Seedable;
 
 class VoyagerDummyDatabaseSeeder extends Seeder
 {

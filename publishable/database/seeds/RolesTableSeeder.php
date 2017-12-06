@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\Role;
+use LaravelAdminPanel\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {

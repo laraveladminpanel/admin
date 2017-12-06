@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Events;
+namespace LaravelAdminPanel\Events;
 
 class FileDeleted
 {

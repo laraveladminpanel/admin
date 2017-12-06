@@ -1,17 +1,17 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use TCG\Voyager\Database\Schema\SchemaManager;
-use TCG\Voyager\Events\CrudDataAdded;
-use TCG\Voyager\Events\CrudDataDeleted;
-use TCG\Voyager\Events\CrudDataUpdated;
-use TCG\Voyager\Events\CrudImagesDeleted;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\Traits\CrudRelationshipParser;
+use LaravelAdminPanel\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Events\CrudDataAdded;
+use LaravelAdminPanel\Events\CrudDataDeleted;
+use LaravelAdminPanel\Events\CrudDataUpdated;
+use LaravelAdminPanel\Events\CrudImagesDeleted;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Http\Controllers\Traits\CrudRelationshipParser;
 
 class CrudController extends BaseController
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace TCG\Voyager\Database;
+namespace LaravelAdminPanel\Database;
 
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\SchemaException;
 use Doctrine\DBAL\Schema\TableDiff;
-use TCG\Voyager\Database\Schema\SchemaManager;
-use TCG\Voyager\Database\Schema\Table;
-use TCG\Voyager\Database\Types\Type;
+use LaravelAdminPanel\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Database\Schema\Table;
+use LaravelAdminPanel\Database\Types\Type;
 
 class DatabaseUpdater
 {

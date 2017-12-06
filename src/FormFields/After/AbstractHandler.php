@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager\FormFields\After;
+namespace LaravelAdminPanel\FormFields\After;
 
-use TCG\Voyager\Traits\Renderable;
+use LaravelAdminPanel\Traits\Renderable;
 
 abstract class AbstractHandler implements HandlerInterface
 {

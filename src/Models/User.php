@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Models;
+namespace LaravelAdminPanel\Models;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use TCG\Voyager\Contracts\User as UserContract;
-use TCG\Voyager\Traits\VoyagerUser;
+use LaravelAdminPanel\Contracts\User as UserContract;
+use LaravelAdminPanel\Traits\VoyagerUser;
 
 class User extends Authenticatable implements UserContract
 {

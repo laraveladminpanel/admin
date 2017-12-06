@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Database\Platforms;
+namespace LaravelAdminPanel\Database\Platforms;
 
 use Illuminate\Support\Collection;
-use TCG\Voyager\Database\Types\Type;
+use LaravelAdminPanel\Database\Types\Type;
 
 abstract class Mysql extends Platform
 {

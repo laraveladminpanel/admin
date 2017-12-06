@@ -1,13 +1,13 @@
 <?php
 
-namespace TCG\Voyager\Tests;
+namespace LaravelAdminPanel\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Traits\Translatable;
-use TCG\Voyager\Translator;
-use TCG\Voyager\Translator\Collection;
+use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Traits\Translatable;
+use LaravelAdminPanel\Translator;
+use LaravelAdminPanel\Translator\Collection;
 
 class MultilingualTest extends TestCase
 {

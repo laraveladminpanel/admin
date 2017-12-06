@@ -1,8 +1,8 @@
 <?php
 
-namespace TCG\Voyager\Alert\Components;
+namespace LaravelAdminPanel\Alert\Components;
 
-use TCG\Voyager\Alert;
+use LaravelAdminPanel\Alert;
 
 abstract class AbstractComponent implements ComponentInterface
 {

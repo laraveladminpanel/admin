@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Traits;
+namespace LaravelAdminPanel\Traits;
 
 use Illuminate\Support\Facades\DB;
 

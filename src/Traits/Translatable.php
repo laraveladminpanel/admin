@@ -1,11 +1,11 @@
 <?php
 
-namespace TCG\Voyager\Traits;
+namespace LaravelAdminPanel\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use TCG\Voyager\Models\Translation;
-use TCG\Voyager\Translator;
+use LaravelAdminPanel\Models\Translation;
+use LaravelAdminPanel\Translator;
 
 trait Translatable
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace TCG\Voyager\Database\Types\Common;
+namespace LaravelAdminPanel\Database\Types\Common;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use TCG\Voyager\Database\Types\Type;
+use LaravelAdminPanel\Database\Types\Type;
 
 class CharType extends Type
 {
