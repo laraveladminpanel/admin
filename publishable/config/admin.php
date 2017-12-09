@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'assets_path' => '/vendor/tcg/admin/assets',
+    'assets_path' => '/vendor/laraveladminpanel/admin/assets',
 
     /*
     |--------------------------------------------------------------------------
