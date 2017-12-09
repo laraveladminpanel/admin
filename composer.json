@@ -1,5 +1,5 @@
 {
-    "name": "tcg/admin",
+    "name": "laraveladminpanel/admin",
     "description": "A Laravel Admin Package for The Control Group to make your life easier and steer your project in the right direction",
     "keywords": ["laravel", "admin", "panel"],
     "license": "MIT",
@@ -21,7 +21,7 @@
         "larapack/doctrine-support": "~0.1.4",
         "arrilot/laravel-widgets": "^3.7",
         "league/flysystem": "~1.0.41",
-        "larapack/admin-hooks": "~1.0.2"
+        "larapack/voyager-hooks": "~1.0.2"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
