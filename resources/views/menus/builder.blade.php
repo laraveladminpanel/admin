@@ -1,24 +1,24 @@
-@extends('voyager::master')
+@extends('admin::master')
 
-@section('page_title', __('voyager.generic.menu_builder'))
+@section('page_title', __('admin.generic.menu_builder'))
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-list"></i>{{ __('voyager.generic.menu_builder') }} ({{ $menu->name }})
-        <div class="btn btn-success add_item"><i class="voyager-plus"></i> {{ __('voyager.menu_builder.new_menu_item') }}</div>
+        <i class="voyager-list"></i>{{ __('admin.generic.menu_builder') }} ({{ $menu->name }})
+        <div class="btn btn-success add_item"><i class="voyager-plus"></i> {{ __('admin.menu_builder.new_menu_item') }}</div>
     </h1>
-    @include('voyager::multilingual.language-selector')
+    @include('admin::multilingual.language-selector')
 @stop
 
 @section('content')
-    @include('voyager::menus.partial.notice')
+    @include('admin::menus.partial.notice')
 
     <div class="page-content container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-heading">
-                        <p class="panel-title" style="color:#777">{{ __('voyager.menu_builder.drag_drop_info') }}</p>
+                        <p class="panel-title" style="color:#777">{{ __('admin.menu_builder.drag_drop_info') }}</p>
                     </div>
 
                     <div class="panel-body" style="padding:30px;">
@@ -36,20 +36,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager.generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {{ __('voyager.menu_builder.delete_item_question') }}</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> {{ __('admin.menu_builder.delete_item_question') }}</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
+                    <form action="{{ route('admin.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
                           id="delete_form"
                           method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="{{ __('voyager.menu_builder.delete_item_confirm') }}">
+                               value="{{ __('admin.menu_builder.delete_item_confirm') }}">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('voyager.generic.cancel') }}</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('admin.generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -60,56 +60,56 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager.generic.close') }}"><span
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 id="m_hd_add" class="modal-title hidden"><i class="voyager-plus"></i> {{ __('voyager.menu_builder.create_new_item') }}</h4>
-                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="voyager-edit"></i> {{ __('voyager.menu_builder.edit_item') }}</h4>
+                    <h4 id="m_hd_add" class="modal-title hidden"><i class="voyager-plus"></i> {{ __('admin.menu_builder.create_new_item') }}</h4>
+                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="voyager-edit"></i> {{ __('admin.menu_builder.edit_item') }}</h4>
                 </div>
                 <form action="" id="m_form" method="POST"
-                      data-action-add="{{ route('voyager.menus.item.add', ['menu' => $menu->id]) }}"
-                      data-action-update="{{ route('voyager.menus.item.update', ['menu' => $menu->id]) }}">
+                      data-action-add="{{ route('admin.menus.item.add', ['menu' => $menu->id]) }}"
+                      data-action-update="{{ route('admin.menus.item.update', ['menu' => $menu->id]) }}">
 
                     <input id="m_form_method" type="hidden" name="_method" value="POST">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                        @include('voyager::multilingual.language-selector')
-                        <label for="name">{{ __('voyager.menu_builder.item_title') }}</label>
-                        @include('voyager::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
-                        <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('voyager.generic.title') }}"><br>
-                        <label for="type">{{ __('voyager.menu_builder.link_type') }}</label>
+                        @include('admin::multilingual.language-selector')
+                        <label for="name">{{ __('admin.menu_builder.item_title') }}</label>
+                        @include('admin::multilingual.input-hidden', ['_field_name' => 'title', '_field_trans' => ''])
+                        <input type="text" class="form-control" id="m_title" name="title" placeholder="{{ __('admin.generic.title') }}"><br>
+                        <label for="type">{{ __('admin.menu_builder.link_type') }}</label>
                         <select id="m_link_type" class="form-control" name="type">
-                            <option value="url" selected="selected">{{ __('voyager.menu_builder.static_url') }}</option>
-                            <option value="route">{{ __('voyager.menu_builder.dynamic_route') }}</option>
+                            <option value="url" selected="selected">{{ __('admin.menu_builder.static_url') }}</option>
+                            <option value="route">{{ __('admin.menu_builder.dynamic_route') }}</option>
                         </select><br>
                         <div id="m_url_type">
-                            <label for="url">{{ __('voyager.menu_builder.url') }}</label>
-                            <input type="text" class="form-control" id="m_url" name="url" placeholder="{{ __('voyager.generic.url') }}"><br>
+                            <label for="url">{{ __('admin.menu_builder.url') }}</label>
+                            <input type="text" class="form-control" id="m_url" name="url" placeholder="{{ __('admin.generic.url') }}"><br>
                         </div>
                         <div id="m_route_type">
-                            <label for="route">{{ __('voyager.menu_builder.item_route') }}</label>
-                            <input type="text" class="form-control" id="m_route" name="route" placeholder="{{ __('voyager.generic.route') }}"><br>
-                            <label for="parameters">{{ __('voyager.menu_builder.route_parameter') }}</label>
+                            <label for="route">{{ __('admin.menu_builder.item_route') }}</label>
+                            <input type="text" class="form-control" id="m_route" name="route" placeholder="{{ __('admin.generic.route') }}"><br>
+                            <label for="parameters">{{ __('admin.menu_builder.route_parameter') }}</label>
                             <textarea rows="3" class="form-control" id="m_parameters" name="parameters" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea><br>
                         </div>
-                        <label for="icon_class">{{ __('voyager.menu_builder.icon_class') }} <a
-                                    href="{{ route('voyager.compass.index', [], false) }}#fonts"
-                                    target="_blank">{!! __('voyager.menu_builder.icon_class2') !!}</label>
+                        <label for="icon_class">{{ __('admin.menu_builder.icon_class') }} <a
+                                    href="{{ route('admin.compass.index', [], false) }}#fonts"
+                                    target="_blank">{!! __('admin.menu_builder.icon_class2') !!}</label>
                         <input type="text" class="form-control" id="m_icon_class" name="icon_class"
-                               placeholder="{{ __('voyager.menu_builder.icon_class_ph') }}"><br>
-                        <label for="color">{{ __('voyager.menu_builder.color') }}</label>
+                               placeholder="{{ __('admin.menu_builder.icon_class_ph') }}"><br>
+                        <label for="color">{{ __('admin.menu_builder.color') }}</label>
                         <input type="color" class="form-control" id="m_color" name="color"
-                               placeholder="{{ __('voyager.menu_builder.color_ph') }}"><br>
-                        <label for="target">{{ __('voyager.menu_builder.open_in') }}</label>
+                               placeholder="{{ __('admin.menu_builder.color_ph') }}"><br>
+                        <label for="target">{{ __('admin.menu_builder.open_in') }}</label>
                         <select id="m_target" class="form-control" name="target">
-                            <option value="_self" selected="selected">{{ __('voyager.menu_builder.open_same') }}</option>
-                            <option value="_blank">{{ __('voyager.menu_builder.open_new') }}</option>
+                            <option value="_self" selected="selected">{{ __('admin.menu_builder.open_same') }}</option>
+                            <option value="_blank">{{ __('admin.menu_builder.open_new') }}</option>
                         </select>
                         <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                         <input type="hidden" name="id" id="m_id" value="">
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success pull-right delete-confirm__" value="{{ __('voyager.generic.update') }}">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('voyager.generic.cancel') }}</button>
+                        <input type="submit" class="btn btn-success pull-right delete-confirm__" value="{{ __('admin.generic.update') }}">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('admin.generic.cancel') }}</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -280,11 +280,11 @@
              * Reorder items
              */
             $('.dd').on('change', function (e) {
-                $.post('{{ route('voyager.menus.order',['menu' => $menu->id]) }}', {
+                $.post('{{ route('admin.menus.order',['menu' => $menu->id]) }}', {
                     order: JSON.stringify($('.dd').nestable('serialize')),
                     _token: '{{ csrf_token() }}'
                 }, function (data) {
-                    toastr.success("{{ __('voyager.menu_builder.updated_order') }}");
+                    toastr.success("{{ __('admin.menu_builder.updated_order') }}");
                 });
             });
         });

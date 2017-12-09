@@ -13,14 +13,14 @@ class ControllersCommand extends Command
      *
      * @var string
      */
-    protected $name = 'voyager:controllers';
+    protected $name = 'admin:controllers';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish all the controllers from Voyager.';
+    protected $description = 'Publish all the controllers from Admin.';
 
     /**
      * The Filesystem instance.
@@ -61,8 +61,8 @@ class ControllersCommand extends Command
     public function handle()
     {
         $stub = $this->getStub();
-        $files = $this->filesystem->files(base_path('vendor/tcg/voyager/src/Http/Controllers'));
-        $namespace = config('voyager.controllers.namespace', 'LaravelAdminPanel\\Http\\Controllers');
+        $files = $this->filesystem->files(base_path('vendor/tcg/admin/src/Http/Controllers'));
+        $namespace = config('admin.controllers.namespace', 'LaravelAdminPanel\\Http\\Controllers');
 
         $appNamespace = app()->getNamespace();
 
@@ -93,7 +93,7 @@ class ControllersCommand extends Command
             }
         }
 
-        $this->info('Published Voyager controllers!');
+        $this->info('Published Admin controllers!');
     }
 
     /**
@@ -103,7 +103,7 @@ class ControllersCommand extends Command
      */
     public function getStub()
     {
-        return $this->filesystem->get(base_path('/vendor/tcg/voyager/stubs/'.$this->stub));
+        return $this->filesystem->get(base_path('/vendor/tcg/admin/stubs/'.$this->stub));
     }
 
     /**
@@ -116,7 +116,7 @@ class ControllersCommand extends Command
      */
     protected function generateContent($stub, $class)
     {
-        $namespace = config('voyager.controllers.namespace', 'LaravelAdminPanel\\Http\\Controllers');
+        $namespace = config('admin.controllers.namespace', 'LaravelAdminPanel\\Http\\Controllers');
 
         $content = str_replace(
             'DummyNamespace',

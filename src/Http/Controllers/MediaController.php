@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class MediaController extends BaseController
 {
@@ -18,15 +18,15 @@ class MediaController extends BaseController
 
     public function __construct()
     {
-        $this->filesystem = config('voyager.storage.disk');
+        $this->filesystem = config('admin.storage.disk');
     }
 
     public function index()
     {
         // Check permission
-        Voyager::canOrFail('browse_media');
+        Admin::canOrFail('browse_media');
 
-        return Voyager::view('voyager::media.index');
+        return Admin::view('admin::media.index');
     }
 
     public function files(Request $request)
@@ -57,11 +57,11 @@ class MediaController extends BaseController
         $error = '';
 
         if (Storage::disk($this->filesystem)->exists($new_folder)) {
-            $error = __('voyager.media.folder_exists_already');
+            $error = __('admin.media.folder_exists_already');
         } elseif (Storage::disk($this->filesystem)->makeDirectory($new_folder)) {
             $success = true;
         } else {
-            $error = __('voyager.media.error_creating_dir');
+            $error = __('admin.media.error_creating_dir');
         }
 
         return compact('success', 'error');
@@ -85,11 +85,11 @@ class MediaController extends BaseController
 
         if ($type == 'folder') {
             if (!Storage::disk($this->filesystem)->deleteDirectory($fileFolder)) {
-                $error = __('voyager.media.error_deleting_folder');
+                $error = __('admin.media.error_deleting_folder');
                 $success = false;
             }
         } elseif (!Storage::disk($this->filesystem)->delete($fileFolder)) {
-            $error = __('voyager.media.error_deleting_file');
+            $error = __('admin.media.error_deleting_file');
             $success = false;
         }
 
@@ -135,10 +135,10 @@ class MediaController extends BaseController
             if (Storage::disk($this->filesystem)->move($source, $destination)) {
                 $success = true;
             } else {
-                $error = __('voyager.media.error_moving');
+                $error = __('admin.media.error_moving');
             }
         } else {
-            $error = __('voyager.media.error_already_exists');
+            $error = __('admin.media.error_already_exists');
         }
 
         return compact('success', 'error');
@@ -163,10 +163,10 @@ class MediaController extends BaseController
             if (Storage::disk($this->filesystem)->move("{$location}/{$filename}", "{$location}/{$newFilename}")) {
                 $success = true;
             } else {
-                $error = __('voyager.media.error_moving');
+                $error = __('admin.media.error_moving');
             }
         } else {
-            $error = __('voyager.media.error_may_exist');
+            $error = __('admin.media.error_may_exist');
         }
 
         return compact('success', 'error');
@@ -201,7 +201,7 @@ class MediaController extends BaseController
             }
 
             $success = true;
-            $message = __('voyager.media.success_uploaded_file');
+            $message = __('admin.media.success_uploaded_file');
             $path = preg_replace('/^public\//', '', $file);
         } catch (Exception $e) {
             $success = false;
@@ -219,7 +219,7 @@ class MediaController extends BaseController
         $storageFolders = Storage::disk($this->filesystem)->directories($dir);
 
         foreach ($storageFiles as $file) {
-            if (empty(pathinfo($file, PATHINFO_FILENAME)) && config('voyager.hidden_files')) {
+            if (empty(pathinfo($file, PATHINFO_FILENAME)) && config('admin.hidden_files')) {
                 $files[] = [
                     'name'          => strpos($file, '/') > 1 ? str_replace('/', '', strrchr($file, '/')) : $file,
                     'type'          => Storage::disk($this->filesystem)->mimeType($file),
@@ -268,10 +268,10 @@ class MediaController extends BaseController
             $field = $request->get('field');
 
             // GET THE DataType based on the slug
-            $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+            $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
             // Check permission
-            Voyager::canOrFail('delete_'.$dataType->name);
+            Admin::canOrFail('delete_'.$dataType->name);
 
             // Load model and find record
             $model = app($dataType->model_name);
@@ -279,12 +279,12 @@ class MediaController extends BaseController
 
             // Check if field exists
             if (!isset($data->{$field})) {
-                throw new Exception(__('voyager.generic.field_does_not_exist'), 400);
+                throw new Exception(__('admin.generic.field_does_not_exist'), 400);
             }
 
             // Check if valid json
             if (is_null(@json_decode($data->{$field}))) {
-                throw new Exception(__('voyager.json.invalid'), 500);
+                throw new Exception(__('admin.json.invalid'), 500);
             }
 
             // Decode field value
@@ -295,7 +295,7 @@ class MediaController extends BaseController
 
             // Check if image exists in array
             if (!array_key_exists($image, $fieldData)) {
-                throw new Exception(__('voyager.media.image_does_not_exist'), 400);
+                throw new Exception(__('admin.media.image_does_not_exist'), 400);
             }
 
             // Remove image from array
@@ -308,12 +308,12 @@ class MediaController extends BaseController
             return response()->json([
                'data' => [
                    'status'     => 200,
-                   'message'    => __('voyager.media.image_removed'),
+                   'message'    => __('admin.media.image_removed'),
                ],
             ]);
         } catch (Exception $e) {
             $code = 500;
-            $message = __('voyager.generic.internal_error');
+            $message = __('admin.generic.internal_error');
 
             if ($e->getCode()) {
                 $code = $e->getCode();
@@ -359,7 +359,7 @@ class MediaController extends BaseController
             Image::make($originImagePath)->crop($width, $height, $x, $y)->save($destImagePath);
 
             $success = true;
-            $message = __('voyager.media.success_crop_image');
+            $message = __('admin.media.success_crop_image');
         } catch (Exception $e) {
             $success = false;
             $message = $e->getMessage();

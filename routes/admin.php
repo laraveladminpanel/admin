@@ -14,10 +14,10 @@ use LaravelAdminPanel\Models\DataType;
 |
 */
 
-Route::group(['as' => 'voyager.'], function () {
+Route::group(['as' => 'admin.'], function () {
     event(new Routing());
 
-    $namespacePrefix = '\\'.config('voyager.controllers.namespace').'\\';
+    $namespacePrefix = '\\'.config('admin.controllers.namespace').'\\';
 
     Route::get('login', ['uses' => $namespacePrefix.'AuthController@login',     'as' => 'login']);
     Route::post('login', ['uses' => $namespacePrefix.'AuthController@postLogin', 'as' => 'postlogin']);

@@ -5,7 +5,7 @@ namespace LaravelAdminPanel\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use LaravelAdminPanel\Events\MenuDisplay;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 /**
  * @todo: Refactor this class by using something like MenuBuilder Helper.
@@ -18,12 +18,12 @@ class Menu extends Model
 
     public function items()
     {
-        return $this->hasMany(Voyager::modelClass('MenuItem'));
+        return $this->hasMany(Admin::modelClass('MenuItem'));
     }
 
     public function parent_items()
     {
-        return $this->hasMany(Voyager::modelClass('MenuItem'))
+        return $this->hasMany(Admin::modelClass('MenuItem'))
             ->whereNull('parent_id');
     }
 
@@ -57,25 +57,25 @@ class Menu extends Model
 
         // Set static vars values for admin menus
         if (in_array($type, ['admin', 'admin_menu'])) {
-            $permissions = Voyager::model('Permission')->all();
-            $dataTypes = Voyager::model('DataType')->all();
-            $prefix = trim(route('voyager.dashboard', [], false), '/');
+            $permissions = Admin::model('Permission')->all();
+            $dataTypes = Admin::model('DataType')->all();
+            $prefix = trim(route('admin.dashboard', [], false), '/');
             $user_permissions = null;
 
             if (!Auth::guest()) {
-                $user = Voyager::model('User')->find(Auth::id());
+                $user = Admin::model('User')->find(Auth::id());
                 $user_permissions = $user->role->permissions->pluck('key')->toArray();
             }
 
             $options->user = (object) compact('permissions', 'dataTypes', 'prefix', 'user_permissions');
 
             // change type to blade template name - TODO funky names, should clean up later
-            $type = 'voyager::menu.'.$type;
+            $type = 'admin::menu.'.$type;
         } else {
             if (is_null($type)) {
-                $type = 'voyager::menu.default';
+                $type = 'admin::menu.default';
             } elseif ($type == 'bootstrap' && !view()->exists($type)) {
-                $type = 'voyager::menu.bootstrap';
+                $type = 'admin::menu.bootstrap';
             }
         }
 

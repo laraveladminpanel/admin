@@ -8,7 +8,7 @@ use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Foundation\Exceptions\Handler;
 use Orchestra\Testbench\BrowserKit\TestCase as OrchestraTestCase;
 use LaravelAdminPanel\Models\User;
-use LaravelAdminPanel\VoyagerServiceProvider;
+use LaravelAdminPanel\AdminServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -42,7 +42,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            VoyagerServiceProvider::class,
+            AdminServiceProvider::class,
         ];
     }
 
@@ -70,8 +70,8 @@ class TestCase extends OrchestraTestCase
             'prefix'   => '',
         ]);
 
-        // Setup Voyager configuration
-        $app['config']->set('voyager.user.namespace', User::class);
+        // Setup admin configuration
+        $app['config']->set('admin.user.namespace', User::class);
 
         // Setup Authentication configuration
         $app['config']->set('auth.providers.users.model', User::class);
@@ -91,14 +91,14 @@ class TestCase extends OrchestraTestCase
             $this->artisan('migrate', ['--path' => realpath(__DIR__.'/migrations')]);
         }
 
-        $this->artisan('voyager:install', ['--with-dummy' => $this->withDummy]);
+        $this->artisan('admin:install', ['--with-dummy' => $this->withDummy]);
 
         config()->set(
-            'voyager',
-            require __DIR__.'/../publishable/config/voyager.php'
+            'admin',
+            require __DIR__.'/../publishable/config/admin.php'
         );
 
-        app(VoyagerServiceProvider::class, ['app' => $this->app])->registerGates();
+        app(AdminServiceProvider::class, ['app' => $this->app])->registerGates();
     }
 
     public function disableExceptionHandling()

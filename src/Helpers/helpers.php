@@ -3,7 +3,7 @@
 if (!function_exists('setting')) {
     function setting($key, $default = null)
     {
-        return LaravelAdminPanel\Facades\Voyager::setting($key, $default);
+        return LaravelAdminPanel\Facades\Admin::setting($key, $default);
     }
 }
 
@@ -14,9 +14,9 @@ if (!function_exists('menu')) {
     }
 }
 
-if (!function_exists('voyager_asset')) {
-    function voyager_asset($path, $secure = null)
+if (!function_exists('admin_asset')) {
+    function admin_asset($path, $secure = null)
     {
-        return asset(config('voyager.assets_path').'/'.$path, $secure);
+        return asset(config('admin.assets_path').'/'.$path, $secure);
     }
 }

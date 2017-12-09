@@ -4,7 +4,7 @@ namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\FormFields\AbstractHandler;
 
 class SettingsController extends BaseController
@@ -12,24 +12,24 @@ class SettingsController extends BaseController
     public function index()
     {
         // Check permission
-        $this->authorize('browse', Voyager::model('Setting'));
+        $this->authorize('browse', Admin::model('Setting'));
 
-        $data = Voyager::model('Setting')->orderBy('order', 'ASC')->get();
+        $data = Admin::model('Setting')->orderBy('order', 'ASC')->get();
 
         $settings = [];
-        $settings[__('voyager.settings.group_general')] = [];
+        $settings[__('admin.settings.group_general')] = [];
         foreach ($data as $d) {
-            if ($d->group == '' || $d->group == __('voyager.settings.group_general')) {
-                $settings[__('voyager.settings.group_general')][] = $d;
+            if ($d->group == '' || $d->group == __('admin.settings.group_general')) {
+                $settings[__('admin.settings.group_general')][] = $d;
             } else {
                 $settings[$d->group][] = $d;
             }
         }
-        if (count($settings[__('voyager.settings.group_general')]) == 0) {
-            unset($settings[__('voyager.settings.group_general')]);
+        if (count($settings[__('admin.settings.group_general')]) == 0) {
+            unset($settings[__('admin.settings.group_general')]);
         }
 
-        $groups_data = Voyager::model('Setting')->select('group')->distinct()->get();
+        $groups_data = Admin::model('Setting')->select('group')->distinct()->get();
         $groups = [];
         foreach ($groups_data as $group) {
             if ($group->group != '') {
@@ -37,25 +37,25 @@ class SettingsController extends BaseController
             }
         }
 
-        return Voyager::view('voyager::settings.index', compact('settings', 'groups'));
+        return Admin::view('admin::settings.index', compact('settings', 'groups'));
     }
 
     public function store(Request $request)
     {
         // Check permission
-        $this->authorize('add', Voyager::model('Setting'));
+        $this->authorize('add', Admin::model('Setting'));
 
         $key = implode('.', [str_slug($request->input('group')), $request->input('key')]);
-        $key_check = Voyager::model('Setting')->where('key', $key)->get()->count();
+        $key_check = Admin::model('Setting')->where('key', $key)->get()->count();
 
         if ($key_check > 0) {
             return back()->with([
-                'message'    => __('voyager.settings.key_already_exists', ['key' => $key]),
+                'message'    => __('admin.settings.key_already_exists', ['key' => $key]),
                 'alert-type' => 'error',
             ]);
         }
 
-        $lastSetting = Voyager::model('Setting')->orderBy('order', 'DESC')->first();
+        $lastSetting = Admin::model('Setting')->orderBy('order', 'DESC')->first();
 
         if (is_null($lastSetting)) {
             $order = 0;
@@ -67,10 +67,10 @@ class SettingsController extends BaseController
         $request->merge(['value' => '']);
         $request->merge(['key' => $key]);
 
-        Voyager::model('Setting')->create($request->all());
+        Admin::model('Setting')->create($request->all());
 
         return back()->with([
-            'message'    => __('voyager.settings.successfully_created'),
+            'message'    => __('admin.settings.successfully_created'),
             'alert-type' => 'success',
         ]);
     }
@@ -78,9 +78,9 @@ class SettingsController extends BaseController
     public function update(Request $request)
     {
         // Check permission
-        $this->authorize('edit', Voyager::model('Setting'));
+        $this->authorize('edit', Admin::model('Setting'));
 
-        $settings = Voyager::model('Setting')->all();
+        $settings = Admin::model('Setting')->all();
 
         foreach ($settings as $setting) {
             $row = (object) [
@@ -106,7 +106,7 @@ class SettingsController extends BaseController
         }
 
         return back()->with([
-            'message'    => __('voyager.settings.successfully_saved'),
+            'message'    => __('admin.settings.successfully_saved'),
             'alert-type' => 'success',
         ]);
     }
@@ -114,12 +114,12 @@ class SettingsController extends BaseController
     public function delete($id)
     {
         // Check permission
-        $this->authorize('delete', Voyager::model('Setting'));
+        $this->authorize('delete', Admin::model('Setting'));
 
-        Voyager::model('Setting')->destroy($id);
+        Admin::model('Setting')->destroy($id);
 
         return back()->with([
-            'message'    => __('voyager.settings.successfully_deleted'),
+            'message'    => __('admin.settings.successfully_deleted'),
             'alert-type' => 'success',
         ]);
     }
@@ -127,20 +127,20 @@ class SettingsController extends BaseController
     public function move_up($id)
     {
         // Check permission
-        Voyager::canOrFail('edit_settings');
+        Admin::canOrFail('edit_settings');
 
-        $setting = Voyager::model('Setting')->find($id);
+        $setting = Admin::model('Setting')->find($id);
 
         // Check permission
         $this->authorize('browse', $setting);
 
         $swapOrder = $setting->order;
-        $previousSetting = Voyager::model('Setting')
+        $previousSetting = Admin::model('Setting')
                             ->where('order', '<', $swapOrder)
                             ->where('group', $setting->group)
                             ->orderBy('order', 'DESC')->first();
         $data = [
-            'message'    => __('voyager.settings.already_at_top'),
+            'message'    => __('admin.settings.already_at_top'),
             'alert-type' => 'error',
         ];
 
@@ -151,7 +151,7 @@ class SettingsController extends BaseController
             $previousSetting->save();
 
             $data = [
-                'message'    => __('voyager.settings.moved_order_up', ['name' => $setting->display_name]),
+                'message'    => __('admin.settings.moved_order_up', ['name' => $setting->display_name]),
                 'alert-type' => 'success',
             ];
         }
@@ -161,7 +161,7 @@ class SettingsController extends BaseController
 
     public function delete_value($id)
     {
-        $setting = Voyager::model('Setting')->find($id);
+        $setting = Admin::model('Setting')->find($id);
 
         // Check permission
         $this->authorize('delete', $setting);
@@ -169,8 +169,8 @@ class SettingsController extends BaseController
         if (isset($setting->id)) {
             // If the type is an image... Then delete it
             if ($setting->type == 'image') {
-                if (Storage::disk(config('voyager.storage.disk'))->exists($setting->value)) {
-                    Storage::disk(config('voyager.storage.disk'))->delete($setting->value);
+                if (Storage::disk(config('admin.storage.disk'))->exists($setting->value)) {
+                    Storage::disk(config('admin.storage.disk'))->delete($setting->value);
                 }
             }
             $setting->value = '';
@@ -178,7 +178,7 @@ class SettingsController extends BaseController
         }
 
         return back()->with([
-            'message'    => __('voyager.settings.successfully_removed', ['name' => $setting->display_name]),
+            'message'    => __('admin.settings.successfully_removed', ['name' => $setting->display_name]),
             'alert-type' => 'success',
         ]);
     }
@@ -186,21 +186,21 @@ class SettingsController extends BaseController
     public function move_down($id)
     {
         // Check permission
-        Voyager::canOrFail('edit_settings');
+        Admin::canOrFail('edit_settings');
 
-        $setting = Voyager::model('Setting')->find($id);
+        $setting = Admin::model('Setting')->find($id);
 
         // Check permission
         $this->authorize('browse', $setting);
 
         $swapOrder = $setting->order;
 
-        $previousSetting = Voyager::model('Setting')
+        $previousSetting = Admin::model('Setting')
                             ->where('order', '>', $swapOrder)
                             ->where('group', $setting->group)
                             ->orderBy('order', 'ASC')->first();
         $data = [
-            'message'    => __('voyager.settings.already_at_bottom'),
+            'message'    => __('admin.settings.already_at_bottom'),
             'alert-type' => 'error',
         ];
 
@@ -211,7 +211,7 @@ class SettingsController extends BaseController
             $previousSetting->save();
 
             $data = [
-                'message'    => __('voyager.settings.moved_order_down', ['name' => $setting->display_name]),
+                'message'    => __('admin.settings.moved_order_down', ['name' => $setting->display_name]),
                 'alert-type' => 'success',
             ];
         }

@@ -10,7 +10,7 @@ class FileHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.file', [
+        return view('admin::formfields.file', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,
@@ -33,7 +33,7 @@ class FileHandler extends AbstractHandler
                 $file->storeAs(
                     $path,
                     $filename.'.'.$file->getClientOriginalExtension(),
-                    config('voyager.storage.disk', 'public')
+                    config('admin.storage.disk', 'public')
                 );
                 array_push($filesPath, [
                     'download_link' => $path.$filename.'.'.$file->getClientOriginalExtension(),

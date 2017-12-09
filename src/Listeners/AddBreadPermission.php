@@ -3,7 +3,7 @@
 namespace LaravelAdminPanel\Listeners;
 
 use LaravelAdminPanel\Events\CrudAdded;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Models\Permission;
 use LaravelAdminPanel\Models\Role;
 
@@ -28,7 +28,7 @@ class AddCrudPermission
      */
     public function handle(CrudAdded $crud)
     {
-        if (config('voyager.add_crud_permission') && file_exists(base_path('routes/web.php'))) {
+        if (config('admin.add_crud_permission') && file_exists(base_path('routes/web.php'))) {
             // Create permission
             //
             // Permission::generateFor(snake_case($crud->dataType->slug));

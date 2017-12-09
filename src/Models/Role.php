@@ -3,7 +3,7 @@
 namespace LaravelAdminPanel\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class Role extends Model
 {
@@ -11,11 +11,11 @@ class Role extends Model
 
     public function users()
     {
-        return $this->belongsToMany(Voyager::modelClass('User'), 'user_roles');
+        return $this->belongsToMany(Admin::modelClass('User'), 'user_roles');
     }
 
     public function permissions()
     {
-        return $this->belongsToMany(Voyager::modelClass('Permission'));
+        return $this->belongsToMany(Admin::modelClass('Permission'));
     }
 }

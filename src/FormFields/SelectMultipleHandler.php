@@ -10,7 +10,7 @@ class SelectMultipleHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.select_multiple', [
+        return view('admin::formfields.select_multiple', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,

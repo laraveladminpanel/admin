@@ -10,7 +10,7 @@ class CodeEditorHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.code_editor', [
+        return view('admin::formfields.code_editor', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,

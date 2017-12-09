@@ -19,7 +19,7 @@ use LaravelAdminPanel\Events\CrudUpdated;
 use LaravelAdminPanel\Events\TableAdded;
 use LaravelAdminPanel\Events\TableDeleted;
 use LaravelAdminPanel\Events\TableUpdated;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Models\DataRow;
 use LaravelAdminPanel\Models\DataType;
 use LaravelAdminPanel\Models\Permission;
@@ -28,9 +28,9 @@ class DatabaseController extends BaseController
 {
     public function index()
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
-        $dataTypes = Voyager::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
+        $dataTypes = Admin::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
         $tables = array_map(function ($table) use ($dataTypes) {
             $table = [
@@ -42,7 +42,7 @@ class DatabaseController extends BaseController
             return (object) $table;
         }, SchemaManager::listTableNames());
 
-        return Voyager::view('voyager::tools.database.index')->with(compact('dataTypes', 'tables'));
+        return Admin::view('admin::tools.database.index')->with(compact('dataTypes', 'tables'));
     }
 
     /**
@@ -52,11 +52,11 @@ class DatabaseController extends BaseController
      */
     public function create()
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         $db = $this->prepareDbManager('create');
 
-        return Voyager::view('voyager::tools.database.edit-add', compact('db'));
+        return Admin::view('admin::tools.database.edit-add', compact('db'));
     }
 
     /**
@@ -68,7 +68,7 @@ class DatabaseController extends BaseController
      */
     public function store(Request $request)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         try {
             Type::registerCustomPlatformTypes();
@@ -77,7 +77,7 @@ class DatabaseController extends BaseController
             SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
-                $modelNamespace = config('voyager.models.namespace', app()->getNamespace());
+                $modelNamespace = config('admin.models.namespace', app()->getNamespace());
                 $params = [
                     'name' => $modelNamespace.Str::studly(Str::singular($table->name)),
                 ];
@@ -90,7 +90,7 @@ class DatabaseController extends BaseController
                     $params['--migration'] = true;
                 }
 
-                Artisan::call('voyager:make:model', $params);
+                Artisan::call('admin:make:model', $params);
 
                 event(new TableAdded($table));
             } elseif (isset($request->create_migration) && $request->create_migration == 'on') {
@@ -101,8 +101,8 @@ class DatabaseController extends BaseController
             }
 
             return redirect()
-               ->route('voyager.database.index')
-               ->with($this->alertSuccess(__('voyager.database.success_create_table', ['table' => $table->name])));
+               ->route('admin.database.index')
+               ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table->name])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e))->withInput();
         }
@@ -117,17 +117,17 @@ class DatabaseController extends BaseController
      */
     public function edit($table)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         if (!SchemaManager::tableExists($table)) {
             return redirect()
-                ->route('voyager.database.index')
-                ->with($this->alertError(__('voyager.database.edit_table_not_exist')));
+                ->route('admin.database.index')
+                ->with($this->alertError(__('admin.database.edit_table_not_exist')));
         }
 
         $db = $this->prepareDbManager('update', $table);
 
-        return Voyager::view('voyager::tools.database.edit-add', compact('db'));
+        return Admin::view('admin::tools.database.edit-add', compact('db'));
     }
 
     /**
@@ -139,7 +139,7 @@ class DatabaseController extends BaseController
      */
     public function update(Request $request)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         $table = json_decode($request->table, true);
 
@@ -153,8 +153,8 @@ class DatabaseController extends BaseController
         }
 
         return redirect()
-               ->route('voyager.database.index')
-               ->with($this->alertSuccess(__('voyager.database.success_create_table', ['table' => $table['name']])));
+               ->route('admin.database.index')
+               ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table['name']])));
     }
 
     protected function prepareDbManager($action, $table = '')
@@ -166,7 +166,7 @@ class DatabaseController extends BaseController
 
         if ($action == 'update') {
             $db->table = SchemaManager::listTableDetails($table);
-            $db->formAction = route('voyager.database.update', $table);
+            $db->formAction = route('admin.database.update', $table);
         } else {
             $db->table = new Table('New Table');
 
@@ -179,7 +179,7 @@ class DatabaseController extends BaseController
 
             $db->table->setPrimaryKey(['id'], 'primary');
 
-            $db->formAction = route('voyager.database.store');
+            $db->formAction = route('admin.database.store');
         }
 
         $oldTable = old('table');
@@ -205,13 +205,13 @@ class DatabaseController extends BaseController
             }
 
             $params = ['name' => Str::studly(Str::singular($tableName))];
-            Artisan::call('voyager:make:model', $params);
+            Artisan::call('admin:make:model', $params);
         }
     }
 
     public function reorder_column(Request $request)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         if ($request->ajax()) {
             $table = $request->table;
@@ -230,22 +230,22 @@ class DatabaseController extends BaseController
 
     public function show($table)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         return response()->json(SchemaManager::describeTable($table));
     }
 
     public function destroy($table)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         try {
             SchemaManager::dropTable($table);
             event(new TableDeleted($table));
 
             return redirect()
-                ->route('voyager.database.index')
-                ->with($this->alertSuccess(__('voyager.database.success_delete_table', ['table' => $table])));
+                ->route('admin.database.index')
+                ->with($this->alertSuccess(__('admin.database.success_delete_table', ['table' => $table])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e));
         }
@@ -260,18 +260,18 @@ class DatabaseController extends BaseController
      */
     public function addCrud(Request $request, $table)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         $data = $this->prepopulateCrudInfo($table);
         $data['fieldOptions'] = SchemaManager::describeTable($table);
 
-        return Voyager::view('voyager::tools.database.edit-add-crud', $data);
+        return Admin::view('admin::tools.database.edit-add-crud', $data);
     }
 
     private function prepopulateCrudInfo($table)
     {
         $displayName = Str::singular(implode(' ', explode('_', Str::title($table))));
-        $modelNamespace = config('voyager.models.namespace', app()->getNamespace());
+        $modelNamespace = config('admin.models.namespace', app()->getNamespace());
         if (empty($modelNamespace)) {
             $modelNamespace = app()->getNamespace();
         }
@@ -290,46 +290,46 @@ class DatabaseController extends BaseController
 
     public function storeCrud(Request $request)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         try {
-            $dataType = Voyager::model('DataType');
+            $dataType = Admin::model('DataType');
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('voyager.database.success_created_crud'))
-                : $this->alertError(__('voyager.database.error_creating_crud'));
+                ? $this->alertSuccess(__('admin.database.success_created_crud'))
+                : $this->alertError(__('admin.database.error_creating_crud'));
             if ($res) {
                 event(new CrudAdded($dataType, $data));
             }
 
-            return redirect()->route('voyager.database.index')->with($data);
+            return redirect()->route('admin.database.index')->with($data);
         } catch (Exception $e) {
-            return redirect()->route('voyager.database.index')->with($this->alertException($e, 'Saving Failed'));
+            return redirect()->route('admin.database.index')->with($this->alertException($e, 'Saving Failed'));
         }
     }
 
     public function addEditCrud($table)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
-        $dataType = Voyager::model('DataType')->whereName($table)->first();
+        $dataType = Admin::model('DataType')->whereName($table)->first();
 
         $fieldOptions = SchemaManager::describeTable($dataType->name);
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
-        $dataTypeRelationships = Voyager::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
+        $dataTypeRelationships = Admin::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
 
-        return Voyager::view('voyager::tools.database.edit-add-crud', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships'));
+        return Admin::view('admin::tools.database.edit-add-crud', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships'));
     }
 
     public function updateCrud(Request $request, $id)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         /* @var \LaravelAdminPanel\Models\DataType $dataType */
         try {
-            $dataType = Voyager::model('DataType')->find($id);
+            $dataType = Admin::model('DataType')->find($id);
 
             // Prepare Translations and Transform data
             $translations = is_crud_translatable($dataType)
@@ -338,8 +338,8 @@ class DatabaseController extends BaseController
 
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
-                ? $this->alertSuccess(__('voyager.database.success_update_crud', ['datatype' => $dataType->name]))
-                : $this->alertError(__('voyager.database.error_updating_crud'));
+                ? $this->alertSuccess(__('admin.database.success_update_crud', ['datatype' => $dataType->name]))
+                : $this->alertError(__('admin.database.error_updating_crud'));
             if ($res) {
                 event(new CrudUpdated($dataType, $data));
             }
@@ -347,37 +347,37 @@ class DatabaseController extends BaseController
             // Save translations if applied
             $dataType->saveTranslations($translations);
 
-            return redirect()->route('voyager.database.index')->with($data);
+            return redirect()->route('admin.database.index')->with($data);
         } catch (Exception $e) {
-            return back()->with($this->alertException($e, __('voyager.generic.update_failed')));
+            return back()->with($this->alertException($e, __('admin.generic.update_failed')));
         }
     }
 
     public function deleteCrud($id)
     {
-        Voyager::canOrFail('browse_database');
+        Admin::canOrFail('browse_database');
 
         /* @var \LaravelAdminPanel\Models\DataType $dataType */
-        $dataType = Voyager::model('DataType')->find($id);
+        $dataType = Admin::model('DataType')->find($id);
 
         // Delete Translations, if present
         if (is_crud_translatable($dataType)) {
             $dataType->deleteAttributeTranslations($dataType->getTranslatableAttributes());
         }
 
-        $res = Voyager::model('DataType')->destroy($id);
+        $res = Admin::model('DataType')->destroy($id);
         $data = $res
-            ? $this->alertSuccess(__('voyager.database.success_remove_crud', ['datatype' => $dataType->name]))
-            : $this->alertError(__('voyager.database.error_updating_crud'));
+            ? $this->alertSuccess(__('admin.database.success_remove_crud', ['datatype' => $dataType->name]))
+            : $this->alertError(__('admin.database.error_updating_crud'));
         if ($res) {
             event(new CrudDeleted($dataType, $data));
         }
 
         if (!is_null($dataType)) {
-            Voyager::model('Permission')->removeFrom($dataType->name);
+            Admin::model('Permission')->removeFrom($dataType->name);
         }
 
-        return redirect()->route('voyager.database.index')->with($data);
+        return redirect()->route('admin.database.index')->with($data);
     }
 
     public function addRelationship(Request $request)
@@ -424,7 +424,7 @@ class DatabaseController extends BaseController
             }
 
             $newRow->details = $relationshipDetails;
-            $newRow->order = intval(Voyager::model('DataType')->find($request->data_type_id)->lastRow()->order) + 1;
+            $newRow->order = intval(Admin::model('DataType')->find($request->data_type_id)->lastRow()->order) + 1;
 
             if (!$newRow->save()) {
                 return back()->with([
@@ -453,18 +453,18 @@ class DatabaseController extends BaseController
     {
         // We need to make sure that we aren't creating an already existing field
 
-        $dataType = Voyager::model('DataType')->find($request->data_type_id);
+        $dataType = Admin::model('DataType')->find($request->data_type_id);
 
         $field = str_singular($dataType->name).'_'.$request->relationship_type.'_'.str_singular($request->relationship_table).'_relationship';
 
         $relationshipFieldOriginal = $relationshipField = strtolower($field);
 
-        $existingRow = Voyager::model('DataRow')->where('field', '=', $relationshipField)->first();
+        $existingRow = Admin::model('DataRow')->where('field', '=', $relationshipField)->first();
         $index = 1;
 
         while (isset($existingRow->id)) {
             $relationshipField = $relationshipFieldOriginal.'_'.$index;
-            $existingRow = Voyager::model('DataRow')->where('field', '=', $relationshipField)->first();
+            $existingRow = Admin::model('DataRow')->where('field', '=', $relationshipField)->first();
             $index += 1;
         }
 
@@ -473,7 +473,7 @@ class DatabaseController extends BaseController
 
     public function deleteRelationship($id)
     {
-        Voyager::model('DataRow')->destroy($id);
+        Admin::model('DataRow')->destroy($id);
 
         return back()->with([
                 'message'    => 'Successfully deleted relationship.',

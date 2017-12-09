@@ -10,7 +10,7 @@ use LaravelAdminPanel\Events\CrudDataAdded;
 use LaravelAdminPanel\Events\CrudDataDeleted;
 use LaravelAdminPanel\Events\CrudDataUpdated;
 use LaravelAdminPanel\Events\CrudImagesDeleted;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Http\Controllers\Traits\CrudRelationshipParser;
 
 class CrudController extends BaseController
@@ -34,7 +34,7 @@ class CrudController extends BaseController
         $slug = $this->getSlug($request);
 
         // GET THE DataType based on the slug
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('browse', app($dataType->model_name));
@@ -90,13 +90,13 @@ class CrudController extends BaseController
         // Check if server side pagination is enabled
         $isServerSide = isset($dataType->server_side) && $dataType->server_side;
 
-        $view = 'voyager::crud.browse';
+        $view = 'admin::crud.browse';
 
-        if (view()->exists("voyager::$slug.browse")) {
-            $view = "voyager::$slug.browse";
+        if (view()->exists("admin::$slug.browse")) {
+            $view = "admin::$slug.browse";
         }
 
-        return Voyager::view($view, compact(
+        return Admin::view($view, compact(
             'dataType',
             'dataTypeContent',
             'isModelTranslatable',
@@ -124,7 +124,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
@@ -150,13 +150,13 @@ class CrudController extends BaseController
         // Check if BREAD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::crud.read';
+        $view = 'admin::crud.read';
 
-        if (view()->exists("voyager::$slug.read")) {
-            $view = "voyager::$slug.read";
+        if (view()->exists("admin::$slug.read")) {
+            $view = "admin::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     //***************************************
@@ -175,7 +175,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
@@ -200,13 +200,13 @@ class CrudController extends BaseController
         // Check if BREAD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::crud.edit-add';
+        $view = 'admin::crud.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("admin::$slug.edit-add")) {
+            $view = "admin::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     // POST BR(E)AD
@@ -214,7 +214,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
@@ -237,9 +237,9 @@ class CrudController extends BaseController
             event(new CrudDataUpdated($dataType, $data));
 
             return redirect()
-                ->route("voyager.{$dataType->slug}.index")
+                ->route("admin.{$dataType->slug}.index")
                 ->with([
-                    'message'    => __('voyager.generic.successfully_updated')." {$dataType->display_name_singular}",
+                    'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
                     'alert-type' => 'success',
                 ]);
         }
@@ -262,7 +262,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -282,13 +282,13 @@ class CrudController extends BaseController
         // Check if BREAD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
-        $view = 'voyager::crud.edit-add';
+        $view = 'admin::crud.edit-add';
 
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
+        if (view()->exists("admin::$slug.edit-add")) {
+            $view = "admin::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     /**
@@ -302,7 +302,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -320,9 +320,9 @@ class CrudController extends BaseController
             event(new CrudDataAdded($dataType, $data));
 
             return redirect()
-                ->route("voyager.{$dataType->slug}.index")
+                ->route("admin.{$dataType->slug}.index")
                 ->with([
-                        'message'    => __('voyager.generic.successfully_added_new')." {$dataType->display_name_singular}",
+                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
                         'alert-type' => 'success',
                     ]);
         }
@@ -344,7 +344,7 @@ class CrudController extends BaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('delete', app($dataType->model_name));
@@ -368,11 +368,11 @@ class CrudController extends BaseController
         $res = $data->destroy($ids);
         $data = $res
             ? [
-                'message'    => __('voyager.generic.successfully_deleted')." {$displayName}",
+                'message'    => __('admin.generic.successfully_deleted')." {$displayName}",
                 'alert-type' => 'success',
             ]
             : [
-                'message'    => __('voyager.generic.error_deleting')." {$displayName}",
+                'message'    => __('admin.generic.error_deleting')." {$displayName}",
                 'alert-type' => 'error',
             ];
 
@@ -380,7 +380,7 @@ class CrudController extends BaseController
             event(new CrudDataDeleted($dataType, $data));
         }
 
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        return redirect()->route("admin.{$dataType->slug}.index")->with($data);
     }
 
     /**

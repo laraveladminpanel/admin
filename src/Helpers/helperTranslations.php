@@ -50,7 +50,7 @@ if (!function_exists('is_crud_translatable')) {
      */
     function is_crud_translatable($model)
     {
-        return config('voyager.multilingual.enabled')
+        return config('admin.multilingual.enabled')
             && isset($model)
             && method_exists($model, 'translatable')
             && $model->translatable();

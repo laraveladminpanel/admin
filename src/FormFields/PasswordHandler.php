@@ -10,7 +10,7 @@ class PasswordHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.password', [
+        return view('admin::formfields.password', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,

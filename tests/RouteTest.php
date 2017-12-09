@@ -22,43 +22,43 @@ class RouteTest extends TestCase
     {
         $this->disableExceptionHandling();
 
-        $this->visit(route('voyager.login'));
+        $this->visit(route('admin.login'));
         $this->type('admin@admin.com', 'email');
         $this->type('password', 'password');
-        $this->press(__('voyager.generic.login'));
+        $this->press(__('admin.generic.login'));
 
         $urls = [
-            route('voyager.dashboard'),
-            route('voyager.media.index'),
-            route('voyager.settings.index'),
-            route('voyager.roles.index'),
-            route('voyager.roles.create'),
-            route('voyager.roles.show', ['role' => 1]),
-            route('voyager.roles.edit', ['role' => 1]),
-            route('voyager.users.index'),
-            route('voyager.users.create'),
-            route('voyager.users.show', ['user' => 1]),
-            route('voyager.users.edit', ['user' => 1]),
-            route('voyager.posts.index'),
-            route('voyager.posts.create'),
-            route('voyager.posts.show', ['post' => 1]),
-            route('voyager.posts.edit', ['post' => 1]),
-            route('voyager.pages.index'),
-            route('voyager.pages.create'),
-            route('voyager.pages.show', ['page' => 1]),
-            route('voyager.pages.edit', ['page' => 1]),
-            route('voyager.categories.index'),
-            route('voyager.categories.create'),
-            route('voyager.categories.show', ['category' => 1]),
-            route('voyager.categories.edit', ['category' => 1]),
-            route('voyager.menus.index'),
-            route('voyager.menus.create'),
-            route('voyager.menus.show', ['menu' => 1]),
-            route('voyager.menus.edit', ['menu' => 1]),
-            route('voyager.database.index'),
-            route('voyager.database.crud.edit', ['table' => 'categories']),
-            route('voyager.database.edit', ['table' => 'categories']),
-            route('voyager.database.create'),
+            route('admin.dashboard'),
+            route('admin.media.index'),
+            route('admin.settings.index'),
+            route('admin.roles.index'),
+            route('admin.roles.create'),
+            route('admin.roles.show', ['role' => 1]),
+            route('admin.roles.edit', ['role' => 1]),
+            route('admin.users.index'),
+            route('admin.users.create'),
+            route('admin.users.show', ['user' => 1]),
+            route('admin.users.edit', ['user' => 1]),
+            route('admin.posts.index'),
+            route('admin.posts.create'),
+            route('admin.posts.show', ['post' => 1]),
+            route('admin.posts.edit', ['post' => 1]),
+            route('admin.pages.index'),
+            route('admin.pages.create'),
+            route('admin.pages.show', ['page' => 1]),
+            route('admin.pages.edit', ['page' => 1]),
+            route('admin.categories.index'),
+            route('admin.categories.create'),
+            route('admin.categories.show', ['category' => 1]),
+            route('admin.categories.edit', ['category' => 1]),
+            route('admin.menus.index'),
+            route('admin.menus.create'),
+            route('admin.menus.show', ['menu' => 1]),
+            route('admin.menus.edit', ['menu' => 1]),
+            route('admin.database.index'),
+            route('admin.database.crud.edit', ['table' => 'categories']),
+            route('admin.database.edit', ['table' => 'categories']),
+            route('admin.database.create'),
         ];
 
         foreach ($urls as $url) {

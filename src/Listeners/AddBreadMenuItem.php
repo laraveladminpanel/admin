@@ -3,7 +3,7 @@
 namespace LaravelAdminPanel\Listeners;
 
 use LaravelAdminPanel\Events\CrudAdded;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Models\Menu;
 use LaravelAdminPanel\Models\MenuItem;
 
@@ -28,7 +28,7 @@ class AddCrudMenuItem
      */
     public function handle(CrudAdded $crud)
     {
-        if (config('voyager.add_crud_menu_item') && file_exists(base_path('routes/web.php'))) {
+        if (config('admin.add_crud_menu_item') && file_exists(base_path('routes/web.php'))) {
             require base_path('routes/web.php');
 
             $menu = Menu::where('name', 'admin')->firstOrFail();
@@ -36,10 +36,10 @@ class AddCrudMenuItem
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => $crud->dataType->display_name_plural,
-                'url'     => '/'.config('voyager.prefix', 'admin').'/'.$crud->dataType->slug,
+                'url'     => '/'.config('admin.prefix', 'admin').'/'.$crud->dataType->slug,
             ]);
 
-            $order = Voyager::model('MenuItem')->highestOrderMenuItem();
+            $order = Admin::model('MenuItem')->highestOrderMenuItem();
 
             if (!$menuItem->exists) {
                 $menuItem->fill([

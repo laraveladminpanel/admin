@@ -1,16 +1,16 @@
-@extends('voyager::master')
+@extends('admin::master')
 
 @section('css')
 
-    @include('voyager::compass.includes.styles')
+    @include('admin::compass.includes.styles')
     
 @stop
 
 @section('page_header')
     <h1 class="page-title">
         <i class="voyager-compass"></i>
-        <p> {{ __('voyager.generic.compass') }}</p>
-        <span class="page-description">Welcome to the Voyager Compass. Every good app needs a compass to point them in the right direction. In this section you will find many resources and administrative tasks to help guide you as you build out your application.</span>
+        <p> {{ __('admin.generic.compass') }}</p>
+        <span class="page-description">Welcome to the Admin Compass. Every good app needs a compass to point them in the right direction. In this section you will find many resources and administrative tasks to help guide you as you build out your application.</span>
     </h1>
 @stop
 
@@ -19,7 +19,7 @@
     <div id="gradient_bg"></div>
 
     <div class="container-fluid">
-        @include('voyager::alerts') 
+        @include('admin::alerts') 
     </div>
 
     <div class="page-content compass container-fluid">
@@ -31,7 +31,7 @@
 
         <div class="tab-content">
             <div id="resources" class="tab-pane fade in @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'resources')){!! 'active' !!}@endif">
-                <h3><i class="voyager-book"></i> Resources <small>Voyager resources to help you find things quicker.</small></h3>
+                <h3><i class="voyager-book"></i> Resources <small>Admin resources to help you find things quicker.</small></h3>
 
                 <div class="collapsible">
                     <div class="collapse-head" data-toggle="collapse" data-target="#links" aria-expanded="true" aria-controls="links">
@@ -48,12 +48,12 @@
                             </div>
                             <div class="col-md-4">
                                 <a href="https://laravelvoyager.com" target="_blank" class="voyager-link" style="background-image:url('/vendor/tcg/voyager/assets/images/compass/voyager-home.jpg')">
-                                    <span class="resource_label"><i class="voyager-browser"></i> <span class="copy">Voyager Homepage</span></span>
+                                    <span class="resource_label"><i class="voyager-browser"></i> <span class="copy">Admin Homepage</span></span>
                                 </a>
                             </div>
                             <div class="col-md-4">
                                 <a href="https://larapack.io" target="_blank" class="voyager-link" style="background-image:url('/vendor/tcg/voyager/assets/images/compass/hooks.jpg')">
-                                    <span class="resource_label"><i class="voyager-hook"></i> <span class="copy">Voyager Hooks</span></span>
+                                    <span class="resource_label"><i class="voyager-hook"></i> <span class="copy">Admin Hooks</span></span>
                                 </a>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
 
                 <div class="collapse-content collapse in" id="fonts">
 
-                    @include('voyager::compass.includes.fonts')
+                    @include('admin::compass.includes.fonts')
 
                 </div>
 
@@ -78,16 +78,16 @@
             </div>
 
           <div id="commands" class="tab-pane fade in @if($active_tab == 'commands'){!! 'active' !!}@endif">
-            <h3><i class="voyager-terminal"></i> Commands <small>Run Artisan Commands from Voyager.</small></h3>
+            <h3><i class="voyager-terminal"></i> Commands <small>Run Artisan Commands from Admin.</small></h3>
             <div id="command_lists">
-                @include('voyager::compass.includes.commands')
+                @include('admin::compass.includes.commands')
             </div>
 
           </div>
           <div id="logs" class="tab-pane fade in @if($active_tab == 'logs'){!! 'active' !!}@endif">
             <div class="row">
 
-                @include('voyager::compass.includes.logs')
+                @include('admin::compass.includes.logs')
 
             </div>
           </div>

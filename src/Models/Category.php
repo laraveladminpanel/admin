@@ -3,7 +3,7 @@
 namespace LaravelAdminPanel\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Traits\Translatable;
 
 class Category extends Model
@@ -18,7 +18,7 @@ class Category extends Model
 
     public function posts()
     {
-        return $this->hasMany(Voyager::modelClass('Post'))
+        return $this->hasMany(Admin::modelClass('Post'))
             ->published()
             ->orderBy('created_at', 'DESC');
     }

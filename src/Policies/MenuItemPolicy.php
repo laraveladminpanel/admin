@@ -18,7 +18,7 @@ class MenuItemPolicy extends BasePolicy
      */
     protected function checkPermission(User $user, $model, $action)
     {
-        $regex = str_replace('/', '\/', preg_quote(route('voyager.dashboard')));
+        $regex = str_replace('/', '\/', preg_quote(route('admin.dashboard')));
         $slug = preg_replace('/'.$regex.'/', '', $model->link(true));
         $slug = str_replace('/', '', $slug);
 

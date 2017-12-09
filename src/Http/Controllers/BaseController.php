@@ -127,8 +127,8 @@ abstract class BaseController extends Controller
 
     public function deleteFileIfExists($path)
     {
-        if (Storage::disk(config('voyager.storage.disk'))->exists($path)) {
-            Storage::disk(config('voyager.storage.disk'))->delete($path);
+        if (Storage::disk(config('admin.storage.disk'))->exists($path)) {
+            Storage::disk(config('admin.storage.disk'))->delete($path);
             event(new FileDeleted($path));
         }
     }

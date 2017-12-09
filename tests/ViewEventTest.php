@@ -2,7 +2,7 @@
 
 namespace LaravelAdminPanel\Tests;
 
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class ViewEventTest extends TestCase
 {
@@ -21,7 +21,7 @@ class ViewEventTest extends TestCase
 
         // Add test route
         $this->app['router']->get('test', function () {
-            return Voyager::view('test', [
+            return Admin::view('test', [
                 'foo' => 'bar',
             ]);
         });
@@ -34,7 +34,7 @@ class ViewEventTest extends TestCase
             ->see('This is a test');
 
         // Add event on test view
-        Voyager::onLoadingView('test', function ($name, array $parameters) {
+        Admin::onLoadingView('test', function ($name, array $parameters) {
             $this->eventTrigered = true;
 
             $this->assertEquals('test', $name);
@@ -52,7 +52,7 @@ class ViewEventTest extends TestCase
     public function testOverwritingViewName()
     {
         // Add event on test view
-        Voyager::onLoadingView('test', function (&$name, array $parameters) {
+        Admin::onLoadingView('test', function (&$name, array $parameters) {
             $name = 'foo';
         });
 
@@ -64,7 +64,7 @@ class ViewEventTest extends TestCase
     public function testOverwritingViewNameAndParameters()
     {
         // Add event on test view
-        Voyager::onLoadingView('test', function (&$name, array &$parameters) {
+        Admin::onLoadingView('test', function (&$name, array &$parameters) {
             $name = 'hello';
             $parameters['name'] = 'Mark';
         });

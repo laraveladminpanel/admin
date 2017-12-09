@@ -10,7 +10,7 @@ class SelectDropdownHandler extends AbstractHandler
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {
-        return view('voyager::formfields.select_dropdown', [
+        return view('admin::formfields.select_dropdown', [
             'row'             => $row,
             'options'         => $options,
             'dataType'        => $dataType,

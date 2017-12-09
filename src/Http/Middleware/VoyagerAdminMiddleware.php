@@ -4,9 +4,9 @@ namespace LaravelAdminPanel\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
-class VoyagerAdminMiddleware
+class AdminAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,12 +19,12 @@ class VoyagerAdminMiddleware
     public function handle($request, Closure $next)
     {
         if (!Auth::guest()) {
-            $user = Voyager::model('User')->find(Auth::id());
+            $user = Admin::model('User')->find(Auth::id());
 
             return $user->hasPermission('browse_admin') ? $next($request) : redirect('/');
         }
 
-        $urlLogin = route('voyager.login');
+        $urlLogin = route('admin.login');
         $urlIntended = $request->url();
         if ($urlIntended == $urlLogin) {
             $urlIntended = null;

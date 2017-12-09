@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
 
 @php
-    if (Voyager::translatable($items)) {
+    if (Admin::translatable($items)) {
         $items = $items->load('translations');
     }
 @endphp
@@ -13,7 +13,7 @@
         $linkAttributes = null;
         $transItem = $item;
 
-        if (Voyager::translatable($item)) {
+        if (Admin::translatable($item)) {
             $transItem = $item->translate($options->locale);
         }
 
@@ -64,7 +64,7 @@
         @if($hasChildren)
             <div id="{{ str_slug($transItem->title, '-') }}-dropdown-element" class="panel-collapse collapse {{ (in_array('active', $listItemClass) ? 'in' : '') }}">
                 <div class="panel-body">
-                    @include('voyager::menu.admin_menu', ['items' => $item->children, 'options' => $options, 'innerLoop' => true])
+                    @include('admin::menu.admin_menu', ['items' => $item->children, 'options' => $options, 'innerLoop' => true])
                 </div>
             </div>
         @endif

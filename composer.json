@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelAdminPanel\\VoyagerServiceProvider"
+                "LaravelAdminPanel\\AdminServiceProvider"
             ]
         }
     }

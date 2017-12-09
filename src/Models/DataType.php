@@ -5,7 +5,7 @@ namespace LaravelAdminPanel\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use LaravelAdminPanel\Database\Schema\SchemaManager;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Traits\Translatable;
 
 class DataType extends Model
@@ -32,7 +32,7 @@ class DataType extends Model
 
     public function rows()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order');
+        return $this->hasMany(Admin::modelClass('DataRow'))->orderBy('order');
     }
 
     public function browseRows()
@@ -62,7 +62,7 @@ class DataType extends Model
 
     public function lastRow()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
+        return $this->hasMany(Admin::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
     }
 
     public function setGeneratePermissionsAttribute($value)
@@ -107,7 +107,7 @@ class DataType extends Model
                     $dataRow->order = intval($requestData['field_order_'.$field]);
 
                     if (!$dataRow->save()) {
-                        throw new \Exception(__('voyager.database.field_safe_failed', ['field' => $field]));
+                        throw new \Exception(__('admin.database.field_safe_failed', ['field' => $field]));
                     }
                 }
 
@@ -118,7 +118,7 @@ class DataType extends Model
 
                 // It seems everything was fine. Let's check if we need to generate permissions
                 if ($this->generate_permissions) {
-                    Voyager::model('Permission')->generateFor($this->name);
+                    Admin::model('Permission')->generateFor($this->name);
                 }
 
                 DB::commit();

@@ -8,7 +8,7 @@ use Intervention\Image\ImageServiceProviderLaravel5;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;
 use LaravelAdminPanel\Traits\Seedable;
-use LaravelAdminPanel\VoyagerServiceProvider;
+use LaravelAdminPanel\AdminServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -21,14 +21,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'voyager:install';
+    protected $name = 'admin:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the Voyager Admin package';
+    protected $description = 'Install the Admin Admin package';
 
     protected function getOptions()
     {
@@ -68,14 +68,14 @@ class InstallCommand extends Command
         $this->info('Setting up the hooks');
         $this->call('hook:setup');
 
-        $this->info('Publishing the Voyager assets, database, language, and config files');
-        $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class]);
+        $this->info('Publishing the Admin assets, database, language, and config files');
+        $this->call('vendor:publish', ['--provider' => AdminServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
 
         $this->info('Migrating the database tables into your application');
         $this->call('migrate');
 
-        $this->info('Attempting to set Voyager User model as parent to App\User');
+        $this->info('Attempting to set Admin User model as parent to App\User');
         if (file_exists(app_path('User.php'))) {
             $str = file_get_contents(app_path('User.php'));
 
@@ -96,29 +96,29 @@ class InstallCommand extends Command
         $process = new Process($composer.' dump-autoload');
         $process->setWorkingDirectory(base_path())->run();
 
-        $this->info('Adding Voyager routes to routes/web.php');
+        $this->info('Adding Admin routes to routes/web.php');
         $routes_contents = $filesystem->get(base_path('routes/web.php'));
-        if (false === strpos($routes_contents, 'Voyager::routes()')) {
+        if (false === strpos($routes_contents, 'Admin::routes()')) {
             $filesystem->append(
                 base_path('routes/web.php'),
-                "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Voyager::routes();\n});\n"
+                "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Admin::routes();\n});\n"
             );
         }
 
         \Route::group(['prefix' => 'admin'], function () {
-            \Voyager::routes();
+            \Admin::routes();
         });
 
         $this->info('Seeding data into the database');
-        $this->seed('VoyagerDatabaseSeeder');
+        $this->seed('AdminDatabaseSeeder');
 
         if ($this->option('with-dummy')) {
-            $this->seed('VoyagerDummyDatabaseSeeder');
+            $this->seed('AdminDummyDatabaseSeeder');
         }
 
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Successfully installed Voyager! Enjoy');
+        $this->info('Successfully installed Admin! Enjoy');
     }
 }

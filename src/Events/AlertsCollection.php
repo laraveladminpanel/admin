@@ -16,6 +16,6 @@ class AlertsCollection
 
         // @deprecate
         //
-        event('voyager.alerts.collecting', $collection);
+        event('admin.alerts.collecting', $collection);
     }
 }

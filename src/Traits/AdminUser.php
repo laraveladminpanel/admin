@@ -3,17 +3,17 @@
 namespace LaravelAdminPanel\Traits;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Models\Role;
 
 /**
  * @property  \Illuminate\Database\Eloquent\Collection  roles
  */
-trait VoyagerUser
+trait AdminUser
 {
     public function role()
     {
-        return $this->belongsTo(Voyager::modelClass('Role'));
+        return $this->belongsTo(Admin::modelClass('Role'));
     }
 
     /**
@@ -34,7 +34,7 @@ trait VoyagerUser
 
     public function setRole($name)
     {
-        $role = Voyager::model('Role')->where('name', '=', $name)->first();
+        $role = Admin::model('Role')->where('name', '=', $name)->first();
 
         if ($role) {
             $this->role()->associate($role);

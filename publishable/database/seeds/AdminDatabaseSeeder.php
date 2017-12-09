@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use LaravelAdminPanel\Traits\Seedable;
 
-class VoyagerDatabaseSeeder extends Seeder
+class AdminDatabaseSeeder extends Seeder
 {
     use Seedable;
 

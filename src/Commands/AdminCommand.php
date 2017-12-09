@@ -5,7 +5,7 @@ namespace LaravelAdminPanel\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\Console\Input\InputOption;
-use LaravelAdminPanel\Facades\Voyager;
+use LaravelAdminPanel\Facades\Admin;
 
 class AdminCommand extends Command
 {
@@ -14,7 +14,7 @@ class AdminCommand extends Command
      *
      * @var string
      */
-    protected $name = 'voyager:admin';
+    protected $name = 'admin:admin';
 
     /**
      * The console command description.
@@ -54,7 +54,7 @@ class AdminCommand extends Command
         $role = $this->getAdministratorRole();
 
         // Get all permissions
-        $permissions = Voyager::model('Permission')->all();
+        $permissions = Admin::model('Permission')->all();
 
         // Assign all permissions to the admin role
         $role->permissions()->sync(
@@ -87,7 +87,7 @@ class AdminCommand extends Command
      */
     protected function getAdministratorRole()
     {
-        $role = Voyager::model('Role')->firstOrNew([
+        $role = Admin::model('Role')->firstOrNew([
             'name' => 'admin',
         ]);
 
@@ -111,7 +111,7 @@ class AdminCommand extends Command
     {
         $email = $this->argument('email');
 
-        $model = config('voyager.user.namespace', 'App\\User');
+        $model = config('admin.user.namespace', 'App\\User');
 
         // If we need to create a new user go ahead and create it
         if ($create) {

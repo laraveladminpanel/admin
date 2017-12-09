@@ -150,7 +150,7 @@ return [
         // Add custom list items to navbar's dropdown
         'navbar_items' => [
             'Profile' => [
-                'route'      => 'voyager.profile',
+                'route'      => 'admin.profile',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
             ],
@@ -160,7 +160,7 @@ return [
                 'target_blank' => true,
             ],
             'Logout' => [
-                'route'      => 'voyager.logout',
+                'route'      => 'admin.logout',
                 'icon_class' => 'voyager-power',
             ],
         ],

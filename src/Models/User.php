@@ -5,18 +5,18 @@ namespace LaravelAdminPanel\Models;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use LaravelAdminPanel\Contracts\User as UserContract;
-use LaravelAdminPanel\Traits\VoyagerUser;
+use LaravelAdminPanel\Traits\AdminUser;
 
 class User extends Authenticatable implements UserContract
 {
-    use VoyagerUser;
+    use AdminUser;
 
     protected $guarded = [];
 
     public function getAvatarAttribute($value)
     {
         if (is_null($value)) {
-            return config('voyager.user.default_avatar', 'users/default.png');
+            return config('admin.user.default_avatar', 'users/default.png');
         }
 
         return $value;

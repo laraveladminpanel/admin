@@ -6,27 +6,27 @@
     <meta name="robots" content="none" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="admin login">
-    <title>Admin - {{ Voyager::setting("admin.title") }}</title>
-    <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
+    <title>Admin - {{ Admin::setting("admin.title") }}</title>
+    <link rel="stylesheet" href="{{ admin_asset('css/app.css') }}">
     <style>
         body {
-            background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}');
-            background-color: {{ Voyager::setting("admin.bg_color", "#FFFFFF" ) }};
+            background-image:url('{{ Admin::image( Admin::setting("admin.bg_image"), admin_asset("images/bg.jpg") ) }}');
+            background-color: {{ Admin::setting("admin.bg_color", "#FFFFFF" ) }};
         }
         .login-sidebar{
-            border-top:5px solid {{ config('voyager.primary_color','#22A7F0') }};
+            border-top:5px solid {{ config('admin.primary_color','#22A7F0') }};
         }
         @media (max-width: 767px) {
             .login-sidebar {
                 border-top:0px !important;
-                border-left:5px solid {{ config('voyager.primary_color','#22A7F0') }};
+                border-left:5px solid {{ config('admin.primary_color','#22A7F0') }};
             }
         }
         body.login .form-group-default.focused{
-            border-color:{{ config('voyager.primary_color','#22A7F0') }};
+            border-color:{{ config('admin.primary_color','#22A7F0') }};
         }
         .login-button, .bar:before, .bar:after{
-            background:{{ config('voyager.primary_color','#22A7F0') }};
+            background:{{ config('admin.primary_color','#22A7F0') }};
         }
     </style>
 
@@ -40,15 +40,15 @@
             <div class="clearfix">
                 <div class="col-sm-12 col-md-10 col-md-offset-2">
                     <div class="logo-title-container">
-                        <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
+                        <?php $admin_logo_img = Admin::setting('admin.icon_image', ''); ?>
                         @if($admin_logo_img == '')
-                        <img class="img-responsive pull-left logo hidden-xs animated fadeIn" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
+                        <img class="img-responsive pull-left logo hidden-xs animated fadeIn" src="{{ admin_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
                         @else
-                        <img class="img-responsive pull-left logo hidden-xs animated fadeIn" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
+                        <img class="img-responsive pull-left logo hidden-xs animated fadeIn" src="{{ Admin::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                         <div class="copy animated fadeIn">
-                            <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
-                            <p>{{ Voyager::setting('admin.description', __('voyager.login.welcome')) }}</p>
+                            <h1>{{ Admin::setting('admin.title', 'Admin') }}</h1>
+                            <p>{{ Admin::setting('admin.description', __('admin.login.welcome')) }}</p>
                         </div>
                     </div> <!-- .logo-title-container -->
                 </div>
@@ -59,27 +59,27 @@
             
             <div class="login-container">
                 
-                <p>{{ __('voyager.login.signin_below') }}</p>
+                <p>{{ __('admin.login.signin_below') }}</p>
 
-                <form action="{{ route('voyager.login') }}" method="POST">
+                <form action="{{ route('admin.login') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group form-group-default" id="emailGroup">
-                        <label>{{ __('voyager.generic.email') }}</label>
+                        <label>{{ __('admin.generic.email') }}</label>
                         <div class="controls">
-                            <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('voyager.generic.email') }}" class="form-control" required>
+                            <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('admin.generic.email') }}" class="form-control" required>
                          </div>
                     </div>
 
                     <div class="form-group form-group-default" id="passwordGroup">
-                        <label>{{ __('voyager.generic.password') }}</label>
+                        <label>{{ __('admin.generic.password') }}</label>
                         <div class="controls">
-                            <input type="password" name="password" placeholder="{{ __('voyager.generic.password') }}" class="form-control" required>
+                            <input type="password" name="password" placeholder="{{ __('admin.generic.password') }}" class="form-control" required>
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-block login-button">
-                        <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager.login.loggingin') }}...</span>
-                        <span class="signin">{{ __('voyager.generic.login') }}</span>
+                        <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('admin.login.loggingin') }}...</span>
+                        <span class="signin">{{ __('admin.generic.login') }}</span>
                     </button>
 
               </form>
