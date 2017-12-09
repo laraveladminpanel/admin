@@ -38,7 +38,7 @@ module.exports = function(){
 
 		CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-		var VoyagerMedia = function(o){
+		var AdminPanelMedia = function(o){
 			var files = $('#files');
 			var defaults = {
 				baseUrl: "/admin"
@@ -444,7 +444,7 @@ module.exports = function(){
 			}
 		};
 
-		var media = new VoyagerMedia({
+		var media = new AdminPanelMedia({
 		    baseUrl: document.getElementById('base_url').value
 		});
 		$(function () {

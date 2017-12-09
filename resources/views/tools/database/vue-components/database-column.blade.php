@@ -45,7 +45,7 @@
     </td>
 
     <td>
-        <div class="btn btn-danger delete-row" @click="deleteColumn"><i class="voyager-trash"></i></div>
+        <div class="btn btn-danger delete-row" @click="deleteColumn"><i class="admin-trash"></i></div>
     </td>
 
 </tr>

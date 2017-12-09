@@ -2,7 +2,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-data"></i>
+        <i class="admin-data"></i>
         @if($db->action == 'update')
             {{ "Editing {$db->table->name} table" }}
         @else

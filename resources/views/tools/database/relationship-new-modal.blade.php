@@ -6,7 +6,7 @@
 		        <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal"
 	                        aria-hidden="true">&times;</button>
-	                <h4 class="modal-title"><i class="voyager-heart"></i> {{ str_singular(ucfirst($table)) }} 
+	                <h4 class="modal-title"><i class="admin-heart"></i> {{ str_singular(ucfirst($table)) }} 
 					{{ __('admin.database.relationship.relationships') }} </h4>
 	            </div>
 
@@ -67,7 +67,7 @@
 				            </div>
 				        @else
 				        	<div class="col-md-12">
-				        		<h5><i class="voyager-rum-1"></i> {{ __('admin.database.relationship.easy_there') }}</h5>
+				        		<h5><i class="admin-rum-1"></i> {{ __('admin.database.relationship.easy_there') }}</h5>
 				        		<p class="relationship-warn">{{ __('admin.database.relationship.before_create') }}</p>
 				        	</div>
 				        @endif
@@ -78,7 +78,7 @@
 			    	<div class="relationship-btn-container">
 			    		<button type="button" class="btn btn-default" data-dismiss="modal">{{ __('admin.database.relationship.cancel') }}</button>
 	                    @if(isset($dataType->id))
-	                    	<button class="btn btn-danger btn-relationship"><i class="voyager-plus"></i> <span>{{ __('admin.database.relationship.add_new') }}</span></button>
+	                    	<button class="btn btn-danger btn-relationship"><i class="admin-plus"></i> <span>{{ __('admin.database.relationship.add_new') }}</span></button>
 	                	@endif
 	                </div>
 			    </div>

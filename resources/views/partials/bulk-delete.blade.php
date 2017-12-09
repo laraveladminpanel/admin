@@ -1,4 +1,4 @@
-<a class="btn btn-danger" id="bulk_delete_btn"><i class="voyager-trash"></i> <span>{{ __('admin.generic.bulk_delete') }}</span></a>
+<a class="btn btn-danger" id="bulk_delete_btn"><i class="admin-trash"></i> <span>{{ __('admin.generic.bulk_delete') }}</span></a>
 
 {{-- Bulk delete modal --}}
 <div class="modal modal-danger fade" tabindex="-1" id="bulk_delete_modal" role="dialog">
@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">
-                    <i class="voyager-trash"></i> {{ __('admin.generic.are_you_sure_delete') }} <span id="bulk_delete_count"></span> <span id="bulk_delete_display_name"></span>?
+                    <i class="admin-trash"></i> {{ __('admin.generic.are_you_sure_delete') }} <span id="bulk_delete_count"></span> <span id="bulk_delete_display_name"></span>?
                 </h4>
             </div>
             <div class="modal-body" id="bulk_delete_modal_body">

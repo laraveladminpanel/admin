@@ -22,8 +22,8 @@ require('brace/theme/github');
 require('./slugify');
 window.TinyMCE = window.tinymce = require('./tinymce');
 require('./multilingual');
-require('./voyager_tinymce');
-require('./voyager_ace_editor');
+require('./admin_tinymce');
+require('./admin_ace_editor');
 window.helpers = require('./helpers.js');
 require('./load-remote.js');
 require('cropperjs');
@@ -36,7 +36,7 @@ $(document).ready(function(){
 
   $('.side-menu').perfectScrollbar();
 
-  $('#voyager-loader').fadeOut();
+  $('#admin-loader').fadeOut();
   $('.readmore').readmore({
     collapsedHeight: 60,
     embedCSS: true,
@@ -74,11 +74,11 @@ $(document).ready(function(){
     if(!$this.hasClass('panel-collapsed')) {
       $this.parents('.panel').find('.panel-body').slideUp();
       $this.addClass('panel-collapsed');
-      $this.removeClass('voyager-angle-up').addClass('voyager-angle-down');
+      $this.removeClass('admin-angle-up').addClass('admin-angle-down');
     } else {
       $this.parents('.panel').find('.panel-body').slideDown();
       $this.removeClass('panel-collapsed');
-      $this.removeClass('voyager-angle-down').addClass('voyager-angle-up');
+      $this.removeClass('admin-angle-down').addClass('admin-angle-up');
     }
   });
 
@@ -86,10 +86,10 @@ $(document).ready(function(){
   $(document).on('click', '.panel-heading a.panel-action[data-toggle="panel-fullscreen"]', function (e) {
     e.preventDefault();
     var $this = $(this);
-    if (!$this.hasClass('voyager-resize-full')) {
-      $this.removeClass('voyager-resize-small').addClass('voyager-resize-full');
+    if (!$this.hasClass('admin-resize-full')) {
+      $this.removeClass('admin-resize-small').addClass('admin-resize-full');
     } else {
-      $this.removeClass('voyager-resize-full').addClass('voyager-resize-small');
+      $this.removeClass('admin-resize-full').addClass('admin-resize-small');
     }
     $this.closest('.panel').toggleClass('is-fullscreen');
   });

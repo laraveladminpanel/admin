@@ -9,7 +9,7 @@
         </h1>
         @can('add',app($dataType->model_name))
             <a href="{{ route('admin.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
-                <i class="voyager-plus"></i> <span>{{ __('admin.generic.add_new') }}</span>
+                <i class="admin-plus"></i> <span>{{ __('admin.generic.add_new') }}</span>
             </a>
         @endcan
         @can('delete',app($dataType->model_name))
@@ -42,7 +42,7 @@
                                         <input type="text" class="form-control" placeholder="Search" name="s" value="{{ $search->value }}">
                                         <span class="input-group-btn">
                                             <button class="btn btn-info btn-lg" type="submit">
-                                                <i class="voyager-search"></i>
+                                                <i class="admin-search"></i>
                                             </button>
                                         </span>
                                     </div>
@@ -63,9 +63,9 @@
                                             @if ($isServerSide)
                                                 @if ($row->isCurrentSortField())
                                                     @if (!isset($_GET['sort_order']) || $_GET['sort_order'] == 'asc')
-                                                        <i class="voyager-angle-up pull-right"></i>
+                                                        <i class="admin-angle-up pull-right"></i>
                                                     @else
-                                                        <i class="voyager-angle-down pull-right"></i>
+                                                        <i class="admin-angle-down pull-right"></i>
                                                     @endif
                                                 @endif
                                                 </a>
@@ -165,17 +165,17 @@
                                         <td class="no-sort no-click" id="bread-actions">
                                             @can('delete', $data)
                                                 <a href="javascript:;" title="{{ __('admin.generic.delete') }}" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}" id="delete-{{ $data->{$data->getKeyName()} }}">
-                                                    <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.delete') }}</span>
+                                                    <i class="admin-trash"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.delete') }}</span>
                                                 </a>
                                             @endcan
                                             @can('edit', $data)
                                                 <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm btn-primary pull-right edit">
-                                                    <i class="voyager-edit"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.edit') }}</span>
+                                                    <i class="admin-edit"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.edit') }}</span>
                                                 </a>
                                             @endcan
                                             @can('read', $data)
                                                 <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
-                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.view') }}</span>
+                                                    <i class="admin-eye"></i> <span class="hidden-xs hidden-sm">{{ __('admin.generic.view') }}</span>
                                                 </a>
                                             @endcan
                                         </td>
@@ -214,7 +214,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {{ __('admin.generic.delete_question') }} {{ strtolower($dataType->display_name_singular) }}?</h4>
+                    <h4 class="modal-title"><i class="admin-trash"></i> {{ __('admin.generic.delete_question') }} {{ strtolower($dataType->display_name_singular) }}?</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('admin.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">

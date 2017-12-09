@@ -4,8 +4,8 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-data"></i> {{ __('admin.generic.database') }}
-        <a href="{{ route('admin.database.create') }}" class="btn btn-success"><i class="voyager-plus"></i>
+        <i class="admin-data"></i> {{ __('admin.generic.database') }}
+        <a href="{{ route('admin.database.create') }}" class="btn btn-success"><i class="admin-plus"></i>
             {{ __('admin.database.create_new_table') }}</a>
     </h1>
 @stop
@@ -36,7 +36,7 @@
                                    {{ $table->name }}
                                 </a>
                             @if($table->dataTypeId)
-                                <i class="voyager-bread"
+                                <i class="admin-bread"
                                    style="font-size:25px; position:absolute; margin-left:10px; margin-top:-3px;"></i>
                             @endif
                             </p>
@@ -47,7 +47,7 @@
                             @if($table->dataTypeId)
                                 <a href="{{ route('admin.' . $table->slug . '.index') }}"
                                    class="btn-sm btn-warning browse_bread">
-                                    <i class="voyager-plus"></i> {{ __('admin.database.browse_crud') }}
+                                    <i class="admin-plus"></i> {{ __('admin.database.browse_crud') }}
                                 </a>
                                 <a href="{{ route('admin.database.crud.edit', $table->name) }}"
                                    class="btn-sm btn-default edit">
@@ -60,7 +60,7 @@
                             @else
                                 <a href="{{ route('admin.database.crud.create', ['name' => $table->name]) }}"
                                    class="btn-sm btn-default">
-                                    <i class="voyager-plus"></i> {{ __('admin.database.add_crud') }}
+                                    <i class="admin-plus"></i> {{ __('admin.database.add_crud') }}
                                 </a>
                             @endif
                             </div>
@@ -69,16 +69,16 @@
                         <td class="actions">
                             <a class="btn btn-danger btn-sm pull-right delete_table @if($table->dataTypeId) remove-bread-warning @endif"
                                data-table="{{ $table->name }}" style="display:inline; cursor:pointer;">
-                               <i class="voyager-trash"></i> {{ __('admin.generic.delete') }}
+                               <i class="admin-trash"></i> {{ __('admin.generic.delete') }}
                             </a>
                             <a href="{{ route('admin.database.edit', $table->name) }}"
                                class="btn btn-sm btn-primary pull-right" style="display:inline; margin-right:10px;">
-                               <i class="voyager-edit"></i> {{ __('admin.generic.edit') }}
+                               <i class="admin-edit"></i> {{ __('admin.generic.edit') }}
                             </a>
                             <a href="{{ route('admin.database.show', $table->name) }}"
                                data-name="{{ $table->name }}"
                                class="btn btn-sm btn-warning pull-right desctable" style="display:inline; margin-right:10px;">
-                               <i class="voyager-eye"></i> {{ __('admin.generic.view') }}
+                               <i class="admin-eye"></i> {{ __('admin.generic.view') }}
                             </a>
                         </td>
                     </tr>
@@ -94,7 +94,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i>  {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="admin-trash"></i>  {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('admin.database.crud.delete', ['id' => null]) }}" id="delete_builder_form" method="POST">
@@ -114,7 +114,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
+                    <h4 class="modal-title"><i class="admin-trash"></i> {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('admin.database.destroy', ['database' => '__database']) }}" id="delete_table_form" method="POST">
@@ -137,7 +137,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-data"></i> @{{ table.name }}</h4>
+                    <h4 class="modal-title"><i class="admin-data"></i> @{{ table.name }}</h4>
                 </div>
                 <div class="modal-body" style="overflow:scroll">
                     <table class="table table-striped">

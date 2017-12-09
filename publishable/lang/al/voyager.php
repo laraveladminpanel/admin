@@ -101,7 +101,7 @@ return [
     'login' => [
         'loggingin'    => 'Identifikimi',
         'signin_below' => 'Hyni më poshtë:',
-        'welcome'      => 'Mirë se vini në Voyager. Adminja e zhdukur për Laravel ',
+        'welcome'      => 'Mirë se vini në Admin Panel. Adminja e zhdukur për Laravel ',
     ],
 
     'profile' => [
@@ -197,7 +197,7 @@ return [
         'dynamic_route'        => 'Rruga dinamike',
         'edit_item'            => 'Modifiko artikullin e menysë',
         'icon_class'           => 'Klasa e Font Icon për Item Menu (Përdorni një',
-        'icon_class2'          => 'Klasa e Fonteve Voyager)',
+        'icon_class2'          => 'Klasa e Fonteve Admin Panel)',
         'icon_class_ph'        => 'Klasa e ikonave (opsionale)',
         'item_route'           => 'Rruga për artikullin e menysë',
         'item_title'           => 'Titulli i artikullit të menysë',
@@ -286,7 +286,7 @@ return [
         'generate_permissions' => 'Generate Permissions',
         'icon_class'           => 'Ikona për t\'u përdorur për këtë tabelë',
         'icon_hint'            => 'Icon (opsional) Përdorni një',
-        'icon_hint2'           => 'Klasa Font Voyager',
+        'icon_hint2'           => 'Klasa Font Admin Panel',
         'index'                => 'INDEKSI',
         'input_type'           => 'Lloji i hyrjes',
         'key'                  => 'Çelësi',
@@ -383,7 +383,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Bërë me <i class = "voyager-heart"> </ i> nga',
+        'footer_copyright'  => 'Bërë me <i class = "admin-heart"> </ i> nga',
         'footer_copyright2' => 'Bërë me rum dhe rum më shumë',
     ],
 

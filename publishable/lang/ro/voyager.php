@@ -99,7 +99,7 @@ return [
     'login' => [
         'loggingin'    => 'Logare în sistem',
         'signin_below' => 'Conectați-vă mai jos:',
-        'welcome'      => 'Bine ați venit la Voyager. Panoul de control ce lipsește în Laravel',
+        'welcome'      => 'Bine ați venit la Admin Panel. Panoul de control ce lipsește în Laravel',
     ],
 
     'profile' => [
@@ -179,7 +179,7 @@ return [
         'dynamic_route'        => 'Cale(route) dinamică',
         'edit_item'            => 'Editează punct de meniu',
         'icon_class'           => 'Iconiță pentru punctul de meniu (Folosiți ',
-        'icon_class2'          => 'Voyager Font Class</a>)',
+        'icon_class2'          => 'Admin Panel Font Class</a>)',
         'icon_class_ph'        => 'Iconiță (opțional)',
         'item_route'           => 'Calea pentru punctul de meniu',
         'item_title'           => 'Denumirea punctului de meniu',
@@ -262,7 +262,7 @@ return [
         'generate_permissions'      => 'Generare permisiuni',
         'icon_class'                => 'Iconiță pentru acest tabel',
         'icon_hint'                 => 'Iconiță pentru (opțional)',
-        'icon_hint2'                => 'Voyager Font Class',
+        'icon_hint2'                => 'Admin Panel Font Class',
         'index'                     => 'INDEX',
         'input_type'                => 'Tipul input-ului',
         'key'                       => 'Cheie',
@@ -379,7 +379,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Creat cu <i class="voyager-heart"></i> ',
+        'footer_copyright'  => 'Creat cu <i class="admin-heart"></i> ',
         'footer_copyright2' => 'Creat cu rom și chiar mai mult rom :) ',
     ],
 

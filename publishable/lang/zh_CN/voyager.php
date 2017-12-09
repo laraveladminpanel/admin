@@ -97,7 +97,7 @@ return [
     'login' => [
         'loggingin'    => '正在登录',
         'signin_below' => '在下方登录：',
-        'welcome'      => '欢迎使用 Voyager - 不可错过的 Laravel 后台管理框架',
+        'welcome'      => '欢迎使用 Admin Panel - 不可错过的 Laravel 后台管理框架',
     ],
     'profile' => [
         'avatar'        => '头像',
@@ -174,7 +174,7 @@ return [
         'dynamic_route'        => '动态路由',
         'edit_item'            => '编辑菜单项',
         'icon_class'           => '菜单项的字体图标类（使用',
-        'icon_class2'          => 'Voyager 图标库</a>）',
+        'icon_class2'          => 'Admin Panel 图标库</a>）',
         'icon_class_ph'        => 'Icon Class（可选）',
         'item_route'           => '菜单项的路由',
         'item_title'           => '菜单项的标题',
@@ -256,7 +256,7 @@ return [
         'generate_permissions'      => '权限生成',
         'icon_class'                => '用于该表的图标',
         'icon_hint'                 => '使用图标（可选）',
-        'icon_hint2'                => 'Voyager 字体类',
+        'icon_hint2'                => 'Admin Panel 字体类',
         'index'                     => 'INDEX',
         'input_type'                => '输入类型',
         'key'                       => '键',
@@ -338,7 +338,7 @@ return [
         ],
     ],
     'theme' => [
-        'footer_copyright'  => 'Made with <i class="voyager-heart"></i> by',
+        'footer_copyright'  => 'Made with <i class="admin-heart"></i> by',
         'footer_copyright2' => 'Made with rum and even more rum',
     ],
     'json' => [

@@ -8,7 +8,7 @@
  *  MIT License
  *
  *  Provides a mechanism for easily manage multi languages on a single page.
- *  It was created for the BREAD system of Voyager, but can be implemented
+ *  It was created for the BREAD system of Admin Panel, but can be implemented
  *  with any html structure.
  *  For each translatable field, the page requires an hidden input containing
  *  all translations in JSON format.

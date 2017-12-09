@@ -1,26 +1,26 @@
-<p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
+<p align="center"><a href="https://the-control-group.github.io/admin/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/admin.png"></a></p>
 
 <p align="center">
-<a href="https://travis-ci.org/the-control-group/voyager"><img src="https://travis-ci.org/the-control-group/voyager.svg?branch=master" alt="Build Status"></a>
+<a href="https://travis-ci.org/the-control-group/admin"><img src="https://travis-ci.org/the-control-group/admin.svg?branch=master" alt="Build Status"></a>
 <a href="https://styleci.io/repos/72069409/shield?style=flat"><img src="https://styleci.io/repos/72069409/shield?style=flat" alt="Build Status"></a>
-<a href="https://packagist.org/packages/tcg/voyager"><img src="https://poser.pugx.org/tcg/voyager/downloads.svg?format=flat" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/tcg/voyager"><img src="https://poser.pugx.org/tcg/voyager/v/stable.svg?format=flat" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/tcg/voyager"><img src="https://poser.pugx.org/tcg/voyager/license.svg?format=flat" alt="License"></a>
-<a href="https://github.com/larapack/awesome-voyager"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome Voyager"></a>
+<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/downloads.svg?format=flat" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/v/stable.svg?format=flat" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/license.svg?format=flat" alt="License"></a>
+<a href="https://github.com/larapack/awesome-admin"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome Admin Panel"></a>
 </p>
 
 # **V**oyager - The Missing Laravel Admin
 Made with ❤️ by [The Control Group](https://www.thecontrolgroup.com)
 
-![Voyager Screenshot](https://s3.amazonaws.com/thecontrolgroup/voyager-screenshot.png)
+![Admin Panel Screenshot](https://s3.amazonaws.com/thecontrolgroup/admin-screenshot.png)
 
-Website & Documentation: https://laravelvoyager.com
+Website & Documentation: https://laraveladmin.com
 
-Video Tutorial Here: https://laravelvoyager.com/academy/
+Video Tutorial Here: https://laraveladmin.com/academy/
 
-Join our Slack chat: https://voyager-slack-invitation.herokuapp.com/
+Join our Slack chat: https://admin-slack-invitation.herokuapp.com/
 
-View the Voyager Cheat Sheet: https://voyager-cheatsheet.ulties.com/
+View the Admin Panel Cheat Sheet: https://admin-cheatsheet.ulties.com/
 
 <hr>
 
@@ -30,10 +30,10 @@ Laravel Admin & BREAD System (Browse, Read, Edit, Add, & Delete), supporting Lar
 
 ### 1. Require the Package
 
-After creating your new Laravel application you can include the Voyager package with the following command: 
+After creating your new Laravel application you can include the Admin Panel package with the following command: 
 
 ```bash
-composer require tcg/voyager
+composer require tcg/admin
 ```
 
 ### 2. Add the DB Credentials & APP_URL
@@ -53,23 +53,23 @@ You will also want to update your website URL inside of the `APP_URL` variable i
 APP_URL=http://localhost:8000
 ```
 
-> Only if you are on Laravel 5.4 will you need to [Add the Service Provider.](https://voyager.readme.io/docs/adding-the-service-provider)
+> Only if you are on Laravel 5.4 will you need to [Add the Service Provider.](https://admin.readme.io/docs/adding-the-service-provider)
 
 ### 3. Run The Installer
 
-Lastly, we can install voyager. You can do this either with or without dummy data.
+Lastly, we can install admin. You can do this either with or without dummy data.
 The dummy data will include 1 admin account (if no users already exists), 1 demo page, 4 demo posts, 2 categories and 7 settings.
 
-To install Voyager without dummy simply run
+To install Admin Panel without dummy simply run
 
 ```bash
-php artisan voyager:install
+php artisan admin:install
 ```
 
 If you prefer installing it with dummy run
 
 ```bash
-php artisan voyager:install --with-dummy
+php artisan admin:install --with-dummy
 ```
 
 > Troubleshooting: **Specified key was too long error**. If you see this error message you have an outdated version of MySQL, use the following solution: https://laravel-news.com/laravel-5-4-key-too-long-error
@@ -91,13 +91,13 @@ If you did not go with the dummy user, you may wish to assign admin privileges t
 This can easily be done by running this command:
 
 ```bash
-php artisan voyager:admin your@email.com
+php artisan admin:admin your@email.com
 ```
 
 If you did not install the dummy data and you wish to create a new admin user you can pass the `--create` flag, like so:
 
 ```bash
-php artisan voyager:admin your@email.com --create
+php artisan admin:admin your@email.com --create
 ```
 
 And you will be prompted for the user's name and password.

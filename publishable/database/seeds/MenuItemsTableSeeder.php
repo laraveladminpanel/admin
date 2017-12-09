@@ -27,7 +27,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-boat',
+                    'icon_class' => 'admin-boat',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 1,
@@ -43,7 +43,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-images',
+                    'icon_class' => 'admin-images',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 5,
@@ -59,7 +59,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-news',
+                    'icon_class' => 'admin-news',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 6,
@@ -75,7 +75,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-person',
+                    'icon_class' => 'admin-person',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 3,
@@ -91,7 +91,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-categories',
+                    'icon_class' => 'admin-categories',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 8,
@@ -107,7 +107,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-file-text',
+                    'icon_class' => 'admin-file-text',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 7,
@@ -123,7 +123,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-lock',
+                    'icon_class' => 'admin-lock',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 2,
@@ -138,7 +138,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$toolsMenuItem->exists) {
                 $toolsMenuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-tools',
+                    'icon_class' => 'admin-tools',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 9,
@@ -154,7 +154,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-list',
+                    'icon_class' => 'admin-list',
                     'color'      => null,
                     'parent_id'  => $toolsMenuItem->id,
                     'order'      => 10,
@@ -170,7 +170,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-data',
+                    'icon_class' => 'admin-data',
                     'color'      => null,
                     'parent_id'  => $toolsMenuItem->id,
                     'order'      => 11,
@@ -185,7 +185,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-compass',
+                    'icon_class' => 'admin-compass',
                     'color'      => null,
                     'parent_id'  => $toolsMenuItem->id,
                     'order'      => 12,
@@ -200,7 +200,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-hook',
+                    'icon_class' => 'admin-hook',
                     'color'      => null,
                     'parent_id'  => $toolsMenuItem->id,
                     'order'      => 13,
@@ -216,7 +216,7 @@ class MenuItemsTableSeeder extends Seeder
             if (!$menuItem->exists) {
                 $menuItem->fill([
                     'target'     => '_self',
-                    'icon_class' => 'voyager-settings',
+                    'icon_class' => 'admin-settings',
                     'color'      => null,
                     'parent_id'  => null,
                     'order'      => 14,

@@ -9,7 +9,7 @@ $(document).ready(function(){
   tinymce.init({
     menubar: false,
     selector:'textarea.richTextBox',
-    skin: 'voyager',
+    skin: 'admin',
     min_height: 600,
     resize: 'vertical',
     plugins: 'link, image, code, youtube, giphy, table, textcolor, lists',

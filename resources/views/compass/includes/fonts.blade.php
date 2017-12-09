@@ -1,828 +1,828 @@
 <h2>Admin Fonts Class Mapping</h2>
     <ul class="glyphs css-mapping">
       <li>
-        <div class="icon voyager-bread"></div>
-        <input type="text" readonly="readonly" value="voyager-bread">
+        <div class="icon admin-bread"></div>
+        <input type="text" readonly="readonly" value="admin-bread">
       </li>
       <li>
-        <div class="icon voyager-helm"></div>
-        <input type="text" readonly="readonly" value="voyager-helm">
+        <div class="icon admin-helm"></div>
+        <input type="text" readonly="readonly" value="admin-helm">
       </li>
       <li>
-        <div class="icon voyager-play"></div>
-        <input type="text" readonly="readonly" value="voyager-play">
+        <div class="icon admin-play"></div>
+        <input type="text" readonly="readonly" value="admin-play">
       </li>
       <li>
-        <div class="icon voyager-activity"></div>
-        <input type="text" readonly="readonly" value="voyager-activity">
+        <div class="icon admin-activity"></div>
+        <input type="text" readonly="readonly" value="admin-activity">
       </li>
       <li>
-        <div class="icon voyager-company"></div>
-        <input type="text" readonly="readonly" value="voyager-company">
+        <div class="icon admin-company"></div>
+        <input type="text" readonly="readonly" value="admin-company">
       </li>
       <li>
-        <div class="icon voyager-file-text"></div>
-        <input type="text" readonly="readonly" value="voyager-file-text">
+        <div class="icon admin-file-text"></div>
+        <input type="text" readonly="readonly" value="admin-file-text">
       </li>
       <li>
-        <div class="icon voyager-folder"></div>
-        <input type="text" readonly="readonly" value="voyager-folder">
+        <div class="icon admin-folder"></div>
+        <input type="text" readonly="readonly" value="admin-folder">
       </li>
       <li>
-        <div class="icon voyager-paw"></div>
-        <input type="text" readonly="readonly" value="voyager-paw">
+        <div class="icon admin-paw"></div>
+        <input type="text" readonly="readonly" value="admin-paw">
       </li>
       <li>
-        <div class="icon voyager-sort"></div>
-        <input type="text" readonly="readonly" value="voyager-sort">
+        <div class="icon admin-sort"></div>
+        <input type="text" readonly="readonly" value="admin-sort">
       </li>
       <li>
-        <div class="icon voyager-sort-asc"></div>
-        <input type="text" readonly="readonly" value="voyager-sort-asc">
+        <div class="icon admin-sort-asc"></div>
+        <input type="text" readonly="readonly" value="admin-sort-asc">
       </li>
       <li>
-        <div class="icon voyager-sort-desc"></div>
-        <input type="text" readonly="readonly" value="voyager-sort-desc">
+        <div class="icon admin-sort-desc"></div>
+        <input type="text" readonly="readonly" value="admin-sort-desc">
       </li>
       <li>
-        <div class="icon voyager-handle"></div>
-        <input type="text" readonly="readonly" value="voyager-handle">
+        <div class="icon admin-handle"></div>
+        <input type="text" readonly="readonly" value="admin-handle">
       </li>
       <li>
-        <div class="icon voyager-hammer"></div>
-        <input type="text" readonly="readonly" value="voyager-hammer">
+        <div class="icon admin-hammer"></div>
+        <input type="text" readonly="readonly" value="admin-hammer">
       </li>
       <li>
-        <div class="icon voyager-images"></div>
-        <input type="text" readonly="readonly" value="voyager-images">
+        <div class="icon admin-images"></div>
+        <input type="text" readonly="readonly" value="admin-images">
       </li>
       <li>
-        <div class="icon voyager-categories"></div>
-        <input type="text" readonly="readonly" value="voyager-categories">
+        <div class="icon admin-categories"></div>
+        <input type="text" readonly="readonly" value="admin-categories">
       </li>
       <li>
-        <div class="icon voyager-group"></div>
-        <input type="text" readonly="readonly" value="voyager-group">
+        <div class="icon admin-group"></div>
+        <input type="text" readonly="readonly" value="admin-group">
       </li>
       <li>
-        <div class="icon voyager-person"></div>
-        <input type="text" readonly="readonly" value="voyager-person">
+        <div class="icon admin-person"></div>
+        <input type="text" readonly="readonly" value="admin-person">
       </li>
       <li>
-        <div class="icon voyager-people"></div>
-        <input type="text" readonly="readonly" value="voyager-people">
+        <div class="icon admin-people"></div>
+        <input type="text" readonly="readonly" value="admin-people">
       </li>
       <li>
-        <div class="icon voyager-power"></div>
-        <input type="text" readonly="readonly" value="voyager-power">
+        <div class="icon admin-power"></div>
+        <input type="text" readonly="readonly" value="admin-power">
       </li>
       <li>
-        <div class="icon voyager-tools"></div>
-        <input type="text" readonly="readonly" value="voyager-tools">
+        <div class="icon admin-tools"></div>
+        <input type="text" readonly="readonly" value="admin-tools">
       </li>
       <li>
-        <div class="icon voyager-anchor"></div>
-        <input type="text" readonly="readonly" value="voyager-anchor">
+        <div class="icon admin-anchor"></div>
+        <input type="text" readonly="readonly" value="admin-anchor">
       </li>
       <li>
-        <div class="icon voyager-double-down"></div>
-        <input type="text" readonly="readonly" value="voyager-double-down">
+        <div class="icon admin-double-down"></div>
+        <input type="text" readonly="readonly" value="admin-double-down">
       </li>
       <li>
-        <div class="icon voyager-double-up"></div>
-        <input type="text" readonly="readonly" value="voyager-double-up">
+        <div class="icon admin-double-up"></div>
+        <input type="text" readonly="readonly" value="admin-double-up">
       </li>
       <li>
-        <div class="icon voyager-double-left"></div>
-        <input type="text" readonly="readonly" value="voyager-double-left">
+        <div class="icon admin-double-left"></div>
+        <input type="text" readonly="readonly" value="admin-double-left">
       </li>
       <li>
-        <div class="icon voyager-double-right"></div>
-        <input type="text" readonly="readonly" value="voyager-double-right">
+        <div class="icon admin-double-right"></div>
+        <input type="text" readonly="readonly" value="admin-double-right">
       </li>
       <li>
-        <div class="icon voyager-window-list"></div>
-        <input type="text" readonly="readonly" value="voyager-window-list">
+        <div class="icon admin-window-list"></div>
+        <input type="text" readonly="readonly" value="admin-window-list">
       </li>
       <li>
-        <div class="icon voyager-x"></div>
-        <input type="text" readonly="readonly" value="voyager-x">
+        <div class="icon admin-x"></div>
+        <input type="text" readonly="readonly" value="admin-x">
       </li>
       <li>
-        <div class="icon voyager-dot"></div>
-        <input type="text" readonly="readonly" value="voyager-dot">
+        <div class="icon admin-dot"></div>
+        <input type="text" readonly="readonly" value="admin-dot">
       </li>
       <li>
-        <div class="icon voyager-dot-2"></div>
-        <input type="text" readonly="readonly" value="voyager-dot-2">
+        <div class="icon admin-dot-2"></div>
+        <input type="text" readonly="readonly" value="admin-dot-2">
       </li>
       <li>
-        <div class="icon voyager-dot-3"></div>
-        <input type="text" readonly="readonly" value="voyager-dot-3">
+        <div class="icon admin-dot-3"></div>
+        <input type="text" readonly="readonly" value="admin-dot-3">
       </li>
       <li>
-        <div class="icon voyager-list"></div>
-        <input type="text" readonly="readonly" value="voyager-list">
+        <div class="icon admin-list"></div>
+        <input type="text" readonly="readonly" value="admin-list">
       </li>
       <li>
-        <div class="icon voyager-list-add"></div>
-        <input type="text" readonly="readonly" value="voyager-list-add">
+        <div class="icon admin-list-add"></div>
+        <input type="text" readonly="readonly" value="admin-list-add">
       </li>
       <li>
-        <div class="icon voyager-pie-chart"></div>
-        <input type="text" readonly="readonly" value="voyager-pie-chart">
+        <div class="icon admin-pie-chart"></div>
+        <input type="text" readonly="readonly" value="admin-pie-chart">
       </li>
       <li>
-        <div class="icon voyager-watch"></div>
-        <input type="text" readonly="readonly" value="voyager-watch">
+        <div class="icon admin-watch"></div>
+        <input type="text" readonly="readonly" value="admin-watch">
       </li>
       <li>
-        <div class="icon voyager-data"></div>
-        <input type="text" readonly="readonly" value="voyager-data">
+        <div class="icon admin-data"></div>
+        <input type="text" readonly="readonly" value="admin-data">
       </li>
       <li>
-        <div class="icon voyager-music"></div>
-        <input type="text" readonly="readonly" value="voyager-music">
+        <div class="icon admin-music"></div>
+        <input type="text" readonly="readonly" value="admin-music">
       </li>
       <li>
-        <div class="icon voyager-settings"></div>
-        <input type="text" readonly="readonly" value="voyager-settings">
+        <div class="icon admin-settings"></div>
+        <input type="text" readonly="readonly" value="admin-settings">
       </li>
       <li>
-        <div class="icon voyager-video"></div>
-        <input type="text" readonly="readonly" value="voyager-video">
+        <div class="icon admin-video"></div>
+        <input type="text" readonly="readonly" value="admin-video">
       </li>
       <li>
-        <div class="icon voyager-trash"></div>
-        <input type="text" readonly="readonly" value="voyager-trash">
+        <div class="icon admin-trash"></div>
+        <input type="text" readonly="readonly" value="admin-trash">
       </li>
       <li>
-        <div class="icon voyager-tv"></div>
-        <input type="text" readonly="readonly" value="voyager-tv">
+        <div class="icon admin-tv"></div>
+        <input type="text" readonly="readonly" value="admin-tv">
       </li>
       <li>
-        <div class="icon voyager-lock"></div>
-        <input type="text" readonly="readonly" value="voyager-lock">
+        <div class="icon admin-lock"></div>
+        <input type="text" readonly="readonly" value="admin-lock">
       </li>
       <li>
-        <div class="icon voyager-news"></div>
-        <input type="text" readonly="readonly" value="voyager-news">
+        <div class="icon admin-news"></div>
+        <input type="text" readonly="readonly" value="admin-news">
       </li>
       <li>
-        <div class="icon voyager-bag"></div>
-        <input type="text" readonly="readonly" value="voyager-bag">
+        <div class="icon admin-bag"></div>
+        <input type="text" readonly="readonly" value="admin-bag">
       </li>
       <li>
-        <div class="icon voyager-upload"></div>
-        <input type="text" readonly="readonly" value="voyager-upload">
+        <div class="icon admin-upload"></div>
+        <input type="text" readonly="readonly" value="admin-upload">
       </li>
       <li>
-        <div class="icon voyager-refresh"></div>
-        <input type="text" readonly="readonly" value="voyager-refresh">
+        <div class="icon admin-refresh"></div>
+        <input type="text" readonly="readonly" value="admin-refresh">
       </li>
       <li>
-        <div class="icon voyager-character"></div>
-        <input type="text" readonly="readonly" value="voyager-character">
+        <div class="icon admin-character"></div>
+        <input type="text" readonly="readonly" value="admin-character">
       </li>
       <li>
-        <div class="icon voyager-move"></div>
-        <input type="text" readonly="readonly" value="voyager-move">
+        <div class="icon admin-move"></div>
+        <input type="text" readonly="readonly" value="admin-move">
       </li>
       <li>
-        <div class="icon voyager-paypal"></div>
-        <input type="text" readonly="readonly" value="voyager-paypal">
+        <div class="icon admin-paypal"></div>
+        <input type="text" readonly="readonly" value="admin-paypal">
       </li>
       <li>
-        <div class="icon voyager-paper-plane"></div>
-        <input type="text" readonly="readonly" value="voyager-paper-plane">
+        <div class="icon admin-paper-plane"></div>
+        <input type="text" readonly="readonly" value="admin-paper-plane">
       </li>
       <li>
-        <div class="icon voyager-ticket"></div>
-        <input type="text" readonly="readonly" value="voyager-ticket">
+        <div class="icon admin-ticket"></div>
+        <input type="text" readonly="readonly" value="admin-ticket">
       </li>
       <li>
-        <div class="icon voyager-youtube-play"></div>
-        <input type="text" readonly="readonly" value="voyager-youtube-play">
+        <div class="icon admin-youtube-play"></div>
+        <input type="text" readonly="readonly" value="admin-youtube-play">
       </li>
       <li>
-        <div class="icon voyager-boat"></div>
-        <input type="text" readonly="readonly" value="voyager-boat">
+        <div class="icon admin-boat"></div>
+        <input type="text" readonly="readonly" value="admin-boat">
       </li>
       <li>
-        <div class="icon voyager-check"></div>
-        <input type="text" readonly="readonly" value="voyager-check">
+        <div class="icon admin-check"></div>
+        <input type="text" readonly="readonly" value="admin-check">
       </li>
       <li>
-        <div class="icon voyager-alarm-clock"></div>
-        <input type="text" readonly="readonly" value="voyager-alarm-clock">
+        <div class="icon admin-alarm-clock"></div>
+        <input type="text" readonly="readonly" value="admin-alarm-clock">
       </li>
       <li>
-        <div class="icon voyager-controller"></div>
-        <input type="text" readonly="readonly" value="voyager-controller">
+        <div class="icon admin-controller"></div>
+        <input type="text" readonly="readonly" value="admin-controller">
       </li>
       <li>
-        <div class="icon voyager-pizza"></div>
-        <input type="text" readonly="readonly" value="voyager-pizza">
+        <div class="icon admin-pizza"></div>
+        <input type="text" readonly="readonly" value="admin-pizza">
       </li>
       <li>
-        <div class="icon voyager-backpack"></div>
-        <input type="text" readonly="readonly" value="voyager-backpack">
+        <div class="icon admin-backpack"></div>
+        <input type="text" readonly="readonly" value="admin-backpack">
       </li>
       <li>
-        <div class="icon voyager-barbeque"></div>
-        <input type="text" readonly="readonly" value="voyager-barbeque">
+        <div class="icon admin-barbeque"></div>
+        <input type="text" readonly="readonly" value="admin-barbeque">
       </li>
       <li>
-        <div class="icon voyager-bomb"></div>
-        <input type="text" readonly="readonly" value="voyager-bomb">
+        <div class="icon admin-bomb"></div>
+        <input type="text" readonly="readonly" value="admin-bomb">
       </li>
       <li>
-        <div class="icon voyager-book-download"></div>
-        <input type="text" readonly="readonly" value="voyager-book-download">
+        <div class="icon admin-book-download"></div>
+        <input type="text" readonly="readonly" value="admin-book-download">
       </li>
       <li>
-        <div class="icon voyager-browser"></div>
-        <input type="text" readonly="readonly" value="voyager-browser">
+        <div class="icon admin-browser"></div>
+        <input type="text" readonly="readonly" value="admin-browser">
       </li>
       <li>
-        <div class="icon voyager-brush"></div>
-        <input type="text" readonly="readonly" value="voyager-brush">
+        <div class="icon admin-brush"></div>
+        <input type="text" readonly="readonly" value="admin-brush">
       </li>
       <li>
-        <div class="icon voyager-bubble-hear"></div>
-        <input type="text" readonly="readonly" value="voyager-bubble-hear">
+        <div class="icon admin-bubble-hear"></div>
+        <input type="text" readonly="readonly" value="admin-bubble-hear">
       </li>
       <li>
-        <div class="icon voyager-polaroid"></div>
-        <input type="text" readonly="readonly" value="voyager-polaroid">
+        <div class="icon admin-polaroid"></div>
+        <input type="text" readonly="readonly" value="admin-polaroid">
       </li>
       <li>
-        <div class="icon voyager-crop"></div>
-        <input type="text" readonly="readonly" value="voyager-crop">
+        <div class="icon admin-crop"></div>
+        <input type="text" readonly="readonly" value="admin-crop">
       </li>
       <li>
-        <div class="icon voyager-dashboard"></div>
-        <input type="text" readonly="readonly" value="voyager-dashboard">
+        <div class="icon admin-dashboard"></div>
+        <input type="text" readonly="readonly" value="admin-dashboard">
       </li>
       <li>
-        <div class="icon voyager-hotdog"></div>
-        <input type="text" readonly="readonly" value="voyager-hotdog">
+        <div class="icon admin-hotdog"></div>
+        <input type="text" readonly="readonly" value="admin-hotdog">
       </li>
       <li>
-        <div class="icon voyager-laptop"></div>
-        <input type="text" readonly="readonly" value="voyager-laptop">
+        <div class="icon admin-laptop"></div>
+        <input type="text" readonly="readonly" value="admin-laptop">
       </li>
       <li>
-        <div class="icon voyager-paint-bucket"></div>
-        <input type="text" readonly="readonly" value="voyager-paint-bucket">
+        <div class="icon admin-paint-bucket"></div>
+        <input type="text" readonly="readonly" value="admin-paint-bucket">
       </li>
       <li>
-        <div class="icon voyager-photo"></div>
-        <input type="text" readonly="readonly" value="voyager-photo">
+        <div class="icon admin-photo"></div>
+        <input type="text" readonly="readonly" value="admin-photo">
       </li>
       <li>
-        <div class="icon voyager-photos"></div>
-        <input type="text" readonly="readonly" value="voyager-photos">
+        <div class="icon admin-photos"></div>
+        <input type="text" readonly="readonly" value="admin-photos">
       </li>
       <li>
-        <div class="icon voyager-receipt"></div>
-        <input type="text" readonly="readonly" value="voyager-receipt">
+        <div class="icon admin-receipt"></div>
+        <input type="text" readonly="readonly" value="admin-receipt">
       </li>
       <li>
-        <div class="icon voyager-buy"></div>
-        <input type="text" readonly="readonly" value="voyager-buy">
+        <div class="icon admin-buy"></div>
+        <input type="text" readonly="readonly" value="admin-buy">
       </li>
       <li>
-        <div class="icon voyager-lightbulb"></div>
-        <input type="text" readonly="readonly" value="voyager-lightbulb">
+        <div class="icon admin-lightbulb"></div>
+        <input type="text" readonly="readonly" value="admin-lightbulb">
       </li>
       <li>
-        <div class="icon voyager-archive"></div>
-        <input type="text" readonly="readonly" value="voyager-archive">
+        <div class="icon admin-archive"></div>
+        <input type="text" readonly="readonly" value="admin-archive">
       </li>
       <li>
-        <div class="icon voyager-paperclip"></div>
-        <input type="text" readonly="readonly" value="voyager-paperclip">
+        <div class="icon admin-paperclip"></div>
+        <input type="text" readonly="readonly" value="admin-paperclip">
       </li>
       <li>
-        <div class="icon voyager-warning"></div>
-        <input type="text" readonly="readonly" value="voyager-warning">
+        <div class="icon admin-warning"></div>
+        <input type="text" readonly="readonly" value="admin-warning">
       </li>
       <li>
-        <div class="icon voyager-basket"></div>
-        <input type="text" readonly="readonly" value="voyager-basket">
+        <div class="icon admin-basket"></div>
+        <input type="text" readonly="readonly" value="admin-basket">
       </li>
       <li>
-        <div class="icon voyager-bell"></div>
-        <input type="text" readonly="readonly" value="voyager-bell">
+        <div class="icon admin-bell"></div>
+        <input type="text" readonly="readonly" value="admin-bell">
       </li>
       <li>
-        <div class="icon voyager-book"></div>
-        <input type="text" readonly="readonly" value="voyager-book">
+        <div class="icon admin-book"></div>
+        <input type="text" readonly="readonly" value="admin-book">
       </li>
       <li>
-        <div class="icon voyager-chat"></div>
-        <input type="text" readonly="readonly" value="voyager-chat">
+        <div class="icon admin-chat"></div>
+        <input type="text" readonly="readonly" value="admin-chat">
       </li>
       <li>
-        <div class="icon voyager-down-circled"></div>
-        <input type="text" readonly="readonly" value="voyager-down-circled">
+        <div class="icon admin-down-circled"></div>
+        <input type="text" readonly="readonly" value="admin-down-circled">
       </li>
       <li>
-        <div class="icon voyager-location"></div>
-        <input type="text" readonly="readonly" value="voyager-location">
+        <div class="icon admin-location"></div>
+        <input type="text" readonly="readonly" value="admin-location">
       </li>
       <li>
-        <div class="icon voyager-forward"></div>
-        <input type="text" readonly="readonly" value="voyager-forward">
+        <div class="icon admin-forward"></div>
+        <input type="text" readonly="readonly" value="admin-forward">
       </li>
       <li>
-        <div class="icon voyager-flashlight"></div>
-        <input type="text" readonly="readonly" value="voyager-flashlight">
+        <div class="icon admin-flashlight"></div>
+        <input type="text" readonly="readonly" value="admin-flashlight">
       </li>
       <li>
-        <div class="icon voyager-trophy"></div>
-        <input type="text" readonly="readonly" value="voyager-trophy">
+        <div class="icon admin-trophy"></div>
+        <input type="text" readonly="readonly" value="admin-trophy">
       </li>
       <li>
-        <div class="icon voyager-diamond"></div>
-        <input type="text" readonly="readonly" value="voyager-diamond">
+        <div class="icon admin-diamond"></div>
+        <input type="text" readonly="readonly" value="admin-diamond">
       </li>
       <li>
-        <div class="icon voyager-credit-cards"></div>
-        <input type="text" readonly="readonly" value="voyager-credit-cards">
+        <div class="icon admin-credit-cards"></div>
+        <input type="text" readonly="readonly" value="admin-credit-cards">
       </li>
       <li>
-        <div class="icon voyager-shop"></div>
-        <input type="text" readonly="readonly" value="voyager-shop">
+        <div class="icon admin-shop"></div>
+        <input type="text" readonly="readonly" value="admin-shop">
       </li>
       <li>
-        <div class="icon voyager-sound"></div>
-        <input type="text" readonly="readonly" value="voyager-sound">
+        <div class="icon admin-sound"></div>
+        <input type="text" readonly="readonly" value="admin-sound">
       </li>
       <li>
-        <div class="icon voyager-study"></div>
-        <input type="text" readonly="readonly" value="voyager-study">
+        <div class="icon admin-study"></div>
+        <input type="text" readonly="readonly" value="admin-study">
       </li>
       <li>
-        <div class="icon voyager-pen"></div>
-        <input type="text" readonly="readonly" value="voyager-pen">
+        <div class="icon admin-pen"></div>
+        <input type="text" readonly="readonly" value="admin-pen">
       </li>
       <li>
-        <div class="icon voyager-params"></div>
-        <input type="text" readonly="readonly" value="voyager-params">
+        <div class="icon admin-params"></div>
+        <input type="text" readonly="readonly" value="admin-params">
       </li>
       <li>
-        <div class="icon voyager-fire"></div>
-        <input type="text" readonly="readonly" value="voyager-fire">
+        <div class="icon admin-fire"></div>
+        <input type="text" readonly="readonly" value="admin-fire">
       </li>
       <li>
-        <div class="icon voyager-dollar"></div>
-        <input type="text" readonly="readonly" value="voyager-dollar">
+        <div class="icon admin-dollar"></div>
+        <input type="text" readonly="readonly" value="admin-dollar">
       </li>
       <li>
-        <div class="icon voyager-bulb"></div>
-        <input type="text" readonly="readonly" value="voyager-bulb">
+        <div class="icon admin-bulb"></div>
+        <input type="text" readonly="readonly" value="admin-bulb">
       </li>
       <li>
-        <div class="icon voyager-lab"></div>
-        <input type="text" readonly="readonly" value="voyager-lab">
+        <div class="icon admin-lab"></div>
+        <input type="text" readonly="readonly" value="admin-lab">
       </li>
       <li>
-        <div class="icon voyager-cup"></div>
-        <input type="text" readonly="readonly" value="voyager-cup">
+        <div class="icon admin-cup"></div>
+        <input type="text" readonly="readonly" value="admin-cup">
       </li>
       <li>
-        <div class="icon voyager-megaphone"></div>
-        <input type="text" readonly="readonly" value="voyager-megaphone">
+        <div class="icon admin-megaphone"></div>
+        <input type="text" readonly="readonly" value="admin-megaphone">
       </li>
       <li>
-        <div class="icon voyager-heart"></div>
-        <input type="text" readonly="readonly" value="voyager-heart">
+        <div class="icon admin-heart"></div>
+        <input type="text" readonly="readonly" value="admin-heart">
       </li>
       <li>
-        <div class="icon voyager-bubble"></div>
-        <input type="text" readonly="readonly" value="voyager-bubble">
+        <div class="icon admin-bubble"></div>
+        <input type="text" readonly="readonly" value="admin-bubble">
       </li>
       <li>
-        <div class="icon voyager-search"></div>
-        <input type="text" readonly="readonly" value="voyager-search">
+        <div class="icon admin-search"></div>
+        <input type="text" readonly="readonly" value="admin-search">
       </li>
       <li>
-        <div class="icon voyager-tag"></div>
-        <input type="text" readonly="readonly" value="voyager-tag">
+        <div class="icon admin-tag"></div>
+        <input type="text" readonly="readonly" value="admin-tag">
       </li>
       <li>
-        <div class="icon voyager-world"></div>
-        <input type="text" readonly="readonly" value="voyager-world">
+        <div class="icon admin-world"></div>
+        <input type="text" readonly="readonly" value="admin-world">
       </li>
       <li>
-        <div class="icon voyager-camera"></div>
-        <input type="text" readonly="readonly" value="voyager-camera">
+        <div class="icon admin-camera"></div>
+        <input type="text" readonly="readonly" value="admin-camera">
       </li>
       <li>
-        <div class="icon voyager-calendar"></div>
-        <input type="text" readonly="readonly" value="voyager-calendar">
+        <div class="icon admin-calendar"></div>
+        <input type="text" readonly="readonly" value="admin-calendar">
       </li>
       <li>
-        <div class="icon voyager-mail"></div>
-        <input type="text" readonly="readonly" value="voyager-mail">
+        <div class="icon admin-mail"></div>
+        <input type="text" readonly="readonly" value="admin-mail">
       </li>
       <li>
-        <div class="icon voyager-phone"></div>
-        <input type="text" readonly="readonly" value="voyager-phone">
+        <div class="icon admin-phone"></div>
+        <input type="text" readonly="readonly" value="admin-phone">
       </li>
       <li>
-        <div class="icon voyager-star"></div>
-        <input type="text" readonly="readonly" value="voyager-star">
+        <div class="icon admin-star"></div>
+        <input type="text" readonly="readonly" value="admin-star">
       </li>
       <li>
-        <div class="icon voyager-star-half"></div>
-        <input type="text" readonly="readonly" value="voyager-star-half">
+        <div class="icon admin-star-half"></div>
+        <input type="text" readonly="readonly" value="admin-star-half">
       </li>
       <li>
-        <div class="icon voyager-star-half-1"></div>
-        <input type="text" readonly="readonly" value="voyager-star-half-1">
+        <div class="icon admin-star-half-1"></div>
+        <input type="text" readonly="readonly" value="admin-star-half-1">
       </li>
       <li>
-        <div class="icon voyager-star-two"></div>
-        <input type="text" readonly="readonly" value="voyager-star-two">
+        <div class="icon admin-star-two"></div>
+        <input type="text" readonly="readonly" value="admin-star-two">
       </li>
       <li>
-        <div class="icon voyager-medal-rank-star"></div>
-        <input type="text" readonly="readonly" value="voyager-medal-rank-star">
+        <div class="icon admin-medal-rank-star"></div>
+        <input type="text" readonly="readonly" value="admin-medal-rank-star">
       </li>
       <li>
-        <div class="icon voyager-facebook"></div>
-        <input type="text" readonly="readonly" value="voyager-facebook">
+        <div class="icon admin-facebook"></div>
+        <input type="text" readonly="readonly" value="admin-facebook">
       </li>
       <li>
-        <div class="icon voyager-google-plus"></div>
-        <input type="text" readonly="readonly" value="voyager-google-plus">
+        <div class="icon admin-google-plus"></div>
+        <input type="text" readonly="readonly" value="admin-google-plus">
       </li>
       <li>
-        <div class="icon voyager-twitter"></div>
-        <input type="text" readonly="readonly" value="voyager-twitter">
+        <div class="icon admin-twitter"></div>
+        <input type="text" readonly="readonly" value="admin-twitter">
       </li>
       <li>
-        <div class="icon voyager-github"></div>
-        <input type="text" readonly="readonly" value="voyager-github">
+        <div class="icon admin-github"></div>
+        <input type="text" readonly="readonly" value="admin-github">
       </li>
       <li>
-        <div class="icon voyager-code"></div>
-        <input type="text" readonly="readonly" value="voyager-code">
+        <div class="icon admin-code"></div>
+        <input type="text" readonly="readonly" value="admin-code">
       </li>
       <li>
-        <div class="icon voyager-pie-graph"></div>
-        <input type="text" readonly="readonly" value="voyager-pie-graph">
+        <div class="icon admin-pie-graph"></div>
+        <input type="text" readonly="readonly" value="admin-pie-graph">
       </li>
       <li>
-        <div class="icon voyager-javascript"></div>
-        <input type="text" readonly="readonly" value="voyager-javascript">
+        <div class="icon admin-javascript"></div>
+        <input type="text" readonly="readonly" value="admin-javascript">
       </li>
       <li>
-        <div class="icon voyager-wand"></div>
-        <input type="text" readonly="readonly" value="voyager-wand">
+        <div class="icon admin-wand"></div>
+        <input type="text" readonly="readonly" value="admin-wand">
       </li>
       <li>
-        <div class="icon voyager-wineglass"></div>
-        <input type="text" readonly="readonly" value="voyager-wineglass">
+        <div class="icon admin-wineglass"></div>
+        <input type="text" readonly="readonly" value="admin-wineglass">
       </li>
       <li>
-        <div class="icon voyager-milestone"></div>
-        <input type="text" readonly="readonly" value="voyager-milestone">
+        <div class="icon admin-milestone"></div>
+        <input type="text" readonly="readonly" value="admin-milestone">
       </li>
       <li>
-        <div class="icon voyager-terminal"></div>
-        <input type="text" readonly="readonly" value="voyager-terminal">
+        <div class="icon admin-terminal"></div>
+        <input type="text" readonly="readonly" value="admin-terminal">
       </li>
       <li>
-        <div class="icon voyager-plug"></div>
-        <input type="text" readonly="readonly" value="voyager-plug">
+        <div class="icon admin-plug"></div>
+        <input type="text" readonly="readonly" value="admin-plug">
       </li>
       <li>
-        <div class="icon voyager-gift"></div>
-        <input type="text" readonly="readonly" value="voyager-gift">
+        <div class="icon admin-gift"></div>
+        <input type="text" readonly="readonly" value="admin-gift">
       </li>
       <li>
-        <div class="icon voyager-markdown"></div>
-        <input type="text" readonly="readonly" value="voyager-markdown">
+        <div class="icon admin-markdown"></div>
+        <input type="text" readonly="readonly" value="admin-markdown">
       </li>
       <li>
-        <div class="icon voyager-beer"></div>
-        <input type="text" readonly="readonly" value="voyager-beer">
+        <div class="icon admin-beer"></div>
+        <input type="text" readonly="readonly" value="admin-beer">
       </li>
       <li>
-        <div class="icon voyager-credit-card"></div>
-        <input type="text" readonly="readonly" value="voyager-credit-card">
+        <div class="icon admin-credit-card"></div>
+        <input type="text" readonly="readonly" value="admin-credit-card">
       </li>
       <li>
-        <div class="icon voyager-bolt"></div>
-        <input type="text" readonly="readonly" value="voyager-bolt">
+        <div class="icon admin-bolt"></div>
+        <input type="text" readonly="readonly" value="admin-bolt">
       </li>
       <li>
-        <div class="icon voyager-external"></div>
-        <input type="text" readonly="readonly" value="voyager-external">
+        <div class="icon admin-external"></div>
+        <input type="text" readonly="readonly" value="admin-external">
       </li>
       <li>
-        <div class="icon voyager-magnet"></div>
-        <input type="text" readonly="readonly" value="voyager-magnet">
+        <div class="icon admin-magnet"></div>
+        <input type="text" readonly="readonly" value="admin-magnet">
       </li>
       <li>
-        <div class="icon voyager-certificate"></div>
-        <input type="text" readonly="readonly" value="voyager-certificate">
+        <div class="icon admin-certificate"></div>
+        <input type="text" readonly="readonly" value="admin-certificate">
       </li>
       <li>
-        <div class="icon voyager-cloud-download"></div>
-        <input type="text" readonly="readonly" value="voyager-cloud-download">
+        <div class="icon admin-cloud-download"></div>
+        <input type="text" readonly="readonly" value="admin-cloud-download">
       </li>
       <li>
-        <div class="icon voyager-campfire"></div>
-        <input type="text" readonly="readonly" value="voyager-campfire">
+        <div class="icon admin-campfire"></div>
+        <input type="text" readonly="readonly" value="admin-campfire">
       </li>
       <li>
-        <div class="icon voyager-new"></div>
-        <input type="text" readonly="readonly" value="voyager-new">
+        <div class="icon admin-new"></div>
+        <input type="text" readonly="readonly" value="admin-new">
       </li>
       <li>
-        <div class="icon voyager-skull"></div>
-        <input type="text" readonly="readonly" value="voyager-skull">
+        <div class="icon admin-skull"></div>
+        <input type="text" readonly="readonly" value="admin-skull">
       </li>
       <li>
-        <div class="icon voyager-telephone"></div>
-        <input type="text" readonly="readonly" value="voyager-telephone">
+        <div class="icon admin-telephone"></div>
+        <input type="text" readonly="readonly" value="admin-telephone">
       </li>
       <li>
-        <div class="icon voyager-trees"></div>
-        <input type="text" readonly="readonly" value="voyager-trees">
+        <div class="icon admin-trees"></div>
+        <input type="text" readonly="readonly" value="admin-trees">
       </li>
       <li>
-        <div class="icon voyager-bar-chart"></div>
-        <input type="text" readonly="readonly" value="voyager-bar-chart">
+        <div class="icon admin-bar-chart"></div>
+        <input type="text" readonly="readonly" value="admin-bar-chart">
       </li>
       <li>
-        <div class="icon voyager-check-circle"></div>
-        <input type="text" readonly="readonly" value="voyager-check-circle">
+        <div class="icon admin-check-circle"></div>
+        <input type="text" readonly="readonly" value="admin-check-circle">
       </li>
       <li>
-        <div class="icon voyager-exclamation"></div>
-        <input type="text" readonly="readonly" value="voyager-exclamation">
+        <div class="icon admin-exclamation"></div>
+        <input type="text" readonly="readonly" value="admin-exclamation">
       </li>
       <li>
-        <div class="icon voyager-font"></div>
-        <input type="text" readonly="readonly" value="voyager-font">
+        <div class="icon admin-font"></div>
+        <input type="text" readonly="readonly" value="admin-font">
       </li>
       <li>
-        <div class="icon voyager-puzzle"></div>
-        <input type="text" readonly="readonly" value="voyager-puzzle">
+        <div class="icon admin-puzzle"></div>
+        <input type="text" readonly="readonly" value="admin-puzzle">
       </li>
       <li>
-        <div class="icon voyager-smile"></div>
-        <input type="text" readonly="readonly" value="voyager-smile">
+        <div class="icon admin-smile"></div>
+        <input type="text" readonly="readonly" value="admin-smile">
       </li>
       <li>
-        <div class="icon voyager-frown"></div>
-        <input type="text" readonly="readonly" value="voyager-frown">
+        <div class="icon admin-frown"></div>
+        <input type="text" readonly="readonly" value="admin-frown">
       </li>
       <li>
-        <div class="icon voyager-meh"></div>
-        <input type="text" readonly="readonly" value="voyager-meh">
+        <div class="icon admin-meh"></div>
+        <input type="text" readonly="readonly" value="admin-meh">
       </li>
       <li>
-        <div class="icon voyager-leaf"></div>
-        <input type="text" readonly="readonly" value="voyager-leaf">
+        <div class="icon admin-leaf"></div>
+        <input type="text" readonly="readonly" value="admin-leaf">
       </li>
       <li>
-        <div class="icon voyager-info-circled"></div>
-        <input type="text" readonly="readonly" value="voyager-info-circled">
+        <div class="icon admin-info-circled"></div>
+        <input type="text" readonly="readonly" value="admin-info-circled">
       </li>
       <li>
-        <div class="icon voyager-underline"></div>
-        <input type="text" readonly="readonly" value="voyager-underline">
+        <div class="icon admin-underline"></div>
+        <input type="text" readonly="readonly" value="admin-underline">
       </li>
       <li>
-        <div class="icon voyager-wallet"></div>
-        <input type="text" readonly="readonly" value="voyager-wallet">
+        <div class="icon admin-wallet"></div>
+        <input type="text" readonly="readonly" value="admin-wallet">
       </li>
       <li>
-        <div class="icon voyager-truck"></div>
-        <input type="text" readonly="readonly" value="voyager-truck">
+        <div class="icon admin-truck"></div>
+        <input type="text" readonly="readonly" value="admin-truck">
       </li>
       <li>
-        <div class="icon voyager-eye"></div>
-        <input type="text" readonly="readonly" value="voyager-eye">
+        <div class="icon admin-eye"></div>
+        <input type="text" readonly="readonly" value="admin-eye">
       </li>
       <li>
-        <div class="icon voyager-sun"></div>
-        <input type="text" readonly="readonly" value="voyager-sun">
+        <div class="icon admin-sun"></div>
+        <input type="text" readonly="readonly" value="admin-sun">
       </li>
       <li>
-        <div class="icon voyager-barbell"></div>
-        <input type="text" readonly="readonly" value="voyager-barbell">
+        <div class="icon admin-barbell"></div>
+        <input type="text" readonly="readonly" value="admin-barbell">
       </li>
       <li>
-        <div class="icon voyager-bookmark"></div>
-        <input type="text" readonly="readonly" value="voyager-bookmark">
+        <div class="icon admin-bookmark"></div>
+        <input type="text" readonly="readonly" value="admin-bookmark">
       </li>
       <li>
-        <div class="icon voyager-volume-up"></div>
-        <input type="text" readonly="readonly" value="voyager-volume-up">
+        <div class="icon admin-volume-up"></div>
+        <input type="text" readonly="readonly" value="admin-volume-up">
       </li>
       <li>
-        <div class="icon voyager-volume-down"></div>
-        <input type="text" readonly="readonly" value="voyager-volume-down">
+        <div class="icon admin-volume-down"></div>
+        <input type="text" readonly="readonly" value="admin-volume-down">
       </li>
       <li>
-        <div class="icon voyager-wifi"></div>
-        <input type="text" readonly="readonly" value="voyager-wifi">
+        <div class="icon admin-wifi"></div>
+        <input type="text" readonly="readonly" value="admin-wifi">
       </li>
       <li>
-        <div class="icon voyager-pause"></div>
-        <input type="text" readonly="readonly" value="voyager-pause">
+        <div class="icon admin-pause"></div>
+        <input type="text" readonly="readonly" value="admin-pause">
       </li>
       <li>
-        <div class="icon voyager-resize-full"></div>
-        <input type="text" readonly="readonly" value="voyager-resize-full">
+        <div class="icon admin-resize-full"></div>
+        <input type="text" readonly="readonly" value="admin-resize-full">
       </li>
       <li>
-        <div class="icon voyager-resize-small"></div>
-        <input type="text" readonly="readonly" value="voyager-resize-small">
+        <div class="icon admin-resize-small"></div>
+        <input type="text" readonly="readonly" value="admin-resize-small">
       </li>
       <li>
-        <div class="icon voyager-download"></div>
-        <input type="text" readonly="readonly" value="voyager-download">
+        <div class="icon admin-download"></div>
+        <input type="text" readonly="readonly" value="admin-download">
       </li>
       <li>
-        <div class="icon voyager-droplet"></div>
-        <input type="text" readonly="readonly" value="voyager-droplet">
+        <div class="icon admin-droplet"></div>
+        <input type="text" readonly="readonly" value="admin-droplet">
       </li>
       <li>
-        <div class="icon voyager-umbrella"></div>
-        <input type="text" readonly="readonly" value="voyager-umbrella">
+        <div class="icon admin-umbrella"></div>
+        <input type="text" readonly="readonly" value="admin-umbrella">
       </li>
       <li>
-        <div class="icon voyager-harddrive"></div>
-        <input type="text" readonly="readonly" value="voyager-harddrive">
+        <div class="icon admin-harddrive"></div>
+        <input type="text" readonly="readonly" value="admin-harddrive">
       </li>
       <li>
-        <div class="icon voyager-css3"></div>
-        <input type="text" readonly="readonly" value="voyager-css3">
+        <div class="icon admin-css3"></div>
+        <input type="text" readonly="readonly" value="admin-css3">
       </li>
       <li>
-        <div class="icon voyager-html5"></div>
-        <input type="text" readonly="readonly" value="voyager-html5">
+        <div class="icon admin-html5"></div>
+        <input type="text" readonly="readonly" value="admin-html5">
       </li>
       <li>
-        <div class="icon voyager-tree"></div>
-        <input type="text" readonly="readonly" value="voyager-tree">
+        <div class="icon admin-tree"></div>
+        <input type="text" readonly="readonly" value="admin-tree">
       </li>
       <li>
-        <div class="icon voyager-file-code"></div>
-        <input type="text" readonly="readonly" value="voyager-file-code">
+        <div class="icon admin-file-code"></div>
+        <input type="text" readonly="readonly" value="admin-file-code">
       </li>
       <li>
-        <div class="icon voyager-bug"></div>
-        <input type="text" readonly="readonly" value="voyager-bug">
+        <div class="icon admin-bug"></div>
+        <input type="text" readonly="readonly" value="admin-bug">
       </li>
       <li>
-        <div class="icon voyager-rocket"></div>
-        <input type="text" readonly="readonly" value="voyager-rocket">
+        <div class="icon admin-rocket"></div>
+        <input type="text" readonly="readonly" value="admin-rocket">
       </li>
       <li>
-        <div class="icon voyager-key"></div>
-        <input type="text" readonly="readonly" value="voyager-key">
+        <div class="icon admin-key"></div>
+        <input type="text" readonly="readonly" value="admin-key">
       </li>
       <li>
-        <div class="icon voyager-question"></div>
-        <input type="text" readonly="readonly" value="voyager-question">
+        <div class="icon admin-question"></div>
+        <input type="text" readonly="readonly" value="admin-question">
       </li>
       <li>
-        <div class="icon voyager-cursor"></div>
-        <input type="text" readonly="readonly" value="voyager-cursor">
+        <div class="icon admin-cursor"></div>
+        <input type="text" readonly="readonly" value="admin-cursor">
       </li>
       <li>
-        <div class="icon voyager-lifebuoy"></div>
-        <input type="text" readonly="readonly" value="voyager-lifebuoy">
+        <div class="icon admin-lifebuoy"></div>
+        <input type="text" readonly="readonly" value="admin-lifebuoy">
       </li>
       <li>
-        <div class="icon voyager-thumbs-up"></div>
-        <input type="text" readonly="readonly" value="voyager-thumbs-up">
+        <div class="icon admin-thumbs-up"></div>
+        <input type="text" readonly="readonly" value="admin-thumbs-up">
       </li>
       <li>
-        <div class="icon voyager-thumb-tack"></div>
-        <input type="text" readonly="readonly" value="voyager-thumb-tack">
+        <div class="icon admin-thumb-tack"></div>
+        <input type="text" readonly="readonly" value="admin-thumb-tack">
       </li>
       <li>
-        <div class="icon voyager-edit"></div>
-        <input type="text" readonly="readonly" value="voyager-edit">
+        <div class="icon admin-edit"></div>
+        <input type="text" readonly="readonly" value="admin-edit">
       </li>
       <li>
-        <div class="icon voyager-angle-down"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-down">
+        <div class="icon admin-angle-down"></div>
+        <input type="text" readonly="readonly" value="admin-angle-down">
       </li>
       <li>
-        <div class="icon voyager-angle-left"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-left">
+        <div class="icon admin-angle-left"></div>
+        <input type="text" readonly="readonly" value="admin-angle-left">
       </li>
       <li>
-        <div class="icon voyager-angle-right"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-right">
+        <div class="icon admin-angle-right"></div>
+        <input type="text" readonly="readonly" value="admin-angle-right">
       </li>
       <li>
-        <div class="icon voyager-angle-up"></div>
-        <input type="text" readonly="readonly" value="voyager-angle-up">
+        <div class="icon admin-angle-up"></div>
+        <input type="text" readonly="readonly" value="admin-angle-up">
       </li>
       <li>
-        <div class="icon voyager-home"></div>
-        <input type="text" readonly="readonly" value="voyager-home">
+        <div class="icon admin-home"></div>
+        <input type="text" readonly="readonly" value="admin-home">
       </li>
       <li>
-        <div class="icon voyager-pirate-swords"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate-swords">
+        <div class="icon admin-pirate-swords"></div>
+        <input type="text" readonly="readonly" value="admin-pirate-swords">
       </li>
       <li>
-        <div class="icon voyager-pirate"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate">
+        <div class="icon admin-pirate"></div>
+        <input type="text" readonly="readonly" value="admin-pirate">
       </li>
       <li>
-        <div class="icon voyager-rum"></div>
-        <input type="text" readonly="readonly" value="voyager-rum">
+        <div class="icon admin-rum"></div>
+        <input type="text" readonly="readonly" value="admin-rum">
       </li>
       <li>
-        <div class="icon voyager-cannon"></div>
-        <input type="text" readonly="readonly" value="voyager-cannon">
+        <div class="icon admin-cannon"></div>
+        <input type="text" readonly="readonly" value="admin-cannon">
       </li>
       <li>
-        <div class="icon voyager-hook"></div>
-        <input type="text" readonly="readonly" value="voyager-hook">
+        <div class="icon admin-hook"></div>
+        <input type="text" readonly="readonly" value="admin-hook">
       </li>
       <li>
-        <div class="icon voyager-kraken"></div>
-        <input type="text" readonly="readonly" value="voyager-kraken">
+        <div class="icon admin-kraken"></div>
+        <input type="text" readonly="readonly" value="admin-kraken">
       </li>
       <li>
-        <div class="icon voyager-lighthouse"></div>
-        <input type="text" readonly="readonly" value="voyager-lighthouse">
+        <div class="icon admin-lighthouse"></div>
+        <input type="text" readonly="readonly" value="admin-lighthouse">
       </li>
       <li>
-        <div class="icon voyager-pirate-hat"></div>
-        <input type="text" readonly="readonly" value="voyager-pirate-hat">
+        <div class="icon admin-pirate-hat"></div>
+        <input type="text" readonly="readonly" value="admin-pirate-hat">
       </li>
       <li>
-        <div class="icon voyager-rum-1"></div>
-        <input type="text" readonly="readonly" value="voyager-rum-1">
+        <div class="icon admin-rum-1"></div>
+        <input type="text" readonly="readonly" value="admin-rum-1">
       </li>
       <li>
-        <div class="icon voyager-ship"></div>
-        <input type="text" readonly="readonly" value="voyager-ship">
+        <div class="icon admin-ship"></div>
+        <input type="text" readonly="readonly" value="admin-ship">
       </li>
       <li>
-        <div class="icon voyager-treasure"></div>
-        <input type="text" readonly="readonly" value="voyager-treasure">
+        <div class="icon admin-treasure"></div>
+        <input type="text" readonly="readonly" value="admin-treasure">
       </li>
       <li>
-        <div class="icon voyager-treasure-open"></div>
-        <input type="text" readonly="readonly" value="voyager-treasure-open">
+        <div class="icon admin-treasure-open"></div>
+        <input type="text" readonly="readonly" value="admin-treasure-open">
       </li>
       <li>
-        <div class="icon voyager-whale"></div>
-        <input type="text" readonly="readonly" value="voyager-whale">
+        <div class="icon admin-whale"></div>
+        <input type="text" readonly="readonly" value="admin-whale">
       </li>
       <li>
-        <div class="icon voyager-compass"></div>
-        <input type="text" readonly="readonly" value="voyager-compass">
+        <div class="icon admin-compass"></div>
+        <input type="text" readonly="readonly" value="admin-compass">
       </li>
       <li>
-        <div class="icon voyager-logbook"></div>
-        <input type="text" readonly="readonly" value="voyager-logbook">
+        <div class="icon admin-logbook"></div>
+        <input type="text" readonly="readonly" value="admin-logbook">
       </li>
       <li>
-        <div class="icon voyager-plus"></div>
-        <input type="text" readonly="readonly" value="voyager-plus">
+        <div class="icon admin-plus"></div>
+        <input type="text" readonly="readonly" value="admin-plus">
       </li>
       <li>
-        <div class="icon voyager-documentation"></div>
-        <input type="text" readonly="readonly" value="voyager-documentation">
+        <div class="icon admin-documentation"></div>
+        <input type="text" readonly="readonly" value="admin-documentation">
       </li>
       <li>
-        <div class="icon voyager-belt"></div>
-        <input type="text" readonly="readonly" value="voyager-belt">
+        <div class="icon admin-belt"></div>
+        <input type="text" readonly="readonly" value="admin-belt">
       </li>
       <li>
-        <div class="icon voyager-zoom-in"></div>
-        <input type="text" readonly="readonly" value="voyager-zoom-in">
+        <div class="icon admin-zoom-in"></div>
+        <input type="text" readonly="readonly" value="admin-zoom-in">
       </li>
       <li>
-        <div class="icon voyager-zoom-out"></div>
-        <input type="text" readonly="readonly" value="voyager-zoom-out">
+        <div class="icon admin-zoom-out"></div>
+        <input type="text" readonly="readonly" value="admin-zoom-out">
       </li>
       <li>
-        <div class="icon voyager-scissors"></div>
-        <input type="text" readonly="readonly" value="voyager-scissors">
+        <div class="icon admin-scissors"></div>
+        <input type="text" readonly="readonly" value="admin-scissors">
       </li>
       <li>
-        <div class="icon voyager-github-icon"></div>
-        <input type="text" readonly="readonly" value="voyager-github-icon">
+        <div class="icon admin-github-icon"></div>
+        <input type="text" readonly="readonly" value="admin-github-icon">
       </li>
     </ul>
     <h2>Admin Fonts Character Mapping</h2>

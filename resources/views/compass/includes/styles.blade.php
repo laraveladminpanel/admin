@@ -1,14 +1,14 @@
 <style type="text/css">
-        .voyager .compass .nav-tabs{
+        .admin .compass .nav-tabs{
             background:none;
             border-bottom:0px;
         }
 
-        .voyager .compass .nav-tabs > li{
+        .admin .compass .nav-tabs > li{
             margin-bottom:-1px !important;
         }
 
-        .voyager .compass .nav-tabs a{
+        .admin .compass .nav-tabs a{
             text-align: center;
             font-size: 10px;
             font-weight: normal;
@@ -20,7 +20,7 @@
             border-bottom-right-radius: 0px;
         }
 
-        .voyager .compass .nav-tabs a i{
+        .admin .compass .nav-tabs a i{
             display: block;
             font-size: 22px;
         }
@@ -62,7 +62,7 @@
             position: fixed;
             top: 61px;
             left: 0px;
-            background-image: url(/vendor/tcg/voyager/assets/images/bg.jpg);
+            background-image: url(/vendor/tcg/admin/assets/images/bg.jpg);
             background-size: cover;
             background-position: 0px;
             width: 100%;
@@ -101,11 +101,11 @@
             top:0px !important;
         }
 
-        .voyager .compass .nav-tabs > li > a:hover{
+        .admin .compass .nav-tabs > li > a:hover{
             background-color:#fff !important;
         }
 
-        .voyager-link{
+        .admin-link{
             width: 100%;
             min-height: 220px;
             display: block;
@@ -115,7 +115,7 @@
             position:relative;
         }
 
-        .voyager-link span.resource_label{
+        .admin-link span.resource_label{
             text-align: center;
             color: #fff;
             display: block;
@@ -131,11 +131,11 @@
             height: 100%;
         }
 
-        .voyager-link span.resource_label:hover{
+        .admin-link span.resource_label:hover{
             opacity:1;
         }
 
-        .voyager-link i{
+        .admin-link i{
             font-size: 48px;
             margin-right: 0px;
             position: absolute;
@@ -153,13 +153,13 @@
             padding:10px;
         }
 
-        .voyager-link span.resource_label:hover i{
+        .admin-link span.resource_label:hover i{
             
             opacity:1;
             transition:all 0.3s linear;
         }
 
-        .voyager-link span.copy{
+        .admin-link span.copy{
             position: absolute;
             font-size: 16px;
             left: 0px;
@@ -232,7 +232,7 @@
             padding-right:15px;
         }
 
-        .voyager-link span.desc{
+        .admin-link span.desc{
             font-size:11px;
             color:rgba(255, 255, 255, 0.8);
             width:100%;
@@ -241,11 +241,11 @@
             text-align:center;
         }
 
-        .voyager-angle-down{
+        .admin-angle-down{
             display:none;
         }
 
-        .voyager-link::after{
+        .admin-link::after{
             content:'';
             position:absolute;
             width:100%;
@@ -284,7 +284,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3111111', e
             position: relative;
         }
 
-        #fonts .voyager-angle-down{
+        #fonts .admin-angle-down{
             display:block;
         }
 
@@ -339,11 +339,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3111111', e
             border-right:1px solid #ececec;
         }
 
-        .voyager #logs .table>thead>tr>th:first-child{
+        .admin #logs .table>thead>tr>th:first-child{
             border-top-left-radius: 3px;
         }
 
-        .voyager #logs .table>thead>tr>th:last-child{
+        .admin #logs .table>thead>tr>th:last-child{
             border-top-right-radius: 3px;
         }
 

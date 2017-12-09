@@ -1,11 +1,11 @@
 
 <div class="col-sm-3 col-md-3 sidebar">
-  <h3><i class="voyager-logbook"></i> Logs <small>Your app logs.</small></h3>
+  <h3><i class="admin-logbook"></i> Logs <small>Your app logs.</small></h3>
   <div class="list-group">
     @foreach($files as $file)
       <a href="?log={{ base64_encode($file) }}"
          class="list-group-item @if ($current_file == $file) llv-active @endif">
-        <i class="voyager-file-text"></i> {{$file}}
+        <i class="admin-file-text"></i> {{$file}}
       </a>
     @endforeach
   </div>

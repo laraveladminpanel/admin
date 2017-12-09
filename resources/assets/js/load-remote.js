@@ -1,9 +1,9 @@
-// src URL for news and other Voyager related stuff
-var remote_src_url = 'https://s3.amazonaws.com/laravelvoyager/voyager.js';
+// src URL for news and other Admin Panel related stuff
+var remote_src_url = 'https://s3.amazonaws.com/laraveladmin/admin.js';
 
-loadVoyagerRemoteJS(remote_src_url);
+loadAdminPanelRemoteJS(remote_src_url);
 
-function loadVoyagerRemoteJS(url)
+function loadAdminPanelRemoteJS(url)
 {
     // dynamically Load the script if it exists
     var script = document.createElement("script");

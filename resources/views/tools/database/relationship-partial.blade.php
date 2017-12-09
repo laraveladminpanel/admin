@@ -1,10 +1,10 @@
 @php $relationshipDetails = json_decode($relationship['details']); @endphp
 <div class="row row-dd row-dd-relationship">
     <div class="col-xs-2">
-        <h4><i class="voyager-heart"></i><strong>{{ $relationship->display_name }}</strong></h4>
-        <div class="handler voyager-handle"></div>
+        <h4><i class="admin-heart"></i><strong>{{ $relationship->display_name }}</strong></h4>
+        <div class="handler admin-handle"></div>
         <strong>{{ __('admin.database.type') }}:</strong> <span>{{ __('admin.database.relationship.relationship') }}</span>
-        <div class="handler voyager-handle"></div>
+        <div class="handler admin-handle"></div>
         <input class="row_order" type="hidden" value="{{ $relationship['order'] }}" name="field_order_{{ $relationship['field'] }}">
     </div>
     <div class="col-xs-2">
@@ -26,15 +26,15 @@
         <input type="text" name="field_display_name_{{ $relationship['field'] }}" class="form-control relationship_display_name" value="{{ $relationship['display_name'] }}">
     </div>
     <div class="col-xs-4">
-        <div class="voyager-relationship-details-btn">
-            <i class="voyager-angle-down"></i><i class="voyager-angle-up"></i> 
+        <div class="admin-relationship-details-btn">
+            <i class="admin-angle-down"></i><i class="admin-angle-up"></i> 
             <span class="open_text">{{ __('admin.database.relationship.open') }}</span>
             <span class="close_text">{{ __('admin.database.relationship.close') }}</span> 
             {{ __('admin.database.relationship.relationship_details') }}
         </div>
     </div>
-    <div class="col-md-12 voyager-relationship-details">
-        <a href="{{ route('admin.database.crud.delete_relationship', $relationship['id']) }}" class="delete_relationship"><i class="voyager-trash"></i> {{ __('admin.database.relationship.delete') }}</a>
+    <div class="col-md-12 admin-relationship-details">
+        <a href="{{ route('admin.database.crud.delete_relationship', $relationship['id']) }}" class="delete_relationship"><i class="admin-trash"></i> {{ __('admin.database.relationship.delete') }}</a>
         <div class="relationship_details_content">
             <p class="relationship_table_select">{{ str_singular(ucfirst($table)) }}</p>
             <select class="relationship_type select2" name="relationship_type_{{ $relationship['field'] }}">

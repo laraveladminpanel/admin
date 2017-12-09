@@ -98,7 +98,7 @@ return [
     'login' => [
         'logginign'    => 'Iniciando sesión',
         'signin_below' => 'Ingresar abajo:',
-        'welcome'      => 'Bienvenido a Voyager. El administrador desaparecido de Laravel ',
+        'welcome'      => 'Bienvenido a Admin Panel. El administrador desaparecido de Laravel ',
     ],
     'profile' => [
         'avatar'        => 'Avatar',
@@ -188,7 +188,7 @@ return [
         'dynamic_route'        => 'Ruta Dinámica',
         'edit_item'            => 'Editar opción del menú',
         'icon_class'           => 'Icono para la opción de menú (Use una',
-        'icon_class2'          => 'Voyager Font Class</a>)',
+        'icon_class2'          => 'Admin Panel Font Class</a>)',
         'icon_class_ph'        => 'Icono (opcional)',
         'item_route'           => 'Ruta para la opción de menú',
         'item_title'           => 'Título de la opción de menú',
@@ -269,7 +269,7 @@ return [
         'generate_permissions'      => 'Generar permisos',
         'icon_class'                => 'Icono a utilizar para esta tabla',
         'icon_hint'                 => 'Icono (opcional) Utilice una ',
-        'icon_hint2'                => 'Voyager Font Class',
+        'icon_hint2'                => 'Admin Panel Font Class',
         'index'                     => 'ÍNDICE',
         'input_type'                => 'Tipo de entrada',
         'key'                       => 'Clave',
@@ -356,7 +356,7 @@ return [
         ],
     ],
     'theme' => [
-        'footer_copyright'  => 'Hecho con <i class = "voyager-heart"> </i> por',
+        'footer_copyright'  => 'Hecho con <i class = "admin-heart"> </i> por',
         'footer_copyright2' => 'Hecho con ron e incluso más ron',
     ],
     'json' => [

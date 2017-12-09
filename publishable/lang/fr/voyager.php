@@ -98,7 +98,7 @@ return [
     'login' => [
         'loggingin'    => 'Se connecter',
         'signin_below' => 'Connectez-vous ci-dessous :',
-        'welcome'      => 'Bienvenue dans Voyager, l\' administration qui manquait à Laravel',
+        'welcome'      => 'Bienvenue dans Admin Panel, l\' administration qui manquait à Laravel',
     ],
 
     'profile' => [
@@ -182,7 +182,7 @@ return [
         'dynamic_route'        => 'Route dynamique',
         'edit_item'            => 'Editer l\'élément du menu',
         'icon_class'           => 'Icône pour l\'élément de menu (utilisez la ',
-        'icon_class2'          => 'police d\'icône Voyager</a>)',
+        'icon_class2'          => 'police d\'icône Admin Panel</a>)',
         'icon_class_ph'        => 'Classe d\'icône (optionnel)',
         'item_route'           => 'Route pour l\'élément de menu',
         'item_title'           => 'Titre pour l\'élément de menu',
@@ -267,7 +267,7 @@ return [
         'generate_permissions'      => 'Générer les permissions',
         'icon_class'                => 'Icône à utiliser pour cette table',
         'icon_hint'                 => 'Icône (optionel), utiliser une',
-        'icon_hint2'                => 'police d\'icône Voyager',
+        'icon_hint2'                => 'police d\'icône Admin Panel',
         'index'                     => 'INDEX',
         'input_type'                => 'Type d\'entrée (input)',
         'key'                       => 'Clé',
@@ -359,7 +359,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Fait avec <i class="voyager-heart"></i> par',
+        'footer_copyright'  => 'Fait avec <i class="admin-heart"></i> par',
         'footer_copyright2' => 'Fait avec du rhum et encore plus de rhum :p',
     ],
 

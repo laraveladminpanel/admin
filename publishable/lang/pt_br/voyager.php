@@ -100,7 +100,7 @@ return [
     'login' => [
         'loggingin'    => 'Iniciando sessão',
         'signin_below' => 'Iniciar sessão abaixo:',
-        'welcome'      => 'Bem-vindo ao Voyager. O painel de administração que faltava ao Laravel',
+        'welcome'      => 'Bem-vindo ao Admin Panel. O painel de administração que faltava ao Laravel',
     ],
 
     'profile' => [
@@ -188,7 +188,7 @@ return [
         'dynamic_route'        => 'Rota Dinâmica',
         'edit_item'            => 'Editar item de menu',
         'icon_class'           => 'Classe do Ícone da Fonte para o item de menu (Use ',
-        'icon_class2'          => 'Classe da Fonte Voyager</a>)',
+        'icon_class2'          => 'Classe da Fonte Admin Panel</a>)',
         'icon_class_ph'        => 'Classe do Ícone (opcional)',
         'item_route'           => 'Rota do item de menu',
         'item_title'           => 'Título do item de menu',
@@ -271,7 +271,7 @@ return [
         'generate_permissions'      => 'Gerar Permissões',
         'icon_class'                => 'Icon para usar nesta Tabela',
         'icon_hint'                 => 'Icon (opcional) Usar a',
-        'icon_hint2'                => 'Voyager Font Class',
+        'icon_hint2'                => 'Admin Panel Font Class',
         'index'                     => 'INDEX',
         'input_type'                => 'Tipo de Input',
         'key'                       => 'Key',
@@ -361,7 +361,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Produzido com <i class="voyager-heart"></i> por',
+        'footer_copyright'  => 'Produzido com <i class="admin-heart"></i> por',
         'footer_copyright2' => 'Produzido com rum e mais rum',
     ],
 
@@ -376,7 +376,7 @@ return [
         'by_pageview'            => 'Por pageview',
         'by_sessions'            => 'Por sessões',
         'by_users'               => 'Por usuário',
-        'no_client_id'           => 'Para aceder ao analytics precisa adicionar nas Configurações do Voyager a chave <code>google_analytics_client_id </code> com o código google de identidade do analytics client. Obtenha o sua chave através do Google developer console:',
+        'no_client_id'           => 'Para aceder ao analytics precisa adicionar nas Configurações do Admin Panel a chave <code>google_analytics_client_id </code> com o código google de identidade do analytics client. Obtenha o sua chave através do Google developer console:',
         'set_view'               => 'Selecionar Vista',
         'this_vs_last_week'      => 'Esta Semana vs Semana Passada',
         'this_vs_last_year'      => 'Este Ano vs Ano Passado',

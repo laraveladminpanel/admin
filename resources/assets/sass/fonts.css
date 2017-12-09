@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "voyager";
-  src:url("../fonts/voyager.eot");
-  src:url("../fonts/voyager.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/voyager.woff") format("woff"),
-    url("../fonts/voyager.ttf") format("truetype"),
-    url("../fonts/voyager.svg#voyager") format("svg");
+  font-family: "admin";
+  src:url("../fonts/admin.eot");
+  src:url("../fonts/admin.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/admin.woff") format("woff"),
+    url("../fonts/admin.ttf") format("truetype"),
+    url("../fonts/admin.svg#admin") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "voyager" !important;
+  font-family: "admin" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -25,9 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="voyager-"]:before,
-[class*=" voyager-"]:before {
-  font-family: "voyager" !important;
+[class^="admin-"]:before,
+[class*=" admin-"]:before {
+  font-family: "admin" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -38,621 +38,621 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.voyager-bread:before {
+.admin-bread:before {
   content: "\61";
 }
-.voyager-helm:before {
+.admin-helm:before {
   content: "\62";
 }
-.voyager-play:before {
+.admin-play:before {
   content: "\63";
 }
-.voyager-activity:before {
+.admin-activity:before {
   content: "\64";
 }
-.voyager-company:before {
+.admin-company:before {
   content: "\65";
 }
-.voyager-file-text:before {
+.admin-file-text:before {
   content: "\66";
 }
-.voyager-folder:before {
+.admin-folder:before {
   content: "\67";
 }
-.voyager-paw:before {
+.admin-paw:before {
   content: "\68";
 }
-.voyager-sort:before {
+.admin-sort:before {
   content: "\6f";
 }
-.voyager-sort-asc:before {
+.admin-sort-asc:before {
   content: "\70";
 }
-.voyager-sort-desc:before {
+.admin-sort-desc:before {
   content: "\71";
 }
-.voyager-handle:before {
+.admin-handle:before {
   content: "\6d";
 }
-.voyager-hammer:before {
+.admin-hammer:before {
   content: "\6e";
 }
-.voyager-images:before {
+.admin-images:before {
   content: "\69";
 }
-.voyager-categories:before {
+.admin-categories:before {
   content: "\6a";
 }
-.voyager-group:before {
+.admin-group:before {
   content: "\6b";
 }
-.voyager-person:before {
+.admin-person:before {
   content: "\73";
 }
-.voyager-people:before {
+.admin-people:before {
   content: "\74";
 }
-.voyager-power:before {
+.admin-power:before {
   content: "\75";
 }
-.voyager-tools:before {
+.admin-tools:before {
   content: "\76";
 }
-.voyager-anchor:before {
+.admin-anchor:before {
   content: "\77";
 }
-.voyager-double-down:before {
+.admin-double-down:before {
   content: "\78";
 }
-.voyager-double-up:before {
+.admin-double-up:before {
   content: "\79";
 }
-.voyager-double-left:before {
+.admin-double-left:before {
   content: "\7a";
 }
-.voyager-double-right:before {
+.admin-double-right:before {
   content: "\41";
 }
-.voyager-window-list:before {
+.admin-window-list:before {
   content: "\42";
 }
-.voyager-x:before {
+.admin-x:before {
   content: "\43";
 }
-.voyager-dot:before {
+.admin-dot:before {
   content: "\44";
 }
-.voyager-dot-2:before {
+.admin-dot-2:before {
   content: "\45";
 }
-.voyager-dot-3:before {
+.admin-dot-3:before {
   content: "\46";
 }
-.voyager-list:before {
+.admin-list:before {
   content: "\47";
 }
-.voyager-list-add:before {
+.admin-list-add:before {
   content: "\48";
 }
-.voyager-pie-chart:before {
+.admin-pie-chart:before {
   content: "\49";
 }
-.voyager-watch:before {
+.admin-watch:before {
   content: "\4a";
 }
-.voyager-data:before {
+.admin-data:before {
   content: "\4b";
 }
-.voyager-music:before {
+.admin-music:before {
   content: "\4c";
 }
-.voyager-settings:before {
+.admin-settings:before {
   content: "\4e";
 }
-.voyager-video:before {
+.admin-video:before {
   content: "\4f";
 }
-.voyager-trash:before {
+.admin-trash:before {
   content: "\50";
 }
-.voyager-tv:before {
+.admin-tv:before {
   content: "\51";
 }
-.voyager-lock:before {
+.admin-lock:before {
   content: "\52";
 }
-.voyager-news:before {
+.admin-news:before {
   content: "\4d";
 }
-.voyager-bag:before {
+.admin-bag:before {
   content: "\53";
 }
-.voyager-upload:before {
+.admin-upload:before {
   content: "\54";
 }
-.voyager-refresh:before {
+.admin-refresh:before {
   content: "\55";
 }
-.voyager-character:before {
+.admin-character:before {
   content: "\57";
 }
-.voyager-move:before {
+.admin-move:before {
   content: "\58";
 }
-.voyager-paypal:before {
+.admin-paypal:before {
   content: "\56";
 }
-.voyager-paper-plane:before {
+.admin-paper-plane:before {
   content: "\59";
 }
-.voyager-ticket:before {
+.admin-ticket:before {
   content: "\5a";
 }
-.voyager-youtube-play:before {
+.admin-youtube-play:before {
   content: "\30";
 }
-.voyager-boat:before {
+.admin-boat:before {
   content: "\31";
 }
-.voyager-check:before {
+.admin-check:before {
   content: "\6c";
 }
-.voyager-alarm-clock:before {
+.admin-alarm-clock:before {
   content: "\32";
 }
-.voyager-controller:before {
+.admin-controller:before {
   content: "\34";
 }
-.voyager-pizza:before {
+.admin-pizza:before {
   content: "\35";
 }
-.voyager-backpack:before {
+.admin-backpack:before {
   content: "\36";
 }
-.voyager-barbeque:before {
+.admin-barbeque:before {
   content: "\37";
 }
-.voyager-bomb:before {
+.admin-bomb:before {
   content: "\38";
 }
-.voyager-book-download:before {
+.admin-book-download:before {
   content: "\39";
 }
-.voyager-browser:before {
+.admin-browser:before {
   content: "\21";
 }
-.voyager-brush:before {
+.admin-brush:before {
   content: "\22";
 }
-.voyager-bubble-hear:before {
+.admin-bubble-hear:before {
   content: "\23";
 }
-.voyager-polaroid:before {
+.admin-polaroid:before {
   content: "\24";
 }
-.voyager-crop:before {
+.admin-crop:before {
   content: "\26";
 }
-.voyager-dashboard:before {
+.admin-dashboard:before {
   content: "\27";
 }
-.voyager-hotdog:before {
+.admin-hotdog:before {
   content: "\28";
 }
-.voyager-laptop:before {
+.admin-laptop:before {
   content: "\29";
 }
-.voyager-paint-bucket:before {
+.admin-paint-bucket:before {
   content: "\2c";
 }
-.voyager-photo:before {
+.admin-photo:before {
   content: "\2d";
 }
-.voyager-photos:before {
+.admin-photos:before {
   content: "\2e";
 }
-.voyager-receipt:before {
+.admin-receipt:before {
   content: "\2f";
 }
-.voyager-buy:before {
+.admin-buy:before {
   content: "\3a";
 }
-.voyager-lightbulb:before {
+.admin-lightbulb:before {
   content: "\3b";
 }
-.voyager-archive:before {
+.admin-archive:before {
   content: "\3f";
 }
-.voyager-paperclip:before {
+.admin-paperclip:before {
   content: "\40";
 }
-.voyager-warning:before {
+.admin-warning:before {
   content: "\5b";
 }
-.voyager-basket:before {
+.admin-basket:before {
   content: "\5d";
 }
-.voyager-bell:before {
+.admin-bell:before {
   content: "\5e";
 }
-.voyager-book:before {
+.admin-book:before {
   content: "\5f";
 }
-.voyager-chat:before {
+.admin-chat:before {
   content: "\60";
 }
-.voyager-down-circled:before {
+.admin-down-circled:before {
   content: "\7b";
 }
-.voyager-location:before {
+.admin-location:before {
   content: "\7d";
 }
-.voyager-forward:before {
+.admin-forward:before {
   content: "\7e";
 }
-.voyager-flashlight:before {
+.admin-flashlight:before {
   content: "\5c";
 }
-.voyager-trophy:before {
+.admin-trophy:before {
   content: "\e001";
 }
-.voyager-diamond:before {
+.admin-diamond:before {
   content: "\e002";
 }
-.voyager-credit-cards:before {
+.admin-credit-cards:before {
   content: "\e003";
 }
-.voyager-shop:before {
+.admin-shop:before {
   content: "\e004";
 }
-.voyager-sound:before {
+.admin-sound:before {
   content: "\e005";
 }
-.voyager-study:before {
+.admin-study:before {
   content: "\e006";
 }
-.voyager-pen:before {
+.admin-pen:before {
   content: "\e007";
 }
-.voyager-params:before {
+.admin-params:before {
   content: "\e008";
 }
-.voyager-fire:before {
+.admin-fire:before {
   content: "\e009";
 }
-.voyager-dollar:before {
+.admin-dollar:before {
   content: "\e00a";
 }
-.voyager-bulb:before {
+.admin-bulb:before {
   content: "\e00b";
 }
-.voyager-lab:before {
+.admin-lab:before {
   content: "\e00c";
 }
-.voyager-cup:before {
+.admin-cup:before {
   content: "\e00d";
 }
-.voyager-megaphone:before {
+.admin-megaphone:before {
   content: "\e00e";
 }
-.voyager-heart:before {
+.admin-heart:before {
   content: "\e00f";
 }
-.voyager-bubble:before {
+.admin-bubble:before {
   content: "\e011";
 }
-.voyager-search:before {
+.admin-search:before {
   content: "\e012";
 }
-.voyager-tag:before {
+.admin-tag:before {
   content: "\e013";
 }
-.voyager-world:before {
+.admin-world:before {
   content: "\25";
 }
-.voyager-camera:before {
+.admin-camera:before {
   content: "\2a";
 }
-.voyager-calendar:before {
+.admin-calendar:before {
   content: "\7c";
 }
-.voyager-mail:before {
+.admin-mail:before {
   content: "\e014";
 }
-.voyager-phone:before {
+.admin-phone:before {
   content: "\e015";
 }
-.voyager-star:before {
+.admin-star:before {
   content: "\e016";
 }
-.voyager-star-half:before {
+.admin-star-half:before {
   content: "\e017";
 }
-.voyager-star-half-1:before {
+.admin-star-half-1:before {
   content: "\e018";
 }
-.voyager-star-two:before {
+.admin-star-two:before {
   content: "\e019";
 }
-.voyager-medal-rank-star:before {
+.admin-medal-rank-star:before {
   content: "\e01a";
 }
-.voyager-facebook:before {
+.admin-facebook:before {
   content: "\e01b";
 }
-.voyager-google-plus:before {
+.admin-google-plus:before {
   content: "\e01c";
 }
-.voyager-twitter:before {
+.admin-twitter:before {
   content: "\e01d";
 }
-.voyager-github:before {
+.admin-github:before {
   content: "\e01e";
 }
-.voyager-code:before {
+.admin-code:before {
   content: "\e01f";
 }
-.voyager-pie-graph:before {
+.admin-pie-graph:before {
   content: "\e020";
 }
-.voyager-javascript:before {
+.admin-javascript:before {
   content: "\e021";
 }
-.voyager-wand:before {
+.admin-wand:before {
   content: "\e022";
 }
-.voyager-wineglass:before {
+.admin-wineglass:before {
   content: "\e023";
 }
-.voyager-milestone:before {
+.admin-milestone:before {
   content: "\e024";
 }
-.voyager-terminal:before {
+.admin-terminal:before {
   content: "\e025";
 }
-.voyager-plug:before {
+.admin-plug:before {
   content: "\e026";
 }
-.voyager-gift:before {
+.admin-gift:before {
   content: "\e027";
 }
-.voyager-markdown:before {
+.admin-markdown:before {
   content: "\e028";
 }
-.voyager-beer:before {
+.admin-beer:before {
   content: "\e029";
 }
-.voyager-credit-card:before {
+.admin-credit-card:before {
   content: "\e02a";
 }
-.voyager-bolt:before {
+.admin-bolt:before {
   content: "\e02b";
 }
-.voyager-external:before {
+.admin-external:before {
   content: "\e02c";
 }
-.voyager-magnet:before {
+.admin-magnet:before {
   content: "\e02d";
 }
-.voyager-certificate:before {
+.admin-certificate:before {
   content: "\e02e";
 }
-.voyager-cloud-download:before {
+.admin-cloud-download:before {
   content: "\e02f";
 }
-.voyager-campfire:before {
+.admin-campfire:before {
   content: "\e030";
 }
-.voyager-new:before {
+.admin-new:before {
   content: "\e031";
 }
-.voyager-skull:before {
+.admin-skull:before {
   content: "\e032";
 }
-.voyager-telephone:before {
+.admin-telephone:before {
   content: "\e033";
 }
-.voyager-trees:before {
+.admin-trees:before {
   content: "\e034";
 }
-.voyager-bar-chart:before {
+.admin-bar-chart:before {
   content: "\e035";
 }
-.voyager-check-circle:before {
+.admin-check-circle:before {
   content: "\e036";
 }
-.voyager-exclamation:before {
+.admin-exclamation:before {
   content: "\e037";
 }
-.voyager-font:before {
+.admin-font:before {
   content: "\e03a";
 }
-.voyager-puzzle:before {
+.admin-puzzle:before {
   content: "\e03b";
 }
-.voyager-smile:before {
+.admin-smile:before {
   content: "\e03c";
 }
-.voyager-frown:before {
+.admin-frown:before {
   content: "\e03d";
 }
-.voyager-meh:before {
+.admin-meh:before {
   content: "\e03e";
 }
-.voyager-leaf:before {
+.admin-leaf:before {
   content: "\e03f";
 }
-.voyager-info-circled:before {
+.admin-info-circled:before {
   content: "\e040";
 }
-.voyager-underline:before {
+.admin-underline:before {
   content: "\e041";
 }
-.voyager-wallet:before {
+.admin-wallet:before {
   content: "\e042";
 }
-.voyager-truck:before {
+.admin-truck:before {
   content: "\e043";
 }
-.voyager-eye:before {
+.admin-eye:before {
   content: "\e044";
 }
-.voyager-sun:before {
+.admin-sun:before {
   content: "\e045";
 }
-.voyager-barbell:before {
+.admin-barbell:before {
   content: "\e04a";
 }
-.voyager-bookmark:before {
+.admin-bookmark:before {
   content: "\e04c";
 }
-.voyager-volume-up:before {
+.admin-volume-up:before {
   content: "\e04d";
 }
-.voyager-volume-down:before {
+.admin-volume-down:before {
   content: "\e04e";
 }
-.voyager-wifi:before {
+.admin-wifi:before {
   content: "\e04f";
 }
-.voyager-pause:before {
+.admin-pause:before {
   content: "\e053";
 }
-.voyager-resize-full:before {
+.admin-resize-full:before {
   content: "\e054";
 }
-.voyager-resize-small:before {
+.admin-resize-small:before {
   content: "\e055";
 }
-.voyager-download:before {
+.admin-download:before {
   content: "\e056";
 }
-.voyager-droplet:before {
+.admin-droplet:before {
   content: "\e057";
 }
-.voyager-umbrella:before {
+.admin-umbrella:before {
   content: "\e058";
 }
-.voyager-harddrive:before {
+.admin-harddrive:before {
   content: "\e059";
 }
-.voyager-css3:before {
+.admin-css3:before {
   content: "\e05a";
 }
-.voyager-html5:before {
+.admin-html5:before {
   content: "\e05b";
 }
-.voyager-tree:before {
+.admin-tree:before {
   content: "\e05e";
 }
-.voyager-file-code:before {
+.admin-file-code:before {
   content: "\e061";
 }
-.voyager-bug:before {
+.admin-bug:before {
   content: "\e062";
 }
-.voyager-rocket:before {
+.admin-rocket:before {
   content: "\e063";
 }
-.voyager-key:before {
+.admin-key:before {
   content: "\33";
 }
-.voyager-question:before {
+.admin-question:before {
   content: "\2b";
 }
-.voyager-cursor:before {
+.admin-cursor:before {
   content: "\3c";
 }
-.voyager-lifebuoy:before {
+.admin-lifebuoy:before {
   content: "\3d";
 }
-.voyager-thumbs-up:before {
+.admin-thumbs-up:before {
   content: "\3e";
 }
-.voyager-thumb-tack:before {
+.admin-thumb-tack:before {
   content: "\e000";
 }
-.voyager-edit:before {
+.admin-edit:before {
   content: "\e010";
 }
-.voyager-angle-down:before {
+.admin-angle-down:before {
   content: "\e038";
 }
-.voyager-angle-left:before {
+.admin-angle-left:before {
   content: "\e039";
 }
-.voyager-angle-right:before {
+.admin-angle-right:before {
   content: "\e046";
 }
-.voyager-angle-up:before {
+.admin-angle-up:before {
   content: "\e047";
 }
-.voyager-home:before {
+.admin-home:before {
   content: "\e048";
 }
-.voyager-pirate-swords:before {
+.admin-pirate-swords:before {
   content: "\e04b";
 }
-.voyager-pirate:before {
+.admin-pirate:before {
   content: "\e050";
 }
-.voyager-rum:before {
+.admin-rum:before {
   content: "\e051";
 }
-.voyager-cannon:before {
+.admin-cannon:before {
   content: "\e049";
 }
-.voyager-hook:before {
+.admin-hook:before {
   content: "\e052";
 }
-.voyager-kraken:before {
+.admin-kraken:before {
   content: "\e05c";
 }
-.voyager-lighthouse:before {
+.admin-lighthouse:before {
   content: "\e05d";
 }
-.voyager-pirate-hat:before {
+.admin-pirate-hat:before {
   content: "\e05f";
 }
-.voyager-rum-1:before {
+.admin-rum-1:before {
   content: "\e060";
 }
-.voyager-ship:before {
+.admin-ship:before {
   content: "\e064";
 }
-.voyager-treasure:before {
+.admin-treasure:before {
   content: "\e065";
 }
-.voyager-treasure-open:before {
+.admin-treasure-open:before {
   content: "\e066";
 }
-.voyager-whale:before {
+.admin-whale:before {
   content: "\e067";
 }
-.voyager-compass:before {
+.admin-compass:before {
   content: "\e068";
 }
-.voyager-logbook:before {
+.admin-logbook:before {
   content: "\e069";
 }
-.voyager-plus:before {
+.admin-plus:before {
   content: "\e06a";
 }
-.voyager-documentation:before {
+.admin-documentation:before {
   content: "\72";
 }
-.voyager-belt:before {
+.admin-belt:before {
   content: "\e06b";
 }
-.voyager-zoom-in:before {
+.admin-zoom-in:before {
   content: "\e06c";
 }
-.voyager-zoom-out:before {
+.admin-zoom-out:before {
   content: "\e06d";
 }
-.voyager-scissors:before {
+.admin-scissors:before {
   content: "\e06e";
 }
-.voyager-github-icon:before {
+.admin-github-icon:before {
   content: "\e06f";
 }

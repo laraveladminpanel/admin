@@ -1,8 +1,8 @@
 /*
- * Slugify for Voyager v0.9.0
+ * Slugify for Admin Panel v0.9.0
  *
  * Generates a slug for a given input element.
- * This script was created for Voyager, but works with any HTML structure.
+ * This script was created for Admin Panel, but works with any HTML structure.
  *
  * Default behavior is to auto generate a new slug, only if the input is empty.
  * If input isn't empty, the auto generation is disabled.

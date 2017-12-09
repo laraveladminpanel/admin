@@ -7,10 +7,10 @@
 
             <ol class="breadcrumb hidden-xs">
                 @if(count(Request::segments()) == 1)
-                    <li class="active"><i class="voyager-boat"></i> {{ __('admin.generic.dashboard') }}</li>
+                    <li class="active"><i class="admin-boat"></i> {{ __('admin.generic.dashboard') }}</li>
                 @else
                     <li class="active">
-                        <a href="{{ route('admin.dashboard')}}"><i class="voyager-boat"></i> {{ __('admin.generic.dashboard') }}</a>
+                        <a href="{{ route('admin.dashboard')}}"><i class="admin-boat"></i> {{ __('admin.generic.dashboard') }}</a>
                     </li>
                 @endif
                 <?php $breadcrumb_url = url(''); ?>

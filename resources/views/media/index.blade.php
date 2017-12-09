@@ -9,7 +9,7 @@
             <div class="col-md-12">
 
                 <div class="admin-section-title">
-                    <h3><i class="voyager-images"></i> {{ __('admin.generic.media') }}</h3>
+                    <h3><i class="admin-images"></i> {{ __('admin.generic.media') }}</h3>
                 </div>
                 <div class="clear"></div>
 
@@ -17,26 +17,26 @@
 
                     <div id="toolbar">
                         <div class="btn-group offset-right">
-                            <button type="button" class="btn btn-primary" id="upload"><i class="voyager-upload"></i>
+                            <button type="button" class="btn btn-primary" id="upload"><i class="admin-upload"></i>
                                 {{ __('admin.generic.upload') }}
                             </button>
                             <button type="button" class="btn btn-primary" id="new_folder"
-                                    onclick="jQuery('#new_folder_modal').modal('show');"><i class="voyager-folder"></i>
+                                    onclick="jQuery('#new_folder_modal').modal('show');"><i class="admin-folder"></i>
                                 {{ __('admin.generic.add_folder') }}
                             </button>
                         </div>
-                        <button type="button" class="btn btn-default" id="refresh"><i class="voyager-refresh"></i>
+                        <button type="button" class="btn btn-default" id="refresh"><i class="admin-refresh"></i>
                         </button>
                         <div class="btn-group offset-right">
-                            <button type="button" class="btn btn-default" id="move"><i class="voyager-move"></i> {{ __('admin.generic.move') }}
+                            <button type="button" class="btn btn-default" id="move"><i class="admin-move"></i> {{ __('admin.generic.move') }}
                             </button>
-                            <button type="button" class="btn btn-default" id="rename"><i class="voyager-character"></i>
+                            <button type="button" class="btn btn-default" id="rename"><i class="admin-character"></i>
                                 {{ __('admin.generic.rename') }}
                             </button>
-                            <button type="button" class="btn btn-default" id="delete"><i class="voyager-trash"></i>
+                            <button type="button" class="btn btn-default" id="delete"><i class="admin-trash"></i>
                                 {{ __('admin.generic.delete') }}
                             </button>
-							<button v-show="selectedFileIs('image')" type="button" class="btn btn-default" id="crop"><i class="voyager-crop"></i>
+							<button v-show="selectedFileIs('image')" type="button" class="btn btn-default" id="crop"><i class="admin-crop"></i>
                                 {{ __('admin.media.crop') }}
                             </button>
                         </div>
@@ -62,7 +62,7 @@
                                 </template>
                             </ol>
 
-                            <div class="toggle"><span>{{ __('admin.generic.close') }}</span><i class="voyager-double-right"></i></div>
+                            <div class="toggle"><span>{{ __('admin.generic.close') }}</span><i class="admin-double-right"></i></div>
                         </div>
                         <div class="flex">
 
@@ -77,20 +77,20 @@
                                                     <div class="img_icon" :style="imgIcon(file.path)"></div>
                                                 </template>
                                                 <template v-if="file.type.includes('video')">
-                                                    <i class="icon voyager-video"></i>
+                                                    <i class="icon admin-video"></i>
                                                 </template>
                                                 <template v-if="file.type.includes('audio')">
-                                                    <i class="icon voyager-music"></i>
+                                                    <i class="icon admin-music"></i>
                                                 </template>
 												<template v-if="file.type.includes('zip')">
-                                                    <i class="icon voyager-archive"></i>
+                                                    <i class="icon admin-archive"></i>
                                                 </template>
                                                 <template v-if="file.type == 'folder'">
-                                                    <i class="icon voyager-folder"></i>
+                                                    <i class="icon admin-folder"></i>
                                                 </template>
                                                 <template
                                                         v-if="file.type != 'folder' && !file.type.includes('image') && !file.type.includes('video') && !file.type.includes('audio') && !file.type.includes('zip')">
-                                                    <i class="icon voyager-file-text"></i>
+                                                    <i class="icon admin-file-text"></i>
                                                 </template>
 
                                             </div>
@@ -123,14 +123,14 @@
                                 </div>
 
                                 <div id="no_files">
-                                    <h3><i class="voyager-meh"></i> {{ __('admin.media.no_files_in_folder') }}</h3>
+                                    <h3><i class="admin-meh"></i> {{ __('admin.media.no_files_in_folder') }}</h3>
                                 </div>
 
                             </div>
 
                             <div id="right">
                                 <div class="right_none_selected">
-                                    <i class="voyager-cursor"></i>
+                                    <i class="admin-cursor"></i>
                                     <p>{{ __('admin.media.nothing_selected') }}</p>
                                 </div>
                                 <div class="right_details">
@@ -148,7 +148,7 @@
                                                 </video>
                                             </template>
                                             <template v-if="selectedFileIs('audio')">
-												<i class="voyager-music"></i>
+												<i class="admin-music"></i>
                                                 <audio controls style="width:100%; margin-top:5px;">
                                                     <source :src="selected_file.path" type="audio/ogg">
                                                     <source :src="selected_file.path" type="audio/mpeg">
@@ -156,14 +156,14 @@
                                                 </audio>
                                             </template>
 											<template v-if="selectedFileIs('zip')">
-                                                <i class="voyager-archive"></i>
+                                                <i class="admin-archive"></i>
                                             </template>
                                             <template v-if="selected_file.type == 'folder'">
-                                                <i class="voyager-folder"></i>
+                                                <i class="admin-folder"></i>
                                             </template>
                                             <!--template
                                                     v-if="selected_file.type != 'folder' && !selectedFileIs('audio') && !selectedFileIs('video') && !selectedFileIs('image')">
-                                                <i class="voyager-file-text-o"></i>
+                                                <i class="admin-file-text-o"></i>
                                             </template>-->
                                         </div>
 
@@ -207,7 +207,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title"><i class="voyager-move"></i> {{ __('admin.media.move_file_folder') }}</h4>
+                                    <h4 class="modal-title"><i class="admin-move"></i> {{ __('admin.media.move_file_folder') }}</h4>
                                 </div>
 
                                 <div class="modal-body">
@@ -239,7 +239,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title"><i class="voyager-character"></i> {{ __('admin.media.rename_file_folder') }}</h4>
+                                    <h4 class="modal-title"><i class="admin-character"></i> {{ __('admin.media.rename_file_folder') }}</h4>
                                 </div>
 
                                 <div class="modal-body">
@@ -284,7 +284,7 @@
 
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('admin.media.crop_image') }}</h4>
+                                    <h4 class="modal-title"><i class="admin-warning"></i> {{ __('admin.media.crop_image') }}</h4>
                                 </div>
 
                                 <div class="modal-body">
@@ -317,7 +317,7 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><i class="voyager-folder"></i> {{ __('admin.media.add_new_folder') }}</h4>
+                                <h4 class="modal-title"><i class="admin-folder"></i> {{ __('admin.media.add_new_folder') }}</h4>
                             </div>
 
                             <div class="modal-body">
@@ -343,12 +343,12 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('admin.generic.are_you_sure') }}</h4>
+                                <h4 class="modal-title"><i class="admin-warning"></i> {{ __('admin.generic.are_you_sure') }}</h4>
                             </div>
 
                             <div class="modal-body">
                                 <h4>{{ __('admin.generic.are_you_sure_delete') }} '<span class="confirm_delete_name"></span>'</h4>
-                                <h5 class="folder_warning"><i class="voyager-warning"></i> {{ __('admin.media.delete_folder_question') }}</h5>
+                                <h5 class="folder_warning"><i class="admin-warning"></i> {{ __('admin.media.delete_folder_question') }}</h5>
                             </div>
 
                             <div class="modal-footer">
@@ -370,7 +370,7 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('admin.media.drag_drop_info') }}</h4>
+                                <h4 class="modal-title"><i class="admin-warning"></i> {{ __('admin.media.drag_drop_info') }}</h4>
                             </div>
 
                             <div class="modal-body">

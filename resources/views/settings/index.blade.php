@@ -4,10 +4,10 @@
 
 @section('css')
     <style>
-        .panel-actions .voyager-trash {
+        .panel-actions .admin-trash {
             cursor: pointer;
         }
-        .panel-actions .voyager-trash:hover {
+        .panel-actions .admin-trash:hover {
             color: #e94542;
         }
         .settings .panel-actions{
@@ -28,10 +28,10 @@
         .sort-icons:hover {
             color: #37474F;
         }
-        .voyager-sort-desc {
+        .admin-sort-desc {
             margin-right: 10px;
         }
-        .voyager-sort-asc {
+        .admin-sort-asc {
             top: 10px;
         }
         .page-title {
@@ -125,12 +125,12 @@
             display:none;
         }
 
-        .voyager .settings .nav-tabs{
+        .admin .settings .nav-tabs{
             background:none;
             border-bottom:0px;
         }
 
-        .voyager .settings .nav-tabs .active a{
+        .admin .settings .nav-tabs .active a{
             border:0px;
         }
 
@@ -140,7 +140,7 @@
             border-radius: 3px;
         }
 
-        .voyager .settings input[type=file]{
+        .admin .settings input[type=file]{
             width:100%;
         }
 
@@ -153,11 +153,11 @@
             padding: 2px;
         }
 
-        .voyager .settings .nav-tabs > li{
+        .admin .settings .nav-tabs > li{
             margin-bottom:-1px !important;
         }
 
-        .voyager .settings .nav-tabs a{
+        .admin .settings .nav-tabs a{
             text-align: center;
             background: #f8f8f8;
             border: 1px solid #f1f1f1;
@@ -167,7 +167,7 @@
             border-bottom-right-radius: 0px;
         }
 
-        .voyager .settings .nav-tabs a i{
+        .admin .settings .nav-tabs a i{
             display: block;
             font-size: 22px;
         }
@@ -202,7 +202,7 @@
             top:0px !important;
         }
 
-        .voyager .settings .nav-tabs > li > a:hover{
+        .admin .settings .nav-tabs > li > a:hover{
             background-color:#fff !important;
         }
     </style>
@@ -210,7 +210,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-settings"></i> {{ __('admin.generic.settings') }}
+        <i class="admin-settings"></i> {{ __('admin.generic.settings') }}
     </h1>
 @stop
 
@@ -250,12 +250,12 @@
                                 </h3>
                                 <div class="panel-actions">
                                     <a href="{{ route('admin.settings.move_up', $setting->id) }}">
-                                        <i class="sort-icons voyager-sort-asc"></i>
+                                        <i class="sort-icons admin-sort-asc"></i>
                                     </a>
                                     <a href="{{ route('admin.settings.move_down', $setting->id) }}">
-                                        <i class="sort-icons voyager-sort-desc"></i>
+                                        <i class="sort-icons admin-sort-desc"></i>
                                     </a>
-                                    <i class="voyager-trash"
+                                    <i class="admin-trash"
                                        data-id="{{ $setting->id }}"
                                        data-display-key="{{ $setting->key }}"
                                        data-display-name="{{ $setting->display_name }}"></i>
@@ -277,7 +277,7 @@
                                     @elseif($setting->type == "image" || $setting->type == "file")
                                         @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::disk(config('admin.storage.disk'))->exists($setting->value))
                                             <div class="img_settings_container">
-                                                <a href="{{ route('admin.settings.delete_value', $setting->id) }}" class="voyager-x"></a>
+                                                <a href="{{ route('admin.settings.delete_value', $setting->id) }}" class="admin-x"></a>
                                                 <img src="{{ Storage::disk(config('admin.storage.disk'))->url($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                             </div>
                                             <div class="clearfix"></div>
@@ -349,7 +349,7 @@
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
-                <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('admin.settings.new') }}</h3>
+                <h3 class="panel-title"><i class="admin-plus"></i> {{ __('admin.settings.new') }}</h3>
             </div>
             <div class="panel-body">
                 <form action="{{ route('admin.settings.store') }}" method="POST">
@@ -386,7 +386,7 @@
                         </select>
                     </div>
                     <div class="col-md-12">
-                        <a id="toggle_options"><i class="voyager-double-down"></i> {{ mb_strtoupper(__('admin.generic.options')) }}</a>
+                        <a id="toggle_options"><i class="admin-double-down"></i> {{ mb_strtoupper(__('admin.generic.options')) }}</a>
                         <div class="new-settings-options">
                             <label for="options">{{ __('admin.generic.options') }}
                                 <small>{{ __('admin.settings.help_option') }}</small>
@@ -399,7 +399,7 @@
                     </div>
                     <div style="clear:both"></div>
                     <button type="submit" class="btn btn-primary pull-right new-setting-btn">
-                        <i class="voyager-plus"></i> {{ __('admin.settings.add_new') }}
+                        <i class="admin-plus"></i> {{ __('admin.settings.add_new') }}
                     </button>
                     <div style="clear:both"></div>
                 </form>
@@ -415,7 +415,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title">
-                        <i class="voyager-trash"></i> {!! __('admin.settings.delete_question', ['setting' => '<span id="delete_setting_title"></span>']) !!}
+                        <i class="admin-trash"></i> {!! __('admin.settings.delete_question', ['setting' => '<span id="delete_setting_title"></span>']) !!}
                     </h4>
                 </div>
                 <div class="modal-footer">
@@ -437,14 +437,14 @@
         $('document').ready(function () {
             $('#toggle_options').click(function () {
                 $('.new-settings-options').toggle();
-                if ($('#toggle_options .voyager-double-down').length) {
-                    $('#toggle_options .voyager-double-down').removeClass('voyager-double-down').addClass('voyager-double-up');
+                if ($('#toggle_options .admin-double-down').length) {
+                    $('#toggle_options .admin-double-down').removeClass('admin-double-down').addClass('admin-double-up');
                 } else {
-                    $('#toggle_options .voyager-double-up').removeClass('voyager-double-up').addClass('voyager-double-down');
+                    $('#toggle_options .admin-double-up').removeClass('admin-double-up').addClass('admin-double-down');
                 }
             });
 
-            $('.voyager-trash').click(function () {
+            $('.admin-trash').click(function () {
                 var display = $(this).data('display-name') + '/' + $(this).data('display-key');
 
                 $('#delete_setting_title').text(display);
@@ -463,7 +463,7 @@
     $(".group_select_new").select2({
         tags: true,
         width: 'resolve',
-        placeholder: '{{ __("voyager.generic.select_group") }}'
+        placeholder: '{{ __("admin.generic.select_group") }}'
     });
     $(".group_select_new").val('').trigger('change');
     </script>

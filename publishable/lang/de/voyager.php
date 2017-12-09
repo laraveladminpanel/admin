@@ -100,7 +100,7 @@ return [
     'login' => [
         'loggingin'    => 'Einloggen',
         'signin_below' => 'Unten anmelden:',
-        'welcome'      => 'Willkommen bei Voyager. Der fehlende Admin für Laravel',
+        'welcome'      => 'Willkommen bei Admin Panel. Der fehlende Admin für Laravel',
     ],
 
     'profile' => [
@@ -189,7 +189,7 @@ return [
         'dynamic_route'        => 'Dynamische Route',
         'edit_item'            => 'Menü Element Editieren',
         'icon_class'           => 'Font Icon CSS-Klasse für das Menü Element (Benutze ',
-        'icon_class2'          => 'Voyager Font CSS-Klasse</a>)',
+        'icon_class2'          => 'Admin Panel Font CSS-Klasse</a>)',
         'icon_class_ph'        => 'Icon CSS-Klasse (optional)',
         'item_route'           => 'Route für das Menü Element',
         'item_title'           => 'Titel für das Menü Element',
@@ -274,7 +274,7 @@ return [
         'generate_permissions'     => 'Zugriffsrechte Generieren',
         'icon_class'               => 'Icon CSS-Klasse für diese Tabelle',
         'icon_hint'                => 'Icon (optional) Benutze',
-        'icon_hint2'               => 'Voyager Font CSS-Klasse',
+        'icon_hint2'               => 'Admin Panel Font CSS-Klasse',
         'index'                    => 'INDEX',
         'input_type'               => 'Input Typ',
         'key'                      => 'Key',
@@ -372,7 +372,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Made with <i class="voyager-heart"></i> by',
+        'footer_copyright'  => 'Made with <i class="admin-heart"></i> by',
         'footer_copyright2' => 'Made with Rum und noch mehr Rum',
     ],
 

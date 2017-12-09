@@ -78,7 +78,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-block login-button">
-                        <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('admin.login.loggingin') }}...</span>
+                        <span class="signingin hidden"><span class="admin-refresh"></span> {{ __('admin.login.loggingin') }}...</span>
                         <span class="signin">{{ __('admin.generic.login') }}</span>
                     </button>
 

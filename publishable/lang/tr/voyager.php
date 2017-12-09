@@ -96,7 +96,7 @@ return [
     'login' => [
         'loggingin'    => 'Giriş yap',
         'signin_below' => ' Below: oturum aç',
-        'welcome'      => "Voyager a hoş geldiniz , Laravel'in aranan yönetim paneli",
+        'welcome'      => "Admin Panel a hoş geldiniz , Laravel'in aranan yönetim paneli",
     ],
 
     'profile' => [
@@ -174,7 +174,7 @@ return [
         'dynamic_route'        => 'Dinamik rota',
         'edit_item'            => 'Menüyü düzenle',
         'icon_class'           => 'Font Icon sınıfları menü için (Use a',
-        'icon_class2'          => 'Voyager Font sınıfları</a>)',
+        'icon_class2'          => 'Admin Panel Font sınıfları</a>)',
         'icon_class_ph'        => 'Icon sınıfları (tercihen)',
         'item_route'           => 'Menü için rota',
         'item_title'           => 'Menü başlığı',
@@ -258,7 +258,7 @@ return [
         'generate_permissions'      => 'İzinleri oluştur',
         'icon_class'                => 'Bu tablo için İcon',
         'icon_hint'                 => 'İcon (isteğe bağlı) kullanın',
-        'icon_hint2'                => 'voyager ön yüz sınıfı',
+        'icon_hint2'                => 'admin ön yüz sınıfı',
         'index'                     => 'İNDEKS',
         'input_type'                => 'Giriş tipi',
         'key'                       => 'Anahtar',
@@ -346,7 +346,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => '<i class="voyager-heart"></i> ile yapıldı',
+        'footer_copyright'  => '<i class="admin-heart"></i> ile yapıldı',
         'footer_copyright2' => 'Rom ve daha da fazla romla yapılmış',
     ],
 

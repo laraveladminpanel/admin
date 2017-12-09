@@ -66,10 +66,10 @@
                                         @if($row->type == 'relationship')
                                             @include('admin::formfields.relationship')
                                         @else
-                                            {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
                                         @endif
 
-                                        @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                        @foreach (app('admin')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
                                             {!! $after->handle($row, $dataType, $dataTypeContent) !!}
                                         @endforeach
                                     </div>
@@ -104,7 +104,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"
                             aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-warning"></i> {{ __('admin.generic.are_you_sure') }}</h4>
+                    <h4 class="modal-title"><i class="admin-warning"></i> {{ __('admin.generic.are_you_sure') }}</h4>
                 </div>
 
                 <div class="modal-body">

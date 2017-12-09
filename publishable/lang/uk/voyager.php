@@ -99,7 +99,7 @@ return [
     'login' => [
         'loggingin'    => 'Вхід в систему',
         'signin_below' => 'Вхід тут:',
-        'welcome'      => 'Ласкаво просимо до Voyager. Панель управління, якої не вистачало в Laravel',
+        'welcome'      => 'Ласкаво просимо до Admin Panel. Панель управління, якої не вистачало в Laravel',
     ],
 
     'profile' => [
@@ -186,7 +186,7 @@ return [
         'dynamic_route'        => 'Динамічний шлях',
         'edit_item'            => 'Редагувати пункт меню',
         'icon_class'           => 'Іконка для пункту меню (Використовуйте ',
-        'icon_class2'          => 'Voyager Font Class</a>)',
+        'icon_class2'          => 'Admin Panel Font Class</a>)',
         'icon_class_ph'        => 'Іконка (необов\'язково)',
         'item_route'           => 'Шлях для пункту меню',
         'item_title'           => 'Назва пункту меню',
@@ -269,7 +269,7 @@ return [
         'generate_permissions'      => 'Створення прав доступу',
         'icon_class'                => 'Значок для даної таблиці',
         'icon_hint'                 => 'Значок для (необов\'язково)',
-        'icon_hint2'                => 'Voyager Font Class',
+        'icon_hint2'                => 'Admin Panel Font Class',
         'index'                     => 'INDEX',
         'input_type'                => 'Тип вводу',
         'key'                       => 'Ключ',
@@ -358,7 +358,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Зроблено з <i class="voyager-heart"></i> ',
+        'footer_copyright'  => 'Зроблено з <i class="admin-heart"></i> ',
         'footer_copyright2' => 'Зроблено під ромом :) ',
     ],
 

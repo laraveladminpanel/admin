@@ -6,7 +6,7 @@ return [
     | User config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager user configs
+    | Here you can specify admin user configs
     |
     */
 
@@ -22,7 +22,7 @@ return [
     | Controllers config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager controller settings
+    | Here you can specify admin controller settings
     |
     */
 
@@ -47,14 +47,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Path to the Voyager Assets
+    | Path to the Admin Panel Assets
     |--------------------------------------------------------------------------
     |
-    | Here you can specify the location of the voyager assets path
+    | Here you can specify the location of the admin assets path
     |
     */
 
-    'assets_path' => '/vendor/tcg/voyager/assets',
+    'assets_path' => '/vendor/tcg/admin/assets',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
     | Database Config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager database settings
+    | Here you can specify admin database settings
     |
     */
 
@@ -97,11 +97,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | The prefix you wish to use with your voyager installation
+    | The prefix you wish to use with your admin installation
     |--------------------------------------------------------------------------
     |
     | specify the domain prefix you would like your users to visit in order
-    | to view the Voyager admin panel
+    | to view the Admin Panel admin panel
     |
     */
 
@@ -112,7 +112,7 @@ return [
     | Multilingual configuration
     |--------------------------------------------------------------------------
     |
-    | Here you can specify if you want Voyager to ship with support for
+    | Here you can specify if you want Admin Panel to ship with support for
     | multilingual and what locales are enabled.
     |
     */
@@ -152,16 +152,16 @@ return [
             'Profile' => [
                 'route'      => 'admin.profile',
                 'classes'    => 'class-full-of-rum',
-                'icon_class' => 'voyager-person',
+                'icon_class' => 'admin-person',
             ],
             'Home' => [
                 'route'        => '/',
-                'icon_class'   => 'voyager-home',
+                'icon_class'   => 'admin-home',
                 'target_blank' => true,
             ],
             'Logout' => [
                 'route'      => 'admin.logout',
-                'icon_class' => 'voyager-power',
+                'icon_class' => 'admin-power',
             ],
         ],
 
@@ -178,7 +178,7 @@ return [
     | Automatic Procedures
     |--------------------------------------------------------------------------
     |
-    | When a change happens on Voyager, we can automate some routines.
+    | When a change happens on Admin Panel, we can automate some routines.
     |
     */
 
@@ -193,7 +193,7 @@ return [
     | UI Generic Config
     |--------------------------------------------------------------------------
     |
-    | Here you change some of the Voyager UI settings.
+    | Here you change some of the Admin Panel UI settings.
     |
     */
 

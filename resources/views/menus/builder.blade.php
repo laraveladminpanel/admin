@@ -4,8 +4,8 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-list"></i>{{ __('admin.generic.menu_builder') }} ({{ $menu->name }})
-        <div class="btn btn-success add_item"><i class="voyager-plus"></i> {{ __('admin.menu_builder.new_menu_item') }}</div>
+        <i class="admin-list"></i>{{ __('admin.generic.menu_builder') }} ({{ $menu->name }})
+        <div class="btn btn-success add_item"><i class="admin-plus"></i> {{ __('admin.menu_builder.new_menu_item') }}</div>
     </h1>
     @include('admin::multilingual.language-selector')
 @stop
@@ -38,7 +38,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {{ __('admin.menu_builder.delete_item_question') }}</h4>
+                    <h4 class="modal-title"><i class="admin-trash"></i> {{ __('admin.menu_builder.delete_item_question') }}</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('admin.menus.item.destroy', ['menu' => $menu->id, 'id' => '__id']) }}"
@@ -62,8 +62,8 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 id="m_hd_add" class="modal-title hidden"><i class="voyager-plus"></i> {{ __('admin.menu_builder.create_new_item') }}</h4>
-                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="voyager-edit"></i> {{ __('admin.menu_builder.edit_item') }}</h4>
+                    <h4 id="m_hd_add" class="modal-title hidden"><i class="admin-plus"></i> {{ __('admin.menu_builder.create_new_item') }}</h4>
+                    <h4 id="m_hd_edit" class="modal-title hidden"><i class="admin-edit"></i> {{ __('admin.menu_builder.edit_item') }}</h4>
                 </div>
                 <form action="" id="m_form" method="POST"
                       data-action-add="{{ route('admin.menus.item.add', ['menu' => $menu->id]) }}"

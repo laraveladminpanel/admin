@@ -83,11 +83,11 @@
 
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('admin.post.title') }}
+                                <i class="admin-character"></i> {{ __('admin.post.title') }}
                                 <span class="panel-desc"> {{ __('admin.post.title_sub') }}</span>
                             </h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -104,7 +104,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon wb-book"></i> {{ __('admin.post.content') }}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
+                                <a class="panel-action admin-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                             </div>
                         </div>
                         @include('admin::multilingual.input-hidden', [
@@ -119,7 +119,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">{!! __('admin.post.excerpt') !!}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -135,7 +135,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Additional Fields</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -180,7 +180,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon wb-clipboard"></i> {{ __('admin.post.details') }}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -223,7 +223,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('admin.post.image') }}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -239,7 +239,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('admin.post.seo_content') }}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">

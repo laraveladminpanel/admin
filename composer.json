@@ -1,12 +1,12 @@
 {
-    "name": "tcg/voyager",
+    "name": "tcg/admin",
     "description": "A Laravel Admin Package for The Control Group to make your life easier and steer your project in the right direction",
     "keywords": ["laravel", "admin", "panel"],
     "license": "MIT",
-    "homepage": "https://the-control-group.github.io/voyager/",
+    "homepage": "https://the-control-group.github.io/admin/",
     "support": {
-        "issues": "https://github.com/the-control-group/voyager/issues",
-        "source": "https://github.com/the-control-group/voyager"
+        "issues": "https://github.com/the-control-group/admin/issues",
+        "source": "https://github.com/the-control-group/admin"
     },
     "authors": [
         {
@@ -21,7 +21,7 @@
         "larapack/doctrine-support": "~0.1.4",
         "arrilot/laravel-widgets": "^3.7",
         "league/flysystem": "~1.0.41",
-        "larapack/voyager-hooks": "~1.0.2"
+        "larapack/admin-hooks": "~1.0.2"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",

@@ -186,7 +186,7 @@ return [
         'dynamic_route'        => 'Динамический путь',
         'edit_item'            => 'Редактировать пункт меню',
         'icon_class'           => 'Иконка для пункта меню (Используйте ',
-        'icon_class2'          => 'Voyager Font Class</a>)',
+        'icon_class2'          => 'Admin Panel Font Class</a>)',
         'icon_class_ph'        => 'Иконка (необязательно)',
         'item_route'           => 'Путь для пункта меню',
         'item_title'           => 'Название пункта меню',
@@ -269,7 +269,7 @@ return [
         'generate_permissions'      => 'Создание прав доступа',
         'icon_class'                => 'Значок для данной таблицы',
         'icon_hint'                 => 'Значок для (необязательно)',
-        'icon_hint2'                => 'Voyager Font Class',
+        'icon_hint2'                => 'Admin Panel Font Class',
         'index'                     => 'INDEX',
         'input_type'                => 'Тип ввода',
         'key'                       => 'Ключ',
@@ -358,7 +358,7 @@ return [
     ],
 
     'theme' => [
-        'footer_copyright'  => 'Сделано с <i class="voyager-heart"></i> ',
+        'footer_copyright'  => 'Сделано с <i class="admin-heart"></i> ',
         'footer_copyright2' => 'Сделано под ромом :) ',
     ],
 

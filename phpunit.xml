@@ -12,7 +12,7 @@
          syntaxCheck="true"
 >
     <testsuites>
-        <testsuite name="Voyager Test Suite">
+        <testsuite name="Admin Panel Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -26,7 +26,7 @@
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="APP_DEBUG" value="true"/>
-        <env name="APP_URL" value="voyager.dev"/>
+        <env name="APP_URL" value="admin.dev"/>
         <env name="APP_KEY" value="base64:M1igrxNfAWlVGyxxDholHqvVqvtPjAzCoJ+2/ILAVPw="/>
     </php>
 </phpunit>
