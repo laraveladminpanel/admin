@@ -9,7 +9,7 @@
 <a href="https://github.com/larapack/awesome-admin"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome Admin Panel"></a>
 </p>
 
-# **V**oyager - The Missing Laravel Admin
+# Laravel Admin Panel
 Made with ❤️ by [The Control Group](https://www.thecontrolgroup.com)
 
 ![Admin Panel Screenshot](https://s3.amazonaws.com/thecontrolgroup/admin-screenshot.png)
@@ -33,7 +33,7 @@ Laravel Admin & BREAD System (Browse, Read, Edit, Add, & Delete), supporting Lar
 After creating your new Laravel application you can include the Admin Panel package with the following command: 
 
 ```bash
-composer require tcg/admin
+composer require laraveladminpanel/admin
 ```
 
 ### 2. Add the DB Credentials & APP_URL
