@@ -194,21 +194,6 @@ class MenuItemsTableSeeder extends Seeder
 
             $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
-                'title'   => 'Hooks',
-                'url'     => route('admin.hooks', [], false),
-            ]);
-            if (!$menuItem->exists) {
-                $menuItem->fill([
-                    'target'     => '_self',
-                    'icon_class' => 'admin-hook',
-                    'color'      => null,
-                    'parent_id'  => $toolsMenuItem->id,
-                    'order'      => 13,
-                ])->save();
-            }
-
-            $menuItem = MenuItem::firstOrNew([
-                'menu_id' => $menu->id,
                 'title'   => 'Settings',
                 'url'     => '',
                 'route'   => 'admin.settings.index',
