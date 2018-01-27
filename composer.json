@@ -20,8 +20,7 @@
         "doctrine/dbal": "^2.5",
         "larapack/doctrine-support": "~0.1.4",
         "arrilot/laravel-widgets": "^3.7",
-        "league/flysystem": "~1.0.41",
-        "larapack/voyager-hooks": "~1.0.2"
+        "league/flysystem": "~1.0.41"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
