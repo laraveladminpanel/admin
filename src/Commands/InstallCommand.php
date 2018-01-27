@@ -65,9 +65,6 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
-        $this->info('Setting up the hooks');
-        $this->call('hook:setup');
-
         $this->info('Publishing the Admin assets, database, language, and config files');
         $this->call('vendor:publish', ['--provider' => AdminServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
