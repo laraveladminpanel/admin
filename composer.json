@@ -3,15 +3,15 @@
     "description": "A Laravel Admin Package for The Control Group to make your life easier and steer your project in the right direction",
     "keywords": ["laravel", "admin", "panel"],
     "license": "MIT",
-    "homepage": "https://the-control-group.github.io/admin/",
+    "homepage": "http://laraveladminpanel.com",
     "support": {
-        "issues": "https://github.com/the-control-group/admin/issues",
-        "source": "https://github.com/the-control-group/admin"
+        "issues": "http://laraveladminpanel.com/issues",
+        "demo": "http://demo.laraveladminpanel.com/admin"
     },
     "authors": [
         {
-            "name": "Tony Lea",
-            "email": "tony.lea@thecontrolgroup.com"
+            "name": "Alexey Kostenko",
+            "email": "aleksey.kostenko.dev@gmail.com"
         }
     ],
     "require": {
@@ -20,8 +20,7 @@
         "doctrine/dbal": "^2.5",
         "larapack/doctrine-support": "~0.1.4",
         "arrilot/laravel-widgets": "^3.7",
-        "league/flysystem": "~1.0.41",
-        "larapack/voyager-hooks": "~1.0.2"
+        "league/flysystem": "~1.0.41"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
@@ -42,7 +41,7 @@
             "LaravelAdminPanel\\Tests\\": "tests/"
       }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "extra": {
         "laravel": {
             "providers": [

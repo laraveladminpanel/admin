@@ -1,26 +1,7 @@
-<p align="center"><a href="https://the-control-group.github.io/admin/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/admin.png"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/the-control-group/admin"><img src="https://travis-ci.org/the-control-group/admin.svg?branch=master" alt="Build Status"></a>
-<a href="https://styleci.io/repos/72069409/shield?style=flat"><img src="https://styleci.io/repos/72069409/shield?style=flat" alt="Build Status"></a>
-<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/downloads.svg?format=flat" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/v/stable.svg?format=flat" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/tcg/admin"><img src="https://poser.pugx.org/tcg/admin/license.svg?format=flat" alt="License"></a>
-<a href="https://github.com/larapack/awesome-admin"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome Admin Panel"></a>
-</p>
-
 # Laravel Admin Panel
-Made with ❤️ by [The Control Group](https://www.thecontrolgroup.com)
+Made with ❤️
 
-![Admin Panel Screenshot](https://s3.amazonaws.com/thecontrolgroup/admin-screenshot.png)
-
-Website & Documentation: https://laraveladmin.com
-
-Video Tutorial Here: https://laraveladmin.com/academy/
-
-Join our Slack chat: https://admin-slack-invitation.herokuapp.com/
-
-View the Admin Panel Cheat Sheet: https://admin-cheatsheet.ulties.com/
+Website & Documentation: http://laraveladminpanel.com
 
 <hr>
 
@@ -33,7 +14,7 @@ Laravel Admin & BREAD System (Browse, Read, Edit, Add, & Delete), supporting Lar
 After creating your new Laravel application you can include the Admin Panel package with the following command: 
 
 ```bash
-composer require laraveladminpanel/admin
+composer require laraveladminpanel/admin dev-master
 ```
 
 ### 2. Add the DB Credentials & APP_URL
