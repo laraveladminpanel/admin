@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Intervention\Image\ImageServiceProvider;
 use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
-use Larapack\VoyagerHooks\VoyagerHooksServiceProvider;
 use LaravelAdminPanel\Events\FormFieldsRegistered;
 use LaravelAdminPanel\Facades\Admin as AdminFacade;
 use LaravelAdminPanel\FormFields\After\DescriptionHandler;
@@ -47,7 +46,6 @@ class AdminServiceProvider extends ServiceProvider
         $this->app->register(AdminEventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
         $this->app->register(WidgetServiceProvider::class);
-        $this->app->register(VoyagerHooksServiceProvider::class);
         $this->app->register(DoctrineSupportServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
