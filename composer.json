@@ -26,10 +26,11 @@
         "codeclimate/php-test-reporter": "dev-master",
         "phpunit/phpunit": "^6.4",
         "orchestra/database": "^3.5",
-        "orchestra/testbench-browser-kit": "^3.5",
+        "orchestra/testbench-browser-kit": "3.5",
         "phpunit/phpcov": "^4.0",
         "laravel/browser-kit-testing": "^2.0",
-        "laravel/laravel": "^5.5"
+        "laravel/laravel": "^5.5",
+        "symfony/css-selector": "3.1",
     },
     "autoload": {
         "psr-4": {
