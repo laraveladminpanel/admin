@@ -66,14 +66,14 @@
                     <div class="form-group form-group-default" id="emailGroup">
                         <label>{{ __('admin.generic.email') }}</label>
                         <div class="controls">
-                            <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('admin.generic.email') }}" class="form-control" required>
+                            <input type="text" name="email" id="email" value="{{ old('email', 'admin@admin.com') }}" placeholder="{{ __('admin.generic.email') }}" class="form-control" required>
                          </div>
                     </div>
 
                     <div class="form-group form-group-default" id="passwordGroup">
                         <label>{{ __('admin.generic.password') }}</label>
                         <div class="controls">
-                            <input type="password" name="password" placeholder="{{ __('admin.generic.password') }}" class="form-control" required>
+                            <input type="password" name="password" value="{{ old('password', 'password') }}" placeholder="{{ __('admin.generic.password') }}" class="form-control" required>
                         </div>
                     </div>
 
