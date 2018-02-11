@@ -581,6 +581,9 @@
 .admin-angle-left:before {
   content: "\e039";
 }
+.admin-angle-left:before {
+  content: "\e039";
+}
 .admin-angle-right:before {
   content: "\e046";
 }
