@@ -115,7 +115,7 @@
                                 <div id="file_loader">
                                     <?php $admin_loader_img = Admin::setting('admin.loader', ''); ?>
                                     @if($admin_loader_img == '')
-                                        <img src="{{ admin_asset('images/logo-icon.png') }}" alt="Admin Loader">
+                                        <img src="{{ admin_asset('images/admin_loader.png') }}" alt="Admin Loader">
                                     @else
                                         <img src="{{ Admin::image($admin_loader_img) }}" alt="Admin Loader">
                                     @endif
