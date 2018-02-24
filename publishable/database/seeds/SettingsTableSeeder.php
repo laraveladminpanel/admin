@@ -74,7 +74,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Admin Title',
-                'value'        => 'Admin',
+                'value'        => 'Admin Panel',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 1,
@@ -85,8 +85,8 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('admin.description');
         if (!$setting->exists) {
             $setting->fill([
-                'display_name' => 'Admin Description',
-                'value'        => 'Welcome to Admin. The Missing Admin for Laravel',
+                'display_name' => 'Admin Panel Description',
+                'value'        => 'Welcome to Admin Panel. This is a multifunctional Admin Panel for Laravel',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 2,

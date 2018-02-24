@@ -11,7 +11,7 @@
                             <img src="{{ Admin::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                     </div>
-                    <div class="title">{{Admin::setting('admin.title', 'VOYAGER')}}</div>
+                    <div class="title">{{ Admin::setting('admin.title', 'ADMIN PANEL') }}</div>
                 </a>
             </div><!-- .navbar-header -->
 
