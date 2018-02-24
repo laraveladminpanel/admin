@@ -25,7 +25,6 @@ require('./multilingual');
 require('./admin_tinymce');
 require('./admin_ace_editor');
 window.helpers = require('./helpers.js');
-require('./load-remote.js');
 require('cropperjs');
 
 $(document).ready(function(){
