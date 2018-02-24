@@ -1,6 +1,6 @@
 {
     "name": "laraveladminpanel/admin",
-    "description": "A Laravel Admin Package for The Control Group to make your life easier and steer your project in the right direction",
+    "description": "A Laravel Admin Package to make your life easier and steer your project in the right direction",
     "keywords": ["laravel", "admin", "panel"],
     "license": "MIT",
     "homepage": "http://laraveladminpanel.com",

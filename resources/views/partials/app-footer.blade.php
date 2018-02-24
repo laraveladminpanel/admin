@@ -3,7 +3,7 @@
         @if (rand(1,100) == 100)
             <i class="admin-rum-1"></i> {{ __('admin.theme.footer_copyright2') }}
         @else
-            {!! __('admin.theme.footer_copyright') !!} <a href="http://thecontrolgroup.com" target="_blank">The Control Group</a>
+            {!! __('admin.theme.footer_copyright') !!} <a href="http://laraveladminpanel.com" target="_blank">Laravel Admin Panel</a>
         @endif
         @php $version = Admin::getVersion(); @endphp
         @if (!empty($version))
