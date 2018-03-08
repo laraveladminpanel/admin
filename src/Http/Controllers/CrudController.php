@@ -49,7 +49,14 @@ class CrudController extends BaseController
         // Next Get or Paginate the actual content from the MODEL that corresponds to the slug DataType
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
-            $query = $model::select('*');
+
+            $query = $model;
+
+            if (method_exists($model, 'adminList')) {
+                $query = $model->adminList();
+            }
+
+            $query->select('*');
 
             $relationships = $this->getRelationships($dataType);
 
