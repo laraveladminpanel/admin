@@ -82,3 +82,32 @@ php artisan admin:admin your@email.com --create
 ```
 
 And you will be prompted for the user's name and password.
+
+
+For phpunit, you need to run these commands in the root folder of the site:
+
+
+```bash
+composer require orchestra/database ^3.5 --dev
+composer require orchestra/testbench-browser-kit ^3.5 --dev
+```
+
+And add line "LaravelAdminPanel\\Tests\\": "vendor/laraveladminpanel/admin/tests/" in a composer.json
+
+
+```
+"autoload-dev": {
+    "psr-4": {
+        "Tests\\": "tests/",
+        "LaravelAdminPanel\\Tests\\": "vendor/laraveladminpanel/admin/tests/"
+    }
+},
+```
+
+
+And finally run this command:
+
+
+```bash
+composer dump-autoload
+```
