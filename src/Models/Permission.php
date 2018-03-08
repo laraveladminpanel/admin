@@ -3,9 +3,12 @@
 namespace LaravelAdminPanel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use LaravelAdminPanel\Traits\HasRelationships;
 
 class Permission extends Model
 {
+    use HasRelationships;
+
     protected $guarded = [];
 
     public function roles()
