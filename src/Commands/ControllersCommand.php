@@ -61,7 +61,7 @@ class ControllersCommand extends Command
     public function handle()
     {
         $stub = $this->getStub();
-        $files = $this->filesystem->files(base_path('vendor/tcg/admin/src/Http/Controllers'));
+        $files = $this->filesystem->files(base_path('vendor/laraveladminpanel/admin/src/Http/Controllers'));
         $namespace = config('admin.controllers.namespace', 'LaravelAdminPanel\\Http\\Controllers');
 
         $appNamespace = app()->getNamespace();
@@ -103,7 +103,7 @@ class ControllersCommand extends Command
      */
     public function getStub()
     {
-        return $this->filesystem->get(base_path('/vendor/tcg/admin/stubs/'.$this->stub));
+        return $this->filesystem->get(base_path('/vendor/laraveladminpanel/admin/stubs/'.$this->stub));
     }
 
     /**

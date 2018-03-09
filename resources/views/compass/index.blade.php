@@ -42,17 +42,17 @@
                     <div class="collapse-content collapse in" id="links">
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="https://laraveladmin.com/docs" target="_blank" class="admin-link" style="background-image:url('/vendor/tcg/admin/assets/images/compass/documentation.jpg')">
+                                <a href="https://laraveladmin.com/docs" target="_blank" class="admin-link" style="background-image:url('/vendor/laraveladminpanel/admin/assets/images/compass/documentation.jpg')">
                                     <span class="resource_label"><i class="admin-documentation"></i> <span class="copy">Documentation</span></span>
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="https://laraveladmin.com" target="_blank" class="admin-link" style="background-image:url('/vendor/tcg/admin/assets/images/compass/admin-home.jpg')">
+                                <a href="https://laraveladmin.com" target="_blank" class="admin-link" style="background-image:url('/vendor/laraveladminpanel/admin/assets/images/compass/admin-home.jpg')">
                                     <span class="resource_label"><i class="admin-browser"></i> <span class="copy">Admin Homepage</span></span>
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="https://larapack.io" target="_blank" class="admin-link" style="background-image:url('/vendor/tcg/admin/assets/images/compass/hooks.jpg')">
+                                <a href="https://larapack.io" target="_blank" class="admin-link" style="background-image:url('/vendor/laraveladminpanel/admin/assets/images/compass/hooks.jpg')">
                                     <span class="resource_label"><i class="admin-hook"></i> <span class="copy">Admin Hooks</span></span>
                                 </a>
                             </div>

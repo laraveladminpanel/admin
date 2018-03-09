@@ -263,7 +263,7 @@ class Admin
 
             // Loop through all the packages and get the version of admin
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/admin') {
+                if ($package->name == 'laraveladminpanel/admin') {
                     $this->version = $package->version;
                     break;
                 }

@@ -62,7 +62,7 @@
             position: fixed;
             top: 61px;
             left: 0px;
-            background-image: url(/vendor/tcg/admin/assets/images/bg.jpg);
+            background-image: url(/vendor/laraveladminpanel/admin/assets/images/bg.jpg);
             background-size: cover;
             background-position: 0px;
             width: 100%;
