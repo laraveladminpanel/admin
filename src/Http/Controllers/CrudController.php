@@ -95,7 +95,7 @@ class CrudController extends BaseController
         }
 
         // Check if server side pagination is enabled
-        $isServerSide = isset($dataType->server_side) && $dataType->server_side;
+        $isServerSide = $dataType->isServerSide();
 
         $view = 'admin::crud.browse';
 

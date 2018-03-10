@@ -184,6 +184,7 @@ class DataType extends Model
                 'label'       => $requestData['relationship_label_'.$relationship],
                 'pivot_table' => $requestData['relationship_pivot_table_'.$relationship],
                 'pivot'       => ($requestData['relationship_type_'.$relationship] == 'belongsToMany') ? '1' : '0',
+                'list'        => $requestData['relationship_list_'.$relationship],
             ];
 
             $requestData['field_details_'.$relationship] = json_encode($relationshipDetails);
@@ -228,5 +229,10 @@ class DataType extends Model
         if (method_exists($model, 'adminFields')) {
             return $model->adminFields();
         }
+    }
+
+    public function isServerSide()
+    {
+        return isset($this->server_side) && $this->server_side;
     }
 }
