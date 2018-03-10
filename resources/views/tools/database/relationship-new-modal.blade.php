@@ -15,7 +15,6 @@
 
 			        	@if(isset($dataType->id))
 				            <div class="col-md-12 relationship_details">
-				                <p class="relationship_table_select">{{ str_singular(ucfirst($table)) }}</p>
 				                <select class="relationship_type select2" name="relationship_type">
 				                    <option value="hasOne" @if(isset($relationshipDetails->type) && $relationshipDetails->type == 'hasOne'){{ 'selected="selected"' }}@endif>{{ __('admin.database.relationship.has_one') }}</option>
 				                    <option value="hasMany" @if(isset($relationshipDetails->type) && $relationshipDetails->type == 'hasMany'){{ 'selected="selected"' }}@endif>{{ __('admin.database.relationship.has_many') }}</option>
