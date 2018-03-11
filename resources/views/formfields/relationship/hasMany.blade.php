@@ -30,9 +30,10 @@
     @php
         $model = app($options->model);
         $query = $model::where($options->column, '=', $dataTypeContent->id)->get();
+        $details = json_decode($options->details);
     @endphp
 
-    @if(isset($options->list) && $options->list === "datatable")
+    @if(isset($details->list) && $details->list === "datatable")
         @php
             $relationDataType = Admin::model('DataType')->where('name', '=', $model->getTable())->first()
         @endphp

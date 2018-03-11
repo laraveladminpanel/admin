@@ -1710,6 +1710,10 @@ table.dataTable.no-footer{
         padding:15px;
         padding-bottom:45px;
         border-top:1px solid #efeff2;
+        .relationship_details label{
+            padding: 12px 0 0 12px;
+            font-size: 11px
+        }
     }
     .relationship_details_content{
         &.margin_top{

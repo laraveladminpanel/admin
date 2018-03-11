@@ -256,9 +256,6 @@
                                         <textarea id="json-input-{{ $data['field'] }}" class="resizable-editor" data-editor="json" name="field_details_{{ $data['field'] }}">@if(isset($dataRow->details)){{ $dataRow->details }}@endif</textarea>
                                     </div>
                                 </div>
-
-                                
-
                             @endforeach
                             
                             @if(isset($dataTypeRelationships))

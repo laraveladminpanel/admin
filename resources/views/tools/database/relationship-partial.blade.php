@@ -50,22 +50,22 @@
             </select>
             <span><input type="text" class="form-control" name="relationship_model_{{ $relationship['field'] }}" placeholder="{{ __('admin.database.relationship.namespace') }}" value="@if(isset($relationshipDetails->model)){{ $relationshipDetails->model }}@endif"></span>
         </div>
-            <div class="relationshipField">
-                <div class="relationship_details_content margin_top belongsTo @if($relationshipDetails->type == 'belongsTo'){{ 'flexed' }}@endif">
-                    <label>{{ __('admin.database.relationship.which_column_from') }} <span>{{ str_singular(ucfirst($table)) }}</span> {{ __('admin.database.relationship.is_used_to_reference') }} <span class="label_table_name"></span>?</label>
-                    <select name="relationship_column_belongs_to_{{ $relationship['field'] }}" class="new_relationship_field select2">
-                        @foreach($fieldOptions as $data)
-                            <option value="{{ $data['field'] }}" @if($relationshipDetails->column == $data['field']){{ 'selected="selected"' }}@endif>{{ $data['field'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="relationship_details_content margin_top hasOneMany @if($relationshipDetails->type == 'hasOne' || $relationshipDetails->type == 'hasMany'){{ 'flexed' }}@endif">
-                    <label>{{ __('admin.database.relationship.which_column_from') }} <span class="label_table_name"></span> {{ __('admin.database.relationship.is_used_to_reference') }} <span>{{ str_singular(ucfirst($table)) }}</span>?</label>
-                    <select name="relationship_column_{{ $relationship['field'] }}" class="new_relationship_field select2 rowDrop" data-table="@if(isset($relationshipDetails->table)){{ $relationshipDetails->table }}@endif" data-selected="{{ $relationshipDetails->column }}">
-                    </select>
-                </div>
+        <div class="relationshipField">
+            <div class="relationship_details_content margin_top belongsTo @if($relationshipDetails->type == 'belongsTo'){{ 'flexed' }}@endif">
+                <label>{{ __('admin.database.relationship.which_column_from') }} <span>{{ str_singular(ucfirst($table)) }}</span> {{ __('admin.database.relationship.is_used_to_reference') }} <span class="label_table_name"></span>?</label>
+                <select name="relationship_column_belongs_to_{{ $relationship['field'] }}" class="new_relationship_field select2">
+                    @foreach($fieldOptions as $data)
+                        <option value="{{ $data['field'] }}" @if($relationshipDetails->column == $data['field']){{ 'selected="selected"' }}@endif>{{ $data['field'] }}</option>
+                    @endforeach
+                </select>
             </div>
+
+            <div class="relationship_details_content margin_top hasOneMany @if($relationshipDetails->type == 'hasOne' || $relationshipDetails->type == 'hasMany'){{ 'flexed' }}@endif">
+                <label>{{ __('admin.database.relationship.which_column_from') }} <span class="label_table_name"></span> {{ __('admin.database.relationship.is_used_to_reference') }} <span>{{ str_singular(ucfirst($table)) }}</span>?</label>
+                <select name="relationship_column_{{ $relationship['field'] }}" class="new_relationship_field select2 rowDrop" data-table="@if(isset($relationshipDetails->table)){{ $relationshipDetails->table }}@endif" data-selected="{{ $relationshipDetails->column }}">
+                </select>
+            </div>
+        </div>
         <div class="relationship_details_content margin_top relationshipPivot @if($relationshipDetails->type == 'belongsToMany'){{ 'visible' }}@endif">
             <label>{{ __('admin.database.relationship.pivot_table') }}:</label>
             <select name="relationship_pivot_table_{{ $relationship['field'] }}" class="select2">
@@ -81,6 +81,11 @@
             <label class="relationship_key" style="@if($relationshipDetails->type == 'belongsTo' || $relationshipDetails->type == 'belongsToMany'){{ 'display:block' }}@endif">{{ __('admin.database.relationship.store_the') }} <span class="label_table_name"></span></label>
             <select name="relationship_key_{{ $relationship['field'] }}" class="rowDrop select2 relationship_key" style="@if($relationshipDetails->type == 'belongsTo' || $relationshipDetails->type == 'belongsToMany'){{ 'display:block' }}@endif" data-table="@if(isset($relationshipDetails->table)){{ $relationshipDetails->table }}@endif" data-selected="@if(isset($relationshipDetails->key)){{ $relationshipDetails->key }}@endif">
             </select>
+        </div>
+
+        <div class="relationship_details">
+            <label>{{ __('admin.database.optional_details') }}</label>
+            <textarea class="resizable-editor form-control" data-editor="json" name="relationship_details_{{ $relationship['field'] }}">@if(isset($relationshipDetails->details)){{ $relationshipDetails->details }}@endif</textarea>
         </div>
     </div>
     <input type="hidden" value="0" name="field_required_{{ $relationship['field'] }}" checked="checked">

@@ -11,7 +11,6 @@
 @stop
 
 @section('content')
-
     <div class="page-content container-fluid">
         @include('admin::alerts')
         <div class="row">
@@ -26,63 +25,63 @@
                         </tr>
                     </thead>
 
-            @foreach($tables as $table)
-                    @continue(in_array($table->name, config('admin.database.tables.hidden', [])))
-                    <tr>
-                        <td>
-                            <p class="name">
-                                <a href="{{ route('admin.database.show', $table->name) }}"
-                                   data-name="{{ $table->name }}" class="desctable">
-                                   {{ $table->name }}
-                                </a>
-                            @if($table->dataTypeId)
-                                <i class="admin-bread"
-                                   style="font-size:25px; position:absolute; margin-left:10px; margin-top:-3px;"></i>
-                            @endif
-                            </p>
-                        </td>
+                    @foreach($tables as $table)
+                        @continue(in_array($table->name, config('admin.database.tables.hidden', [])))
+                        <tr>
+                            <td>
+                                <p class="name">
+                                    <a href="{{ route('admin.database.show', $table->name) }}"
+                                       data-name="{{ $table->name }}" class="desctable">
+                                       {{ $table->name }}
+                                    </a>
+                                @if($table->dataTypeId)
+                                    <i class="admin-bread"
+                                       style="font-size:25px; position:absolute; margin-left:10px; margin-top:-3px;"></i>
+                                @endif
+                                </p>
+                            </td>
 
-                        <td>
-                            <div class="bread_actions">
-                            @if($table->dataTypeId)
-                                <a href="{{ route('admin.' . $table->slug . '.index') }}"
-                                   class="btn-sm btn-warning browse_bread">
-                                    <i class="admin-plus"></i> {{ __('admin.database.browse_crud') }}
-                                </a>
-                                <a href="{{ route('admin.database.crud.edit', $table->name) }}"
-                                   class="btn-sm btn-default edit">
-                                   {{ __('admin.database.edit_crud') }}
-                                </a>
-                                <div data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
-                                     class="btn-sm btn-danger delete" style="display:inline">
-                                     {{ __('admin.database.delete_crud') }}
+                            <td>
+                                <div class="bread_actions">
+                                @if($table->dataTypeId)
+                                    <a href="{{ route('admin.' . $table->slug . '.index') }}"
+                                       class="btn-sm btn-warning browse_bread">
+                                        <i class="admin-plus"></i> {{ __('admin.database.browse_crud') }}
+                                    </a>
+                                    <a href="{{ route('admin.database.crud.edit', $table->name) }}"
+                                       class="btn-sm btn-default edit">
+                                       {{ __('admin.database.edit_crud') }}
+                                    </a>
+                                    <div data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
+                                         class="btn-sm btn-danger delete" style="display:inline">
+                                         {{ __('admin.database.delete_crud') }}
+                                    </div>
+                                @else
+                                    <a href="{{ route('admin.database.crud.create', ['name' => $table->name]) }}"
+                                       class="btn-sm btn-default">
+                                        <i class="admin-plus"></i> {{ __('admin.database.add_crud') }}
+                                    </a>
+                                @endif
                                 </div>
-                            @else
-                                <a href="{{ route('admin.database.crud.create', ['name' => $table->name]) }}"
-                                   class="btn-sm btn-default">
-                                    <i class="admin-plus"></i> {{ __('admin.database.add_crud') }}
-                                </a>
-                            @endif
-                            </div>
-                        </td>
+                            </td>
 
-                        <td class="actions">
-                            <a class="btn btn-danger btn-sm pull-right delete_table @if($table->dataTypeId) remove-bread-warning @endif"
-                               data-table="{{ $table->name }}" style="display:inline; cursor:pointer;">
-                               <i class="admin-trash"></i> {{ __('admin.generic.delete') }}
-                            </a>
-                            <a href="{{ route('admin.database.edit', $table->name) }}"
-                               class="btn btn-sm btn-primary pull-right" style="display:inline; margin-right:10px;">
-                               <i class="admin-edit"></i> {{ __('admin.generic.edit') }}
-                            </a>
-                            <a href="{{ route('admin.database.show', $table->name) }}"
-                               data-name="{{ $table->name }}"
-                               class="btn btn-sm btn-warning pull-right desctable" style="display:inline; margin-right:10px;">
-                               <i class="admin-eye"></i> {{ __('admin.generic.view') }}
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
+                            <td class="actions">
+                                <a class="btn btn-danger btn-sm pull-right delete_table @if($table->dataTypeId) remove-bread-warning @endif"
+                                   data-table="{{ $table->name }}" style="display:inline; cursor:pointer;">
+                                   <i class="admin-trash"></i> {{ __('admin.generic.delete') }}
+                                </a>
+                                <a href="{{ route('admin.database.edit', $table->name) }}"
+                                   class="btn btn-sm btn-primary pull-right" style="display:inline; margin-right:10px;">
+                                   <i class="admin-edit"></i> {{ __('admin.generic.edit') }}
+                                </a>
+                                <a href="{{ route('admin.database.show', $table->name) }}"
+                                   data-name="{{ $table->name }}"
+                                   class="btn btn-sm btn-warning pull-right desctable" style="display:inline; margin-right:10px;">
+                                   <i class="admin-eye"></i> {{ __('admin.generic.view') }}
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
@@ -169,11 +168,9 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
 @stop
 
 @section('javascript')
-
     <script>
 
         var table = {
@@ -232,5 +229,4 @@
 
         });
     </script>
-
 @stop

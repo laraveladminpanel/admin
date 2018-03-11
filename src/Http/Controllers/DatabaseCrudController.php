@@ -99,6 +99,7 @@ class DatabaseCrudController extends BaseController
                 : [];
 
             $res = $dataType->updateDataType($request->all(), true);
+
             $data = $res
                 ? $this->alertSuccess(__('admin.database.success_update_crud', ['datatype' => $dataType->name]))
                 : $this->alertError(__('admin.database.error_updating_crud'));
