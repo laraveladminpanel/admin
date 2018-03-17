@@ -35,7 +35,7 @@
                                        {{ $table->name }}
                                     </a>
                                 @if($table->dataTypeId)
-                                    <i class="admin-bread"
+                                    <i class="admin-check"
                                        style="font-size:25px; position:absolute; margin-left:10px; margin-top:-3px;"></i>
                                 @endif
                                 </p>
