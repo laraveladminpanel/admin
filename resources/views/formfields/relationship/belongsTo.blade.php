@@ -15,7 +15,14 @@
         @php
             $model = app($options->model);
             $query = $model::all();
+            $details = json_decode($options->details);
+            $relationshipOptions = isset($details->options) ? $details->options : [];
         @endphp
+
+        @foreach($relationshipOptions as $key => $value)
+            <option value="{{ $key === 'null' ? null : $key }}">{{ $value }}</option>
+        @endforeach
+
         @foreach($query as $relationshipData)
             <option value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>
         @endforeach
