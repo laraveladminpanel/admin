@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ admin_asset('images/logo-icon.png') }}" type="image/x-icon">
-
-
 
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ admin_asset('css/app.css') }}">
