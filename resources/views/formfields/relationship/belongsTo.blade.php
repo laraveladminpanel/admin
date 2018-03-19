@@ -15,8 +15,12 @@
         @php
             $model = app($options->model);
             $query = $model::all();
-            $details = json_decode($options->details);
-            $relationshipOptions = isset($details->options) ? $details->options : [];
+            $relationshipOptions = [];
+
+            if (isset($options->details)) {
+                $details = json_decode($options->details);
+                $relationshipOptions = isset($details->options) ? $details->options : [];
+            }
         @endphp
 
         @foreach($relationshipOptions as $key => $value)
