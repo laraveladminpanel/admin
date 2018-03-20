@@ -20,7 +20,7 @@ class AddCrudMenuItem
     }
 
     /**
-     * Create a MenuItem for a given BREAD.
+     * Create a MenuItem for a given CRUD.
      *
      * @param CrudAdded $event
      *

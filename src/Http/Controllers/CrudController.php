@@ -89,7 +89,7 @@ class CrudController extends BaseController
             $model = false;
         }
 
-        // Check if BREAD is Translatable
+        // Check if CRUD is Translatable
         if (($isModelTranslatable = is_crud_translatable($model))) {
             $dataTypeContent->load('translations');
         }
@@ -154,7 +154,7 @@ class CrudController extends BaseController
         // Check permission
         $this->authorize('read', $dataTypeContent);
 
-        // Check if BREAD is Translatable
+        // Check if CRUD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
         $view = 'admin::crud.read';
@@ -204,7 +204,7 @@ class CrudController extends BaseController
         // Check permission
         $this->authorize('edit', $dataTypeContent);
 
-        // Check if BREAD is Translatable
+        // Check if CRUD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
         $view = 'admin::crud.edit-add';
@@ -286,7 +286,7 @@ class CrudController extends BaseController
         // If a column has a relationship associated with it, we do not want to show that field
         $this->removeRelationshipField($dataType, 'add');
 
-        // Check if BREAD is Translatable
+        // Check if CRUD is Translatable
         $isModelTranslatable = is_crud_translatable($dataTypeContent);
 
         $view = 'admin::crud.edit-add';
@@ -373,6 +373,7 @@ class CrudController extends BaseController
         $displayName = count($ids) > 1 ? $dataType->display_name_plural : $dataType->display_name_singular;
 
         $res = $data->destroy($ids);
+
         $data = $res
             ? [
                 'message'    => __('admin.generic.successfully_deleted')." {$displayName}",
@@ -384,14 +385,14 @@ class CrudController extends BaseController
             ];
 
         if ($res) {
-            event(new CrudDataDeleted($dataType, $data));
+            event(new CrudDataDeleted($dataType, $data, $ids));
         }
 
         return redirect()->route("admin.{$dataType->slug}.index")->with($data);
     }
 
     /**
-     * Remove translations, images and files related to a BREAD item.
+     * Remove translations, images and files related to a CRUD item.
      *
      * @param \Illuminate\Database\Eloquent\Model $dataType
      * @param \Illuminate\Database\Eloquent\Model $data
@@ -420,7 +421,7 @@ class CrudController extends BaseController
     }
 
     /**
-     * Delete all images related to a BREAD item.
+     * Delete all images related to a CRUD item.
      *
      * @param \Illuminate\Database\Eloquent\Model $data
      * @param \Illuminate\Database\Eloquent\Model $rows

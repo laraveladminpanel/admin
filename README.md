@@ -5,7 +5,7 @@ Website & Documentation: http://laraveladminpanel.com
 
 <hr>
 
-Laravel Admin & BREAD System (Browse, Read, Edit, Add, & Delete), supporting Laravel 5.4 and newer!
+Laravel Admin & CRUD System (Browse, Read, Edit, Add, & Delete), supporting Laravel 5.4 and newer!
 
 ## Installation Steps
 

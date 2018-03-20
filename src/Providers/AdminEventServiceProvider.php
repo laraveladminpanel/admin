@@ -17,6 +17,12 @@ class AdminEventServiceProvider extends ServiceProvider
             'LaravelAdminPanel\Listeners\AddCrudMenuItem',
             'LaravelAdminPanel\Listeners\AddCrudPermission',
         ],
+        'LaravelAdminPanel\Events\CrudDataAdded' => [
+            'LaravelAdminPanel\Listeners\AddUserRecord',
+        ],
+        'LaravelAdminPanel\Events\CrudDataDeleted' => [
+            'LaravelAdminPanel\Listeners\DeleteUserRecord',
+        ],
     ];
 
     /**

@@ -5,6 +5,7 @@ namespace LaravelAdminPanel\Models;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use LaravelAdminPanel\Contracts\User as UserContract;
+use LaravelAdminPanel\Facades\Admin;
 use LaravelAdminPanel\Traits\AdminUser;
 
 class User extends Authenticatable implements UserContract
@@ -34,5 +35,13 @@ class User extends Authenticatable implements UserContract
         }
 
         parent::save();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function records()
+    {
+        return $this->hasOne(Admin::modelClass('UserRecord'), 'user_id', 'id');
     }
 }

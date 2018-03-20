@@ -20,7 +20,7 @@ class AddCrudPermission
     }
 
     /**
-     * Create Permission for a given BREAD.
+     * Create Permission for a given CRUD.
      *
      * @param CrudAdded $event
      *

@@ -22,6 +22,7 @@ use LaravelAdminPanel\Models\Post;
 use LaravelAdminPanel\Models\Role;
 use LaravelAdminPanel\Models\Setting;
 use LaravelAdminPanel\Models\User;
+use LaravelAdminPanel\Models\UserRecord;
 use LaravelAdminPanel\Traits\Translatable;
 
 class Admin
@@ -54,6 +55,7 @@ class Admin
         'Role'       => Role::class,
         'Setting'    => Setting::class,
         'User'       => User::class,
+        'UserRecord' => UserRecord::class,
     ];
 
     public $setting_cache = null;

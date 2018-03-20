@@ -2,8 +2,10 @@
 
 namespace LaravelAdminPanel\Listeners;
 
-use LaravelAdminPanel\Events\/*CrudDataAdded*/CrudDataChanged;
+use Illuminate\Support\Facades\Auth;
+use LaravelAdminPanel\Events\CrudDataAdded;
 use LaravelAdminPanel\Facades\Admin;
+use LaravelAdminPanel\Models\User;
 
 class AddUserRecord
 {
@@ -18,15 +20,20 @@ class AddUserRecord
     }
 
     /**
-     * Create a MenuItem for a given BREAD.
+     * Create a MenuItem for a given CRUD.
      *
      * @param CrudAdded $event
      *
      * @return void
      */
-    public function handle(/*CrudDataAdded*/ CrudDataChanged $crudData)
+    public function handle(CrudDataAdded $crudData)
     {
-        \Log::info('CrudDataChanged', [$crudData]);
-        dd($crudData);
+        $userRecord = [
+            'table_name' => $crudData->dataType->name,
+            'record_id' => $crudData->data->id,
+        ];
+
+        $user = User::find(Auth::id());
+        $user->records()->firstOrCreate($userRecord);
     }
 }
