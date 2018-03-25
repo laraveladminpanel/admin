@@ -241,7 +241,7 @@ class CrudController extends BaseController
         if (!$request->ajax()) {
             $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
-            event(new CrudDataUpdated($dataType, $data));
+            event(new CrudDataUpdated($request, $slug, $dataType, $data));
 
             return redirect()
                 ->route("admin.{$dataType->slug}.index")
@@ -324,7 +324,7 @@ class CrudController extends BaseController
         if (!$request->ajax()) {
             $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
 
-            event(new CrudDataAdded($dataType, $data));
+            event(new CrudDataAdded($request, $slug, $dataType, $data));
 
             return redirect()
                 ->route("admin.{$dataType->slug}.index")
