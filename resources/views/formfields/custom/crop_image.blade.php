@@ -70,7 +70,7 @@
     <script>
     $(document).ready(function() {
         @foreach($options->crop as $photoParams)
-            var {{ $photoParams->name }} = new Image.crop();
+            var {{ $photoParams->name }} = new Image.cropper();
             {{ $photoParams->name }}.init(".{{ $photoParams->name }}");
 
             @if ( old($row->field) )
@@ -117,7 +117,7 @@
 
             @foreach($options->crop as $photoParams)
                 image = imagePath;
-                var {{ $photoParams->name }} = new Image.crop();
+                var {{ $photoParams->name }} = new Image.cropper();
                 {{ $photoParams->name }}.init(".{{ $photoParams->name }}");
 
 
