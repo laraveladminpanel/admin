@@ -26,6 +26,7 @@ require('./admin_tinymce');
 require('./admin_ace_editor');
 window.helpers = require('./helpers.js');
 require('cropperjs');
+window.Image = require('./cropper');
 
 $(document).ready(function(){
 
