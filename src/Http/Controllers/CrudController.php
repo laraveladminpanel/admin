@@ -16,15 +16,10 @@ use LaravelAdminPanel\Http\Controllers\Traits\CrudRelationshipParser;
 class CrudController extends BaseController
 {
     use CrudRelationshipParser;
+
     //***************************************
-    //               ____
-    //              |  _ \
-    //              | |_) |
-    //              |  _ <
-    //              | |_) |
-    //              |____/
     //
-    //      Browse our Data Type (B)READ
+    //      Browse our Data Type CRUD
     //
     //****************************************
 
@@ -115,6 +110,90 @@ class CrudController extends BaseController
         ));
     }
 
+
+    //***************************************
+    //                ______
+    //               |  ____|
+    //               | |
+    //               | |
+    //               | |____
+    //               |______|
+    //
+    //
+    // Add a new item of our Data Type (C)RUD
+    //
+    //****************************************
+
+    public function create(Request $request)
+    {
+        $slug = $this->getSlug($request);
+
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('add', app($dataType->model_name));
+
+        $dataTypeContent = (strlen($dataType->model_name) != 0)
+                            ? new $dataType->model_name()
+                            : false;
+
+        foreach ($dataType->addRows as $key => $row) {
+            $details = json_decode($row->details);
+            $dataType->addRows[$key]['col_width'] = isset($details->width) ? $details->width : 100;
+        }
+
+        // If a column has a relationship associated with it, we do not want to show that field
+        $this->removeRelationshipField($dataType, 'add');
+
+        // Check if CRUD is Translatable
+        $isModelTranslatable = is_crud_translatable($dataTypeContent);
+
+        $view = 'admin::crud.edit-add';
+
+        if (view()->exists("admin::$slug.edit-add")) {
+            $view = "admin::$slug.edit-add";
+        }
+
+        return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+    }
+
+    /**
+     * POST (C)RUD - Store data.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        $slug = $this->getSlug($request);
+
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('edit', app($dataType->model_name));
+
+        // Validate fields with ajax
+        $val = $this->validateCrud($request->all(), $dataType->addRows);
+
+        if ($val->fails()) {
+            return response()->json(['errors' => $val->messages()]);
+        }
+
+        if (!$request->ajax()) {
+            $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
+
+            event(new CrudDataAdded($request, $slug, $dataType, $data));
+
+            return redirect()
+                ->route("admin.{$dataType->slug}.index")
+                ->with([
+                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
+                        'alert-type' => 'success',
+                    ]);
+        }
+    }
+
     //***************************************
     //                _____
     //               |  __ \
@@ -123,7 +202,7 @@ class CrudController extends BaseController
     //               | | \ \
     //               |_|  \_\
     //
-    //  Read an item of our Data Type B(R)EAD
+    //  Read an item of our Data Type C(R)UD
     //
     //****************************************
 
@@ -167,14 +246,14 @@ class CrudController extends BaseController
     }
 
     //***************************************
-    //                ______
-    //               |  ____|
-    //               | |__
-    //               |  __|
-    //               | |____
+    //                __   __
+    //               | |  | |
+    //               | |  | |
+    //               | |  | |
+    //               | |__| |
     //               |______|
     //
-    //  Edit an item of our Data Type BR(E)AD
+    //  Edit an item of our Data Type CR(U)D
     //
     //****************************************
 
@@ -216,7 +295,7 @@ class CrudController extends BaseController
         return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
-    // POST BR(E)AD
+    // POST CR(U)D
     public function update(Request $request, $id)
     {
         $slug = $this->getSlug($request);
@@ -253,89 +332,6 @@ class CrudController extends BaseController
     }
 
     //***************************************
-    //
-    //                   /\
-    //                  /  \
-    //                 / /\ \
-    //                / ____ \
-    //               /_/    \_\
-    //
-    //
-    // Add a new item of our Data Type BRE(A)D
-    //
-    //****************************************
-
-    public function create(Request $request)
-    {
-        $slug = $this->getSlug($request);
-
-        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
-
-        // Check permission
-        $this->authorize('add', app($dataType->model_name));
-
-        $dataTypeContent = (strlen($dataType->model_name) != 0)
-                            ? new $dataType->model_name()
-                            : false;
-
-        foreach ($dataType->addRows as $key => $row) {
-            $details = json_decode($row->details);
-            $dataType->addRows[$key]['col_width'] = isset($details->width) ? $details->width : 100;
-        }
-
-        // If a column has a relationship associated with it, we do not want to show that field
-        $this->removeRelationshipField($dataType, 'add');
-
-        // Check if CRUD is Translatable
-        $isModelTranslatable = is_crud_translatable($dataTypeContent);
-
-        $view = 'admin::crud.edit-add';
-
-        if (view()->exists("admin::$slug.edit-add")) {
-            $view = "admin::$slug.edit-add";
-        }
-
-        return Admin::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
-    }
-
-    /**
-     * POST BRE(A)D - Store data.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        $slug = $this->getSlug($request);
-
-        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
-
-        // Check permission
-        $this->authorize('edit', app($dataType->model_name));
-
-        // Validate fields with ajax
-        $val = $this->validateCrud($request->all(), $dataType->addRows);
-
-        if ($val->fails()) {
-            return response()->json(['errors' => $val->messages()]);
-        }
-
-        if (!$request->ajax()) {
-            $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
-
-            event(new CrudDataAdded($request, $slug, $dataType, $data));
-
-            return redirect()
-                ->route("admin.{$dataType->slug}.index")
-                ->with([
-                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
-                        'alert-type' => 'success',
-                    ]);
-        }
-    }
-
-    //***************************************
     //                _____
     //               |  __ \
     //               | |  | |
@@ -343,7 +339,7 @@ class CrudController extends BaseController
     //               | |__| |
     //               |_____/
     //
-    //         Delete an item BREA(D)
+    //         Delete an item CRU(D)
     //
     //****************************************
 
