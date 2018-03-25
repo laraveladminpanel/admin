@@ -15,7 +15,7 @@ class CropImages
     {
         $needCrop = $event->dataType->rows()
             ->whereType('image')
-            ->where('details', 'like', '%crop%')
+            ->where('details', 'like', '%cropper%')
             ->exists();
 
         if ($needCrop) {

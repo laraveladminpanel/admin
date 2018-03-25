@@ -38,17 +38,21 @@ trait Cropper
         $this->dataType = $event->dataType;
         $this->model = $event->model;
 
-        foreach ($this->getPhotosWithDetails() as $dataRow) {
+        $cropperImages = $this->dataType->rows()->whereType('image')
+            ->where('details', 'like', '%cropper%')->get();
+
+        foreach ($cropperImages as $dataRow) {
             $details = json_decode($dataRow->details);
 
-            if (!isset($details->crop)) {
-                return false;
-            }
-            if (!$this->request->{$dataRow->field}) {
-                return false;
+            if (!isset($details->cropper)) {
+                continue;
             }
 
-            $this->cropPhoto($details->crop, $dataRow);
+            if (!$this->request->{$dataRow->field}) {
+                continue;
+            }
+
+            $this->cropPhoto($details->cropper, $dataRow);
         }
 
         return true;
@@ -57,23 +61,24 @@ trait Cropper
     /**
      * Crop photo by coordinates.
      *
-     * @param array                                   $crop
+     * @param array                                   $cropper
      * @param Illuminate\Database\Eloquent\Collection $dataRow
      *
      * @return void
      */
-    private function cropPhoto($crop, $dataRow)
+    private function cropPhoto($cropper, $dataRow)
     {
         $folder = $this->folder;
+        $disk = Storage::disk($this->filesystem);
 
         //If a folder is not exists, then make the folder
-        if (!Storage::disk($this->filesystem)->exists($folder)) {
-            Storage::disk($this->filesystem)->makeDirectory($folder);
+        if (!$disk->exists($folder)) {
+            $disk->makeDirectory($folder);
         }
 
         $itemId = $this->model->id;
 
-        foreach ($crop as $cropParam) {
+        foreach ($cropper as $cropParam) {
             $inputName = $dataRow->field.'_'.$cropParam->name;
             $params = json_decode($this->request->get($inputName));
 
@@ -81,43 +86,41 @@ trait Cropper
                 return false;
             }
 
-            $path = $this->request->{$dataRow->field};
-            $img = Image::make(Storage::disk($this->filesystem)->path($path));
+            $imageName = $this->request->{$dataRow->field};
+            $image = Image::make($disk->path($imageName));
 
-            $img->crop(
+            $image->crop(
                 (int) $params->w,
                 (int) $params->h,
                 (int) $params->x,
                 (int) $params->y
             );
 
-            $img->resize($cropParam->size->width, $cropParam->size->height);
-            $photoName = $folder.'/'.$cropParam->name.'_'.$itemId.'_'.$cropParam->size->name.'.jpg';
-            $img->save(Storage::disk($this->filesystem)->path($photoName), $this->quality);
+            $image->resize($cropParam->size->width, $cropParam->size->height);
+            $photoName = $folder.'/'.$inputName.'_'.$itemId.'_'.$cropParam->size->name.'.'.$image->extension;
+
+            if (isset($cropParam->watermark) && file_exists($cropParam->watermark)) {
+                $watermark = Image::make(public_path() . '/' . $cropParam->watermark);
+                $watermark->resize($cropParam->size->width, null);
+                $image->insert($watermark);
+            }
+
+            $image->save($disk->path($photoName), $this->quality);
 
             if (!empty($cropParam->resize)) {
                 foreach ($cropParam->resize as $cropParamResize) {
-                    $img->resize($cropParamResize->width, $cropParamResize->height, function ($constraint) {
+                    $image->resize($cropParamResize->width, $cropParamResize->height, function ($constraint) {
                         $constraint->aspectRatio();
                     });
 
-                    $photoName = $folder.'/'.$cropParam->name.'_'.$itemId.'_'.$cropParamResize->name.'.jpg';
-                    $img->save(Storage::disk($this->filesystem)->path($photoName), $this->quality);
+                    $photoName = $folder.'/'.$inputName.'_'.$itemId.'_'.$cropParamResize->name.'.'.$image->extension;
+                    $image->save($disk->path($photoName), $this->quality);
                 }
             }
-        }
-    }
 
-    /**
-     * Get the photos with details.
-     *
-     * @return Illuminate\Database\Eloquent\Collection $dataType
-     */
-    public function getPhotosWithDetails()
-    {
-        return $this->dataType
-            ->where('type', '=', 'image')
-            ->where('details', '!=', null);
+            $this->model->{$dataRow->field} = $imageName;
+            $this->model->save();
+        }
     }
 
     /**
@@ -128,11 +131,16 @@ trait Cropper
      *
      * @return string
      */
-    public function getCroppedPhoto($prefix, $suffix)
+    public function getCroppedPhoto($column, $prefix, $suffix)
     {
+        $extension = 'jpeg';
+        if (isset($this->$column)) {
+            $extension = pathinfo($this->$column, PATHINFO_EXTENSION) ?: $extension;
+        }
+
         $photoName = config('admin.images.cropper.folder')
             .'/'.str_replace('_', '-', $this->getTable())
-            .'/'.$prefix.'_'.$this->id.'_'.$suffix.'.jpg';
+            .'/'.$column.'_'.$prefix.'_'.$this->id.'_'.$suffix.'.'.$extension;
 
         return Storage::disk($this->filesystem)->url($photoName);
     }

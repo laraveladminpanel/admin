@@ -1,4 +1,4 @@
-@if (isset($options->crop) && !empty($options->crop))
+@if (isset($options->cropper) && !empty($options->cropper))
     @include('admin::formfields.custom.crop_image')
 @else
     @if(isset($dataTypeContent->{$row->field}))
