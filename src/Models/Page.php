@@ -4,10 +4,12 @@ namespace LaravelAdminPanel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use LaravelAdminPanel\Traits\Cropper;
 use LaravelAdminPanel\Traits\Translatable;
 
 class Page extends Model
 {
+    use Cropper;
     use Translatable;
 
     protected $translatable = ['title', 'slug', 'body'];

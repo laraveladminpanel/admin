@@ -3,11 +3,11 @@
 namespace LaravelAdminPanel\Traits;
 
 use File;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use LaravelAdminPanel\Models\DataType;
 
 trait Cropper
 {
@@ -28,14 +28,15 @@ trait Cropper
      *
      * @return bool
      */
-    public function cropPhotos(Request $request, $slug, Collection $dataType, Model $model)
+    public function cropPhotos($event)
     {
         $this->filesystem = config('admin.storage.disk');
-        $this->folder = config('admin.images.cropper.folder').'/'.$slug;
+        $this->folder = config('admin.images.cropper.folder') . '/' . $event->slug;
         $this->quality = config('admin.images.cropper.quality', 100);
-        $this->request = $request;
-        $this->dataType = $dataType;
-        $this->model = $model;
+
+        $this->request = $event->request;
+        $this->dataType = $event->dataType;
+        $this->model = $event->model;
 
         foreach ($this->getPhotosWithDetails() as $dataRow) {
             $details = json_decode($dataRow->details);
@@ -43,7 +44,7 @@ trait Cropper
             if (!isset($details->crop)) {
                 return false;
             }
-            if (!$request->{$dataRow->field}) {
+            if (!$this->request->{$dataRow->field}) {
                 return false;
             }
 

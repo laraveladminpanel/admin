@@ -14,16 +14,15 @@ class CrudDataUpdated
     public $request;
     public $slug;
     public $dataType;
-    public $data;
+    public $model;
 
-
-    public function __construct(Request $request, $slug, DataType $dataType, Model $data)
+    public function __construct(Request $request, $slug, DataType $dataType, Model $model)
     {
         $this->request = $request;
         $this->slug = $slug;
         $this->dataType = $dataType;
-        $this->data = $data;
+        $this->model = $model;
 
-        event(new CrudDataChanged($dataType, $data, 'Updated'));
+        event(new CrudDataChanged($dataType, $model, 'Updated'));
     }
 }
