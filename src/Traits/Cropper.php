@@ -126,6 +126,7 @@ trait Cropper
     /**
      * Get the cropped photo url.
      *
+     * @param string $column
      * @param string $prefix
      * @param string $suffix
      *
