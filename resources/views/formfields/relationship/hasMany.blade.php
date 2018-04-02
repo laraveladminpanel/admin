@@ -16,14 +16,42 @@
             <p>{{ $string_values }}</p>
         @endif
     @else
-        @if(empty($selected_values))
-            <p>No results</p>
-        @else
+        @php
+            $model = app($options->model);
+            $query = $model::where($options->column, '=', $dataTypeContent->id)->get();
+            $details = json_decode($options->details);
+        @endphp
+
+        @if(isset($details->list) && $details->list === "datatable")
+            @php
+                $relationDataType = Admin::model('DataType')->where('name', '=', $model->getTable())->first()
+            @endphp
+
+            @section('datatable_header')
+                @can('add',app($dataType->model_name))
+                    @include('admin::crud.browse.buttons.add-new', ['dataType' => $relationDataType])
+                @endcan
+
+                @can('delete',app($dataType->model_name))
+                    @include('admin::partials.bulk-delete')
+                @endcan
+            @stop
+
+            @include('admin::list.datatable', [
+                'isServerSide' => $dataType->isServerSide(),
+                'dataTypeContent' => $query,
+                'dataType' => $relationDataType
+            ])
+        @elseif(isset($query))
+            @if(empty($selected_values))
+                <p>No results</p>
+            @else
             <ul>
                 @foreach($selected_values as $selected_value)
                     <li>{{ $selected_value }}</li>
                 @endforeach
             </ul>
+            @endif
         @endif
     @endif
 @else
