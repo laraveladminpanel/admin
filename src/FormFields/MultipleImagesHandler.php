@@ -24,13 +24,8 @@ class MultipleImagesHandler extends AbstractHandler
 
     public function getContentBasedOnType(Request $request, $slug, $row)
     {
-        if ($files != $request->file($row->field)) {
-            return null;
-        }
+        $files = $request->file($row->field);
 
-        /**
-         * upload files.
-         */
         $filesPath = [];
 
         $options = json_decode($row->details);
