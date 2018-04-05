@@ -5,15 +5,17 @@
         @include('admin::alerts')
         @include('admin::dimmers')
         <div class="analytics-container">
-            <?php $google_analytics_client_id = Admin::setting("admin.google_analytics_client_id"); ?>
-            @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))
-                {{-- Google Analytics Embed --}}
-                <div id="embed-api-auth-container"></div>
-            @else
-                <p style="border-radius:4px; padding:20px; background:#fff; margin:0; color:#999; text-align:center;">
-                    {!! __('admin.analytics.no_client_id') !!}
-                    <a href="https://console.developers.google.com" target="_blank">https://console.developers.google.com</a>
-                </p>
+            @if(config('admin.dashboard.google-analytics.show', false))
+                <?php $google_analytics_client_id = Admin::setting("admin.google_analytics_client_id"); ?>
+                @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))
+                    {{-- Google Analytics Embed --}}
+                    <div id="embed-api-auth-container"></div>
+                @else
+                    <p style="border-radius:4px; padding:20px; background:#fff; margin:0; color:#999; text-align:center;">
+                        {!! __('admin.analytics.no_client_id') !!}
+                        <a href="https://console.developers.google.com" target="_blank">https://console.developers.google.com</a>
+                    </p>
+                @endif
             @endif
 
             <div class="Dashboard Dashboard--full" id="analytics-dashboard">

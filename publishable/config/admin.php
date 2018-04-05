@@ -187,6 +187,9 @@ return [
             'LaravelAdminPanel\\Widgets\\PageDimmer',
         ],
 
+        'google-analytics' => [
+             'show' => env('GOOGLE_ANALYTICS_SHOW', true),
+         ],
     ],
 
     /*
