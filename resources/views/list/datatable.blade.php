@@ -175,8 +175,8 @@
                             </a>
                         @endcan
                         @can('read', $data)
-                            @if(isset($dataTypeOptions->buttons))
-                                @foreach($dataTypeOptions->buttons as $button)
+                            @if(isset($dataTypeOptions->browse->buttons))
+                                @foreach($dataTypeOptions->browse->buttons as $button)
                                     <a data-id="{{ $data->id }}"
                                        data-title="{{ isset($button->title) ? $button->title : '' }}"
                                        title="{{ isset($button->title) ? $button->title : '' }}"
