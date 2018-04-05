@@ -36,12 +36,4 @@ class User extends Authenticatable implements UserContract
 
         parent::save();
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function records()
-    {
-        return $this->hasOne(Admin::modelClass('UserRecord'), 'user_id', 'id');
-    }
 }

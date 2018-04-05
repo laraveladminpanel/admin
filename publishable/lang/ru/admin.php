@@ -21,7 +21,7 @@ return [
         'browse'                 => 'Просмотр',
         'builder'                => 'Конструктор',
         'bulk_delete'            => 'Удалить выбранное',
-        'bulk_delete_confirm'    => 'Да, удалить это',
+        'bulk_delete_confirm'    => 'Да, удалить эти',
         'bulk_delete_nothing'    => 'Вы ничего не выбрали для удаления!',
         'cancel'                 => 'Отмена',
         'choose_type'            => 'Выберите тип поля',

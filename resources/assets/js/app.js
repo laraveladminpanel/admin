@@ -143,16 +143,17 @@ $(document).ready(function(){
         $("body").css("cursor", "auto");
 
         $.each(d.errors, function(key, row){
-                                        //Scroll to first error
-                                        if (Object.keys(d.errors).indexOf(key) === 0) {
-                                            $('html, body').animate({
-                                                scrollTop: $("[data-name='"+key+"']").parent().offset().top
-                                                        - $('nav.navbar').height() + 'px'
-                                            }, 'fast');
-                                        }
+          //Scroll to first error
+          if (Object.keys(d.errors).indexOf(key) === 0) {
+              $('html, body').animate({
+                  scrollTop: $("[name='"+key+"']").parent().offset().top
+                          - $('nav.navbar').height() + 'px'
+              }, 'fast');
+          }
 
-          $("[data-name='"+key+"']").parent().addClass("has-error");
-          $("[data-name='"+key+"']").parent().append("<span class='help-block' style='color:#f96868'>"+row+"</span>")
+          $("[name='" + key + "']").parent().addClass("has-error");
+          var errors = row.map(function(error){return error.replace(key, $("[name='" + key + "']").data('name').toLowerCase());});
+          $("[name='" + key + "']").parent().append("<span class='help-block' style='color:#f96868'>" + errors + "</span>");
         });
       },
       error: function(){

@@ -18,14 +18,10 @@ class AdminEventServiceProvider extends ServiceProvider
             'LaravelAdminPanel\Listeners\AddCrudPermission',
         ],
         'LaravelAdminPanel\Events\CrudDataAdded' => [
-            'LaravelAdminPanel\Listeners\AddUserRecord',
             'LaravelAdminPanel\Listeners\CropImages',
         ],
         'LaravelAdminPanel\Events\CrudDataUpdated' => [
             'LaravelAdminPanel\Listeners\CropImages',
-        ],
-        'LaravelAdminPanel\Events\CrudDataDeleted' => [
-            'LaravelAdminPanel\Listeners\DeleteUserRecord',
         ],
     ];
 
