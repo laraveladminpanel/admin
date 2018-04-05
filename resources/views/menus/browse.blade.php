@@ -43,7 +43,7 @@
                                         @endif
                                     </td>
                                     @endforeach
-                                    <td class="no-sort no-click bread-actions">
+                                    <td class="no-sort no-click crud-actions">
                                         @can('delete', $data)
                                             <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
                                                 <i class="admin-trash"></i> {{ __('admin.generic.delete') }}

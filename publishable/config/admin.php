@@ -238,4 +238,9 @@ return [
          'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
      ],
 
+     'views' => [
+        'browse' => [
+            'display_text_on_service_buttons' => true,
+        ]
+     ],
 ];
