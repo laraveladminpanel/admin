@@ -141,11 +141,20 @@
                                            @if($checked) checked @endif>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="description">{{ __('admin.database.description') }}</label>
-                                <textarea class="form-control" name="description"
-                                          placeholder="{{ __('admin.database.description') }}"
-                                    >@if(isset($dataType->description)){{ $dataType->description }}@endif</textarea>
+                            <div class="row clearfix">
+                                <div class="col-md-6 form-group">
+                                    <label for="description">{{ __('admin.database.description') }}</label>
+                                    <textarea class="form-control" name="description"
+                                              placeholder="{{ __('admin.database.description') }}"
+                                        >@if(isset($dataType->description)){{ $dataType->description }}@endif</textarea>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="email">{{ __('admin.database.optional_details') }}</label>
+                                    <div class="alert alert-danger validation-error">
+                                        {{ __('admin.json.invalid') }}
+                                    </div>
+                                    <textarea class="resizable-editor" data-editor="json" name="details">@if(isset($dataType->details)){{ $dataType->details }}@endif</textarea>
+                                </div>
                             </div>
                         </div><!-- .panel-body -->
                     </div><!-- .panel -->

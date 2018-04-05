@@ -26,6 +26,7 @@ class DataType extends Model
         'policy_name',
         'controller',
         'description',
+        'details',
         'generate_permissions',
         'server_side',
     ];
