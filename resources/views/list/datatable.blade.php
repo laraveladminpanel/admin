@@ -1,18 +1,22 @@
 @php
-    $buttons = [];
-    $buttons['text_on_delete'] = '';
-    $buttons['text_on_edit'] = '';
-    $buttons['text_on_view'] = '';
+    $serviceButtons = [];
+    $serviceButtons['delete']['title'] = '';
+    $serviceButtons['edit']['title'] = '';
+    $serviceButtons['read']['title'] = '';
 
     if (config('admin.views.browse.display_text_on_service_buttons')) {
-        $buttons['text_on_delete'] = __('admin.generic.delete');
-        $buttons['text_on_edit'] = __('admin.generic.edit');
-        $buttons['text_on_view'] = __('admin.generic.view');
+        $serviceButtons['delete']['title'] = __('admin.generic.delete');
+        $serviceButtons['edit']['title'] = __('admin.generic.edit');
+        $serviceButtons['read']['title'] = __('admin.generic.view');
     }
 
     $dataTypeOptions = json_decode($dataType->details);
-@endphp
+    $customServiceButtons = false;
 
+    if(isset($dataTypeOptions->browse->service_buttons)) {
+        $customServiceButtons = $dataTypeOptions->browse->service_buttons;
+    }
+@endphp
 
 <div class="panel-body">
     @if ($isServerSide)
@@ -156,43 +160,46 @@
                     @endforeach
                     <td class="no-sort no-click" id="crud-actions">
                         @can('delete', $data)
-                            <a href="javascript:;" title="{{ __('admin.generic.delete') }}" class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}" id="delete-{{ $data->{$data->getKeyName()} }}">
-                                <i class="admin-trash"></i> <span class="hidden-xs hidden-sm">{{ $buttons['text_on_delete'] }}</span>
-                            </a>
+                            @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'delete'))
+                                <a href="javascript:;" title="{{ __('admin.generic.delete') }}" class="btn btn-sm pull-right btn-danger delete" data-id="{{ $data->{$data->getKeyName()} }}" id="delete-{{ $data->{$data->getKeyName()} }}">
+                                    <i class="admin-trash"></i> <span class="hidden-xs hidden-sm">{{ $serviceButtons['delete']['title'] }}</span>
+                                </a>
+                            @endunless
                         @endcan
                         @can('edit', $data)
-                            <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm btn-primary pull-right edit">
-                                <i class="admin-edit"></i> <span class="hidden-xs hidden-sm">{{ $buttons['text_on_edit'] }}</span>
-                            </a>
+                            @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'delete'))
+                                <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm pull-right btn-primary edit">
+                                    <i class="admin-edit"></i> <span class="hidden-xs hidden-sm">{{ $serviceButtons['edit']['title'] }}</span>
+                                </a>
+                            @endunless
                         @endcan
                         @can('read', $data)
-                            <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
-                                <i class="admin-eye"></i>
-                                @if(config('admin.views.browse.display_text_on_service_buttons'))
-                                    <span class="hidden-xs hidden-sm">{{ isset($button->title) ? $button->title : '' }}</span>
-                                @endif
-                                <span class="hidden-xs hidden-sm">{{ $buttons['text_on_view'] }}</span>
-                            </a>
+                            @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'read'))
+                                <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
+                                    <i class="admin-eye"></i>
+                                    <span class="hidden-xs hidden-sm">{{ $serviceButtons['read']['title'] }}</span>
+                                </a>
+                            @endunless
                         @endcan
-                        @can('read', $data)
-                            @if(isset($dataTypeOptions->browse->buttons))
-                                @foreach($dataTypeOptions->browse->buttons as $button)
-                                    <a data-id="{{ $data->id }}"
-                                       data-title="{{ isset($button->title) ? $button->title : '' }}"
-                                       title="{{ isset($button->title) ? $button->title : '' }}"
-                                       class="btn btn-sm pull-right {{ isset($button->class) ? $button->class : '' }}"
-                                       href="{{ isset($button->attribute) && isset($data->{$button->attribute}) ? $data->{$button->attribute} : '#' }}"
-                                       target="{{ isset($button->target) ? $button->target : '_self' }}">
-                                        @if(isset($button->icon))
-                                        <i class="{{ $button->icon }}"></i>
-                                        @endif
-                                        @if(config('admin.views.browse.display_text_on_service_buttons'))
-                                            <span class="hidden-xs hidden-sm">{{ isset($button->title) ? $button->title : '' }}</span>
-                                        @endif
-                                    </a>
-                                @endforeach
-                            @endif
-                        @endcan
+                        @if(isset($dataTypeOptions->browse->service_buttons))
+                            @foreach($dataTypeOptions->browse->service_buttons as $serviceButton)
+                                @can(isset($serviceButton->apply_permission) ? $serviceButton->apply_permission : 'browse', $data)
+                                <a data-id="{{ $data->{$data->getKeyName()} }}"
+                                   data-title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
+                                   title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
+                                   class="btn btn-sm pull-right {{ isset($serviceButton->class) ? $serviceButton->class : '' }}"
+                                   href="{{ isset($serviceButton->attribute) && isset($data->{$serviceButton->attribute}) ? $data->{$serviceButton->attribute} : '#' }}"
+                                   target="{{ isset($serviceButton->target) ? $serviceButton->target : '_self' }}">
+                                    @if(isset($serviceButton->icon))
+                                    <i class="{{ $serviceButton->icon }}"></i>
+                                    @endif
+                                    @if(config('admin.views.browse.display_text_on_service_buttons'))
+                                        <span class="hidden-xs hidden-sm">{{ isset($serviceButton->title) ? $serviceButton->title : '' }}</span>
+                                    @endif
+                                </a>
+                                @endcan
+                            @endforeach
+                        @endif
                     </td>
                 </tr>
                 @endforeach
