@@ -235,4 +235,16 @@ class DataType extends Model
     {
         return isset($this->server_side) && $this->server_side;
     }
+
+    public function getFormDesigner()
+    {
+        $formDesigner = $this->hasOne(FormDesigner::class)->first();
+
+        if ($formDesigner) {
+            $options = $formDesigner->getOptions();
+            return is_array($options) ? $options : $formDesigner;
+        }
+
+        return $formDesigner;
+    }
 }

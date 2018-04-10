@@ -95,6 +95,20 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'form-designer');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'form_designer',
+                'display_name_singular' => 'Form Designer',
+                'display_name_plural'   => 'Forms Designer',
+                'icon'                  => 'designer-list',
+                'model_name'            => 'LaravelAdminPanel\\Models\\FormDesigner',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
     }
 
     /**

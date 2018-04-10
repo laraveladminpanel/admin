@@ -22,5 +22,6 @@ class AdminDummyDatabaseSeeder extends Seeder
         $this->seed('PagesTableSeeder');
         $this->seed('SettingsTableSeeder');
         $this->seed('TranslationsTableSeeder');
+        $this->seed('FormDesignerTableSeeder');
     }
 }

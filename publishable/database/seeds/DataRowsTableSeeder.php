@@ -17,6 +17,7 @@ class DataRowsTableSeeder extends Seeder
         $categoryDataType = DataType::where('slug', 'categories')->firstOrFail();
         $menuDataType = DataType::where('slug', 'menus')->firstOrFail();
         $roleDataType = DataType::where('slug', 'roles')->firstOrFail();
+        $formDesignerDataType = DataType::where('slug', 'form-designer')->firstOrFail();
 
         $dataRow = $this->dataRow($postDataType, 'id');
         if (!$dataRow->exists) {
@@ -925,6 +926,61 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 1,
                 'details'      => '',
                 'order'        => 9,
+            ])->save();
+        }
+
+       $dataRow = $this->dataRow($formDesignerDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'id',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'details'      => '',
+                'order'        => 1,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($formDesignerDataType, 'data_type_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Data Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'relationship' => [
+                        'key'   => 'id',
+                        'label' => 'display_name_singular',
+                    ],
+                ]),
+                'order'        => 2,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($formDesignerDataType, 'details');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Options',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => json_encode([
+                    'formfields_custom' => 'json_editor',
+                ]),
+                'order'        => 3,
             ])->save();
         }
     }
