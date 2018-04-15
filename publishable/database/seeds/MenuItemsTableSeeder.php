@@ -162,6 +162,22 @@ class MenuItemsTableSeeder extends Seeder
             }
 
             $menuItem = MenuItem::firstOrNew([
+                'menu_id'    => $menu->id,
+                'title'      => 'Form Designer',
+                'url'        => '',
+                'route'      => 'admin.form-designer.index',
+            ]);
+            if (!$menuItem->exists) {
+                $menuItem->fill([
+                    'target'     => '_self',
+                    'icon_class' => 'admin-wand',
+                    'color'      => null,
+                    'parent_id'  => $toolsMenuItem->id,
+                    'order'      => 11,
+                ])->save();
+            }
+
+            $menuItem = MenuItem::firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => 'Database',
                 'url'     => '',
