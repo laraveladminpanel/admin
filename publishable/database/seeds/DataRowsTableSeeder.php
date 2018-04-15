@@ -966,10 +966,10 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($formDesignerDataType, 'details');
+        $dataRow = $this->dataRow($formDesignerDataType, 'options');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
+                'type'         => 'code_editor',
                 'display_name' => 'Options',
                 'required'     => 1,
                 'browse'       => 0,
@@ -977,7 +977,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => json_encode([
+                'options'      => json_encode([
                     'formfields_custom' => 'json_editor',
                 ]),
                 'order'        => 3,
