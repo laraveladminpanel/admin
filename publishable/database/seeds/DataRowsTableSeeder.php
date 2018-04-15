@@ -977,7 +977,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'options'      => json_encode([
+                'details'      => json_encode([
                     'formfields_custom' => 'json_editor',
                 ]),
                 'order'        => 3,
