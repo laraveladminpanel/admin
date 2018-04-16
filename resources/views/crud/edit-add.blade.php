@@ -40,7 +40,7 @@
                 @foreach($htmlRow->panels as $key_panel => $panel)
                     <div class="{{ isset($panel->class) ? $panel->class : '' }}">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-image"></i> {{ isset($panel->title) ? __($panel->title) : '' }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-image"></i> {!! isset($panel->title) ? __($panel->title) : '' !!}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action admin-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -59,9 +59,11 @@
                                 @if ($options && isset($options->formfields_custom))
                                     @include('admin::formfields.custom.' . $options->formfields_custom)
                                 @else
-                                    <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@else{{ 'col-md-12' }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                    <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                         {{ $row->slugify }}
+                                        @if($row->display_name)
                                         <label for="name">{{ $row->display_name }}</label>
+                                        @endif
                                         @include('admin::multilingual.input-hidden-bread-edit-add')
                                         {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
 
@@ -116,7 +118,7 @@
                             @if ($options && isset($options->formfields_custom))
                                 @include('admin::formfields.custom.' . $options->formfields_custom)
                             @else
-                                <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@else{{ 'col-md-12' }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                     {{ $row->slugify }}
                                     <label for="name">{{ $row->display_name }}</label>
                                     @include('admin::multilingual.input-hidden-bread-edit-add')
@@ -132,8 +134,7 @@
                 </div>
             </div>
         @endif
-    </form>
-
+        </form>
     @else
         <div class="page-content edit-add container-fluid">
             <div class="row">
@@ -175,7 +176,7 @@
                                     @if ($options && isset($options->formfields_custom))
                                         @include('admin::formfields.custom.' . $options->formfields_custom)
                                     @else
-                                        <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@else{{ '' }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif @if(isset($display_options->width)){{ 'col-md-' . $display_options->width }}@endif" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                             {{ $row->slugify }}
                                             <label for="name">{{ $row->display_name }}</label>
                                             @include('admin::multilingual.input-hidden-bread-edit-add')

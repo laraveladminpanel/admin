@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use LaravelAdminPanel\Facades\Admin;
+use LaravelAdminPanel\Traits\Cropper;
 use LaravelAdminPanel\Traits\Translatable;
 
 class Post extends Model
 {
+    use Cropper;
     use Translatable;
 
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'slug', 'meta_description', 'meta_keywords'];
@@ -49,6 +51,14 @@ class Post extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function category()
+    {
+        return $this->categoryId();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function categoryId()
     {
         return $this->hasOne(Admin::modelClass('Category'), 'id', 'category_id');
     }

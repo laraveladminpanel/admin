@@ -13,47 +13,68 @@ class FormDesignerTableSeeder extends Seeder
      */
     public function run()
     {
-        $pageDataType = DataType::where('slug', 'pages')->firstOrFail();
+        $dataType = DataType::where('slug', 'posts')->firstOrFail();
 
-        if (!$pageDataType->exists) {
+        if (!$dataType->exists) {
             return false;
         }
 
         FormDesigner::firstOrCreate([
-            'data_type_id' => $pageDataType->id,
+            'data_type_id' => $dataType->id,
             'options'      => json_encode([
                 [
-                    'class'  => 'col-md-7',
+                    'class'  => 'col-md-8',
                     'panels' => [
                         [
                             'class'  => 'panel',
-                            'title'  => 'Text Information',
+                            'title'  => '<i class="admin-character"></i> Post Title The title for your post',
                             'fields' => [
                                 'title',
-                                'excerpt',
-                                'body',
-                                'slug',
-                                'status',
                             ],
                         ],
                         [
-                            'class'  => 'panel panel-bordered panel-info',
-                            'title'  => 'admin.post.seo_content',
+                            'class'  => 'panel',
+                            'title'  => 'Post Content',
                             'fields' => [
-                                'meta_keywords',
-                                'meta_description',
+                                'body',
+                            ],
+                        ],
+                        [
+                            'class'  => 'panel',
+                            'title'  => 'Excerpt <small>Small description of this post</small>',
+                            'fields' => [
+                                'excerpt',
                             ],
                         ],
                     ],
                 ],
                 [
-                    'class'  => 'col-md-5',
+                    'class'  => 'col-md-4',
                     'panels' => [
                         [
-                            'class'  => 'panel panel-bordered panel-primary',
-                            'title'  => 'Image block',
+                            'class'  => 'panel panel-warning',
+                            'title'  => 'Post Details',
+                            'fields' => [
+                                'slug',
+                                'status',
+                                'category_id',
+                                'featured',
+                            ],
+                        ],
+                        [
+                            'class'  => 'panel panel-primary',
+                            'title'  => 'Post Image',
                             'fields' => [
                                 'image',
+                            ],
+                        ],
+                        [
+                            'class'  => 'panel panel-info',
+                            'title'  => 'admin.post.seo_content',
+                            'fields' => [
+                                'meta_keywords',
+                                'meta_description',
+                                'seo_title',
                             ],
                         ],
                     ],

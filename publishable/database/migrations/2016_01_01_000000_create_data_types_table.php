@@ -32,7 +32,7 @@ class CreateDataTypesTable extends Migration
             $table->integer('data_type_id')->unsigned();
             $table->string('field');
             $table->string('type');
-            $table->string('display_name');
+            $table->string('display_name')->nullable();
             $table->boolean('required')->default(false);
             $table->boolean('browse')->default(true);
             $table->boolean('read')->default(true);
