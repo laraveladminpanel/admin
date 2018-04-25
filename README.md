@@ -14,7 +14,7 @@ Laravel Admin & CRUD System (Browse, Read, Edit, Add, & Delete), supporting Lara
 After creating your new Laravel application you can include the Admin Panel package with the following command: 
 
 ```bash
-composer require laraveladminpanel/admin dev-master
+composer require laraveladminpanel/admin
 ```
 
 ### 2. Add the DB Credentials & APP_URL
