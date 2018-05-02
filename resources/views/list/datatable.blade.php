@@ -16,6 +16,11 @@
     if(isset($dataTypeOptions->browse->service_buttons)) {
         $customServiceButtons = $dataTypeOptions->browse->service_buttons;
     }
+
+    $jsonDataTable = "{}";
+    if (isset($dataTypeOptions->datatable)) {
+        $jsonDataTable = json_encode($dataTypeOptions->datatable);
+    }
 @endphp
 
 <div class="panel-body">
@@ -46,7 +51,7 @@
 
         @yield('datatable_header')
 
-        <table id="dataTable" class="table table-hover">
+        <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
                     <th></th>
@@ -229,6 +234,10 @@
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
         <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
     @endif
+
+    @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
+        <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.min.css') }}">
+    @endif
 @stop
 
 @section('javascript')
@@ -236,16 +245,31 @@
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
         <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
     @endif
+
+    @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
+        <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/jszip.min.js') }}"></script>
+        <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.html5.min.js') }}"></script>
+        <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.print.min.js') }}"></script>
+    @endif
+
     <script>
         $(document).ready(function () {
             @if (!$dataType->server_side)
-                var table = $('#dataTable').DataTable({!! json_encode(
+                var table = $('#dataTable');
+
+                var baseDatatableConfig = {!! json_encode(
                     array_merge([
                         "order" => [],
                         "language" => __('admin.datatable'),
-                    ],
-                    config('admin.dashboard.data_tables', []))
-                , true) !!});
+                    ])
+                , true) !!};
+
+                var crudDatatableConfig = table.data('json-datatable');
+                console.log(baseDatatableConfig, crudDatatableConfig);
+                var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
+
+                var dataTable = table.DataTable(datatableConfig);
             @else
                 $('#search-input select').select2({
                     minimumResultsForSearch: Infinity
