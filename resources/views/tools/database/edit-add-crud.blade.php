@@ -255,8 +255,9 @@
                                     </div>
                                     <div class="col-xs-2">
                                         <input type="text" class="form-control"
-                                               value="@if(isset($dataRow->display_name)){{ $dataRow->display_name }}@endif"
-                                               name="field_display_name_{{ $data['field'] }}">
+                                               value="@if(isset($dataRow->display_name)){{ $dataRow->display_name }}@elseif(!isset($dataType->id)){{ ucwords(str_replace('_', ' ', $data['field'])) }}@endif"
+                                               name="field_display_name_{{ $data['field'] }}"
+                                               >
                                     </div>
                                     <div class="col-xs-4">
                                         <div class="alert alert-danger validation-error">
