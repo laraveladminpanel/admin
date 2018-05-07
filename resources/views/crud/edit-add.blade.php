@@ -25,7 +25,7 @@
         <!-- form start -->
         <form role="form"
             class="form-edit-add"
-            action="@if(isset($dataTypeContent->id)){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif"
+            action="@if(isset($dataTypeContent->id)){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif?{{ request()->getQueryString() }}"
             method="POST" enctype="multipart/form-data">
         <!-- PUT Method if we are editing -->
         @if(isset($dataTypeContent->id))

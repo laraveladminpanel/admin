@@ -173,14 +173,14 @@
                         @endcan
                         @can('edit', $data)
                             @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'delete'))
-                                <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm pull-right btn-primary edit">
+                                <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName() }) }}?{{ request()->getQueryString() }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm pull-right btn-primary edit">
                                     <i class="admin-edit"></i> <span class="hidden-xs hidden-sm">{{ $serviceButtons['edit']['title'] }}</span>
                                 </a>
                             @endunless
                         @endcan
                         @can('read', $data)
                             @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'read'))
-                                <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
+                                <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}?{{ request()->getQueryString() }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
                                     <i class="admin-eye"></i>
                                     <span class="hidden-xs hidden-sm">{{ $serviceButtons['read']['title'] }}</span>
                                 </a>
@@ -266,9 +266,7 @@
                 , true) !!};
 
                 var crudDatatableConfig = table.data('json-datatable');
-                console.log(baseDatatableConfig, crudDatatableConfig);
                 var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
-
                 var dataTable = table.DataTable(datatableConfig);
             @else
                 $('#search-input select').select2({
@@ -293,7 +291,8 @@
             form.action = deleteFormAction.match(/\/[0-9]+$/)
                 ? deleteFormAction.replace(/([0-9]+$)/, $(this).data('id'))
                 : deleteFormAction + '/' + $(this).data('id');
-            console.log(form.action);
+
+            form.action = form.action + window.location.search;
 
             $('#delete_modal').modal('show');
         });

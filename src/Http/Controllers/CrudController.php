@@ -186,7 +186,7 @@ class CrudController extends BaseController
             event(new CrudDataAdded($request, $slug, $dataType, $data));
 
             return redirect()
-                ->route("admin.{$dataType->slug}.index")
+                ->route("admin.{$dataType->slug}.index", $request->query())
                 ->with([
                         'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
                         'alert-type' => 'success',
@@ -323,7 +323,7 @@ class CrudController extends BaseController
             event(new CrudDataUpdated($request, $slug, $dataType, $data));
 
             return redirect()
-                ->route("admin.{$dataType->slug}.index")
+                ->route("admin.{$dataType->slug}.index", $request->query())
                 ->with([
                     'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
                     'alert-type' => 'success',
@@ -384,7 +384,7 @@ class CrudController extends BaseController
             event(new CrudDataDeleted($dataType, $data, $ids));
         }
 
-        return redirect()->route("admin.{$dataType->slug}.index")->with($data);
+        return redirect()->route("admin.{$dataType->slug}.index", $request->query())->with($data);
     }
 
     /**

@@ -7,12 +7,12 @@
         <i class="{{ $dataType->icon }}"></i> {{ __('admin.generic.viewing') }} {{ ucfirst($dataType->display_name_singular) }} &nbsp;
 
         @can('edit', $dataTypeContent)
-        <a href="{{ route('admin.'.$dataType->slug.'.edit', $dataTypeContent->getKey()) }}" class="btn btn-info">
+        <a href="{{ route('admin.'.$dataType->slug.'.edit', $dataTypeContent->getKey()) }}?{{ request()->getQueryString() }}" class="btn btn-info">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;
             {{ __('admin.generic.edit') }}
         </a>
         @endcan
-        <a href="{{ route('admin.'.$dataType->slug.'.index') }}" class="btn btn-warning">
+        <a href="{{ route('admin.'.$dataType->slug.'.index') }}?{{ request()->getQueryString() }}" class="btn btn-warning">
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('admin.generic.return_to_list') }}
         </a>
