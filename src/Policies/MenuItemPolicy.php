@@ -23,7 +23,7 @@ class MenuItemPolicy extends BasePolicy
     {
         $regex = str_replace('/', '\/', preg_quote(route('admin.dashboard')));
         $slug = preg_replace('/'.$regex.'/', '', $model->link(true));
-        $slug = str_replace('/', '', $slug);
+        $slug = str_replace('/', '', explode('/', ltrim($slug, '/'))[0]);
 
         if (!isset(self::$datatypes[$slug])) {
             self::$datatypes[$slug] = DataType::where('slug', $slug)->first();
