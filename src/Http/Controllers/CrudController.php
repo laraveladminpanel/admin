@@ -61,13 +61,13 @@ class CrudController extends BaseController
             if ($search->value && $search->key && $search->filter) {
                 $search_filter = ($search->filter == 'equals') ? '=' : 'LIKE';
                 $search_value = ($search->filter == 'equals') ? $search->value : '%'.$search->value.'%';
-                $query->where($search->key, $search_filter, $search_value);
+                $query = $query->where($search->key, $search_filter, $search_value);
             }
 
             if ($orderBy && in_array($orderBy, $dataType->fields())) {
                 $querySortOrder = (!empty($sortOrder)) ? $sortOrder : 'DESC';
                 $dataTypeContent = call_user_func([
-                    $query->with($relationships)->orderBy($orderBy, $querySortOrder),
+                    $query = $query->with($relationships)->orderBy($orderBy, $querySortOrder),
                     $getter,
                 ]);
             } elseif ($model->timestamps) {
