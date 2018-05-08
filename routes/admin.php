@@ -122,5 +122,16 @@ Route::group(['as' => 'admin.'], function () {
         });
 
         Route::resource('database', $namespacePrefix.'DatabaseController');
+
+        // Apt Routes
+        Route::group([
+            'as'     => 'api.',
+            'prefix' => 'api',
+        ], function () use ($namespacePrefix) {
+            Route::post('/order', [
+                'uses' => $namespacePrefix.'ApiController@order',
+                'as' => 'order'
+            ]);
+        });
     });
 });

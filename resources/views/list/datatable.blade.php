@@ -54,7 +54,9 @@
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
+                    @if(!isset($dataTypeOptions->datatable->rowReorder))
                     <th></th>
+                    @endif
                     @foreach($dataType->browseRows as $row)
                     <th>
                         @if ($isServerSide)
@@ -78,10 +80,12 @@
             </thead>
             <tbody>
                 @foreach($dataTypeContent as $data)
-                <tr>
+                <tr @isset($data->id) data-id="{{ $data->id }}" @endisset>
+                    @if(!isset($dataTypeOptions->datatable->rowReorder))
                     <td>
                         <input type="checkbox" name="row_id" id="checkbox_{{ $data->id }}" value="{{ $data->id }}">
                     </td>
+                    @endif
                     @foreach($dataType->browseRows as $row)
                         <td>
                             <?php $options = json_decode($row->details); ?>
@@ -238,6 +242,10 @@
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.min.css') }}">
     @endif
+
+    @if(isset($dataTypeOptions->datatable->rowReorder))
+        <link href="{{ admin_asset('plugins/dataTables/extensions/reorder/rowReorder.min.css') }}" rel="stylesheet">
+    @endif
 @stop
 
 @section('javascript')
@@ -251,6 +259,10 @@
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/jszip.min.js') }}"></script>
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.html5.min.js') }}"></script>
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.print.min.js') }}"></script>
+    @endif
+
+    @if(isset($dataTypeOptions->datatable->rowReorder))
+        <script src="{{ admin_asset('plugins/dataTables/extensions/reorder/rowReorder.min.js') }}"></script>
     @endif
 
     <script>
@@ -268,6 +280,45 @@
                 var crudDatatableConfig = table.data('json-datatable');
                 var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
                 var dataTable = table.DataTable(datatableConfig);
+
+                @if (isset($dataTypeOptions->datatable->rowReorder))
+                    @php
+                        $datatableOrderColumn = '';
+                        if (isset($dataTypeOptions->datatable->rowReorder->order_column)) {
+                            $datatableOrderColumn = $dataTypeOptions->datatable->rowReorder->order_column;
+                        }
+                    @endphp
+
+                    dataTable.on('row-reorder', function (e, diff, edit) {
+                        var data = $("#dataTable tr")
+                           // get all sibling tr
+                           .siblings()
+                           // iterate over elements using map and generate array elelements
+                           .map(function(){
+                           // get data attribute value
+                           return $(this).data();
+                           // get the result object as an array using get method
+                        }).get();
+
+console.log(data);
+                        $.post('{{ route('admin.api.order') }}', {
+                            data: JSON.stringify(data),
+                            table_name: "{{ $dataType->name }}",
+                            order_by: "{{ $datatableOrderColumn }}",
+                            dataType: 'json',
+                            _token: '{{ csrf_token() }}'
+                        }).done(function() {
+                            toastr.success("Порядок успешно обновлен ({{ $dataType->display_name_singular }})");
+                        }).fail(function(data, type, error) {
+                            toastr.error(type, error);
+                        });
+                    });
+                @endif
+
+/*    var table = $('#dataTable').DataTable( {
+        rowReorder: true
+    } );*/
+
             @else
                 $('#search-input select').select2({
                     minimumResultsForSearch: Infinity
