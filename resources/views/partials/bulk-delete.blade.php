@@ -60,6 +60,7 @@ window.onload = function () {
             // Set input value
             $bulkDeleteInput.val(ids);
             // Show modal
+            console.log($bulkDeleteModal);
             $bulkDeleteModal.modal('show');
         } else {
             // No row selected

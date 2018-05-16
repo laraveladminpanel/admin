@@ -21,6 +21,17 @@
     if (isset($dataTypeOptions->datatable)) {
         $jsonDataTable = json_encode($dataTypeOptions->datatable);
     }
+
+    $requestQuery = request()->getQueryString();
+
+    if (isset($parentDataTypeContent)) {
+        if (isset($parentDataTypeContent->id) && isset($parentDataType->slug)) {
+            $requestQuery = ($requestQuery ? $requestQuery . '&' : '')
+                . 'crud_slug=' . $parentDataType->slug
+                . '&crud_action=' . request()->route()->getActionMethod()
+                . '&crud_id=' . $parentDataTypeContent->id;
+        }
+    }
 @endphp
 
 <div class="panel-body">
@@ -29,7 +40,7 @@
             <div id="search-input">
                 <select id="search_key" name="key">
                     @foreach($searchable as $key)
-                            <option value="{{ $key }}" @if($search->key == $key){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>
+                        <option value="{{ $key }}" @if($search->key == $key){{ 'selected' }}@endif>{{ ucwords(str_replace('_', ' ', $key)) }}</option>
                     @endforeach
                 </select>
                 <select id="filter" name="filter">
@@ -177,14 +188,14 @@
                         @endcan
                         @can('edit', $data)
                             @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'delete'))
-                                <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName() }) }}?{{ request()->getQueryString() }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm pull-right btn-primary edit">
+                                <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName() }) }}?{{ $requestQuery }}" title="{{ __('admin.generic.edit') }}" class="btn btn-sm pull-right btn-primary edit">
                                     <i class="admin-edit"></i> <span class="hidden-xs hidden-sm">{{ $serviceButtons['edit']['title'] }}</span>
                                 </a>
                             @endunless
                         @endcan
                         @can('read', $data)
                             @unless($customServiceButtons && is_object($customServiceButtons) && property_exists($customServiceButtons, 'read'))
-                                <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}?{{ request()->getQueryString() }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
+                                <a href="{{ route('admin.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}?{{ $requestQuery }}" title="{{ __('admin.generic.view') }}" class="btn btn-sm btn-warning pull-right">
                                     <i class="admin-eye"></i>
                                     <span class="hidden-xs hidden-sm">{{ $serviceButtons['read']['title'] }}</span>
                                 </a>
@@ -233,6 +244,28 @@
         </div>
     @endif
 </div>
+
+{{-- Single delete modal --}}
+<div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="admin-trash"></i> {{ __('admin.generic.delete_question') }} {{ strtolower($dataType->display_name_singular) }}?</h4>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('admin.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
+                    {{ method_field("DELETE") }}
+                    {{ csrf_field() }}
+                    <input type="submit" class="btn btn-danger pull-right delete-confirm"
+                             value="{{ __('admin.generic.delete_confirm') }} {{ strtolower($dataType->display_name_singular) }}">
+                </form>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('admin.generic.cancel') }}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 @section('css')
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
@@ -300,7 +333,6 @@
                            // get the result object as an array using get method
                         }).get();
 
-console.log(data);
                         $.post('{{ route('admin.api.order') }}', {
                             data: JSON.stringify(data),
                             table_name: "{{ $dataType->name }}",
@@ -314,10 +346,6 @@ console.log(data);
                         });
                     });
                 @endif
-
-/*    var table = $('#dataTable').DataTable( {
-        rowReorder: true
-    } );*/
 
             @else
                 $('#search-input select').select2({
@@ -343,7 +371,7 @@ console.log(data);
                 ? deleteFormAction.replace(/([0-9]+$)/, $(this).data('id'))
                 : deleteFormAction + '/' + $(this).data('id');
 
-            form.action = form.action + window.location.search;
+            form.action = form.action + "?{{ $requestQuery }}".replace(/&amp;/g, '&');
 
             $('#delete_modal').modal('show');
         });

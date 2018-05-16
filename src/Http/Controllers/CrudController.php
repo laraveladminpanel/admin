@@ -185,6 +185,17 @@ class CrudController extends BaseController
 
             event(new CrudDataAdded($request, $slug, $dataType, $data));
 
+            $requestQuery = (object) $request->query();
+
+            if ($this->needRedirectToParentCrud($requestQuery)) {
+                return redirect()
+                    ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
+                    ->with([
+                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
+                        'alert-type' => 'success',
+                    ]);
+            }
+
             return redirect()
                 ->route("admin.{$dataType->slug}.index", $request->query())
                 ->with([
@@ -322,6 +333,17 @@ class CrudController extends BaseController
 
             event(new CrudDataUpdated($request, $slug, $dataType, $data));
 
+            $requestQuery = (object) $request->query();
+
+            if ($this->needRedirectToParentCrud($requestQuery)) {
+                return redirect()
+                    ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
+                    ->with([
+                        'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
+                        'alert-type' => 'success',
+                    ]);
+            }
+
             return redirect()
                 ->route("admin.{$dataType->slug}.index", $request->query())
                 ->with([
@@ -382,6 +404,17 @@ class CrudController extends BaseController
 
         if ($res) {
             event(new CrudDataDeleted($dataType, $data, $ids));
+        }
+
+        $requestQuery = (object) $request->query();
+
+        if ($this->needRedirectToParentCrud($requestQuery)) {
+            return redirect()
+                ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
+                ->with([
+                    'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
+                    'alert-type' => 'success',
+                ]);
         }
 
         return redirect()->route("admin.{$dataType->slug}.index", $request->query())->with($data);
@@ -448,5 +481,17 @@ class CrudController extends BaseController
         if ($rows->count() > 0) {
             event(new CrudImagesDeleted($data, $rows));
         }
+    }
+
+    /**
+     * Check if need to redirect to the parent CRUD.
+     *
+     * @return boolean
+     */
+    private function needRedirectToParentCrud(\stdClass $requestQuery)
+    {
+        return isset($requestQuery->crud_slug) && $requestQuery->crud_slug
+            && isset($requestQuery->crud_action) && $requestQuery->crud_action
+            && isset($requestQuery->crud_id) && $requestQuery->crud_id;
     }
 }

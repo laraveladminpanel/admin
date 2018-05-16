@@ -29,7 +29,11 @@
 
             @section('datatable_header')
                 @can('add',app($dataType->model_name))
-                    @include('admin::crud.browse.buttons.add-new', ['dataType' => $relationDataType])
+                    @include('admin::crud.browse.buttons.add-new', [
+                        'dataType' => $relationDataType,
+                        'parentDataTypeContent' => $dataTypeContent,
+                        'parentDataType' => $dataType
+                    ])
                 @endcan
 
                 @can('delete',app($dataType->model_name))
@@ -40,7 +44,9 @@
             @include('admin::list.datatable', [
                 'isServerSide' => $dataType->isServerSide(),
                 'dataTypeContent' => $query,
-                'dataType' => $relationDataType
+                'dataType' => $relationDataType,
+                'parentDataTypeContent' => $dataTypeContent,
+                'parentDataType' => $dataType
             ])
         @elseif(isset($query))
             @if(empty($selected_values))
@@ -68,7 +74,11 @@
 
         @section('datatable_header')
             @can('add',app($dataType->model_name))
-                @include('admin::crud.browse.buttons.add-new', ['dataType' => $relationDataType])
+                @include('admin::crud.browse.buttons.add-new', [
+                    'dataType' => $relationDataType,
+                    'parentDataTypeContent' => $dataTypeContent,
+                    'parentDataType' => $dataType
+                ])
             @endcan
 
             @can('delete',app($dataType->model_name))
@@ -79,7 +89,9 @@
         @include('admin::list.datatable', [
             'isServerSide' => $dataType->isServerSide(),
             'dataTypeContent' => $query,
-            'dataType' => $relationDataType
+            'dataType' => $relationDataType,
+            'parentDataTypeContent' => $dataTypeContent,
+            'parentDataType' => $dataType
         ])
     @elseif(isset($query))
         <ul>
