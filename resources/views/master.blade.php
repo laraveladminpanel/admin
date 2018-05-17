@@ -39,6 +39,8 @@
 
 <body class="admin @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
 
+@yield('popup')
+
 <div id="admin-loader">
     <?php $admin_loader_img = Admin::setting('admin.loader', ''); ?>
     @if($admin_loader_img == '')

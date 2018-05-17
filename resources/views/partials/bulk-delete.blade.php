@@ -1,34 +1,36 @@
 <a class="btn btn-danger" id="bulk_delete_btn"><i class="admin-trash"></i> <span>{{ __('admin.generic.bulk_delete') }}</span></a>
 
-{{-- Bulk delete modal --}}
-<div class="modal modal-danger fade" tabindex="-1" id="bulk_delete_modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">
-                    <i class="admin-trash"></i> {{ __('admin.generic.are_you_sure_delete') }} <span id="bulk_delete_count"></span> <span id="bulk_delete_display_name"></span>?
-                </h4>
-            </div>
-            <div class="modal-body" id="bulk_delete_modal_body">
-            </div>
-            <div class="modal-footer">
-                <form action="{{ route('admin.'.$dataType->slug.'.index') }}/0?{{ request()->getQueryString() }}" id="bulk_delete_form" method="POST">
-                    {{ method_field("DELETE") }}
-                    {{ csrf_field() }}
-                    <input type="hidden" name="ids" id="bulk_delete_input" value="">
-                    <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                             value="{{ __('admin.generic.bulk_delete_confirm') }} {{ strtolower($dataType->display_name_plural) }}">
-                </form>
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">
-                    {{ __('admin.generic.cancel') }}
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+@section('popup')
+    @parent
+    {{-- Bulk delete modal --}}
+    <div class="modal modal-danger fade" tabindex="-1" id="bulk_delete_modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">
+                        <i class="admin-trash"></i> {{ __('admin.generic.are_you_sure_delete') }} <span id="bulk_delete_count"></span> <span id="bulk_delete_display_name"></span>?
+                    </h4>
+                </div>
+                <div class="modal-body" id="bulk_delete_modal_body">
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('admin.'.$dataType->slug.'.index') }}/0?{{ request()->getQueryString() }}" id="bulk_delete_form" method="POST">
+                        {{ method_field("DELETE") }}
+                        {{ csrf_field() }}
+                        <input type="hidden" name="ids" id="bulk_delete_input" value="">
+                        <input type="submit" class="btn btn-danger pull-right delete-confirm"
+                                 value="{{ __('admin.generic.bulk_delete_confirm') }} {{ strtolower($dataType->display_name_plural) }}">
+                    </form>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">
+                        {{ __('admin.generic.cancel') }}
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+@stop
 <script>
 window.onload = function () {
     // Bulk delete selectors

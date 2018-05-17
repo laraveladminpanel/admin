@@ -245,6 +245,7 @@
     @endif
 </div>
 
+@section('popup')
 {{-- Single delete modal --}}
 <div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
     <div class="modal-dialog">
@@ -266,6 +267,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@stop
 
 @section('css')
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))

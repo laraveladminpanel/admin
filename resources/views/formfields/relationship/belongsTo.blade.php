@@ -1,7 +1,7 @@
 @php 
     $relationshipAttribute = false;
 
-    if ($options->details) {
+    if (isset($options->details) && $options->details) {
         $relationshipDetails = json_decode($options->details);
         if (isset($relationshipDetails->attribute)) {
             $relationshipAttribute = $relationshipDetails->attribute;
