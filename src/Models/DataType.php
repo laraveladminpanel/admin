@@ -247,4 +247,18 @@ class DataType extends Model
 
         return $formDesigner;
     }
+
+    public function ajaxColums()
+    {   //return $this->fields($name = null);
+        $model = app($this->model_name);
+
+        return $model->select('*')->latest($model::CREATED_AT);
+    }
+
+    public function ajaxRows()
+    {
+        $model = app($this->model_name);
+
+        return $model->select('*')->latest($model::CREATED_AT);
+    }
 }
