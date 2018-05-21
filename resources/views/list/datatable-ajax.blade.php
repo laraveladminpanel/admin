@@ -64,6 +64,9 @@
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
+                    @if(!isset($dataTypeOptions->datatable->rowReorder))
+                    <th></th>
+                    @endif
                     @foreach($dataType->browseRows as $row)
                     <th>
                         @if ($isServerSide)
@@ -184,9 +187,13 @@
                     serverSide: true,
                     ajax: "{{ route('admin.get-ajax-list', ['slug' => $slug]) }}",
                     columns: [
-                    @foreach($dataType->browseRows as $row)
-                        {data: "{{ $row->field }}"},
-                    @endforeach
+                        @if(!isset($dataTypeOptions->datatable->rowReorder))
+                        {data: "delete_checkbox"},
+                        @endif
+                        @foreach($dataType->ajaxList() as $row)
+                            {data: "{{ $row->field }}"},
+                        @endforeach
+                        {data: "actions", name: 'actions', orderable: false, searchable: false},
                     ]
                 });
 

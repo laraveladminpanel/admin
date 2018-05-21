@@ -32,7 +32,7 @@ Route::group(['as' => 'admin.'], function () {
 
         Route::get('profile', ['uses' => $namespacePrefix.'Controller@profile', 'as' => 'profile']);
 
-/*        try {
+        try {
             foreach (DataType::all() as $dataType) {
                 $crudController = $dataType->controller
                                  ? $dataType->controller
@@ -44,10 +44,10 @@ Route::group(['as' => 'admin.'], function () {
             throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);
         } catch (\Exception $e) {
             // do nothing, might just be because table not yet migrated.
-        }*/
+        }
 
 
-        try {
+/*        try {
             foreach (DataType::all() as $dataType) {
                 $crudController = $dataType->controller
                                  ? $dataType->controller
@@ -59,9 +59,9 @@ Route::group(['as' => 'admin.'], function () {
             throw new \InvalidArgumentException("Custom routes hasn't been configured because: ".$e->getMessage(), 1);
         } catch (\Exception $e) {
             // do nothing, might just be because table not yet migrated.
-        }
+        }*/
 
-        Route::get('get-ajax-list/{slug}', ['uses' => $crudController . '@getAjaxList', 'as' => 'get-ajax-list']);
+        Route::get('get-ajax-list/{slug}', ['uses' => $namespacePrefix . 'CrudAjaxController@getAjaxList', 'as' => 'get-ajax-list']);
 
         // Role Routes
         Route::resource('roles', $namespacePrefix.'RoleController');

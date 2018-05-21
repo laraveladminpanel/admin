@@ -249,7 +249,7 @@ class DataType extends Model
     }
 
     public function ajaxColums()
-    {   //return $this->fields($name = null);
+    {
         $model = app($this->model_name);
 
         return $model->select('*')->latest($model::CREATED_AT);
@@ -260,5 +260,10 @@ class DataType extends Model
         $model = app($this->model_name);
 
         return $model->select('*')->latest($model::CREATED_AT);
+    }
+
+    public function ajaxList()
+    {
+        return $this->browseRows;
     }
 }
