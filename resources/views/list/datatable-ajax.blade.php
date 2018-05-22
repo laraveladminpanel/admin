@@ -169,12 +169,12 @@
                         },
                     },
                     columns: [
-                        {data: "delete_checkbox"},
+                        {data: "delete_checkbox", orderable: false, searchable: false},
                     @foreach($dataType->browseRows as $row)
                         {data: "{{ $row->field }}"},
                     @endforeach
-                        {data: "actions"},
-                    ]
+                        {data: "actions", orderable: false, searchable: false},
+                    ],
                 });
 
                 @if (isset($dataTypeOptions->datatable->rowReorder))

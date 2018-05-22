@@ -182,6 +182,12 @@ class CrudController extends BaseController
 
                 return $content;
             });
+
+            if ($dataRow->type == 'relationship') {
+                $query->filterColumn($dataRow->field, function ($query, $keyword) {
+                    $query->whereIn("app_id", [5]);
+                });
+            }
         }
 
         return $query
