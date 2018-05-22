@@ -295,6 +295,7 @@ return [
         'policy_name_ph'            => 'ex. \App\Policies\UserPolicy, if left empty will try and use the default',
         'primary'                   => 'PRIMARY',
         'server_pagination'         => 'Server-side Pagination',
+        'pagination'                => 'Pagination',
         'success_create_table'      => 'Successfully created :table table',
         'success_created_crud'     => 'Successfully created new CRUD',
         'success_delete_table'      => 'Successfully deleted :table table',

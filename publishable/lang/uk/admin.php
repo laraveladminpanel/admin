@@ -285,6 +285,7 @@ return [
         'policy_name_ph'            => 'наприклад \App\Policies\UserPolicy, якщо залишити порожнім - спробує використати політику за замовчуванням',
         'primary'                   => 'ПЕРВИННИЙ КЛЮЧ',
         'server_pagination'         => 'Пагінація на стороні сервера',
+        'pagination'                => 'Пагінація',
         'success_create_table'      => 'Таблиця :table успішно створена',
         'success_created_crud'     => 'Новий CRUD успішно створений',
         'success_delete_table'      => 'Таблиця :table успішно видалена',
