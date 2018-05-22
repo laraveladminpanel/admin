@@ -46,7 +46,7 @@ Route::group(['as' => 'admin.'], function () {
             // do nothing, might just be because table not yet migrated.
         }
 
-        Route::get('get-ajax-list/{slug}', ['uses' => $namespacePrefix . 'CrudController@getAjaxList', 'as' => 'get-ajax-list']);
+        Route::post('get-ajax-list', ['uses' => $namespacePrefix . 'CrudController@getAjaxList', 'as' => 'get-ajax-list']);
 
         // Role Routes
         Route::resource('roles', $namespacePrefix.'RoleController');

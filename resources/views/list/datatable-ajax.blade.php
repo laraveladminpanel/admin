@@ -160,9 +160,14 @@
                 var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
 
                 table.DataTable({
-                    processing: true,
                     serverSide: true,
-                    ajax: "{{ route('admin.get-ajax-list', ['slug' => $slug]) }}",
+                    ajax: {
+                        url: "{{ route('admin.get-ajax-list') }}",
+                        type: "POST",
+                        data: {
+                            "slug": "{{ $slug }}"
+                        },
+                    },
                     columns: [
                         {data: "delete_checkbox"},
                     @foreach($dataType->browseRows as $row)

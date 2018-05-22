@@ -155,8 +155,11 @@ class CrudController extends BaseController
     //      Get Data for Ajax List
     //
     //****************************************
-    public function getAjaxList(Request $request, $slug) // GET THE SLUG, ex. 'posts', 'pages', etc.
+    public function getAjaxList(Request $request/*, $slug*/) // GET THE SLUG, ex. 'posts', 'pages', etc.
     {
+        // GET THE SLUG, ex. 'posts', 'pages', etc.
+        $slug = $request->slug;
+
         // GET THE DataType based on the slug
         $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
 
@@ -165,21 +168,21 @@ class CrudController extends BaseController
 
         $model = app($dataType->model_name);
 
-        $query = DataTables::of($model->query());
+        $query = DataTables::of($model->select('*'));
 
-            foreach ($dataType->ajaxList() as $dataRow) {
-                $query->addColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
-                    $content = $dataTypeContent->{$dataRow->field};
+        foreach ($dataType->ajaxList() as $dataRow) {
+            $query->editColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
+                $content = $dataTypeContent->{$dataRow->field};
 
-                    $handler = AbstractHandler::initial($dataRow->type);
+                $handler = AbstractHandler::initial($dataRow->type);
 
-                    if (method_exists($handler, 'getContentForList')) {
-                        $content = $handler->getContentForList($request, $slug, $dataRow, $dataTypeContent);
-                    }
+                if (method_exists($handler, 'getContentForList')) {
+                    $content = $handler->getContentForList($request, $slug, $dataRow, $dataTypeContent);
+                }
 
-                    return $content;
-                });
-            }
+                return $content;
+            });
+        }
 
         return $query
             ->addColumn('delete_checkbox', function($dataTypeContent) {
