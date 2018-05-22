@@ -3,6 +3,7 @@
 namespace LaravelAdminPanel\FormFields;
 
 use Illuminate\Http\Request;
+use LaravelAdminPanel\Facades\Admin;
 
 class CheckboxHandler extends AbstractHandler
 {
@@ -27,5 +28,12 @@ class CheckboxHandler extends AbstractHandler
         }
 
         return 0;
+    }
+
+    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent)
+    {
+        $options = json_decode($dataType->details);
+
+        return Admin::view('admin::formfields.list.checkbox', compact('dataTypeContent', 'dataType', 'options'));
     }
 }
