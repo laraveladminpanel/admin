@@ -46,7 +46,7 @@ class DatabaseCrudController extends BaseController
             'display_name_plural'  => Str::plural($displayName),
             'model_name'           => $modelNamespace.Str::studly(Str::singular($table)),
             'generate_permissions' => true,
-            'server_side'          => false,
+            'pagination'           => 'js',
         ];
     }
 
@@ -81,8 +81,16 @@ class DatabaseCrudController extends BaseController
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
         $dataTypeRelationships = Admin::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
+        $paginations = ['js', 'ajax', 'php'];
 
-        return Admin::view('admin::tools.database.edit-add-crud', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships'));
+        return Admin::view('admin::tools.database.edit-add-crud', compact(
+            'dataType',
+            'fieldOptions',
+            'isModelTranslatable',
+            'tables',
+            'dataTypeRelationships',
+            'paginations'
+        ));
     }
 
     public function update(Request $request, $id)

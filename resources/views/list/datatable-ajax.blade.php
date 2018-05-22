@@ -59,38 +59,20 @@
         </form>
     @endif
     <div class="table-responsive">
-
         @yield('datatable_header')
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
-                    @if(!isset($dataTypeOptions->datatable->rowReorder))
                     <th></th>
-                    @endif
                     @foreach($dataType->browseRows as $row)
                     <th>
-                        @if ($isServerSide)
-                            <a href="{{ $row->sortByUrl() }}">
-                        @endif
                         {{ $row->display_name }}
-                        @if ($isServerSide)
-                            @if ($row->isCurrentSortField())
-                                @if (!isset($_GET['sort_order']) || $_GET['sort_order'] == 'asc')
-                                    <i class="admin-angle-up pull-right"></i>
-                                @else
-                                    <i class="admin-angle-down pull-right"></i>
-                                @endif
-                            @endif
-                            </a>
-                        @endif
                     </th>
                     @endforeach
                     <th class="actions">{{ __('admin.generic.actions') }}</th>
                 </tr>
             </thead>
         </table>
-
-
     </div>
     @if ($isServerSide)
         <div class="pull-left">
@@ -136,9 +118,7 @@
 @stop
 
 @section('css')
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-        <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
-    @endif
+    <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.min.css') }}">
@@ -151,9 +131,7 @@
 
 @section('javascript')
     <!-- DataTables -->
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-        <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
-    @endif
+    <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/dataTables.buttons.min.js') }}"></script>
@@ -168,7 +146,7 @@
 
     <script>
         $(document).ready(function () {
-            @if (!$dataType->server_side)
+            @if ($dataType->pagination !== 'php')
                 var table = $('#dataTable');
 
                 var baseDatatableConfig = {!! json_encode(
@@ -180,20 +158,17 @@
 
                 var crudDatatableConfig = table.data('json-datatable');
                 var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
-                //var dataTable = table.DataTable(datatableConfig);
 
                 table.DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: "{{ route('admin.get-ajax-list', ['slug' => $slug]) }}",
                     columns: [
-                        @if(!isset($dataTypeOptions->datatable->rowReorder))
                         {data: "delete_checkbox"},
-                        @endif
-                        @foreach($dataType->ajaxList() as $row)
-                            {data: "{{ $row->field }}"},
-                        @endforeach
-                        {data: "actions", name: 'actions', orderable: false, searchable: false},
+                    @foreach($dataType->browseRows as $row)
+                        {data: "{{ $row->field }}"},
+                    @endforeach
+                        {data: "actions"},
                     ]
                 });
 

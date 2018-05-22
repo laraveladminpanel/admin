@@ -36,14 +36,14 @@ class CrudController extends BaseController
         // Check permission
         $this->authorize('browse', app($dataType->model_name));
 
-        if ($dataType->server_side === 'ajax') {
+        if ($dataType->pagination === 'ajax') {
             return $this->indexAjax($request);
         }
 
-        $getter = $dataType->server_side ? 'paginate' : 'get';
+        $getter = $dataType->pagination === 'php' ? 'paginate' : 'get';
 
         $search = (object) ['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
-        $searchable = $dataType->server_side ? array_keys(SchemaManager::describeTable(app($dataType->model_name)->getTable())->toArray()) : '';
+        $searchable = $dataType->pagination === 'php' ? array_keys(SchemaManager::describeTable(app($dataType->model_name)->getTable())->toArray()) : '';
         $orderBy = $request->get('order_by');
         $sortOrder = $request->get('sort_order', null);
 
@@ -137,13 +137,15 @@ class CrudController extends BaseController
         $isServerSide = false;
         $isModelTranslatable = false;
         $columns = $dataType->fields();
+        $pagination = $dataType->pagination;
 
         return Admin::view('admin::crud.browse-ajax', compact(
             'dataType',
             'slug',
             'isServerSide',
             'isModelTranslatable',
-            'columns'
+            'columns',
+            'pagination'
         ));
     }
 
@@ -163,14 +165,7 @@ class CrudController extends BaseController
 
         $model = app($dataType->model_name);
 
-        $query = Datatables::of($model->query())
-            ->addColumn('delete_checkbox', function($dataTypeContent) {
-                return '<input type="checkbox" name="row_id" id="checkbox_' . $dataTypeContent->id . '" value="' . $dataTypeContent->id . '">';
-
-            })
-            ->addColumn('actions', function($dataTypeContent) use($dataType){
-                return Admin::view('admin::list.datatable.buttons', ['data' => $dataTypeContent, 'dataType' => $dataType]);
-            });
+        $query = DataTables::of($model->query());
 
             foreach ($dataType->ajaxList() as $dataRow) {
                 $query->addColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
@@ -187,7 +182,14 @@ class CrudController extends BaseController
             }
 
         return $query
-            ->rawColumns(array_merge($dataType->ajaxListFields(), ['actions', 'delete_checkbox']))
+            ->addColumn('delete_checkbox', function($dataTypeContent) {
+                return '<input type="checkbox" name="row_id" id="checkbox_' . $dataTypeContent->id . '" value="' . $dataTypeContent->id . '">';
+
+            })
+            ->addColumn('actions', function($dataTypeContent) use($dataType){
+                return Admin::view('admin::list.datatable.buttons', ['data' => $dataTypeContent, 'dataType' => $dataType]);
+            })
+            ->rawColumns(array_merge($dataType->ajaxListFields(), ['delete_checkbox', 'actions']))
             ->make(true);
     }
 

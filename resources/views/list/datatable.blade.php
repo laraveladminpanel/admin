@@ -270,7 +270,7 @@
 @stop
 
 @section('css')
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+    @if($dataType->pagination !== 'php' && config('dashboard.data_tables.responsive'))
         <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
     @endif
 
@@ -285,7 +285,7 @@
 
 @section('javascript')
     <!-- DataTables -->
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+    @if($dataType->pagination !== 'php' && config('dashboard.data_tables.responsive'))
         <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
     @endif
 
@@ -302,7 +302,7 @@
 
     <script>
         $(document).ready(function () {
-            @if (!$dataType->server_side)
+            @if ($dataType->pagination !== 'php')
                 var table = $('#dataTable');
 
                 var baseDatatableConfig = {!! json_encode(
