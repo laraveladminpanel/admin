@@ -21,6 +21,10 @@ class CrudAjaxController extends BaseController
 
         // GET THE DataType based on the slug
         $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('browse', app($dataType->model_name));
+
         $isServerSide = false;
         $isModelTranslatable = false;
         $columns = $dataType->fields();
@@ -44,15 +48,20 @@ class CrudAjaxController extends BaseController
 
         $model = app($dataType->model_name);
 
-        return Datatables::of($model->query())
+        $query = Datatables::of($model->query())
             ->addColumn('delete_checkbox', function($row) {
                 return '<input type="checkbox" name="row_id" id="checkbox_' . $row->id . '" value="' . $row->id . '">';
 
             })
             ->addColumn('actions', function($row) use($dataType){
                 return Admin::view('admin::list.datatable.buttons', ['data' => $row, 'dataType' => $dataType]);
-            })
+            });
+
+        return $query
             ->rawColumns(['actions', 'delete_checkbox'])
             ->make(true);
+
+        //@elseif($row->type == 'relationship')
+        //@include('admin::formfields.relationship', ['view' => 'browse'])
     }
 }
