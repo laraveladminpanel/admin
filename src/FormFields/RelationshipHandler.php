@@ -23,9 +23,9 @@ class RelationshipHandler extends AbstractHandler
         return $request->input($row->field);
     }
 
-    public function getContentForList(Request $request, $slug, $row, $dataTypeContent)
+    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent)
     {
-        $options = json_decode($row->details);
+        $options = json_decode($dataType->details);
         return Admin::view('admin::formfields.relationship.belongsTo', [
             'options' => $options,
             'dataTypeContent' => $dataTypeContent,
