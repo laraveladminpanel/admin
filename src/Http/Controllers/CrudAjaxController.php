@@ -4,6 +4,7 @@ namespace LaravelAdminPanel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use LaravelAdminPanel\Facades\Admin;
+use LaravelAdminPanel\FormFields\AbstractHandler;
 use Yajra\DataTables\Facades\DataTables;
 
 class CrudAjaxController extends BaseController
@@ -38,7 +39,7 @@ class CrudAjaxController extends BaseController
         ));
     }
 
-    public function getAjaxList($slug) // GET THE SLUG, ex. 'posts', 'pages', etc.
+    public function getAjaxList(Request $request, $slug) // GET THE SLUG, ex. 'posts', 'pages', etc.
     {
         // GET THE DataType based on the slug
         $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
@@ -49,19 +50,30 @@ class CrudAjaxController extends BaseController
         $model = app($dataType->model_name);
 
         $query = Datatables::of($model->query())
-            ->addColumn('delete_checkbox', function($row) {
-                return '<input type="checkbox" name="row_id" id="checkbox_' . $row->id . '" value="' . $row->id . '">';
+            ->addColumn('delete_checkbox', function($dataTypeContent) {
+                return '<input type="checkbox" name="row_id" id="checkbox_' . $dataTypeContent->id . '" value="' . $dataTypeContent->id . '">';
 
             })
-            ->addColumn('actions', function($row) use($dataType){
-                return Admin::view('admin::list.datatable.buttons', ['data' => $row, 'dataType' => $dataType]);
+            ->addColumn('actions', function($dataTypeContent) use($dataType){
+                return Admin::view('admin::list.datatable.buttons', ['data' => $dataTypeContent, 'dataType' => $dataType]);
             });
 
-        return $query
-            ->rawColumns(['actions', 'delete_checkbox'])
-            ->make(true);
+            foreach ($dataType->ajaxList() as $dataRow) {
+                $query->addColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
+                    $content = $dataTypeContent->{$dataRow->field};
 
-        //@elseif($row->type == 'relationship')
-        //@include('admin::formfields.relationship', ['view' => 'browse'])
+                    $handler = AbstractHandler::initial($dataRow->type);
+
+                    if (method_exists($handler, 'getContentForList')) {
+                        $content = $handler->getContentForList($request, $slug, $dataRow, $dataTypeContent);
+                    }
+
+                    return $content;
+                });
+            }
+
+        return $query
+            ->rawColumns(array_merge($dataType->ajaxListFields(), ['actions', 'delete_checkbox']))
+            ->make(true);
     }
 }

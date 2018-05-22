@@ -266,4 +266,9 @@ class DataType extends Model
     {
         return $this->browseRows;
     }
+
+    public function ajaxListFields()
+    {
+        return $this->ajaxList()->pluck('field')->toArray();
+    }
 }
