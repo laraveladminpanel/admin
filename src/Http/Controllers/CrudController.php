@@ -155,7 +155,7 @@ class CrudController extends BaseController
     //      Get Data for Ajax List
     //
     //****************************************
-    public function getAjaxList(Request $request/*, $slug*/) // GET THE SLUG, ex. 'posts', 'pages', etc.
+    public function getAjaxList(Request $request) // GET THE SLUG, ex. 'posts', 'pages', etc.
     {
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = $request->slug;
@@ -184,8 +184,10 @@ class CrudController extends BaseController
             });
 
             if ($dataRow->type == 'relationship') {
-                $query->filterColumn($dataRow->field, function ($query, $keyword) {
-                    $query->whereIn("app_id", [5]);
+                $query->filterColumn($dataRow->field, function ($query, $keyword) use($dataRow){
+                    $relationship = json_decode($dataRow->details);
+                    $ids = app($relationship->model)->where($relationship->label, 'like', "%$keyword%")->pluck($relationship->key);
+                    $query->whereIn($relationship->column, $ids);
                 });
             }
         }
