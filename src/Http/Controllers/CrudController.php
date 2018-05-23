@@ -170,7 +170,7 @@ class CrudController extends BaseController
 
         $query = $model->select('*');
 
-        if (isset($request->order[0]['column']) && !$request->order[0]['column']) {
+        if (!isset($request->order)) {
             if ($model->timestamps) {
                 $query = $query->latest($model::CREATED_AT);
             } else {

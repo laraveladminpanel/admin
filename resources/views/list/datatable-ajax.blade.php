@@ -179,6 +179,7 @@
                     @endforeach
                         {data: "actions", orderable: false, searchable: false, className: "no-sort no-click crud-actions"},
                     ],
+                    "order": []
                 });
 
                 @if (isset($dataTypeOptions->datatable->rowReorder))
