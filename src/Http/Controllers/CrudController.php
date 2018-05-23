@@ -168,7 +168,15 @@ class CrudController extends BaseController
 
         $model = app($dataType->model_name);
 
-        $query = DataTables::of($model->select('*'));
+        $query = $model->select('*');
+
+        if ($model->timestamps) {
+            $query = $query->latest($model::CREATED_AT);
+        } else {
+            $query = $query->with($relationships)->orderBy($model->getKeyName(), 'DESC');
+        }
+
+        $query = DataTables::of($query);
 
         foreach ($dataType->ajaxList() as $dataRow) {
             $query->editColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
