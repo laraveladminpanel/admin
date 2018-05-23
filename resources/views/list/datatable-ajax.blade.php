@@ -171,7 +171,11 @@
                     columns: [
                         {data: "delete_checkbox", orderable: false, searchable: false},
                     @foreach($dataType->browseRows as $row)
-                        {data: "{{ $row->field }}"},
+                        @if($row->type === 'relationship')
+                            {data: "{{ $row->field }}", orderable: false},
+                        @else
+                            {data: "{{ $row->field }}"},
+                        @endif
                     @endforeach
                         {data: "actions", orderable: false, searchable: false},
                     ],
