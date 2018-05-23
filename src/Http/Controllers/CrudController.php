@@ -170,10 +170,12 @@ class CrudController extends BaseController
 
         $query = $model->select('*');
 
-        if ($model->timestamps) {
-            $query = $query->latest($model::CREATED_AT);
-        } else {
-            $query = $query->with($relationships)->orderBy($model->getKeyName(), 'DESC');
+        if (isset($request->order[0]['column']) && !$request->order[0]['column']) {
+            if ($model->timestamps) {
+                $query = $query->latest($model::CREATED_AT);
+            } else {
+                $query = $query->with($relationships)->orderBy($model->getKeyName(), 'DESC');
+            }
         }
 
         $query = DataTables::of($query);
