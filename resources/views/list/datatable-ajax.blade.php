@@ -177,7 +177,7 @@
                             {data: "{{ $row->field }}"},
                         @endif
                     @endforeach
-                        {data: "actions", orderable: false, searchable: false},
+                        {data: "actions", orderable: false, searchable: false, className: "no-sort no-click crud-actions"},
                     ],
                 });
 
@@ -225,9 +225,8 @@
             @endif
         });
 
-
         var deleteFormAction;
-        $('td').on('click', '.delete', function (e) {
+        $('#dataTable').on('click', '.delete', function (e) {
             var form = $('#delete_form')[0];
 
             if (!deleteFormAction) { // Save form action initial value
