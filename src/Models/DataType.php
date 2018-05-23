@@ -28,7 +28,7 @@ class DataType extends Model
         'description',
         'details',
         'generate_permissions',
-        'server_side',
+        'pagination',
     ];
 
     public function rows()
@@ -71,18 +71,13 @@ class DataType extends Model
         $this->attributes['generate_permissions'] = $value ? 1 : 0;
     }
 
-    public function setServerSideAttribute($value)
-    {
-        $this->attributes['server_side'] = $value ? 1 : 0;
-    }
-
     public function updateDataType($requestData, $throw = false)
     {
         try {
             DB::beginTransaction();
 
             // Prepare data
-            foreach (['generate_permissions', 'server_side'] as $field) {
+            foreach (['generate_permissions', 'pagination'] as $field) {
                 if (!isset($requestData[$field])) {
                     $requestData[$field] = 0;
                 }
@@ -233,7 +228,7 @@ class DataType extends Model
 
     public function isServerSide()
     {
-        return isset($this->server_side) && $this->server_side;
+        return isset($this->pagination) && $this->pagination && $this->pagination == 'php';
     }
 
     public function getFormDesigner()
@@ -246,5 +241,29 @@ class DataType extends Model
         }
 
         return $formDesigner;
+    }
+
+    public function ajaxColums()
+    {
+        $model = app($this->model_name);
+
+        return $model->select('*')->latest($model::CREATED_AT);
+    }
+
+    public function ajaxRows()
+    {
+        $model = app($this->model_name);
+
+        return $model->select('*')->latest($model::CREATED_AT);
+    }
+
+    public function ajaxList()
+    {
+        return $this->browseRows;
+    }
+
+    public function ajaxListFields()
+    {
+        return $this->ajaxList()->pluck('field')->toArray();
     }
 }

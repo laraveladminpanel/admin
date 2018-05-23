@@ -135,10 +135,12 @@
                                            @if($checked) checked @endif>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for="server_side">{{ __('admin.database.server_pagination') }}</label><br>
-                                    <?php $checked = (isset($dataType->server_side) && $dataType->server_side == 1) ? true : (isset($server_side) && $server_side) ? true : false; ?>
-                                    <input type="checkbox" name="server_side" class="toggleswitch"
-                                           @if($checked) checked @endif>
+                                    <label for="pagination">{{ __('admin.database.pagination') }}</label><br>
+                                    <select class="form-control" name="pagination">
+                                        @foreach($paginations as $pagination)
+                                            <option value="{{ $pagination }}" @if($dataType->pagination === $pagination){{ 'selected="selected"' }}@endif>{{ strtoupper($pagination) }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="row clearfix">

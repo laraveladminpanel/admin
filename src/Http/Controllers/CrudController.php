@@ -11,7 +11,9 @@ use LaravelAdminPanel\Events\CrudDataDeleted;
 use LaravelAdminPanel\Events\CrudDataUpdated;
 use LaravelAdminPanel\Events\CrudImagesDeleted;
 use LaravelAdminPanel\Facades\Admin;
+use LaravelAdminPanel\FormFields\AbstractHandler;
 use LaravelAdminPanel\Http\Controllers\Traits\CrudRelationshipParser;
+use Yajra\DataTables\Facades\DataTables;
 
 class CrudController extends BaseController
 {
@@ -34,10 +36,14 @@ class CrudController extends BaseController
         // Check permission
         $this->authorize('browse', app($dataType->model_name));
 
-        $getter = $dataType->server_side ? 'paginate' : 'get';
+        if ($dataType->pagination === 'ajax') {
+            return $this->indexAjax($request);
+        }
+
+        $getter = $dataType->pagination === 'php' ? 'paginate' : 'get';
 
         $search = (object) ['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
-        $searchable = $dataType->server_side ? array_keys(SchemaManager::describeTable(app($dataType->model_name)->getTable())->toArray()) : '';
+        $searchable = $dataType->pagination === 'php' ? array_keys(SchemaManager::describeTable(app($dataType->model_name)->getTable())->toArray()) : '';
         $orderBy = $request->get('order_by');
         $sortOrder = $request->get('sort_order', null);
 
@@ -110,6 +116,93 @@ class CrudController extends BaseController
         ));
     }
 
+
+    //***************************************
+    //
+    //      Ajax browse our Data Type
+    //
+    //****************************************
+
+    private function indexAjax(Request $request)
+    {
+        // GET THE SLUG, ex. 'posts', 'pages', etc.
+        $slug = $this->getSlug($request);
+
+        // GET THE DataType based on the slug
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('browse', app($dataType->model_name));
+
+        $isServerSide = false;
+        $isModelTranslatable = false;
+        $columns = $dataType->fields();
+        $pagination = $dataType->pagination;
+
+        return Admin::view('admin::crud.browse-ajax', compact(
+            'dataType',
+            'slug',
+            'isServerSide',
+            'isModelTranslatable',
+            'columns',
+            'pagination'
+        ));
+    }
+
+
+    //***************************************
+    //
+    //      Get Data for Ajax List
+    //
+    //****************************************
+    public function getAjaxList(Request $request) // GET THE SLUG, ex. 'posts', 'pages', etc.
+    {
+        // GET THE SLUG, ex. 'posts', 'pages', etc.
+        $slug = $request->slug;
+
+        // GET THE DataType based on the slug
+        $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('browse', app($dataType->model_name));
+
+        $model = app($dataType->model_name);
+
+        $query = DataTables::of($model->select('*'));
+
+        foreach ($dataType->ajaxList() as $dataRow) {
+            $query->editColumn($dataRow->field, function($dataTypeContent) use($request, $slug, $dataRow){
+                $content = $dataTypeContent->{$dataRow->field};
+
+                $handler = AbstractHandler::initial($dataRow->type);
+
+                if (method_exists($handler, 'getContentForList')) {
+                    $content = $handler->getContentForList($request, $slug, $dataRow, $dataTypeContent);
+                }
+
+                return $content;
+            });
+
+            if ($dataRow->type == 'relationship') {
+                $query->filterColumn($dataRow->field, function ($query, $keyword) use($dataRow){
+                    $relationship = json_decode($dataRow->details);
+                    $ids = app($relationship->model)->where($relationship->label, 'like', "%$keyword%")->pluck($relationship->key);
+                    $query->whereIn($relationship->column, $ids);
+                });
+            }
+        }
+
+        return $query
+            ->addColumn('delete_checkbox', function($dataTypeContent) {
+                return '<input type="checkbox" name="row_id" id="checkbox_' . $dataTypeContent->id . '" value="' . $dataTypeContent->id . '">';
+
+            })
+            ->addColumn('actions', function($dataTypeContent) use($dataType){
+                return Admin::view('admin::list.datatable.buttons', ['data' => $dataTypeContent, 'dataType' => $dataType]);
+            })
+            ->rawColumns(array_merge($dataType->ajaxListFields(), ['delete_checkbox', 'actions']))
+            ->make(true);
+    }
 
     //***************************************
     //                ______

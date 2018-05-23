@@ -1989,10 +1989,17 @@ table.dataTable.no-footer{
     font-weight: 500;
     text-decoration: none;
 }
+
+#dataTable .crud-actions a, .actions a.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
 #dataTable #crud-actions a, .actions a.btn {
     padding: 5px 10px;
     font-size: 12px;
 }
+
 /* Fix navbar responsiveness */
 .navbar-nav.navbar-right {
   top: 0;
@@ -4346,6 +4353,11 @@ table a.btn-sm{
   height:70px;
   width:100%;
   display:block;
+}
+
+.crud-actions a.btn{
+  margin-left:5px;
+  cursor:pointer;
 }
 
 #crud-actions a.btn{
