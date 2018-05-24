@@ -46,7 +46,7 @@ class DatabaseCrudController extends BaseController
             'display_name_plural'  => Str::plural($displayName),
             'model_name'           => $modelNamespace.Str::studly(Str::singular($table)),
             'generate_permissions' => true,
-            'pagination'           => 'js',
+            'paginations'          => ['js', 'ajax', 'php'],
         ];
     }
 

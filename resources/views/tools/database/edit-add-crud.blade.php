@@ -138,7 +138,7 @@
                                     <label for="pagination">{{ __('admin.database.pagination') }}</label><br>
                                     <select class="form-control" name="pagination">
                                         @foreach($paginations as $pagination)
-                                            <option value="{{ $pagination }}" @if($dataType->pagination === $pagination){{ 'selected="selected"' }}@endif>{{ strtoupper($pagination) }}</option>
+                                            <option value="{{ $pagination }}" @if(isset($dataType) && $dataType->pagination === $pagination){{ 'selected="selected"' }}@endif>{{ strtoupper($pagination) }}</option>
                                         @endforeach
                                     </select>
                                 </div>
