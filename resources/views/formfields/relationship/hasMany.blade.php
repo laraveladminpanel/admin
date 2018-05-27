@@ -28,7 +28,7 @@
             @endphp
 
             @section('datatable_header')
-                @can('add',app($dataType->model_name))
+                @can('add',app($relationDataType->model_name))
                     @include('admin::crud.browse.buttons.add-new', [
                         'dataType' => $relationDataType,
                         'parentDataTypeContent' => $dataTypeContent,
@@ -36,7 +36,7 @@
                     ])
                 @endcan
 
-                @can('delete',app($dataType->model_name))
+                @can('delete',app($relationDataType->model_name))
                     @include('admin::partials.bulk-delete')
                 @endcan
             @stop
@@ -73,7 +73,7 @@
         @endphp
 
         @section('datatable_header')
-            @can('add',app($dataType->model_name))
+            @can('add',app($relationDataType->model_name))
                 @include('admin::crud.browse.buttons.add-new', [
                     'dataType' => $relationDataType,
                     'parentDataTypeContent' => $dataTypeContent,
@@ -81,7 +81,7 @@
                 ])
             @endcan
 
-            @can('delete',app($dataType->model_name))
+            @can('delete',app($relationDataType->model_name))
                 @include('admin::partials.bulk-delete')
             @endcan
         @stop
