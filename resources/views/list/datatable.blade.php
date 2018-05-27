@@ -149,10 +149,10 @@
                                 <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                             @elseif($row->type == 'text')
                                 @include('admin::multilingual.input-hidden-bread-browse')
-                                <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                                <div class="readmore">{{ mb_strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                             @elseif($row->type == 'text_area')
                                 @include('admin::multilingual.input-hidden-bread-browse')
-                                <div class="readmore">{{ strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                                <div class="readmore">{{ mb_strlen( $data->{$row->field} ) > 200 ? substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                             @elseif($row->type == 'file' && !empty($data->{$row->field}) )
                                 @include('admin::multilingual.input-hidden-bread-browse')
                                 @if(json_decode($data->{$row->field}))
@@ -169,7 +169,7 @@
                                 @endif
                             @elseif($row->type == 'rich_text_box')
                                 @include('admin::multilingual.input-hidden-bread-browse')
-                                <div class="readmore">{{ strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
+                                <div class="readmore">{{ mb_strlen( strip_tags($data->{$row->field}, '<b><i><u>') ) > 200 ? substr(strip_tags($data->{$row->field}, '<b><i><u>'), 0, 200) . ' ...' : strip_tags($data->{$row->field}, '<b><i><u>') }}</div>
                             @elseif($row->type == 'coordinates')
                                 @include('admin::partials.coordinates-static-image')
                             @else
