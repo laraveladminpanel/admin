@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use LaravelAdminPanel\Facades\Admin;
 
 class ImageHandler extends AbstractHandler
 {
@@ -127,13 +126,5 @@ class ImageHandler extends AbstractHandler
         }
 
         return $frames > 1;
-    }
-
-    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent)
-    {
-        return Admin::view('admin::formfields.list.image', [
-            'dataTypeContent' => $dataTypeContent,
-            'dataType' => $dataType
-        ]);
     }
 }

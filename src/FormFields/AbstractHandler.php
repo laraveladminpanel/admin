@@ -2,8 +2,9 @@
 
 namespace LaravelAdminPanel\FormFields;
 
-use LaravelAdminPanel\Traits\Renderable;
 use Illuminate\Http\Request;
+use LaravelAdminPanel\Facades\Admin;
+use LaravelAdminPanel\Traits\Renderable;
 
 abstract class AbstractHandler implements HandlerInterface
 {
@@ -64,5 +65,18 @@ abstract class AbstractHandler implements HandlerInterface
         }
 
         return $this->name;
+    }
+
+    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent)
+    {
+        $view = 'admin::formfields.list.' . $this->codename;
+
+        if (!view()->exists($view)) {
+            return $dataTypeContent->{$dataType->field};
+        }
+
+        $options = json_decode($dataType->details);
+
+        return Admin::view('admin::formfields.list.' . $this->codename, compact('dataTypeContent', 'dataType', 'options'));
     }
 }

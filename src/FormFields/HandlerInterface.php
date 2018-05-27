@@ -17,4 +17,6 @@ interface HandlerInterface
     public function getName();
 
     public function getContentBasedOnType(Request $request, $slug, $row);
+
+    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent);
 }
