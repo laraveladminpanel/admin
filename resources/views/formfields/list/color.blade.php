@@ -1,0 +1,1 @@
+<span class="badge badge-lg" style="background-color: {{ $dataTypeContent->{$dataType->field} }}">{{ $dataTypeContent->{$dataType->field} }}</span>

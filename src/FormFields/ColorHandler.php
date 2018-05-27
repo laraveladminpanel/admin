@@ -3,6 +3,7 @@
 namespace LaravelAdminPanel\FormFields;
 
 use Illuminate\Http\Request;
+use LaravelAdminPanel\Facades\Admin;
 
 class ColorHandler extends AbstractHandler
 {
@@ -27,5 +28,10 @@ class ColorHandler extends AbstractHandler
         }
 
         return $content;
+    }
+
+    public function getContentForList(Request $request, $slug, $dataType, $dataTypeContent)
+    {
+        return Admin::view('admin::formfields.list.color', compact('dataTypeContent', 'dataType'));
     }
 }
