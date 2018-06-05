@@ -5284,7 +5284,7 @@ float: left;
   background:#f96868;
 }
 
-.database-tables tr .bread_actions{
+.database-tables tr .crud_actions{
   opacity:0.6;
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
@@ -5292,7 +5292,7 @@ float: left;
   transition: opacity 0.3s ease;
 }
 
-.database-tables tr:hover .bread_actions{
+.database-tables tr:hover .crud_actions{
   opacity:1;
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
@@ -5300,16 +5300,20 @@ float: left;
   transition: opacity 0.3s ease;
 }
 
-.database-tables .bread_actions .edit {
+.database-tables .crud_actions .edit {
   margin-left:0px;
   display:inline-block;
+}
+
+.database-tables .crud_actions .delete {
+  cursor:pointer;
 }
 
 .database-tables .btn-default{
   border:1px solid #eeeeee;
 }
 
-.database-tables .bread_actions form .btn-default{
+.database-tables .crud_actions form .btn-default{
   border:1px solid #eeeeee;
 }
 

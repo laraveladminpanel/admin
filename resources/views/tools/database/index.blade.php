@@ -42,7 +42,7 @@
                             </td>
 
                             <td>
-                                <div class="bread_actions">
+                                <div class="crud_actions">
                                 @if($table->dataTypeId)
                                     <a href="{{ route('admin.' . $table->slug . '.index') }}"
                                        class="btn-sm btn-warning browse_bread">
@@ -187,7 +187,7 @@
 
         $(function () {
 
-            $('.bread_actions').on('click', '.delete', function (e) {
+            $('.crud_actions').on('click', '.delete', function (e) {
                 id = $(this).data('id');
                 name = $(this).data('name');
 
