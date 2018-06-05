@@ -107,7 +107,7 @@ Route::group(['as' => 'admin.'], function () {
         ], function () use ($namespacePrefix) {
             Route::get('{table}/crud/create', ['uses' => $namespacePrefix.'DatabaseCrudController@add',     'as' => 'create']);
             Route::post('crud', ['uses' => $namespacePrefix.'DatabaseCrudController@store',   'as' => 'store']);
-            Route::get('{slug}/crud/edit', ['uses' => $namespacePrefix.'DatabaseCrudController@addEdit', 'as' => 'edit']);
+            Route::get('{slug}/crud/edit', ['uses' => $namespacePrefix.'DatabaseCrudController@edit', 'as' => 'edit']);
             Route::put('crud/{id}', ['uses' => $namespacePrefix.'DatabaseCrudController@update',  'as' => 'update']);
             Route::delete('crud/{id}', ['uses' => $namespacePrefix.'DatabaseCrudController@delete',  'as' => 'delete']);
             Route::post('crud/relationship', ['uses' => $namespacePrefix.'DatabaseCrudController@addRelationship',  'as' => 'relationship']);

@@ -70,7 +70,7 @@ class DatabaseCrudController extends BaseController
         }
     }
 
-    public function addEdit($slug)
+    public function edit($slug)
     {
         Admin::canOrFail('browse_database');
 
@@ -80,8 +80,30 @@ class DatabaseCrudController extends BaseController
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
-        $dataTypeRelationships = Admin::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
+        $dataTypeRelationships = Admin::model('DataRow')
+            ->where('data_type_id', '=', $dataType->id)
+            ->where('type', '=', 'relationship')
+            ->get();
+
         $paginations = ['js', 'ajax', 'php'];
+
+        $additionalTables = (object) Admin::model('DataType')
+            ->select('id', 'name', 'slug')
+            ->where('name', $dataType->name)
+            ->where('slug', '!=', $dataType->slug)
+            ->get();
+
+
+/*        $additionalTables = array_map(function ($table) use ($additionalDataTypes) {
+            $dataType = $additionalDataTypes->where('name', $table)->first();
+            $table = [
+                'name'          => $table,
+                'slug'          => $dataType ? $dataType->slug : null,
+                'dataTypeId'    => $dataType ? $dataType->id : null,
+            ];
+
+            return (object) $table;
+        }, [$dataType->name]);*/
 
         return Admin::view('admin::tools.database.edit-add-crud', compact(
             'dataType',
@@ -89,7 +111,8 @@ class DatabaseCrudController extends BaseController
             'isModelTranslatable',
             'tables',
             'dataTypeRelationships',
-            'paginations'
+            'paginations',
+            'additionalTables'
         ));
     }
 
