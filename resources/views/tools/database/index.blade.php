@@ -46,7 +46,7 @@
                                        class="btn-sm btn-warning browse_bread">
                                         {{ __('admin.database.browse_crud') }}
                                     </a>
-                                    <a href="{{ route('admin.database.crud.edit', $table->name) }}"
+                                    <a href="{{ route('admin.database.crud.edit', $table->slug) }}"
                                        class="btn-sm btn-default edit">
                                        {{ __('admin.database.edit_crud') }}
                                     </a>

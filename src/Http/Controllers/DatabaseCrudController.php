@@ -70,11 +70,11 @@ class DatabaseCrudController extends BaseController
         }
     }
 
-    public function addEdit($table)
+    public function addEdit($slug)
     {
         Admin::canOrFail('browse_database');
 
-        $dataType = Admin::model('DataType')->whereName($table)->first();
+        $dataType = Admin::model('DataType')->whereSlug($slug)->first();
 
         $fieldOptions = SchemaManager::describeTable($dataType->name);
 
