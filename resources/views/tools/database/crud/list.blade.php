@@ -67,64 +67,18 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
-                            aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="admin-trash"></i> {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
-            </div>
-            <div class="modal-footer">
-                <form action="{{ route('admin.database.destroy', ['database' => '__database']) }}" id="delete_table_form" method="POST">
-                    {{ method_field('DELETE') }}
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="submit" class="btn btn-danger pull-right" value="{{ __('admin.database.delete_table_confirm') }}">
-                    <button type="button" class="btn btn-outline pull-right" style="margin-right:10px;"
-                            data-dismiss="modal">{{ __('admin.generic.cancel') }}
-                    </button>
-                </form>
+@section('javascript')
+    @parent
+    <script>
+        $(function () {
+            $('.actions').on('click', '.delete', function (e) {
+                id = $(this).data('id');
+                name = $(this).data('name');
 
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="modal modal-info fade" tabindex="-1" id="table_info" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('admin.generic.close') }}"><span
-                            aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="admin-data"></i> @{{ table.name }}</h4>
-            </div>
-            <div class="modal-body" style="overflow:scroll">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>{{ __('admin.database.field') }}</th>
-                        <th>{{ __('admin.database.type') }}</th>
-                        <th>{{ __('admin.database.null') }}</th>
-                        <th>{{ __('admin.database.key') }}</th>
-                        <th>{{ __('admin.database.default') }}</th>
-                        <th>{{ __('admin.database.extra') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="row in table.rows">
-                        <td><strong>@{{ row.Field }}</strong></td>
-                        <td>@{{ row.Type }}</td>
-                        <td>@{{ row.Null }}</td>
-                        <td>@{{ row.Key }}</td>
-                        <td>@{{ row.Default }}</td>
-                        <td>@{{ row.Extra }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-right" data-dismiss="modal">{{ __('admin.generic.close') }}</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+                $('#delete_builder_name').text(name);
+                $('#delete_builder_form')[0].action += '/' + id;
+                $('#delete_builder_modal').modal('show');
+            });
+        });
+    </script>
+@stop

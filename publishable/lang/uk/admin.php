@@ -236,6 +236,7 @@ return [
         'crud_actions'              => 'CRUD дії',
         'crud_info'                 => 'CRUD інформація',
         'other_crud'                => 'Інші CRUD',
+        'clone_current_crud'        => 'Клонувати поточний CRUD',
         'column'                    => 'Стовпчик',
         'composite_warning'         => 'Попередження: цей стовпчик є частиною складового індексу',
         'controller_name'           => 'Назва контролера',

@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if(isset($dataType->id)){{ route('admin.database.crud.update', $dataType->id) }}@else{{ route('admin.database.crud.store') }}@endif"
+                <form action="@if($action === 'edit'){{ route('admin.database.crud.update', $dataType->id) }}@else{{ route('admin.database.crud.store') }}@endif"
                       method="POST" role="form">
-                @if(isset($dataType->id))
+                @if($action === 'edit')
                     <input type="hidden" value="{{ $dataType->id }}" name="id">
                     {{ method_field("PUT") }}
                 @endif
@@ -84,7 +84,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.url_slug') }}</label>
                                     <input type="text" class="form-control" name="slug" placeholder="{{ __('admin.database.url_slug_ph') }}"
-                                           value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif">
+                                           value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif{{ $action === 'clone' ? '-clone' : '' }}">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.icon_hint') }} <a
@@ -288,7 +288,7 @@
                 </form>
             </div><!-- .col-md-12 -->
         </div><!-- .row -->
-        @if(isset($dataType->id))
+        @if($action === 'edit')
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-success">
@@ -301,6 +301,9 @@
                         <div class="panel-body">
                             <a href="{{ route('admin.database.crud.create', ['name' => $table]) }}" class="btn btn-success btn-add-new">
                                 <i class="admin-plus"></i> <span>{{ __('admin.generic.add_new') }}</span>
+                            </a>
+                            <a href="{{ route('admin.database.crud.clone', ['slug' => $dataType->slug]) }}" class="btn btn-primary btn-add-new">
+                                <i class="admin-documentation"></i> <span>{{ __('admin.database.clone_current_crud') }}</span>
                             </a>
                             @if(!empty($additionalTables))
                                 @include('admin::tools.database.crud.list', ['tables' => $additionalTables])
