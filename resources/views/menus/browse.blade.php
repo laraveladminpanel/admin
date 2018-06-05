@@ -45,9 +45,9 @@
                                     @endforeach
                                     <td class="no-sort no-click crud-actions">
                                         @can('delete', $data)
-                                            <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
+                                            <a class="btn btn-sm btn-danger pull-right delete" data-id="{{ $data->{$data->getKeyName()} }}">
                                                 <i class="admin-trash"></i> {{ __('admin.generic.delete') }}
-                                            </div>
+                                            </a>
                                         @endcan
                                         @can('edit', $data)
                                             <a href="{{ route('admin.'.$dataType->slug.'.edit', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary pull-right edit">
