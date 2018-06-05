@@ -34,26 +34,24 @@
                                        data-name="{{ $table->name }}" class="desctable">
                                        {{ $table->name }}
                                     </a>
-                                @if($table->dataTypeId)
-                                    <i class="admin-check"
-                                       style="font-size:25px; position:absolute; margin-left:10px; margin-top:-3px;"></i>
-                                @endif
+                                    @if($table->dataTypeId)
+                                        <i class="admin-check"></i>
+                                    @endif
                                 </p>
                             </td>
 
-                            <td>
-                                <div class="crud_actions">
+                            <td class="crud_actions">
                                 @if($table->dataTypeId)
                                     <a href="{{ route('admin.' . $table->slug . '.index') }}"
                                        class="btn-sm btn-warning browse_bread">
-                                        <i class="admin-plus"></i> {{ __('admin.database.browse_crud') }}
+                                        {{ __('admin.database.browse_crud') }}
                                     </a>
                                     <a href="{{ route('admin.database.crud.edit', $table->name) }}"
-                                       class="btn-sm btn-default edit" style="display:inline; margin-right:10px;">
+                                       class="btn-sm btn-default edit">
                                        {{ __('admin.database.edit_crud') }}
                                     </a>
                                     <a data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
-                                         class="btn-sm btn-danger delete" style="display:inline; margin-right:10px;">
+                                         class="btn-sm btn-danger delete">
                                          {{ __('admin.database.delete_crud') }}
                                     </a>
                                 @else
@@ -62,7 +60,6 @@
                                         <i class="admin-plus"></i> {{ __('admin.database.add_crud') }}
                                     </a>
                                 @endif
-                                </div>
                             </td>
 
                             <td class="actions">

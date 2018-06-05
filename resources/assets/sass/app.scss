@@ -5285,6 +5285,7 @@ float: left;
 }
 
 .database-tables tr .crud_actions{
+  padding-top: 16px;
   opacity:0.6;
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
@@ -5292,20 +5293,20 @@ float: left;
   transition: opacity 0.3s ease;
 }
 
+.database-tables tr td p .admin-check{
+  font-size:25px;
+  position:absolute;
+  margin-left:10px;
+  margin-top:-3px;
+}
+
 .database-tables tr:hover .crud_actions{
   opacity:1;
-  -webkit-transition: opacity 0.3s ease;
-  -moz-transition: opacity 0.3s ease;
-  -o-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
 }
 
-.database-tables .crud_actions .edit {
-  margin-left:0px;
-  display:inline-block;
-}
-
-.database-tables .crud_actions .delete {
+.database-tables .crud_actions a {
+  display:inline;
+  margin-right:7px;
   cursor:pointer;
 }
 
