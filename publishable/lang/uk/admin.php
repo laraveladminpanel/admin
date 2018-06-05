@@ -233,7 +233,7 @@ return [
         'add_timestamps'            => 'Додати мітки часу',
         'already_exists'            => 'Вже існує',
         'already_exists_table'      => 'Таблиця :table вже існує',
-        'crud_crud_actions'        => 'CRUD/CRUD дії',
+        'crud_actions'              => 'CRUD дії',
         'crud_info'                => 'CRUD інформація',
         'column'                    => 'Стовпчик',
         'composite_warning'         => 'Попередження: цей стовпчик є частиною складового індексу',

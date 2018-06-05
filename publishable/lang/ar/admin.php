@@ -242,7 +242,7 @@ return [
         'add_timestamps'            => 'إضافة الطوابع الزمنية Timestamps',
         'already_exists'            => 'موجود بالفعل',
         'already_exists_table'      => 'الجدول :table موجود بالفعل',
-        'crud_crud_actions'        => 'إجراءات CRUD/CRUD',
+        'crud_actions'              => 'إجراءات CRUD',
         'crud_info'                => 'معلومات ال CRUD',
         'browse_crud'              => 'استعراض CRUD',
         'column'                    => 'عمود',

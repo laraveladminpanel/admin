@@ -235,7 +235,7 @@ return [
         'add_timestamps'            => 'Aggiungi Timestamps',
         'already_exists'            => 'già esistente',
         'already_exists_table'      => 'La tabella :table esiste già',
-        'crud_crud_actions'        => 'Azioni CRUD/CRUD',
+        'crud_actions'              => 'Azioni CRUD',
         'crud_info'                => 'Informazioni CRUD',
         'column'                    => 'Colonna',
         'composite_warning'         => 'Avviso: questa colonna fa parte di un indice composito',

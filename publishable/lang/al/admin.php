@@ -246,7 +246,7 @@ return [
         'add_timestamps'            => 'Shto Timestamps',
         'already_exists'            => 'ekziston tashmë',
         'already_exists_table'      => 'Tabela: tabela tashmë ekziston',
-        'crud_crud_actions'        => 'CRUD / Actions',
+        'crud_actions'              => 'CRUD Actions',
         'crud_info'                => 'CRUD info',
         'column'                    => 'Column',
         'composite_warning'         => 'Paralajmërim: kjo kolonë është pjesë e një indeksi të përbërë',

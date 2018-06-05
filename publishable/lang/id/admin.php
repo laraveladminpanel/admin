@@ -235,7 +235,7 @@ return [
         'add_timestamps'            => 'Tambah Timestamps',
         'already_exists'            => 'sudah ada',
         'already_exists_table'      => 'Tabel :table sudah ada',
-        'crud_crud_actions'        => 'CRUD/CRUD Actions',
+        'crud_actions'              => 'CRUD Actions',
         'crud_info'                => 'CRUD info',
         'browse_crud'              => 'Browse CRUD',
         'column'                    => 'Kolom',

@@ -242,7 +242,7 @@ return [
         'add_timestamps'            => 'Add Timestamps',
         'already_exists'            => 'already exists',
         'already_exists_table'      => 'Table :table already exists',
-        'crud_crud_actions'        => 'CRUD Actions',
+        'crud_actions'             => 'CRUD Actions',
         'crud_info'                => 'CRUD info',
         'browse_crud'              => 'Browse CRUD',
         'column'                    => 'Column',

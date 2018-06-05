@@ -226,7 +226,7 @@ return [
         'add_timestamps'            => 'Adăugați timestamp-uri',
         'already_exists'            => 'deja există',
         'already_exists_table'      => 'Tabelul :table deja există',
-        'crud_crud_actions'        => 'Acțiuni CRUD/CRUD',
+        'crud_actions'              => 'Acțiuni CRUD',
         'crud_info'                => 'Informații despre CRUD',
         'column'                    => 'Coloană',
         'composite_warning'         => 'Avertizare: această coloană face parte din indexul compozit',

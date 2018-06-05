@@ -220,7 +220,7 @@ return [
         'add_timestamps'            => '添加时间戳',
         'already_exists'            => '已存在',
         'already_exists_table'      => '表 :table 已经存在',
-        'crud_crud_actions'        => 'CRUD / CRUD 操作',
+        'crud_actions'        => 'CRUD / CRUD 操作',
         'crud_info'                => 'CRUD 信息',
         'browse_crud'              => '浏览 CRUD',
         'column'                    => '列',

@@ -222,7 +222,7 @@ return [
         'add_timestamps'            => 'Zaman kolonları ekle(created_at , updated_at)',
         'already_exists'            => 'Bu kolon var',
         'already_exists_table'      => 'Tablo :table zaten var',
-        'crud_crud_actions'        => 'CRUD/CRUD işlemleri',
+        'crud_actions'              => 'CRUD işlemleri',
         'crud_info'                => 'CRUD bilgisi',
         'column'                    => 'Kolon',
         'composite_warning'         => 'Warning: bu sütun, bileşik bir dizinin parçasıdır',

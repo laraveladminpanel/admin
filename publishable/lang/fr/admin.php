@@ -238,7 +238,7 @@ return [
         'add_timestamps'            => 'Ajouter les Timestamps',
         'already_exists'            => 'existe déjà',
         'already_exists_table'      => 'La table :table existe déjà',
-        'crud_crud_actions'        => 'Actions du CRUD/CRUD',
+        'crud_actions'              => 'Actions du CRUD',
         'crud_info'                => 'Information du CRUD',
         'browse_crud'              => 'Parcourir CRUD',
         'column'                    => 'Colonne',

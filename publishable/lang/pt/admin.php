@@ -218,7 +218,7 @@ return [
         'add_timestamps'            => 'Adicionar Timestamps',
         'already_exists'            => 'já existe',
         'already_exists_table'      => 'A Tabela :table já existe',
-        'crud_crud_actions'        => 'Ações CRUD/CRUD',
+        'crud_actions'            => 'Ações CRUD',
         'crud_info'                => 'Informação do CRUD',
         'column'                    => 'Campo',
         'composite_warning'         => 'Atenção: este campo faz parte dos índices compostos',

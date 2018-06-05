@@ -237,7 +237,7 @@ return [
         'add_timestamps'            => 'Zeitstempel hinzufügen',
         'already_exists'            => 'existiert bereits',
         'already_exists_table'      => 'Tabelle :table existiert bereits',
-        'crud_crud_actions'        => 'CRUD/CRUD Aktionen',
+        'crud_actions'             => 'CRUD Aktionen',
         'crud_info'                => 'CRUD Info',
         'browse_crud'              => 'CRUD ansehen',
         'column'                    => 'Spalte',

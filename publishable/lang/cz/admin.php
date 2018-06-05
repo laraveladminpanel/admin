@@ -242,7 +242,7 @@ return [
         'add_timestamps'            => 'Přidat Timestamps',
         'already_exists'            => 'již existuje',
         'already_exists_table'      => 'Tabulka :table již existuje',
-        'crud_crud_actions'        => 'CRUD/CRUD akce',
+        'crud_actions'              => 'CRUD akce',
         'crud_info'                => 'CRUD info',
         'browse_crud'              => 'Prozkoumat CRUD',
         'column'                    => 'Sloupec',

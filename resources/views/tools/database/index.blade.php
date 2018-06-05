@@ -20,7 +20,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('admin.database.table_name') }}</th>
-                            <th>{{ __('admin.database.crud_crud_actions') }}</th>
+                            <th>{{ __('admin.database.crud_actions') }}</th>
                             <th style="text-align:right">{{ __('admin.database.table_actions') }}</th>
                         </tr>
                     </thead>
@@ -49,13 +49,13 @@
                                         <i class="admin-plus"></i> {{ __('admin.database.browse_crud') }}
                                     </a>
                                     <a href="{{ route('admin.database.crud.edit', $table->name) }}"
-                                       class="btn-sm btn-default edit">
+                                       class="btn-sm btn-default edit" style="display:inline; margin-right:10px;">
                                        {{ __('admin.database.edit_crud') }}
                                     </a>
-                                    <div data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
-                                         class="btn-sm btn-danger delete" style="display:inline">
+                                    <a data-id="{{ $table->dataTypeId }}" data-name="{{ $table->name }}"
+                                         class="btn-sm btn-danger delete" style="display:inline; margin-right:10px;">
                                          {{ __('admin.database.delete_crud') }}
-                                    </div>
+                                    </a>
                                 @else
                                     <a href="{{ route('admin.database.crud.create', ['name' => $table->name]) }}"
                                        class="btn-sm btn-default">
