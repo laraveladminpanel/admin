@@ -14,7 +14,7 @@ class AlterDataTypesTableNameNotUnique extends Migration
     public function up()
     {
         Schema::table('data_types', function (Blueprint $table) {
-            $table->string('name')->change();
+            $table->dropUnique('data_types_name_unique');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterDataTypesTableNameNotUnique extends Migration
     public function down()
     {
         Schema::table('data_types', function (Blueprint $table) {
-            $table->string('name')->unique()->change();
+            $table->unique('name');
         });
     }
 }
