@@ -15,6 +15,12 @@ use LaravelAdminPanel\Models\DataRow;
 
 class DatabaseCrudController extends BaseController
 {
+    public function __construct()
+    {
+        list(, $action) = explode('@', \Route::getCurrentRoute()->getActionName());
+        view()->share(compact('action'));
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      *
@@ -46,7 +52,7 @@ class DatabaseCrudController extends BaseController
             'display_name_plural'  => Str::plural($displayName),
             'model_name'           => $modelNamespace.Str::studly(Str::singular($table)),
             'generate_permissions' => true,
-            'paginations'          => ['js', 'ajax', 'php'],
+            'paginations'          => ['js', 'ajax', 'php']
         ];
     }
 
@@ -70,18 +76,28 @@ class DatabaseCrudController extends BaseController
         }
     }
 
-    public function addEdit($table)
+    public function edit($slug)
     {
         Admin::canOrFail('browse_database');
 
-        $dataType = Admin::model('DataType')->whereName($table)->first();
+        $dataType = Admin::model('DataType')->whereSlug($slug)->firstOrFail();
 
         $fieldOptions = SchemaManager::describeTable($dataType->name);
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
-        $dataTypeRelationships = Admin::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
+        $dataTypeRelationships = Admin::model('DataRow')
+            ->where('data_type_id', '=', $dataType->id)
+            ->where('type', '=', 'relationship')
+            ->get();
+
         $paginations = ['js', 'ajax', 'php'];
+
+        $additionalTables = (object) Admin::model('DataType')
+            ->select('id', 'name', 'slug')
+            ->where('name', $dataType->name)
+            ->where('slug', '!=', $dataType->slug)
+            ->get();
 
         return Admin::view('admin::tools.database.edit-add-crud', compact(
             'dataType',
@@ -89,7 +105,42 @@ class DatabaseCrudController extends BaseController
             'isModelTranslatable',
             'tables',
             'dataTypeRelationships',
-            'paginations'
+            'paginations',
+            'additionalTables'
+        ));
+    }
+
+    public function clone($slug)
+    {
+        Admin::canOrFail('browse_database');
+
+        $dataType = Admin::model('DataType')->whereSlug($slug)->firstOrFail();
+
+        $fieldOptions = SchemaManager::describeTable($dataType->name);
+
+        $isModelTranslatable = is_crud_translatable($dataType);
+        $tables = SchemaManager::listTableNames();
+        $dataTypeRelationships = Admin::model('DataRow')
+            ->where('data_type_id', '=', $dataType->id)
+            ->where('type', '=', 'relationship')
+            ->get();
+
+        $paginations = ['js', 'ajax', 'php'];
+
+        $additionalTables = (object) Admin::model('DataType')
+            ->select('id', 'name', 'slug')
+            ->where('name', $dataType->name)
+            ->where('slug', '!=', $dataType->slug)
+            ->get();
+
+        return Admin::view('admin::tools.database.edit-add-crud', compact(
+            'dataType',
+            'fieldOptions',
+            'isModelTranslatable',
+            'tables',
+            'dataTypeRelationships',
+            'paginations',
+            'additionalTables'
         ));
     }
 
@@ -99,7 +150,7 @@ class DatabaseCrudController extends BaseController
 
         /* @var \LaravelAdminPanel\Models\DataType $dataType */
         try {
-            $dataType = Admin::model('DataType')->find($id);
+            $dataType = Admin::model('DataType')->findOrFail($id);
 
             // Prepare Translations and Transform data
             $translations = is_crud_translatable($dataType)
@@ -129,7 +180,7 @@ class DatabaseCrudController extends BaseController
         Admin::canOrFail('browse_database');
 
         /* @var \LaravelAdminPanel\Models\DataType $dataType */
-        $dataType = Admin::model('DataType')->find($id);
+        $dataType = Admin::model('DataType')->findOrFail($id);
 
         // Delete Translations, if present
         if (is_crud_translatable($dataType)) {

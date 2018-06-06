@@ -235,6 +235,8 @@ return [
         'already_exists_table'      => 'Таблица :table уже существует',
         'crud_actions'              => 'CRUD действия',
         'crud_info'                 => 'CRUD информация',
+        'other_crud'                => 'Другие CRUD',
+        'clone_current_crud'        => 'Клонировать текущий CRUD',
         'column'                    => 'Столбец',
         'composite_warning'         => 'Предупреждение: этот столбец является частью составного индекса',
         'controller_name'           => 'Имя контроллера',

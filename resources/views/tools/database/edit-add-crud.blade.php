@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if(isset($dataType->id)){{ route('admin.database.crud.update', $dataType->id) }}@else{{ route('admin.database.crud.store') }}@endif"
+                <form action="@if($action === 'edit'){{ route('admin.database.crud.update', $dataType->id) }}@else{{ route('admin.database.crud.store') }}@endif"
                       method="POST" role="form">
-                @if(isset($dataType->id))
+                @if($action === 'edit')
                     <input type="hidden" value="{{ $dataType->id }}" name="id">
                     {{ method_field("PUT") }}
                 @endif
@@ -34,7 +34,7 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title panel-icon"><i class="admin-bread"></i> {{ ucfirst($table) }} {{ __('admin.database.crud_info') }}</h3>
+                            <h3 class="panel-title"><i class="admin-edit"></i> {{ ucfirst($table) }} {{ __('admin.database.crud_info') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action admin-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -84,7 +84,7 @@
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.url_slug') }}</label>
                                     <input type="text" class="form-control" name="slug" placeholder="{{ __('admin.database.url_slug_ph') }}"
-                                           value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif">
+                                           value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif{{ $action === 'clone' ? '-clone' : '' }}">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="email">{{ __('admin.database.icon_hint') }} <a
@@ -162,9 +162,9 @@
                     </div><!-- .panel -->
 
 
-                    <div class="panel panel-primary panel-bordered">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title panel-icon"><i class="admin-window-list"></i> {{ __('admin.database.edit_rows', ['table' => $table]) }}:</h3>
+                            <h3 class="panel-title"><i class="admin-list"></i> {{ __('admin.database.edit_rows', ['table' => $table]) }}:</h3>
                             <div class="panel-actions">
                                 <a class="panel-action admin-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -282,14 +282,37 @@
                         <div class="panel-footer">
                              <div class="btn btn-new-relationship"><i class="admin-heart"></i> <span>
                              {{ __('admin.database.relationship.create') }}</span></div>
+                                                 <button type="submit" class="btn pull-right btn-primary">{{ __('admin.generic.submit') }}</button>
                         </div>
                     </div><!-- .panel -->
-                    
-                    <button type="submit" class="btn pull-right btn-primary">{{ __('admin.generic.submit') }}</button>
-
                 </form>
             </div><!-- .col-md-12 -->
         </div><!-- .row -->
+        @if($action === 'edit')
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="admin-list"></i> {{ ucfirst($table) }} {{ __('admin.database.other_crud') }}</h3>
+                            <div class="panel-actions">
+                                <a class="panel-action admin-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ route('admin.database.crud.create', ['name' => $table]) }}" class="btn btn-success btn-add-new">
+                                <i class="admin-plus"></i> <span>{{ __('admin.generic.add_new') }}</span>
+                            </a>
+                            <a href="{{ route('admin.database.crud.clone', ['slug' => $dataType->slug]) }}" class="btn btn-primary btn-add-new">
+                                <i class="admin-documentation"></i> <span>{{ __('admin.database.clone_current_crud') }}</span>
+                            </a>
+                            @if(!empty($additionalTables))
+                                @include('admin::tools.database.crud.list', ['tables' => $additionalTables])
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div><!-- .page-content -->
 
 @include('admin::tools.database.relationship-new-modal')

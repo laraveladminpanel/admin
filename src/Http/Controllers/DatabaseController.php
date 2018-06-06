@@ -23,13 +23,14 @@ class DatabaseController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
-        $dataTypes = Admin::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
+        $dataTypes = Admin::model('DataType')->select('id', 'name', 'slug')->get();
 
         $tables = array_map(function ($table) use ($dataTypes) {
+            $dataType = $dataTypes->where('name', $table)->first();
             $table = [
                 'name'          => $table,
-                'slug'          => isset($dataTypes[$table]['slug']) ? $dataTypes[$table]['slug'] : null,
-                'dataTypeId'    => isset($dataTypes[$table]['id']) ? $dataTypes[$table]['id'] : null,
+                'slug'          => $dataType ? $dataType->slug : null,
+                'dataTypeId'    => $dataType ? $dataType->id : null,
             ];
 
             return (object) $table;

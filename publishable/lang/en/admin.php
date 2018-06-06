@@ -244,6 +244,8 @@ return [
         'already_exists_table'      => 'Table :table already exists',
         'crud_actions'             => 'CRUD Actions',
         'crud_info'                => 'CRUD info',
+        'other_crud'               => 'Other CRUD',
+        'clone_current_crud'       => 'Clone the current CRUD',
         'browse_crud'              => 'Browse CRUD',
         'column'                    => 'Column',
         'composite_warning'         => 'Warning: this column is part of a composite index',
