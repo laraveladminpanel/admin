@@ -35,7 +35,7 @@ class AddCrudPermission
             $role = Role::where('name', 'admin')->firstOrFail();
 
             // Get permission for added table
-            $permissions = Permission::where(['table_name' => $crud->dataType->name])->get()->pluck('id')->all();
+            $permissions = Permission::where(['slug' => $crud->dataType->slug])->get()->pluck('id')->all();
 
             // Assign permission to admin
             $role->permissions()->attach($permissions);

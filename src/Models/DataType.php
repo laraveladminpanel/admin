@@ -114,7 +114,7 @@ class DataType extends Model
 
                 // It seems everything was fine. Let's check if we need to generate permissions
                 if ($this->generate_permissions) {
-                    Admin::model('Permission')->generateFor($this->name);
+                    Admin::model('Permission')->generateFor($this->slug);
                 }
 
                 DB::commit();
