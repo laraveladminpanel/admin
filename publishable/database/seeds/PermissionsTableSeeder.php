@@ -38,6 +38,7 @@ class PermissionsTableSeeder extends Seeder
 
         Permission::generateFor('settings');
 
-        Permission::generateFor('form_designer');
+        Permission::generateFor('form-designer');
+        Permission::removeFrom('form_designer');
     }
 }
