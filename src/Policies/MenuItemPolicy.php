@@ -30,7 +30,7 @@ class MenuItemPolicy extends BasePolicy
         }
 
         if ($str = self::$datatypes[$slug]) {
-            $slug = $str->name;
+            $slug = $str->slug;
         }
 
         if ($slug == '') {
