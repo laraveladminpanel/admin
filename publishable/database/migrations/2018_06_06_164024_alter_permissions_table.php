@@ -15,6 +15,10 @@ class AlterPermissionsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('permissions', 'slug')) {
+            return false;
+        }
+
         Schema::table('permissions', function (Blueprint $table) {
             $table->renameColumn('table_name', 'slug');
         });
@@ -22,7 +26,7 @@ class AlterPermissionsTable extends Migration
         $dataTypes = DataType::all();
         $permissions = Permission::whereNotNull('slug')->get();
 
-        foreach ($permissions as $permission) {//dd($permission, $dataTypes->where('name', $permission->slug)->slug);
+        foreach ($permissions as $permission) {
             $dataType = $dataTypes->where('name', $permission->slug)->first();
 
             if ($dataType && $dataType->slug) {
@@ -40,6 +44,10 @@ class AlterPermissionsTable extends Migration
      */
     public function down()
     {
+        if (Schema::hasColumn('permissions', 'table_name')) {
+            return false;
+        }
+
         Schema::table('permissions', function (Blueprint $table) {
             $table->renameColumn('slug', 'table_name');
         });
@@ -47,7 +55,7 @@ class AlterPermissionsTable extends Migration
         $dataTypes = DataType::all();
         $permissions = Permission::whereNotNull('table_name')->get();
 
-        foreach ($permissions as $permission) {//dd($permission, $dataTypes->where('name', $permission->slug)->slug);
+        foreach ($permissions as $permission) {
             $dataType = $dataTypes->where('slug', $permission->table_name)->first();
 
             if ($dataType && $dataType->slug) {
