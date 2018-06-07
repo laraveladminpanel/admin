@@ -16,17 +16,17 @@ class Permission extends Model
         return $this->hasMany(Role::class);
     }
 
-    public static function generateFor($table_name)
+    public static function generateFor($slug)
     {
-        self::firstOrCreate(['key' => 'browse_'.$table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['key' => 'read_'.$table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['key' => 'edit_'.$table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['key' => 'add_'.$table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['key' => 'delete_'.$table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['key' => 'browse_'.$slug, 'slug' => $slug]);
+        self::firstOrCreate(['key' => 'read_'.$slug, 'slug' => $slug]);
+        self::firstOrCreate(['key' => 'edit_'.$slug, 'slug' => $slug]);
+        self::firstOrCreate(['key' => 'add_'.$slug, 'slug' => $slug]);
+        self::firstOrCreate(['key' => 'delete_'.$slug, 'slug' => $slug]);
     }
 
-    public static function removeFrom($table_name)
+    public static function removeFrom($slug)
     {
-        self::where(['table_name' => $table_name])->delete();
+        self::where(['slug' => $slug])->delete();
     }
 }

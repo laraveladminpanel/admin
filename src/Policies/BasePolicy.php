@@ -46,6 +46,6 @@ class BasePolicy
         $dataType = Admin::model('DataType');
         $dataType = $dataType->where('model_name', get_class($model))->first();
 
-        return $user->hasPermission($action.'_'.$dataType->name);
+        return $user->hasPermission($action.'_'.$dataType->slug);
     }
 }
