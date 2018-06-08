@@ -1,4 +1,7 @@
 # Laravel Admin Panel
+
+forked from [the-control-group/voyager](https://github.com/the-control-group/voyager)
+
 Made with ❤️
 
 Website & Documentation: http://laraveladminpanel.com
