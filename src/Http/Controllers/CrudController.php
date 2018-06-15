@@ -174,6 +174,7 @@ class CrudController extends BaseController
             if ($model->timestamps) {
                 $query = $query->latest($model::CREATED_AT);
             } else {
+                $relationships = $this->getRelationships($dataType);
                 $query = $query->with($relationships)->orderBy($model->getKeyName(), 'DESC');
             }
         }
