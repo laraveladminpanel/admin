@@ -162,7 +162,7 @@
                 table.DataTable({
                     serverSide: true,
                     ajax: {
-                        url: "{{ route('admin.get-ajax-list') }}",
+                        url: "{{ route('admin.get-ajax-list') }}?{{ $requestQuery }}",
                         type: "POST",
                         data: {
                             "slug": "{{ $slug }}"
