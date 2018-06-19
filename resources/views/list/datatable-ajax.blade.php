@@ -157,30 +157,32 @@
                 , true) !!};
 
                 var crudDatatableConfig = table.data('json-datatable');
-                var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig);
 
-                table.DataTable({
+                var datatableAjaxConfig = {
                     serverSide: true,
-                    ajax: {
-                        url: "{{ route('admin.get-ajax-list') }}?{{ $requestQuery }}",
+                        ajax: {
+                    url: "{{ route('admin.get-ajax-list') }}?{{ $requestQuery }}",
                         type: "POST",
                         data: {
-                            "slug": "{{ $slug }}"
-                        },
+                        "slug": "{{ $slug }}"
                     },
+                },
                     columns: [
                         {data: "delete_checkbox", orderable: false, searchable: false},
-                    @foreach($dataType->browseRows as $row)
-                        @if($row->type === 'relationship')
-                            {data: "{{ $row->field }}", orderable: false},
-                        @else
-                            {data: "{{ $row->field }}"},
-                        @endif
-                    @endforeach
+                            @foreach($dataType->browseRows as $row)
+                            @if($row->type === 'relationship')
+                        {data: "{{ $row->field }}", orderable: false},
+                            @else
+                        {data: "{{ $row->field }}"},
+                            @endif
+                            @endforeach
                         {data: "actions", orderable: false, searchable: false, className: "no-sort no-click crud-actions"},
-                    ],
-                    "order": []
-                });
+                    ]
+                };
+
+                var datatableConfig = $.extend(baseDatatableConfig, crudDatatableConfig, datatableAjaxConfig);
+
+                table.DataTable(datatableConfig);
 
                 @if (isset($dataTypeOptions->datatable->rowReorder))
                     @php
