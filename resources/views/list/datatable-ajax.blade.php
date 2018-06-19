@@ -158,14 +158,21 @@
 
                 var crudDatatableConfig = table.data('json-datatable');
 
+                var search = window.location.search.substring(1);
+                var queryParams = {};
+
+                if (search) {
+                    queryParams = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+                }
+  
                 var datatableAjaxConfig = {
                     serverSide: true,
                         ajax: {
                     url: "{{ route('admin.get-ajax-list') }}?{{ $requestQuery }}",
                         type: "POST",
-                        data: {
-                        "slug": "{{ $slug }}"
-                    },
+                        data: $.extend({
+                        "slug": "{{ $slug }}",
+                    }, queryParams),
                 },
                     columns: [
                         {data: "delete_checkbox", orderable: false, searchable: false},
