@@ -168,21 +168,21 @@
                 var datatableAjaxConfig = {
                     serverSide: true,
                         ajax: {
-                    url: "{{ route('admin.get-ajax-list') }}?{{ $requestQuery }}",
-                        type: "POST",
-                        data: $.extend({
-                        "slug": "{{ $slug }}",
-                    }, queryParams),
-                },
+                            url: "{{ route('admin.get-ajax-list') }}",
+                                type: "POST",
+                                data: $.extend({
+                                "slug": "{{ $slug }}",
+                            }, queryParams),
+                        },
                     columns: [
                         {data: "delete_checkbox", orderable: false, searchable: false},
-                            @foreach($dataType->browseRows as $row)
+                         @foreach($dataType->browseRows as $row)
                             @if($row->type === 'relationship')
                         {data: "{{ $row->field }}", orderable: false},
                             @else
                         {data: "{{ $row->field }}"},
                             @endif
-                            @endforeach
+                        @endforeach
                         {data: "actions", orderable: false, searchable: false, className: "no-sort no-click crud-actions"},
                     ]
                 };

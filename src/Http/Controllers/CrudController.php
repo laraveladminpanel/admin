@@ -167,14 +167,11 @@ class CrudController extends BaseController
         $this->authorize('browse', app($dataType->model_name));
 
         $model = app($dataType->model_name);
-
-        $query = $model;
+        $query = $model->select('*');
 
         if (method_exists($model, 'adminList')) {
-            $query = $model->adminList();
+            $query = $model->adminList()->select('*');
         }
-
-        $query->select('*');
 
         if (!isset($request->order)) {
             if ($model->timestamps) {
