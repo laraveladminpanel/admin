@@ -84,7 +84,11 @@ class DatabaseCrudController extends BaseController
 
         $dataType = Admin::model('DataType')->whereSlug($slug)->firstOrFail();
 
-        $fieldOptions = SchemaManager::describeTableFromModel($dataType->model_name);
+        if (isset($dataType->model_name) && $dataType->model_name) {
+            $fieldOptions = SchemaManager::describeTableFromModel($dataType->model_name);
+        } else {
+            $fieldOptions = SchemaManager::describeTable($dataType->name);
+        }
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
