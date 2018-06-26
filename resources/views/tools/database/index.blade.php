@@ -189,8 +189,16 @@
                 name = $(this).data('name');
 
                 $('#delete_builder_name').text(name);
-                $('#delete_builder_form')[0].action += '/' + id;
+                $('#delete_builder_form')[0].action = generateNewAction(id);
                 $('#delete_builder_modal').modal('show');
+
+                function generateNewAction(id){
+                    var action = $('#delete_builder_form')[0].action;
+                    if (action.indexOf('?') === -1) {
+                        return action + '/' + id;
+                    }
+                    return action.replace('?', '/' + id +'?');
+                }
             });
 
             $('.database-tables').on('click', '.desctable', function (e) {

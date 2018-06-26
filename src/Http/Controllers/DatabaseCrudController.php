@@ -72,9 +72,9 @@ class DatabaseCrudController extends BaseController
                 event(new CrudAdded($dataType, $data));
             }
 
-            return redirect()->route('admin.database.index')->with($data);
+            return redirect()->route('admin.database.index', $request->query())->with($data);
         } catch (Exception $e) {
-            return redirect()->route('admin.database.index')->with($this->alertException($e, 'Saving Failed'));
+            return redirect()->route('admin.database.index', $request->query())->with($this->alertException($e, 'Saving Failed'));
         }
     }
 

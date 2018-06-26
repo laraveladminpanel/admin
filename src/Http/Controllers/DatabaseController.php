@@ -141,6 +141,7 @@ class DatabaseController extends BaseController
         $table = json_decode($request->table, true);
 
         try {
+            SchemaManager::setConnection(request('connection'));
             DatabaseUpdater::update($table);
             // TODO: synch BREAD with Table
             // $this->cleanOldAndCreateNew($request->original_name, $request->name);
@@ -150,7 +151,7 @@ class DatabaseController extends BaseController
         }
 
         return redirect()
-               ->route('admin.database.index')
+               ->route('admin.database.index', $request->query())
                ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table['name']])));
     }
 
@@ -163,7 +164,7 @@ class DatabaseController extends BaseController
 
         if ($action == 'update') {
             $db->table = SchemaManager::listTableDetails($table);
-            $db->formAction = route('admin.database.update', $table);
+            $db->formAction = admin_route('database.update', $table);
         } else {
             $db->table = new Table('New Table');
 
