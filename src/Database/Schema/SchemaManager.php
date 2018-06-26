@@ -9,21 +9,34 @@ use LaravelAdminPanel\Database\Types\Type;
 
 abstract class SchemaManager
 {
-    // todo: trim parameters
+    private static $connection = null;
 
+    // todo: trim parameters
     public static function __callStatic($method, $args)
     {
         return static::manager()->$method(...$args);
     }
 
+    /**
+     * Set a connection to the database.
+     *
+     * @param string $connectionName
+     *
+     * @return void
+     */
+    public static function setConnection($connectionName)
+    {
+        static::$connection = $connectionName;
+    }
+
     public static function manager()
     {
-        return DB::connection()->getDoctrineSchemaManager();
+        return DB::connection(self::$connection)->getDoctrineSchemaManager();
     }
 
     public static function getDatabaseConnection()
     {
-        return DB::connection()->getDoctrineConnection();
+        return DB::connection(self::$connection)->getDoctrineConnection();
     }
 
     public static function tableExists($table)
@@ -101,6 +114,14 @@ abstract class SchemaManager
 
             return $columnArr;
         });
+    }
+
+    public static function describeTableFromModel($modelName)
+    {
+        $model = app($modelName);
+        $connectionName = $model->getConnectionName();
+        static::setConnection($connectionName);
+        return static::describeTable($model->getTable());
     }
 
     public static function listTableColumnNames($tableName)
