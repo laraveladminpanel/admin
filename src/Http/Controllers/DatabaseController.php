@@ -23,6 +23,7 @@ class DatabaseController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
+        SchemaManager::setConnection(request('connection'));
         $dataTypes = Admin::model('DataType')->select('id', 'name', 'slug')->get();
 
         $tables = array_map(function ($table) use ($dataTypes) {
@@ -68,6 +69,7 @@ class DatabaseController extends BaseController
             Type::registerCustomPlatformTypes();
 
             $table = Table::make($request->table);
+            SchemaManager::setConnection(request('connection'));
             SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
@@ -95,7 +97,7 @@ class DatabaseController extends BaseController
             }
 
             return redirect()
-               ->route('admin.database.index')
+               ->route('admin.database.index', request()->query())
                ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table->name])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e))->withInput();
@@ -113,6 +115,7 @@ class DatabaseController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
+        SchemaManager::setConnection(request('connection'));
         if (!SchemaManager::tableExists($table)) {
             return redirect()
                 ->route('admin.database.index')
@@ -173,7 +176,7 @@ class DatabaseController extends BaseController
 
             $db->table->setPrimaryKey(['id'], 'primary');
 
-            $db->formAction = route('admin.database.store');
+            $db->formAction = admin_route('database.store');
         }
 
         $oldTable = old('table');
@@ -234,11 +237,12 @@ class DatabaseController extends BaseController
         Admin::canOrFail('browse_database');
 
         try {
+            SchemaManager::setConnection(request('connection'));
             SchemaManager::dropTable($table);
             event(new TableDeleted($table));
 
             return redirect()
-                ->route('admin.database.index')
+                ->route('admin.database.index', request()->query())
                 ->with($this->alertSuccess(__('admin.database.success_delete_table', ['table' => $table])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e));

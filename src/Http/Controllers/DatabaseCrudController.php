@@ -30,6 +30,8 @@ class DatabaseCrudController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
+        SchemaManager::setConnection(request('connection'));
+
         $data = $this->prepopulateInfo($table);
         $data['fieldOptions'] = SchemaManager::describeTable($table);
 
@@ -82,7 +84,7 @@ class DatabaseCrudController extends BaseController
 
         $dataType = Admin::model('DataType')->whereSlug($slug)->firstOrFail();
 
-        $fieldOptions = SchemaManager::describeTable($dataType->name);
+        $fieldOptions = SchemaManager::describeTableFromModel($dataType->model_name);
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();

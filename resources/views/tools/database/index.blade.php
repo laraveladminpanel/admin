@@ -5,7 +5,7 @@
 @section('page_header')
     <h1 class="page-title">
         <i class="admin-data"></i> {{ __('admin.generic.database') }}
-        <a href="{{ route('admin.database.create') }}" class="btn btn-success"><i class="admin-plus"></i>
+        <a href="{{ admin_route('database.create') }}" class="btn btn-success"><i class="admin-plus"></i>
             {{ __('admin.database.create_new_table') }}</a>
     </h1>
 @stop
@@ -30,7 +30,7 @@
                         <tr>
                             <td>
                                 <p class="name">
-                                    <a href="{{ route('admin.database.show', $table->name) }}"
+                                    <a href="{{ admin_route('database.show', $table->name) }}"
                                        data-name="{{ $table->name }}" class="desctable">
                                        {{ $table->name }}
                                     </a>
@@ -42,11 +42,11 @@
 
                             <td class="crud_actions">
                                 @if($table->dataTypeId)
-                                    <a href="{{ route('admin.' . $table->slug . '.index') }}"
+                                    <a href="{{ admin_route($table->slug . '.index') }}"
                                        class="btn-sm btn-warning browse_bread">
                                         {{ __('admin.database.browse_crud') }}
                                     </a>
-                                    <a href="{{ route('admin.database.crud.edit', $table->slug) }}"
+                                    <a href="{{ admin_route('database.crud.edit', $table->slug) }}"
                                        class="btn-sm btn-default edit">
                                        {{ __('admin.database.edit_crud') }}
                                     </a>
@@ -55,7 +55,7 @@
                                          {{ __('admin.database.delete_crud') }}
                                     </a>
                                 @else
-                                    <a href="{{ route('admin.database.crud.create', ['name' => $table->name]) }}"
+                                    <a href="{{ admin_route('database.crud.create', ['name' => $table->name]) }}"
                                        class="btn-sm btn-default">
                                         <i class="admin-plus"></i> {{ __('admin.database.add_crud') }}
                                     </a>
@@ -67,11 +67,11 @@
                                    data-table="{{ $table->name }}" style="display:inline; cursor:pointer;">
                                    <i class="admin-trash"></i> {{ __('admin.generic.delete') }}
                                 </a>
-                                <a href="{{ route('admin.database.edit', $table->name) }}"
+                                <a href="{{ admin_route('database.edit', $table->name) }}"
                                    class="btn btn-sm btn-primary pull-right" style="display:inline; margin-right:10px;">
                                    <i class="admin-edit"></i> {{ __('admin.generic.edit') }}
                                 </a>
-                                <a href="{{ route('admin.database.show', $table->name) }}"
+                                <a href="{{ admin_route('database.show', $table->name) }}"
                                    data-name="{{ $table->name }}"
                                    class="btn btn-sm btn-warning pull-right desctable" style="display:inline; margin-right:10px;">
                                    <i class="admin-eye"></i> {{ __('admin.generic.view') }}
@@ -93,7 +93,7 @@
                     <h4 class="modal-title"><i class="admin-trash"></i>  {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_builder_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('admin.database.crud.delete', ['id' => null]) }}" id="delete_builder_form" method="POST">
+                    <form action="{{ admin_route('database.crud.delete', ['id' => null]) }}" id="delete_builder_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" class="btn btn-danger" value="{{ __('admin.database.delete_table_crud_conf') }}">
@@ -113,7 +113,7 @@
                     <h4 class="modal-title"><i class="admin-trash"></i> {!! __('admin.database.delete_table_crud_quest', ['table' => '<span id="delete_table_name"></span>']) !!}</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('admin.database.destroy', ['database' => '__database']) }}" id="delete_table_form" method="POST">
+                    <form action="{{ admin_route('database.destroy', ['database' => '__database']) }}" id="delete_table_form" method="POST">
                         {{ method_field('DELETE') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" class="btn btn-danger pull-right" value="{{ __('admin.database.delete_table_confirm') }}">
