@@ -23,7 +23,6 @@ class DatabaseController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
-        SchemaManager::setConnection(request('connection'));
         $dataTypes = Admin::model('DataType')->select('id', 'name', 'slug')->get();
 
         $tables = array_map(function ($table) use ($dataTypes) {
@@ -69,7 +68,6 @@ class DatabaseController extends BaseController
             Type::registerCustomPlatformTypes();
 
             $table = Table::make($request->table);
-            SchemaManager::setConnection(request('connection'));
             SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
@@ -115,7 +113,6 @@ class DatabaseController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
-        SchemaManager::setConnection(request('connection'));
         if (!SchemaManager::tableExists($table)) {
             return redirect()
                 ->route('admin.database.index')
@@ -141,7 +138,6 @@ class DatabaseController extends BaseController
         $table = json_decode($request->table, true);
 
         try {
-            SchemaManager::setConnection(request('connection'));
             DatabaseUpdater::update($table);
             // TODO: synch BREAD with Table
             // $this->cleanOldAndCreateNew($request->original_name, $request->name);
@@ -238,7 +234,6 @@ class DatabaseController extends BaseController
         Admin::canOrFail('browse_database');
 
         try {
-            SchemaManager::setConnection(request('connection'));
             SchemaManager::dropTable($table);
             event(new TableDeleted($table));
 

@@ -30,8 +30,6 @@ class DatabaseCrudController extends BaseController
     {
         Admin::canOrFail('browse_database');
 
-        SchemaManager::setConnection(request('connection'));
-
         $data = $this->prepopulateInfo($table);
         $data['fieldOptions'] = SchemaManager::describeTable($table);
 
@@ -205,7 +203,7 @@ class DatabaseCrudController extends BaseController
             Admin::model('Permission')->removeFrom($dataType->name);
         }
 
-        return redirect()->route('admin.database.index')->with($data);
+        return redirect()->route('admin.database.index', request()->query())->with($data);
     }
 
     public function addRelationship(Request $request)

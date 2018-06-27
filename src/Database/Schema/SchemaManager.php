@@ -29,14 +29,28 @@ abstract class SchemaManager
         static::$connection = $connectionName;
     }
 
+    /**
+     * Get a connection to the database.
+     *
+     * @return $connectionName
+     */
+    public static function getConnection()
+    {
+        if (!static::$connection) {
+            static::setConnection(request('connection'));
+        }
+
+        return static::$connection;
+    }
+
     public static function manager()
     {
-        return DB::connection(self::$connection)->getDoctrineSchemaManager();
+        return DB::connection(self::getConnection())->getDoctrineSchemaManager();
     }
 
     public static function getDatabaseConnection()
     {
-        return DB::connection(self::$connection)->getDoctrineConnection();
+        return DB::connection(self::getConnection())->getDoctrineConnection();
     }
 
     public static function tableExists($table)
@@ -119,8 +133,6 @@ abstract class SchemaManager
     public static function describeTableFromModel($modelName)
     {
         $model = app($modelName);
-        $connectionName = $model->getConnectionName();
-        static::setConnection($connectionName);
         return static::describeTable($model->getTable());
     }
 
