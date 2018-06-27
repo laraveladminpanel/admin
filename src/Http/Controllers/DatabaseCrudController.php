@@ -70,9 +70,9 @@ class DatabaseCrudController extends BaseController
                 event(new CrudAdded($dataType, $data));
             }
 
-            return redirect()->route('admin.database.index')->with($data);
+            return redirect()->route('admin.database.index', $request->query())->with($data);
         } catch (Exception $e) {
-            return redirect()->route('admin.database.index')->with($this->alertException($e, 'Saving Failed'));
+            return redirect()->route('admin.database.index', $request->query())->with($this->alertException($e, 'Saving Failed'));
         }
     }
 
@@ -82,7 +82,11 @@ class DatabaseCrudController extends BaseController
 
         $dataType = Admin::model('DataType')->whereSlug($slug)->firstOrFail();
 
-        $fieldOptions = SchemaManager::describeTable($dataType->name);
+        if (isset($dataType->model_name) && $dataType->model_name) {
+            $fieldOptions = SchemaManager::describeTableFromModel($dataType->model_name);
+        } else {
+            $fieldOptions = SchemaManager::describeTable($dataType->name);
+        }
 
         $isModelTranslatable = is_crud_translatable($dataType);
         $tables = SchemaManager::listTableNames();
@@ -169,7 +173,7 @@ class DatabaseCrudController extends BaseController
             // Save translations if applied
             $dataType->saveTranslations($translations);
 
-            return redirect()->route('admin.database.index')->with($data);
+            return redirect()->route('admin.database.index', $request->query())->with($data);
         } catch (Exception $e) {
             return back()->with($this->alertException($e, __('admin.generic.update_failed')));
         }
@@ -199,7 +203,7 @@ class DatabaseCrudController extends BaseController
             Admin::model('Permission')->removeFrom($dataType->name);
         }
 
-        return redirect()->route('admin.database.index')->with($data);
+        return redirect()->route('admin.database.index', request()->query())->with($data);
     }
 
     public function addRelationship(Request $request)

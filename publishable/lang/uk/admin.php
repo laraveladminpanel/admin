@@ -336,6 +336,8 @@ return [
             'delete'               => 'Видалити',
             'create'               => 'Створити відношення',
             'namespace'            => 'Простір імен моделі (приклад: App\Category)',
+            'connection'           => 'З\'єднання',
+            'connections_to_databases' => 'Підключення до баз даних',
         ],
     ],
 

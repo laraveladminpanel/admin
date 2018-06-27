@@ -95,7 +95,7 @@ class DatabaseController extends BaseController
             }
 
             return redirect()
-               ->route('admin.database.index')
+               ->route('admin.database.index', request()->query())
                ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table->name])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e))->withInput();
@@ -147,7 +147,7 @@ class DatabaseController extends BaseController
         }
 
         return redirect()
-               ->route('admin.database.index')
+               ->route('admin.database.index', $request->query())
                ->with($this->alertSuccess(__('admin.database.success_create_table', ['table' => $table['name']])));
     }
 
@@ -160,7 +160,7 @@ class DatabaseController extends BaseController
 
         if ($action == 'update') {
             $db->table = SchemaManager::listTableDetails($table);
-            $db->formAction = route('admin.database.update', $table);
+            $db->formAction = admin_route('database.update', $table);
         } else {
             $db->table = new Table('New Table');
 
@@ -173,7 +173,7 @@ class DatabaseController extends BaseController
 
             $db->table->setPrimaryKey(['id'], 'primary');
 
-            $db->formAction = route('admin.database.store');
+            $db->formAction = admin_route('database.store');
         }
 
         $oldTable = old('table');
@@ -238,7 +238,7 @@ class DatabaseController extends BaseController
             event(new TableDeleted($table));
 
             return redirect()
-                ->route('admin.database.index')
+                ->route('admin.database.index', request()->query())
                 ->with($this->alertSuccess(__('admin.database.success_delete_table', ['table' => $table])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e));

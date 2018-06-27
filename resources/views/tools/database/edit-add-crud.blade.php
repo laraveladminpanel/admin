@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="@if($action === 'edit'){{ route('admin.database.crud.update', $dataType->id) }}@else{{ route('admin.database.crud.store') }}@endif"
+                <form action="@if($action === 'edit'){{ admin_route('database.crud.update', $dataType->id) }}@else{{ admin_route('database.crud.store') }}@endif"
                       method="POST" role="form">
                 @if($action === 'edit')
                     <input type="hidden" value="{{ $dataType->id }}" name="id">

@@ -337,6 +337,8 @@ return [
             'create'               => 'Создать отношение',
             'namespace'            => 'Пространство имен модели (пример: App\Category)',
         ],
+        'connection'               => 'Соединение',
+        'connections_to_databases' => 'Подключения к базам данных',
     ],
 
     'dimmer' => [

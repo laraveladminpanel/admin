@@ -40,3 +40,22 @@ if (!function_exists('storage_url')) {
         return Storage::disk(config('admin.storage.disk'))->url($path);
     }
 }
+
+if (! function_exists('admin_route')) {
+    /**
+     * Generate the URL to a admin route.
+     *
+     * @param  array|string  $name
+     * @param  array  $parameters
+     * @param  bool  $absolute
+     * @return string
+     */
+    function admin_route($name, $parameters = [], $absolute = true)
+    {
+        $requestQuery = request()->query();
+        $parameters = Illuminate\Support\Arr::wrap($parameters);
+        $parameters = $parameters + $requestQuery;
+
+        return app('url')->route('admin.'. $name, $parameters, $absolute);
+    }
+}
