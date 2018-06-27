@@ -82,6 +82,55 @@
                 </table>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="admin-list"></i> {{ __('admin.database.connections_to_databases') }}</h3>
+                        <div class="panel-actions">
+                            <a class="panel-action admin-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="page-content container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <table class="table table-striped database-tables">
+                                        <thead>
+                                        <tr>
+                                            <th>{{ __('admin.database.connection') }}</th>
+                                            <th style="text-align:right">{{ __('admin.database.crud_actions') }}</th>
+                                        </tr>
+                                        </thead>
+
+                                        @foreach(config('database.connections', []) as $connectionName => $connection)
+                                            <tr>
+                                                <td>
+                                                    <p class="name">
+                                                        <a href="{{ route('admin.database.index', ['connection' => $connectionName]) }}">
+                                                            {{ ucfirst($connectionName) }}
+                                                        </a>
+                                                    </p>
+                                                </td>
+
+                                                <td class="actions">
+                                                    <a href="{{ route('admin.database.index', ['connection' => $connectionName]) }}"
+                                                       class="btn btn-sm btn-warning pull-right" style="display:inline; margin-right:10px;">
+                                                        <i class="admin-eye"></i> {{ __('admin.generic.view') }}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal modal-danger fade" tabindex="-1" id="delete_builder_modal" role="dialog">

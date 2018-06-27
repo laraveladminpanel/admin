@@ -345,6 +345,8 @@ return [
             'create'               => 'Create a Relationship',
             'namespace'            => 'Model Namespace (ex. App\Category)',
         ],
+        'connection'               => 'Connection',
+        'connections_to_databases' => 'Connections to databases',
     ],
 
     'dimmer' => [
