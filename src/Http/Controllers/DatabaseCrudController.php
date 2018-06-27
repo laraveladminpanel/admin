@@ -175,7 +175,7 @@ class DatabaseCrudController extends BaseController
             // Save translations if applied
             $dataType->saveTranslations($translations);
 
-            return redirect()->route('admin.database.index')->with($data);
+            return redirect()->route('admin.database.index', $request->query())->with($data);
         } catch (Exception $e) {
             return back()->with($this->alertException($e, __('admin.generic.update_failed')));
         }
