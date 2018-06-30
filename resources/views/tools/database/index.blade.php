@@ -101,7 +101,7 @@
                                         <thead>
                                         <tr>
                                             <th>{{ __('admin.database.connection') }}</th>
-                                            <th style="text-align:right">{{ __('admin.database.crud_actions') }}</th>
+                                            <th style="text-align:right">{{ __('admin.generic.actions') }}</th>
                                         </tr>
                                         </thead>
 
