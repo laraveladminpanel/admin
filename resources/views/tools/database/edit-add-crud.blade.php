@@ -508,7 +508,7 @@
             var tbl = dropdown.data('table');
             var selected_value = dropdown.data('selected');
             if(tbl.length != 0){
-                $.get('{{ admin_route('database.index', [], false) }}/' + tbl, function(data){
+                $.get('{{ route('admin.database.index', [], false) }}/' + tbl + document.location.search.replace(/&amp;/g, '&'), function(data){
                     $(dropdown).empty();
                     for (var option in data) {
                        $('<option/>', {
