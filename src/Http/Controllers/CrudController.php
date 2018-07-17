@@ -292,23 +292,22 @@ class CrudController extends BaseController
 
             event(new CrudDataAdded($request, $slug, $dataType, $data));
 
-            $requestQuery = (object) $request->query();
+            $redirect = redirect(admin_route($dataType->slug . ".index"));
 
-            if ($this->needRedirectToParentCrud($requestQuery)) {
-                return redirect()
-                    ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
-                    ->with([
-                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
-                        'alert-type' => 'success',
-                    ]);
+            if ($dataType->isBackToParentCrud()) {
+                $requestQuery = (object) $request->query();
+
+                $redirect = redirect(admin_route($requestQuery->crud_slug . '.' . $requestQuery->crud_action, $requestQuery->crud_id));
             }
 
-            return redirect()
-                ->route("admin.{$dataType->slug}.index", $request->query())
-                ->with([
-                        'message'    => __('admin.generic.successfully_added_new')." {$dataType->display_name_singular}",
-                        'alert-type' => 'success',
-                    ]);
+            if ($dataType->isBackToEdit()) {
+                $redirect = redirect(admin_route($dataType->slug . '.edit', $data->id));
+            }
+
+            return $redirect->with([
+                'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
+                'alert-type' => 'success',
+            ]);
         }
     }
 
@@ -440,23 +439,22 @@ class CrudController extends BaseController
 
             event(new CrudDataUpdated($request, $slug, $dataType, $data));
 
-            $requestQuery = (object) $request->query();
+            $redirect = redirect(admin_route($dataType->slug . ".index"));
 
-            if ($this->needRedirectToParentCrud($requestQuery)) {
-                return redirect()
-                    ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
-                    ->with([
-                        'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
-                        'alert-type' => 'success',
-                    ]);
+            if ($dataType->isBackToParentCrud()) {
+                $requestQuery = (object) $request->query();
+
+                $redirect = redirect(admin_route($requestQuery->crud_slug . '.' . $requestQuery->crud_action, $requestQuery->crud_id));
             }
 
-            return redirect()
-                ->route("admin.{$dataType->slug}.index", $request->query())
-                ->with([
-                    'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
-                    'alert-type' => 'success',
-                ]);
+            if ($dataType->isBackToEdit()) {
+                $redirect = redirect()->back();
+            }
+
+            return $redirect->with([
+                'message'    => __('admin.generic.successfully_updated')." {$dataType->display_name_singular}",
+                'alert-type' => 'success',
+            ]);
         }
     }
 
@@ -515,7 +513,7 @@ class CrudController extends BaseController
 
         $requestQuery = (object) $request->query();
 
-        if ($this->needRedirectToParentCrud($requestQuery)) {
+        if ($dataType->isBackToParentCrud($requestQuery)) {
             return redirect()
                 ->route("admin.{$requestQuery->crud_slug}.{$requestQuery->crud_action}", $requestQuery->crud_id)
                 ->with([
@@ -588,17 +586,5 @@ class CrudController extends BaseController
         if ($rows->count() > 0) {
             event(new CrudImagesDeleted($data, $rows));
         }
-    }
-
-    /**
-     * Check if need to redirect to the parent CRUD.
-     *
-     * @return boolean
-     */
-    private function needRedirectToParentCrud(\stdClass $requestQuery)
-    {
-        return isset($requestQuery->crud_slug) && $requestQuery->crud_slug
-            && isset($requestQuery->crud_action) && $requestQuery->crud_action
-            && isset($requestQuery->crud_id) && $requestQuery->crud_id;
     }
 }

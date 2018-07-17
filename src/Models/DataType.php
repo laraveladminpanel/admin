@@ -266,4 +266,30 @@ class DataType extends Model
     {
         return $this->ajaxList()->pluck('field')->toArray();
     }
+
+    public function isBackToEdit()
+    {
+        $details = json_decode($this->details);
+
+        if (isset($details->after_save)
+            && $details->after_save
+            && $details->after_save === 'redirect_to_edit') {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isBackToParentCrud()
+    {
+        $requestQuery = (object) request()->query();
+
+        if (isset($requestQuery->crud_slug) && $requestQuery->crud_slug
+            && isset($requestQuery->crud_action) && $requestQuery->crud_action
+            && isset($requestQuery->crud_id) && $requestQuery->crud_id) {
+            return true;
+        }
+
+        return false;
+    }
 }
