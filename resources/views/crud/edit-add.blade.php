@@ -4,19 +4,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
-@section('page_title', __('admin.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
+@section('page_title', __('admin.generic.'.(!is_null($dataTypeContent->getKey()) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
 @section('page_header')
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i>
-        {{ __('admin.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
+        {{ __('admin.generic.'.(!is_null($dataTypeContent->getKey()) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
     </h1>
     @include('admin::multilingual.language-selector')
 @stop
 
 @section('content')
     @php
-        $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
+        $dataTypeRows = $dataType->{(!is_null($dataTypeContent->getKey()) ? 'editRows' : 'addRows' )};
         $formDesigner = $dataType->getFormDesigner();
         $formDesignerFields = collect([]);
     @endphp
@@ -25,10 +25,10 @@
         <!-- form start -->
         <form role="form"
             class="form-edit-add"
-            action="@if(isset($dataTypeContent->id)){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif?{{ request()->getQueryString() }}"
+            action="@if(!is_null($dataTypeContent->getKey())){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->getKey()) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif?{{ request()->getQueryString() }}"
             method="POST" enctype="multipart/form-data">
         <!-- PUT Method if we are editing -->
-        @if(isset($dataTypeContent->id))
+        @if(!is_null($dataTypeContent->getKey()))
             {{ method_field("PUT") }}
         @endif
 
@@ -104,7 +104,7 @@
                 <div class="panel panel-bordered">
                     <div class="panel-body">
                         @php
-                            $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
+                            $dataTypeRows = $dataType->{(!is_null($dataTypeContent->getKey()) ? 'editRows' : 'addRows' )};
                         @endphp
 
                         @foreach($notformDesignerFields as $row)
@@ -144,10 +144,10 @@
                         <!-- form start -->
                         <form role="form"
                                 class="form-edit-add"
-                                action="@if(isset($dataTypeContent->id)){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif?{{ request()->getQueryString() }}"
+                                action="@if(!is_null($dataTypeContent->getKey())){{ route('admin.'.$dataType->slug.'.update', $dataTypeContent->getKey()) }}@else{{ route('admin.'.$dataType->slug.'.store') }}@endif?{{ request()->getQueryString() }}"
                                 method="POST" enctype="multipart/form-data">
                             <!-- PUT Method if we are editing -->
-                            @if(isset($dataTypeContent->id))
+                            @if(!is_null($dataTypeContent->getKey()))
                                 {{ method_field("PUT") }}
                             @endif
 
