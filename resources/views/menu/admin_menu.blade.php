@@ -48,11 +48,11 @@
         }
         else
         {
-            $linkAttributes =  'href="' . url($href) .'"';
-
             if(!Auth::user()->can('browse', $item)) {
                 continue;
             }
+
+            $linkAttributes =  'href="' . url($href) .'"';
         }
     @endphp
 
