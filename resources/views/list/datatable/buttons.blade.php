@@ -59,19 +59,21 @@
 @if(isset($dataTypeOptions->browse->service_buttons))
     @foreach($dataTypeOptions->browse->service_buttons as $serviceButton)
         @can(isset($serviceButton->apply_permission) ? $serviceButton->apply_permission : 'browse', $data)
-        <a data-id="{{ $data->{$data->getKeyName()} }}"
-           data-title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
-           title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
-           class="btn btn-sm pull-right {{ isset($serviceButton->class) ? $serviceButton->class : '' }}"
-           href="{{ isset($serviceButton->attribute) && isset($data->{$serviceButton->attribute}) ? $data->{$serviceButton->attribute} : '#' }}"
-           target="{{ isset($serviceButton->target) ? $serviceButton->target : '_self' }}">
-            @if(isset($serviceButton->icon))
-            <i class="{{ $serviceButton->icon }}"></i>
+            @if(isset($serviceButton->attribute) && isset($data->{$serviceButton->attribute}) && $data->{$serviceButton->attribute})
+            <a data-id="{{ $data->{$data->getKeyName()} }}"
+               data-title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
+               title="{{ isset($serviceButton->title) ? $serviceButton->title : '' }}"
+               class="btn btn-sm pull-right {{ isset($serviceButton->class) ? $serviceButton->class : '' }}"
+               href="{{ isset($serviceButton->attribute) && isset($data->{$serviceButton->attribute}) ? $data->{$serviceButton->attribute} : '#' }}"
+               target="{{ isset($serviceButton->target) ? $serviceButton->target : '_self' }}">
+                @if(isset($serviceButton->icon))
+                <i class="{{ $serviceButton->icon }}"></i>
+                @endif
+                @if(config('admin.views.browse.display_text_on_service_buttons'))
+                    <span class="hidden-xs hidden-sm">{{ isset($serviceButton->title) ? $serviceButton->title : '' }}</span>
+                @endif
+            </a>
             @endif
-            @if(config('admin.views.browse.display_text_on_service_buttons'))
-                <span class="hidden-xs hidden-sm">{{ isset($serviceButton->title) ? $serviceButton->title : '' }}</span>
-            @endif
-        </a>
         @endcan
     @endforeach
 @endif
