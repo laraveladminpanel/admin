@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use LaravelAdminPanel\Database\Schema\SchemaManager;
+use LaravelAdminPanel\Contracts\ModelValidator;
 use LaravelAdminPanel\Events\CrudDataAdded;
 use LaravelAdminPanel\Events\CrudDataDeleted;
 use LaravelAdminPanel\Events\CrudDataUpdated;
@@ -276,15 +277,21 @@ class CrudController extends BaseController
         $slug = $this->getSlug($request);
 
         $dataType = Admin::model('DataType')->where('slug', '=', $slug)->first();
+        $model = app($dataType->model_name);
 
         // Check permission
-        $this->authorize('edit', app($dataType->model_name));
+        $this->authorize('edit', $model);
 
-        // Validate fields with ajax
-        $val = $this->validateCrud($request->all(), $dataType->addRows);
+        if ($model instanceof ModelValidator) {
+            // Model validation
+            $validator = $model->validate($request);
+        } else {
+            // Crud validation
+            $validator = $this->validateCrud($request->all(), $dataType->addRows);
+        }
 
-        if ($val->fails()) {
-            return response()->json(['errors' => $val->messages()]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->messages()]);
         }
 
         if (!$request->ajax()) {
@@ -422,22 +429,27 @@ class CrudController extends BaseController
         // Compatibility with Model binding.
         $id = $id instanceof Model ? $id->{$id->getKeyName()} : $id;
 
-        $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
+        $model = call_user_func([$dataType->model_name, 'findOrFail'], $id);
 
         // Check permission
-        $this->authorize('edit', $data);
+        $this->authorize('edit', $model);
 
-        // Validate fields with ajax
-        $val = $this->validateCrud($request->all(), $dataType->editRows);
+        if ($model instanceof ModelValidator) {
+            // Model validation
+            $validator = $model->validate($request);
+        } else {
+            // Crud validation
+            $validator = $this->validateCrud($request->all(), $dataType->addRows);
+        }
 
-        if ($val->fails()) {
-            return response()->json(['errors' => $val->messages()]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->messages()]);
         }
 
         if (!$request->ajax()) {
-            $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
+            $this->insertUpdateData($request, $slug, $dataType->editRows, $model);
 
-            event(new CrudDataUpdated($request, $slug, $dataType, $data));
+            event(new CrudDataUpdated($request, $slug, $dataType, $model));
 
             $redirect = redirect(admin_route($dataType->slug . ".index"));
 
