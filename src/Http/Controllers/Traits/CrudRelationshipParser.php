@@ -114,7 +114,16 @@ trait CrudRelationshipParser
                 }
 
                 $crud_data = $dataType->browseRows->where('field', $field)->first();
+
+                if (is_null($crud_data) || !isset($crud_data->details) || !isset(json_decode($crud_data->details)->relationship)) {
+                    continue;
+                }
+
                 $relationData = json_decode($crud_data->details)->relationship;
+
+                if (!isset($relationData->label) || !isset($relationData->page_slug)) {
+                    continue;
+                }
 
                 if ($crud_data->type == 'select_multiple') {
                     $relationItems = [];
