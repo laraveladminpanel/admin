@@ -65,9 +65,10 @@
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
-                    @if(!isset($dataTypeOptions->datatable->rowReorder))
-                    <th></th>
-                    @endif
+                    @can('delete', app($dataType->model_name))
+                        <th></th>
+                    @endcan
+
                     @foreach($dataType->browseRows as $row)
                     <th>
                         @if ($isServerSide)
@@ -92,11 +93,9 @@
             <tbody>
                 @foreach($dataTypeContent as $data)
                 <tr @isset($data->id) data-id="{{ $data->id }}" @endisset>
-                    @if(!isset($dataTypeOptions->datatable->rowReorder))
-                    <td>
+                    @can('delete', app($dataType->model_name))
                         <input type="checkbox" name="row_id" id="checkbox_{{ $data->id }}" value="{{ $data->id }}">
-                    </td>
-                    @endif
+                    @endcan
                     @foreach($dataType->browseRows as $row)
                         <td>
                             <?php $options = json_decode($row->details); ?>

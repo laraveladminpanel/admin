@@ -63,7 +63,9 @@
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
                 <tr>
-                    <th></th>
+                    @can('delete', app($dataType->model_name))
+                        <th></th>
+                    @endcan
                     @foreach($dataType->browseRows as $row)
                     <th>
                         {{ $row->display_name }}
@@ -118,7 +120,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.css') }}">
+    <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.min.css') }}">
@@ -131,7 +133,7 @@
 
 @section('javascript')
     <!-- DataTables -->
-    <script src="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.js') }}"></script>
+    <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/dataTables.buttons.min.js') }}"></script>
@@ -175,7 +177,9 @@
                             }, queryParams),
                         },
                     columns: [
-                        {data: "delete_checkbox", orderable: false, searchable: false},
+                        @can('delete', app($dataType->model_name))
+                            {data: "delete_checkbox", orderable: false, searchable: false},
+                        @endcan
                          @foreach($dataType->browseRows as $row)
                             @if($row->type === 'relationship')
                         {data: "{{ $row->field }}", orderable: false},
