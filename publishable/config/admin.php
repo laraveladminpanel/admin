@@ -243,4 +243,8 @@ return [
             'display_text_on_service_buttons' => true,
         ]
      ],
+
+    'data_tables' => [
+        'responsive' => true
+    ]
 ];

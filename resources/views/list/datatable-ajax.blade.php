@@ -118,7 +118,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.css') }}">
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/buttons/buttons.min.css') }}">
@@ -131,7 +131,7 @@
 
 @section('javascript')
     <!-- DataTables -->
-    <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.js') }}"></script>
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
         <script src="{{ admin_asset('plugins/dataTables/extensions/buttons/dataTables.buttons.min.js') }}"></script>

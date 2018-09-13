@@ -272,8 +272,8 @@
 @stop
 
 @section('css')
-    @if($dataType->pagination !== 'php' && config('dashboard.data_tables.responsive'))
-        <link rel="stylesheet" href="{{ admin_asset('lib/css/responsive.dataTables.min.css') }}">
+    @if($dataType->pagination !== 'php' && config('admin.data_tables.responsive'))
+        <link rel="stylesheet" href="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.css') }}">
     @endif
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
@@ -287,8 +287,8 @@
 
 @section('javascript')
     <!-- DataTables -->
-    @if($dataType->pagination !== 'php' && config('dashboard.data_tables.responsive'))
-        <script src="{{ admin_asset('lib/js/dataTables.responsive.min.js') }}"></script>
+    @if($dataType->pagination !== 'php' && config('admin.data_tables.responsive'))
+        <script src="{{ admin_asset('plugins/dataTables/extensions/responsive/responsive.min.js') }}"></script>
     @endif
 
     @if(isset($dataTypeOptions->datatable->buttons) && is_array($dataTypeOptions->datatable->buttons))
