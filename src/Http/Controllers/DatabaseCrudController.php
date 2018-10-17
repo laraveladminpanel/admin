@@ -17,8 +17,12 @@ class DatabaseCrudController extends BaseController
 {
     public function __construct()
     {
-        list(, $action) = explode('@', \Route::getCurrentRoute()->getActionName());
-        view()->share(compact('action'));
+        $currentRoute = \Route::getCurrentRoute();
+
+        if (!is_null($currentRoute)) {
+            list(, $action) = explode('@', $currentRoute->getActionName());
+            view()->share(compact('action'));
+        }
     }
 
     /**
