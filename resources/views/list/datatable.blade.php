@@ -94,7 +94,9 @@
                 @foreach($dataTypeContent as $data)
                 <tr @isset($data->id) data-id="{{ $data->id }}" @endisset>
                     @can('delete', app($dataType->model_name))
-                        <input type="checkbox" name="row_id" id="checkbox_{{ $data->id }}" value="{{ $data->id }}">
+                        <td>
+                            <input type="checkbox" name="row_id" id="checkbox_{{ $data->id }}" value="{{ $data->id }}">
+                        </td>
                     @endcan
                     @foreach($dataType->browseRows as $row)
                         <td>
