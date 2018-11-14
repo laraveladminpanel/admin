@@ -311,6 +311,7 @@ class AdminServiceProvider extends ServiceProvider
             'timestamp',
             'hidden',
             'coordinates',
+            'custom',
         ];
 
         foreach ($formFields as $formField) {
