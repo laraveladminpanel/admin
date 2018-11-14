@@ -140,7 +140,13 @@ class CrudController extends BaseController
         $columns = $dataType->fields();
         $pagination = $dataType->pagination;
 
-        return Admin::view('admin::crud.browse-ajax', compact(
+        $view='admin::crud.browse-ajax';
+
+        if (view()->exists("admin::$slug.browse-ajax")) {
+            $view = "admin::$slug.browse-ajax";
+        }
+
+        return Admin::view($view, compact(
             'dataType',
             'slug',
             'isServerSide',
