@@ -33,9 +33,10 @@ class CustomHandler extends AbstractHandler
     {
         $options = json_decode($dataRow->details);
         return view('admin::formfields.' . $options->view_path, [
-            'dataRow'     => $dataRow,
-            'options' => $options,
-            'slug'    => $slug,
+            'dataRow'         => $dataRow,
+            'options'         => $options,
+            'slug'            => $slug,
+            'dataTypeContent' => $dataTypeContent,
         ]);
     }
 }
