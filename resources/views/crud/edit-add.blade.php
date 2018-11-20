@@ -51,6 +51,11 @@
                             @endphp
                             @foreach($dataTypeRows->whereIn('field', $panel->fields) as $row)
                                 <!-- GET THE DISPLAY OPTIONS -->
+                                 <!-- CUSTOM DISPLAY RELATIONSHIP IN FORM DESIGNER -->
+                                    @if($row->type == 'relationship')
+                                        @include('admin::formfields.relationship');
+                                        @continue
+                                    @endif
                                 @php
                                     $options = json_decode($row->details);
                                     $display_options = isset($options->display) ? $options->display : NULL;
