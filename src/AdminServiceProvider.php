@@ -17,7 +17,7 @@ use Larapack\DoctrineSupport\DoctrineSupportServiceProvider;
 use LaravelAdminPanel\Events\FormFieldsRegistered;
 use LaravelAdminPanel\Facades\Admin as AdminFacade;
 use LaravelAdminPanel\FormFields\After\DescriptionHandler;
-use LaravelAdminPanel\Http\Middleware\AdminAdminMiddleware;
+use LaravelAdminPanel\Http\Middleware\AdminMiddleware;
 use LaravelAdminPanel\Models\MenuItem;
 use LaravelAdminPanel\Models\Setting;
 use LaravelAdminPanel\Policies\BasePolicy;
@@ -94,13 +94,13 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
 
         if (app()->version() >= 5.4) {
-            $router->aliasMiddleware('admin.user', AdminAdminMiddleware::class);
+            $router->aliasMiddleware('admin.user', AdminMiddleware::class);
 
             if (config('app.env') == 'testing') {
                 $this->loadMigrationsFrom(realpath(__DIR__.'/migrations'));
             }
         } else {
-            $router->middleware('admin.user', AdminAdminMiddleware::class);
+            $router->middleware('admin.user', AdminMiddleware::class);
         }
 
         $this->registerGates();
