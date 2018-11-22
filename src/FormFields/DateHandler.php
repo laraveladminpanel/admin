@@ -31,4 +31,13 @@ class DateHandler extends AbstractHandler
 
         return $content;
     }
+
+    public function getContentForList(Request $request, $slug, $dataRow, $dataTypeContent)
+    {
+        $rowDetails = json_decode($dataRow->details);
+
+        return $rowDetails && property_exists($rowDetails, 'format') ?
+            Carbon::parse($dataTypeContent->{$dataRow->field})->formatLocalized($rowDetails->format) :
+            $dataTypeContent->{$dataRow->field};
+    }
 }
