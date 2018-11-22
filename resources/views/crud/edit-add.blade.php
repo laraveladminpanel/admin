@@ -53,6 +53,9 @@
                                 <!-- GET THE DISPLAY OPTIONS -->
                                  <!-- CUSTOM DISPLAY RELATIONSHIP IN FORM DESIGNER -->
                                     @if($row->type == 'relationship')
+                                        <div class="form-group  ">
+                                            <label for="name"> {!! isset($row->display_name) ? __($row->display_name) : '' !!}</label>
+                                        </div>
                                         @include('admin::formfields.relationship');
                                         @continue
                                     @endif
