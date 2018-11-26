@@ -60,7 +60,7 @@
     @endif
     <div class="table-responsive">
 
-        @yield('datatable_header')
+     
 
         <table id="dataTable" class="table table-hover" data-json-datatable="{{ $jsonDataTable }}">
             <thead>
@@ -228,6 +228,7 @@
                 @endforeach
             </tbody>
         </table>
+           @yield('datatable_header')
     </div>
     @if ($isServerSide)
         <div class="pull-left">
