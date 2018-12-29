@@ -51,6 +51,14 @@
                             @endphp
                             @foreach($dataTypeRows->whereIn('field', $panel->fields) as $row)
                                 <!-- GET THE DISPLAY OPTIONS -->
+                                 <!-- CUSTOM DISPLAY RELATIONSHIP IN FORM DESIGNER -->
+                                    @if($row->type == 'relationship')
+                                        <div class="form-group  ">
+                                            <label for="name"> {!! isset($row->display_name) ? __($row->display_name) : '' !!}</label>
+                                        </div>
+                                        @include('admin::formfields.relationship');
+                                        @continue
+                                    @endif
                                 @php
                                     $options = json_decode($row->details);
                                     $display_options = isset($options->display) ? $options->display : NULL;

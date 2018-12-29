@@ -2,6 +2,7 @@
 
 namespace LaravelAdminPanel\FormFields;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TimestampHandler extends AbstractHandler
@@ -31,5 +32,14 @@ class TimestampHandler extends AbstractHandler
         }
 
         return $content;
+    }
+
+    public function getContentForList(Request $request, $slug, $dataRow, $dataTypeContent)
+    {
+        $rowDetails = json_decode($dataRow->details);
+
+        return $rowDetails && property_exists($rowDetails, 'format') ?
+            Carbon::parse($dataTypeContent->{$dataRow->field})->formatLocalized($rowDetails->format) :
+            $dataTypeContent->{$dataRow->field};
     }
 }

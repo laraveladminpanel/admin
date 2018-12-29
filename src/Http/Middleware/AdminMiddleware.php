@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use LaravelAdminPanel\Facades\Admin;
 
-class AdminAdminMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
