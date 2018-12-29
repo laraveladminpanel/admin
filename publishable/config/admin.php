@@ -35,7 +35,7 @@ return [
     | Models config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify default model namespace when creating BREAD.
+    | Here you can specify default model namespace when creating CRUD.
     | Must include trailing backslashes. If not defined the default application
     | namespace will be used.
     |
@@ -135,7 +135,7 @@ return [
 
     'multilingual' => [
         /*
-         * Set whether or not the multilingual is supported by the BREAD input.
+         * Set whether or not the multilingual is supported by the CRUD input.
          */
         'enabled' => false,
 
@@ -201,11 +201,11 @@ return [
     |
     */
 
-    // When a BREAD is added, create the Menu item using the BREAD properties.
-    'add_bread_menu_item' => true,
+    // When a CRUD is added, create the Menu item using the CRUD properties.
+    'add_crud_menu_item' => true,
 
-    // When a BREAD is added, create the related Permission.
-    'add_bread_permission' => true,
+    // When a CRUD is added, create the related Permission.
+    'add_crud_permission' => true,
 
     /*
     |--------------------------------------------------------------------------
