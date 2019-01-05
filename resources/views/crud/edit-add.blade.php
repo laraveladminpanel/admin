@@ -51,14 +51,6 @@
                             @endphp
                             @foreach($dataTypeRows->whereIn('field', $panel->fields) as $row)
                                 <!-- GET THE DISPLAY OPTIONS -->
-                                 <!-- CUSTOM DISPLAY RELATIONSHIP IN FORM DESIGNER -->
-                                    @if($row->type == 'relationship')
-                                        <div class="form-group  ">
-                                            <label for="name"> {!! isset($row->display_name) ? __($row->display_name) : '' !!}</label>
-                                        </div>
-                                        @include('admin::formfields.relationship');
-                                        @continue
-                                    @endif
                                 @php
                                     $options = json_decode($row->details);
                                     $display_options = isset($options->display) ? $options->display : NULL;
@@ -73,7 +65,11 @@
                                         <label for="name">{{ $row->display_name }}</label>
                                         @endif
                                         @include('admin::multilingual.input-hidden-bread-edit-add')
-                                        {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
+                                        @if($row->type == 'relationship')
+                                            @include('admin::formfields.relationship')
+                                        @else
+                                            {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
+                                        @endif
 
                                         @foreach (app('admin')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
                                             {!! $after->handle($row, $dataType, $dataTypeContent) !!}
@@ -130,7 +126,11 @@
                                     {{ $row->slugify }}
                                     <label for="name">{{ $row->display_name }}</label>
                                     @include('admin::multilingual.input-hidden-bread-edit-add')
-                                    {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
+                                    @if($row->type == 'relationship')
+                                        @include('admin::formfields.relationship')
+                                    @else
+                                        {!! app('admin')->formField($row, $dataType, $dataTypeContent) !!}
+                                    @endif
 
                                     @foreach (app('admin')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
                                         {!! $after->handle($row, $dataType, $dataTypeContent) !!}
