@@ -19,7 +19,10 @@
         @php
             $model = app($options->model);
             $query = $model::where($options->column, '=', $dataTypeContent->id)->get();
-            $details = json_decode($options->details);
+            $details = new stdClass;
+            if (property_exists($options, 'details')) {
+                $details = json_decode($options->details);
+            }
         @endphp
 
         @if(isset($details->list) && $details->list === "datatable")
@@ -64,7 +67,10 @@
     @php
         $model = app($options->model);
         $query = $model::where($options->column, '=', $dataTypeContent->id)->get();
-        $details = json_decode($options->details);
+        $details = new stdClass;
+        if (property_exists($options, 'details')) {
+            $details = json_decode($options->details);
+        }
     @endphp
 
     @if(isset($details->list) && $details->list === "datatable")
