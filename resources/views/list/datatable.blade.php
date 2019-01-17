@@ -35,7 +35,7 @@
 @endphp
 
 <div class="panel-body">
-    @if ($isServerSide)
+    @if ($isServerSide && isset($searchable))
         <form method="get">
             <div id="search-input">
                 <select id="search_key" name="key">
