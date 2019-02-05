@@ -35,7 +35,7 @@
 @endphp
 
 <div class="panel-body">
-    @if ($isServerSide)
+    @if ($isServerSide && isset($searchable))
         <form method="get">
             <div id="search-input">
                 <select id="search_key" name="key">
@@ -71,11 +71,11 @@
 
                     @foreach($dataType->browseRows as $row)
                     <th>
-                        @if ($isServerSide)
+                        @if ($isServerSide && isset($searchable))
                             <a href="{{ $row->sortByUrl() }}">
                         @endif
                         {{ $row->display_name }}
-                        @if ($isServerSide)
+                        @if ($isServerSide && isset($searchable))
                             @if ($row->isCurrentSortField())
                                 @if (!isset($_GET['sort_order']) || $_GET['sort_order'] == 'asc')
                                     <i class="admin-angle-up pull-right"></i>
@@ -229,7 +229,7 @@
             </tbody>
         </table>
     </div>
-    @if ($isServerSide)
+    @if ($isServerSide && isset($searchable))
         <div class="pull-left">
             <div role="status" class="show-res" aria-live="polite">{{ trans_choice(
                 'admin.generic.showing_entries', $dataTypeContent->total(), [

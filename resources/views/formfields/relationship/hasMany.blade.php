@@ -38,10 +38,6 @@
                         'parentDataType' => $dataType
                     ])
                 @endcan
-
-                @can('delete',app($relationDataType->model_name))
-                    @include('admin::partials.bulk-delete')
-                @endcan
             @stop
 
             @include('admin::list.datatable', [
@@ -78,19 +74,13 @@
             $relationDataType = Admin::model('DataType')->where('name', '=', $model->getTable())->first()
         @endphp
 
-        @section('datatable_header')
-            @can('add',app($relationDataType->model_name))
-                @include('admin::crud.browse.buttons.add-new', [
-                    'dataType' => $relationDataType,
-                    'parentDataTypeContent' => $dataTypeContent,
-                    'parentDataType' => $dataType
-                ])
-            @endcan
-
-            @can('delete',app($relationDataType->model_name))
-                @include('admin::partials.bulk-delete')
-            @endcan
-        @stop
+        @can('add',app($relationDataType->model_name))
+            @include('admin::crud.browse.buttons.add-new', [
+                'dataType' => $relationDataType,
+                'parentDataTypeContent' => $dataTypeContent,
+                'parentDataType' => $dataType
+            ])
+        @endcan
 
         @include('admin::list.datatable', [
             'isServerSide' => $dataType->isServerSide(),
