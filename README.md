@@ -4,8 +4,8 @@ forked from [the-control-group/voyager](https://github.com/the-control-group/voy
 
 Made with ❤️
 
-> Demo: https://demo.laraveladminpanel.com
-> Documentation: https://laravel-admin-panel.readme.io/docs
+* Demo: https://demo.laraveladminpanel.com
+* Documentation: https://laravel-admin-panel.readme.io/docs
 
 <hr>
 
