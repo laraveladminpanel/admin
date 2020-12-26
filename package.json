@@ -29,7 +29,7 @@
     "brace": "^0.10.0",
     "cropperjs": "^1.4.0",
     "datatables-bootstrap3-plugin": "^0.5.0",
-    "datatables.net": "^1.10.15",
+    "datatables.net": "^1.10.22",
     "datetimepicker": "^0.1.38",
     "dropzone": "^5.4.0",
     "highlight": "^0.2.4",
